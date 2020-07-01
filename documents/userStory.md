@@ -1,0 +1,5 @@
+# Police Budget Explorer - User Story
+
+As a user of the web app, I want to know how much money my county spends on policing. I want to understand the relationship between this spending and other areas. I want to see how this relationship has evolved over the last K years. I want to learn how my county compares to other counties in CA, USA, or even other countries. I want to understand if the amount of police spending is related to crime rates, locations, or types, and the spending level is related to incarceration. I also want to understand the relationship between police spending and use of force, if it exists.
+
+After learning this things, I want to know what actions I can take to affect the level of police spending in my county. I want to know what elected or appointed officials are responsible for determining this spending amount, and how it has changed under thier tenure.
