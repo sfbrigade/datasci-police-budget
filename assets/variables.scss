@@ -1,0 +1,122 @@
+// ==================
+// color
+$green-1: #00A040;
+$green-2: #00B849;
+$green-3: #00D154;
+$green-4: #00EB5E;
+// $gray-1: #333333;
+// $gray-2: #4D4D4D;
+$gray-1: #6F6F6F;
+$gray-2: #C8C8C8;
+$gray-3: #808080;
+$gray-4: #D9D9D9;
+$white-1: #FFFFFF;
+$white-2: #F8F9FA;
+$black: #2D2D2D;
+$link: #006CA8;
+// $blue: #114473;
+$purple-1: #473A8C;
+$purple-2: #7D70BB;
+
+// ==================
+// shadow
+$shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+
+// ==================
+// break-points
+$huge: 1440;
+$large: 1170;
+$medium: 768;
+$small: 600;
+
+// ==================
+// z-index
+$z-index-map: (
+  opened-side-navigation: 101,
+  sp-navigation: 100,
+);
+@function z-index-of($key) {
+  @return map-get($z-index-map, $key);
+}
+
+// ==================
+// media-query
+@mixin largerThan($width) {
+	@media screen and (min-width: $width + 1 + px) {
+		@content;
+	}
+}
+
+@mixin lessThan($width) {
+	@media screen and (max-width: $width + px) {
+		@content;
+	}
+}
+
+
+// ==================
+// font-size
+@mixin font-size($size, $base: 16) {
+  font-size: $size + px;
+  font-size: ($size / $base) + rem;
+}
+@mixin card-h1 {
+  @include font-size(24);
+  color: $black;
+  font-weight: bold;
+}
+@mixin card-h2 {
+  @include font-size(19);
+  color: $black;
+  font-weight: bold;
+}
+@mixin body-text {
+  @include font-size(16);
+  color: $black;
+  line-height: 160%;
+  font-weight: normal;
+  @include lessThan($small) {
+    @include font-size(14);
+  }
+}
+
+// ===================
+// button
+@mixin text-link {
+  @include font-size(14);
+  color: $link !important;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin button-text($size: 'md') {
+  @if ($size == 'sm') {
+    padding: 4px 8px;
+  } @else {
+    padding: 24px 36px;
+  }
+  @include font-size(14);
+  display: inline-block;
+  border-radius: 4px;
+  background-color: $white-1;
+  border: 1px solid $green-1;
+  color:$green-1;
+  cursor: pointer;
+  &:hover {
+    background-color: $green-1;
+    color: $white-1;
+    > i {
+      color: $white-1 !important;
+    }
+  }
+}
+
+// ===================
+// card
+@mixin card-container {
+  background-color: $white-1;
+  box-shadow: $shadow;
+  border-radius: 10px;
+}

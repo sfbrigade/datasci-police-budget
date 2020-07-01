@@ -1,0 +1,31 @@
+{
+  "name": "datasci-police-budget",
+  "version": "1.0.0",
+  "description": "Stop Coronavirus in the Bay Area",
+  "author": "Code for Stopping Coronavirus",
+  "private": true,
+  "engines": {
+    "node": ">=10.19.0"
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "export": "nuxt export",
+    "serve": "nuxt serve"
+  },
+  "dependencies": {
+    "nuxt": "^2.13.0"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^0.6.0",
+    "@nuxtjs/vuetify": "^1.0.0",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "nuxt-purgecss": "^0.2.1",
+    "nuxt-svg-loader": "^1.2.0"
+  },
+  "browserslist": [
+    "defaults",
+    "ie >=11"
+  ]
+}
