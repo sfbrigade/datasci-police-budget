@@ -2,7 +2,8 @@
 
 
 ## Home Page - What is this project about
-
+* Making public information visible
+* Empowering citizens and residents with data
 
 ## Balance My City's Budget
 * show the 6-12 high level categories that make up my city's budget
@@ -18,12 +19,14 @@
  * population, size, economy, diversity, etc
 
 ## Information Page - FAQ
-* 
+* ???
 
 ## Action Page - What Can I Do?
-* 
+* Who is my local representative at the lowest level, i.e. SF distict supervisor
+* How do I contact them?
+* When and where can I attend public meetings to voice my opinion?
+* When are upcoming elections? Which races have an impact on police spending, or policing in general?
+* Who can I call or write to voice my opinion?
+* What other organizations working on policing issues are in my city?
 
 ## About us - Brigade
-
-
-## 
