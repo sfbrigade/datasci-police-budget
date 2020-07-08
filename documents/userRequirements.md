@@ -7,6 +7,7 @@
 
 ## Balance My City's Budget Page
 * Show the 6-12 high level categories that make up my city's budget
+ * Provide clear emphasis on policing budget areas
 * Show how these combine to make up to total spending
 * Allow me to adjust various categories up or down, 
   * Show how this effects the overall balance between categories
@@ -17,6 +18,10 @@
 * Show his the balance of spending has evolved over the last ten years
 * Show how my city's spending compares to 3-5 cities of similar makeup
  * Population, size, economy, diversity, etc
+
+## What Happens if Police Spending Goes Up or Down?
+* Provide me the results of studies showing these effects
+* Provide links to the studies
 
 ## Action Page - What Can I Do?
 * Who is my local representative at the lowest level, i.e. SF distict supervisor
