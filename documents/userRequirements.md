@@ -15,7 +15,7 @@
 
 ## Data Page - A Dashboard Showing My City's Budget
 * Display a high-level visual overview of my city's revenue and spending, easily identifying areas of policing
-* Show his the balance of spending has evolved over the last ten years
+* Show how the balance of spending has evolved over the last ten years
 * Show how my city's spending compares to 3-5 cities of similar makeup
  * Population, size, economy, diversity, etc
 
