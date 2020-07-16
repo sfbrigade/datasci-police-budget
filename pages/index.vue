@@ -1,44 +1,61 @@
 <template>
-  <v-app style="background: #73588A">
+  <v-app style="background: #afeeee">
     <v-container fluid class="HomePage-Container">
       <div class="Background-Wrapper">
-        <div class="logo">
-          <img class="headericond" src="/logo_sfpd.png" />
-          <div class="logo-title-container">
-            <span class="logotitle">Bay Area Police Budget Dashboard</span>
-            <span class="logosubtitle">by Bay Area Brigades</span>
-          </div>
-        </div>
         <div class="origin">
-          <div class="title">
-            <h1>
-              What does it mean to defund the police in the Bay Area?
-            </h1>
-          </div>
-          <div dense class="navigation">
-            <v-card
-              v-for="(item, i) in cardItems"
-              :key="i"
-              class="mx-auto"
-              width="276px"
-              height="74px"
-              outlined
-              nuxt-link
-              :to="{ name: item.to, params: item.params }"
-            >
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title class="cardtitle">
-                    {{ item.title }}
-                  </v-list-item-title>
-                  <v-list-item-subtitle class="carddescription">
-                    {{ item.subtitle }}
-                  </v-list-item-subtitle>
-                </v-list-item-content>
-                <img class="navigationicon" src="/right-arrow.png" />
-              </v-list-item>
-            </v-card>
-          </div>
+        <v-container fill-height>
+          <v-layout justify="center" align="center">
+            <div class="TopNavigation">
+              <v-btn
+                color="transparent"
+                depressed
+                v-for="(button, i) in buttons"
+                        :key="i"
+                        :class="{ active: i === activeTab }"
+                        class="ma-2 TopNavigation-Button black--text"
+                        @click="viewPage(i)"
+                >
+                <v-icon
+                        v-if="button.icon === 'see_budget'"
+                        class="TopNavigation-IconContainer"
+                        size="20"
+                  >
+                      far fa-newspaper
+                </v-icon>
+                <InfoOutlineIcon
+                  v-else-if="button.icon === 'balance_budget'"
+                  class="TopNavigation-IconContainer"
+                />
+                <v-icon
+                  v-if="button.icon === 'see_budget'"
+                  class="TopNavigation-IconContainer"
+                  size="20"
+                  >
+                                      far fa-newspaper
+                </v-icon>
+                <v-icon
+                  v-if="button.icon === 'city_budget_tracker'"
+                  class="TopNavigation-IconContainer"
+                  size="20"
+                  >
+                  far fa-newspaper
+                </v-icon>
+                <PollOutlineIcon
+                  v-if="button.icon === 'about_us'"
+                  class="TopNavigation-IconContainer"
+                />
+                <v-icon
+                  v-else-if="button.icon === 'take_action'"
+                  class="TopNavigation-IconContainer"
+                  size="20"
+                  >
+                  far fa-newspaper
+                </v-icon>
+                {{ button.title }}
+              </v-btn>
+            </div>
+            </v-layout>
+            </v-container>
         </div>
       </div>
       <Footer />
@@ -61,28 +78,35 @@ export default Vue.extend({
     }
   },
   computed: {
-    cardItems() {
-      return [
-        {
-          title: 'Frequently Asked Questions',
-          subtitle: 'What do I need to know?',
-          to: 'main',
-          params: { tab: 'faq' }
-        },
-        {
-          title: 'Build Your Own Budget!',
-          subtitle: 'How would you fund the police?',
-          to: 'main',
-          params: { tab: 'byob' }
-        },
-        {
-          title: 'Bay Area Police Budget Stats',
-          subtitle: 'What do the current and past budgets look like?',
-          to: 'main',
-          params: { tab: 'stats' }
-        }
-      ]
-    }
+    buttons() {
+        return [
+          {
+            icon: 'see_budget',
+            title: 'See Budget',
+            tab: 'FAQ'
+          },
+          {
+            icon: 'balance_budget',
+            title: 'Balance Budget',
+            tab: 'Stats'
+          },
+          {
+            icon: 'city_budget_tracker',
+            title: 'City Budget Tracker',
+            tab: 'FAQ'
+          },
+          {
+             icon: 'about_us',
+             title: 'About Us',
+             tab: 'FAQ'
+          },
+          {
+             icon: 'contact_us',
+             title: 'Contact Us',
+             tab: 'Stats'
+          }
+        ]
+      }
   },
   mounted() {
     this.width = window.innerWidth
@@ -107,98 +131,25 @@ export default Vue.extend({
   justify-content: space-between;
 
   .Background-Wrapper {
-    background: url('/gg_1440.png') center no-repeat;
-    height: calc(100% - 200px);
-  }
-
-  .logo {
-    margin: 40px;
-    display: flex;
-    .headericond {
-      width: 60px;
-      height: 60px;
-    }
-    .logo-title-container {
-      display: flex;
-      flex-direction: column;
-      padding: 4px 15px;
-      .logotitle {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 24px;
-        letter-spacing: 0.03em;
-        color: $white-1;
-        margin-bottom: 5px;
-      }
-      .logosubtitle {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 14px;
-        color: $white-1;
-      }
-    }
+    background: url('/olivia-bliss-HTnycx0h_kk-unsplash.jpg') center no-repeat;
+    height: 100%;
   }
 
   .origin {
     display: flex;
     flex-direction: column;
+    align: center;
     height: auto;
-    .title {
-      margin: 40px;
-      h1 {
-        color: $white-1;
-        line-height: 1.2;
-        overflow-wrap: break-word;
-        max-width: 470px;
-      }
-    }
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
 
-    .navigation {
+    .TopNavigation {
       display: flex;
-      justify-content: space-between;
       margin: 60px 40px;
       max-width: 900px;
-      .v-card--link {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-      }
-      .v-list-item {
-        height: 100%;
-        .v-list-item__content {
-          height: 100%;
-          padding: 10px 0;
-          flex-direction: column;
-          align-items: unset;
-          align-self: unset;
-          flex-wrap: unset;
-          flex: none;
-          min-width: 220px;
-          margin-right: 10px;
-        }
-      }
-    }
-    .cardtitle {
-      height: 19px;
-      width: 100%;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 16px;
-      line-height: 19px;
-      color: $purple-1;
-      display: flex;
-      align-items: center;
-    }
-    .carddescription {
-      height: 17px;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 140%;
-      color: $gray-1;
-      display: flex;
-      align-items: center;
+      text-align: center;
     }
     .navigationicon {
       width: 14px;
