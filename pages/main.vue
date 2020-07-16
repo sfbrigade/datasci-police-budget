@@ -23,12 +23,14 @@
 import Vue from 'vue'
 import TopNavigation from '@/components/TopNavigation'
 import Faq from '@/components/Faq.vue'
+import Stats from '@/components/Stats.vue'
 import Footer from '@/components/Footer.vue'
 
 export default Vue.extend({
   components: {
     TopNavigation,
     Faq,
+    Stats,
     Footer
   },
   asyncData(context) {
@@ -47,8 +49,8 @@ export default Vue.extend({
       active_tab: null,
       tabs: [
         { id: 1, name: 'FAQ' },
-        { id: 2, name: 'Budget Builder' },
-        { id: 3, name: 'Budget Analysis' }
+        { id: 2, name: 'Stats' },
+        { id: 3, name: 'Updates' }
       ]
     }
   },

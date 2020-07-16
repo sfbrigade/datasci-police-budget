@@ -2,7 +2,6 @@
   <div class="TopNavigation-Container">
     <a href="/">
       <div class="TopNavigation-LogoContainer">
-        <img class="headericon" src="/header-icon.png" />
         <div class="logo-title-container">
           <span class="logotitle">Bay Area Pandemic Dashboard</span>
           <span class="logosubtitle">by Bay Area Brigades</span>
@@ -18,20 +17,27 @@
         @click="viewPage(i)"
       >
         <v-icon
-          v-if="button.icon === 'updates'"
+          v-if="button.icon === 'see_budget'"
           class="TopNavigation-IconContainer"
           size="20"
         >
           far fa-newspaper
         </v-icon>
         <InfoOutlineIcon
-          v-else-if="button.icon === 'faq'"
+          v-else-if="button.icon === 'balance_budget'"
           class="TopNavigation-IconContainer"
         />
         <PollOutlineIcon
-          v-else-if="button.icon === 'stats'"
+          v-else-if="button.icon === 'about_us'"
           class="TopNavigation-IconContainer"
         />
+        <v-icon
+           v-if="button.icon === 'take_action'"
+           class="TopNavigation-IconContainer"
+           size="20"
+        >
+          far fa-newspaper
+        </v-icon>
         {{ button.title }}
       </v-btn>
     </div>
@@ -56,19 +62,24 @@ export default {
     buttons() {
       return [
         {
-          icon: 'faq',
-          title: 'FAQ',
+          icon: 'see_budget',
+          title: 'See Budget',
           tab: 'FAQ'
         },
         {
-          icon: 'stats',
-          title: 'Stats',
+          icon: 'balance_budget',
+          title: 'Balance Budget',
           tab: 'Stats'
         },
         {
-          icon: 'updates',
-          title: 'Updates',
+          icon: 'about_us',
+          title: 'About Us',
           tab: 'Updates'
+        },
+        {
+          icon: 'take_action',
+          title: 'Take Action',
+          tab: 'Stats'
         }
       ]
     }
@@ -91,11 +102,10 @@ a:hover {
 .TopNavigation {
   &-Container {
     display: flex;
-    background: $purple-1;
-    color: $white-1 !important;
+    background: $light-blue;
+    color: $black !important;
     height: 60px;
     margin: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     @include lessThan($small) {
       height: 50px;
     }
@@ -161,7 +171,7 @@ a:hover {
   &-Button {
     background: inherit !important;
     padding: 18px 25px !important;
-    color: $white-1 !important;
+    color: $black !important;
     margin: 0 !important;
     height: 100% !important;
     border-radius: 0;
@@ -183,7 +193,7 @@ a:hover {
       opacity: 0.8;
     } */
     &.active {
-      background: $purple-2 !important;
+      background: #9bc2cf !important;
       i {
         color: $white-1;
       }
