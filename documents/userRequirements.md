@@ -1,7 +1,7 @@
 # User Requirements
 
 
-## Home Page - What is this project about
+## Home Page - What is This Project About?
 * Making public information visible
 * Empowering citizens and residents with data
 
@@ -26,7 +26,7 @@
 ## Action Page - What Can I Do?
 * Who is my local representative at the lowest level, i.e. SF distict supervisor?
 * What is their voting history on issues that affect spending, police spending in particular?
-* When are they up for reelection?
+* When are they up for re-election?
 * How do I contact them?
 * When and where can I attend public meetings to voice my opinion?
 * When are upcoming elections? Which races have an impact on police spending, or policing in general?
