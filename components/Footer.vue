@@ -49,6 +49,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/AvenirLTStd-Medium.otf");
+}
 .Footer {
   position: absolute;
   width: 1440px;
