@@ -3,116 +3,111 @@
     <v-container fluid class="HomePage-Container">
       <div class="Background-Wrapper">
         <div class="origin">
-        <v-container fill-height>
-          <v-layout justify="center" align="center">
-            <div class="TopNavigation">
-              <v-btn
-                color="transparent"
-                depressed
-                v-for="(button, i) in buttons"
-                        :key="i"
-                        :class="{ active: i === activeTab }"
-                        class="ma-2 TopNavigation-Button black--text"
-                        @click="viewPage(i)"
+          <v-container fill-height>
+            <v-layout justify="center" align="center">
+              <div class="TopNavigation">
+                <v-btn
+                  color="transparent"
+                  depressed
+                  v-for="(button, i) in buttons"
+                  :key="i"
+                  :class="{ active: i === activeTab }"
+                  class="ma-2 TopNavigation-Button black--text"
+                  @click="viewPage(i)"
                 >
-                <v-icon
-                        v-if="button.icon === 'see_budget'"
-                        class="TopNavigation-IconContainer"
-                        size="20"
-                  >
-                      far fa-newspaper
-                </v-icon>
-                <InfoOutlineIcon
-                  v-else-if="button.icon === 'balance_budget'"
-                  class="TopNavigation-IconContainer"
-                />
-                <v-icon
-                  v-if="button.icon === 'see_budget'"
-                  class="TopNavigation-IconContainer"
-                  size="20"
-                  >
-                                      far fa-newspaper
-                </v-icon>
-                <v-icon
-                  v-if="button.icon === 'city_budget_tracker'"
-                  class="TopNavigation-IconContainer"
-                  size="20"
-                  >
-                  far fa-newspaper
-                </v-icon>
-                <PollOutlineIcon
-                  v-if="button.icon === 'about_us'"
-                  class="TopNavigation-IconContainer"
-                />
-                <v-icon
-                  v-else-if="button.icon === 'take_action'"
-                  class="TopNavigation-IconContainer"
-                  size="20"
-                  >
-                  far fa-newspaper
-                </v-icon>
-                {{ button.title }}
-              </v-btn>
-            </div>
+                  <v-icon
+                    v-if="button.icon === 'see_budget'"
+                    class="TopNavigation-IconContainer"
+                    size="20"
+                  >far fa-newspaper</v-icon>
+                  <InfoOutlineIcon
+                    v-else-if="button.icon === 'balance_budget'"
+                    class="TopNavigation-IconContainer"
+                  />
+                  <v-icon
+                    v-if="button.icon === 'see_budget'"
+                    class="TopNavigation-IconContainer"
+                    size="20"
+                  >far fa-newspaper</v-icon>
+                  <v-icon
+                    v-if="button.icon === 'city_budget_tracker'"
+                    class="TopNavigation-IconContainer"
+                    size="20"
+                  >far fa-newspaper</v-icon>
+                  <PollOutlineIcon
+                    v-if="button.icon === 'about_us'"
+                    class="TopNavigation-IconContainer"
+                  />
+                  <v-icon
+                    v-else-if="button.icon === 'take_action'"
+                    class="TopNavigation-IconContainer"
+                    size="20"
+                  >far fa-newspaper</v-icon>
+                  {{ button.title }}
+                </v-btn>
+              </div>
             </v-layout>
-            </v-container>
+          </v-container>
         </div>
       </div>
+      <Faq />
       <Footer />
     </v-container>
   </v-app>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Footer from '@/components/Footer.vue'
+import Vue from "vue";
+import Footer from "@/components/Footer.vue";
+import Faq from "@/components/Faq.vue";
 
 export default Vue.extend({
   components: {
-    Footer
+    Footer,
+    Faq
   },
   data() {
     return {
       width: 1024,
       height: 768
-    }
+    };
   },
   computed: {
     buttons() {
-        return [
-          {
-            icon: 'see_budget',
-            title: 'See Budget',
-            tab: 'FAQ'
-          },
-          {
-            icon: 'balance_budget',
-            title: 'Balance Budget',
-            tab: 'Stats'
-          },
-          {
-            icon: 'city_budget_tracker',
-            title: 'City Budget Tracker',
-            tab: 'FAQ'
-          },
-          {
-             icon: 'about_us',
-             title: 'About Us',
-             tab: 'FAQ'
-          },
-          {
-             icon: 'contact_us',
-             title: 'Contact Us',
-             tab: 'Stats'
-          }
-        ]
-      }
+      return [
+        {
+          icon: "see_budget",
+          title: "See Budget",
+          tab: "FAQ"
+        },
+        {
+          icon: "balance_budget",
+          title: "Balance Budget",
+          tab: "Stats"
+        },
+        {
+          icon: "city_budget_tracker",
+          title: "City Budget Tracker",
+          tab: "FAQ"
+        },
+        {
+          icon: "about_us",
+          title: "About Us",
+          tab: "FAQ"
+        },
+        {
+          icon: "contact_us",
+          title: "Contact Us",
+          tab: "Stats"
+        }
+      ];
+    }
   },
   mounted() {
-    this.width = window.innerWidth
-    this.height = window.innerHeight
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
   }
-})
+});
 </script>
 <style lang="scss">
 #app {
@@ -131,7 +126,7 @@ export default Vue.extend({
   justify-content: space-between;
 
   .Background-Wrapper {
-    background: url('/olivia-bliss-HTnycx0h_kk-unsplash.jpg') center no-repeat;
+    background: url("/olivia-bliss-HTnycx0h_kk-unsplash.jpg") center no-repeat;
     height: 100%;
   }
 
@@ -159,7 +154,7 @@ export default Vue.extend({
 }
 @media screen and (max-width: 930px) {
   .Background-Wrapper {
-    background: url('/gg_955.png') center no-repeat !important;
+    background: url("/gg_955.png") center no-repeat !important;
   }
   .origin {
     .title {
@@ -184,7 +179,7 @@ export default Vue.extend({
 
 @media screen and (max-width: 600px) {
   .Background-Wrapper {
-    background: url('/gg_680.png') left bottom no-repeat !important;
+    background: url("/gg_680.png") left bottom no-repeat !important;
   }
 
   .origin {
@@ -203,7 +198,7 @@ export default Vue.extend({
 @media screen and (max-width: 445px) {
   .HomePage-Container {
     .Background-Wrapper {
-      background: url('/gg_530.png') left bottom no-repeat !important;
+      background: url("/gg_530.png") left bottom no-repeat !important;
     }
     .logo {
       margin: 20px 20px 40px 20px;
