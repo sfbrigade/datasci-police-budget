@@ -2,10 +2,12 @@
 The website displays budget data for cities in the Bay Area, starting with Oakland and San Francisco. Our aim is to make your city's budget easy to view and understand. You pay taxes. We do too. Where does that money go?
 
 ## What can I do here?
-Many fun things! You can get a good overview of how money is collected and spent in San Francisco. You can practice making your own budget for the city and seeing how spending changes as you increase or decrease categories. 
+Many fun things! You can get a good overview of how money is collected and spent in San Francisco and Oakland (more cities coming). You can practice making your own budget for the city and seeing how spending changes as you increase or decrease categories. Most importantly you can learn how to contact your local representative to make your voice heard on budget issues.
 
 ## Where does all of this data come from?
+San Francisco data come from Open Data SF.
 
 ## All of this information is great, but how can I use it to make my voice heard?
+Go to our *Take Action* page to get information about who makes budget decisions for your city / district. 
 
 ## Who are we?
