@@ -11,3 +11,4 @@ San Francisco data come from [DataSF](https://datasf.org/opendata/). Oakland dat
 Go to our *Take Action* page to get information about who makes budget decisions for your city / district. 
 
 ## Who are we?
+We are the Data Science Working Group, a part of Code4SF. The Data Science Working Group supports civic organizations through applied data science projects which aim to deliver practical assistance and insights for our civic partners as they work to serve the community.
