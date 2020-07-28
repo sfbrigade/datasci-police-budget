@@ -59,19 +59,19 @@ export default {
   height: 120px;
   left: 0px;
   top: 1433px;
-  background: #2a6465;
+  background: $dark-turquoise;
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: $white-1;
   &-About {
     position: absolute;
     width: 584px;
     height: 38px;
     left: 39px;
     top: 20px;
-    font-family: "Avenir";
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    color: #ffffff;
   }
   &-Data {
     position: absolute;
@@ -79,12 +79,6 @@ export default {
     height: 19px;
     left: 39px;
     top: 78px;
-    font-family: "Avenir";
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    color: #ffffff;
   }
   &-Copyright {
     position: absolute;
@@ -92,13 +86,7 @@ export default {
     height: 19px;
     left: 1153px;
     top: 39px;
-    font-family: "Avenir";
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
     text-align: right;
-    color: #ffffff;
   }
 }
 
