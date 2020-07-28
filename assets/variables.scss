@@ -1,23 +1,27 @@
 // ==================
 // color
-$green-1: #00A040;
-$green-2: #00B849;
-$green-3: #00D154;
-$green-4: #00EB5E;
+$green-1: #00a040;
+$green-2: #00b849;
+$green-3: #00d154;
+$green-4: #00eb5e;
 // $gray-1: #333333;
 // $gray-2: #4D4D4D;
-$gray-1: #6F6F6F;
-$gray-2: #C8C8C8;
+$gray-1: #6f6f6f;
+$gray-2: #c8c8c8;
 $gray-3: #808080;
-$gray-4: #D9D9D9;
-$white-1: #FFFFFF;
-$white-2: #F8F9FA;
-$black: #2D2D2D;
-$link: #006CA8;
+$gray-4: #d9d9d9;
+$gray-5: #bdbdbd;
+$white-1: #ffffff;
+$white-2: #f8f9fa;
+$black: #2d2d2d;
+$black-1: #000000;
+$dark-turquoise: #2a6465;
+$light-turquoise: #f1f8f8;
+$link: #006ca8;
 // $blue: #114473;
-$light-blue:#afeeee;
-$purple-1: #473A8C;
-$purple-2: #7D70BB;
+$light-blue: #afeeee;
+$purple-1: #473a8c;
+$purple-2: #7d70bb;
 
 // ==================
 // shadow
@@ -43,17 +47,16 @@ $z-index-map: (
 // ==================
 // media-query
 @mixin largerThan($width) {
-	@media screen and (min-width: $width + 1 + px) {
-		@content;
-	}
+  @media screen and (min-width: $width + 1 + px) {
+    @content;
+  }
 }
 
 @mixin lessThan($width) {
-	@media screen and (max-width: $width + px) {
-		@content;
-	}
+  @media screen and (max-width: $width + px) {
+    @content;
+  }
 }
-
 
 // ==================
 // font-size
@@ -92,8 +95,8 @@ $z-index-map: (
   }
 }
 
-@mixin button-text($size: 'md') {
-  @if ($size == 'sm') {
+@mixin button-text($size: "md") {
+  @if ($size == "sm") {
     padding: 4px 8px;
   } @else {
     padding: 24px 36px;
@@ -103,7 +106,7 @@ $z-index-map: (
   border-radius: 4px;
   background-color: $white-1;
   border: 1px solid $green-1;
-  color:$green-1;
+  color: $green-1;
   cursor: pointer;
   &:hover {
     background-color: $green-1;
