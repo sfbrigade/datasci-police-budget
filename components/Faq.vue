@@ -56,6 +56,8 @@
       height: 84px;
       left: 311px;
       top: 137px;
+      background: $white-1;
+      border: 1px solid $gray-5;
     }
     &-Q2 {
       position: absolute;
@@ -63,6 +65,8 @@
       height: 84px;
       left: 311px;
       top: 220px;
+      background: $white-1;
+      border: 1px solid $gray-5;
     }
     &-Q3 {
       position: absolute;
@@ -70,6 +74,8 @@
       height: 84px;
       left: 311px;
       top: 303px;
+      background: $white-1;
+      border: 1px solid $gray-5;
     }
     &-Text {
       position: absolute;
