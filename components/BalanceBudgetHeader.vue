@@ -6,14 +6,14 @@
                 <div class="Dropdown-Title">
                     Select Your City
                 </div>
-                <v-select :items="cities" label="San Francisco" background-color=#ffffff color=#000000>
+                <v-select :items="cities" label="San Francisco" background-color=#2A6465 outlined dense>
                 </v-select>
             </v-col>
             <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
                 <div class="Dropdown-Title">
                     Fiscal Year
                 </div>
-                <v-select :items="years" label="2020-2021" background-color=#ffffff color=#000000></v-select>
+                <v-select :items="years" label="2020-2021" background-color=#2A6465 outlined dense></v-select>
             </v-col>
         </v-row>
     </v-container>
@@ -24,7 +24,7 @@ export default {
     data() {
         return {
             cities: ["San Francisco", "Oakland"],
-            years: ["2018-2019","2019-2020","2020-2021"]
+            years: ["2015-2016","2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"]
         }
     }
 }
@@ -59,4 +59,9 @@ export default {
     color: #000000;
     background-color: transparent;
 }
+
+.theme--dark.v-list{
+  background: #2A6465;
+}
+
 </style>
