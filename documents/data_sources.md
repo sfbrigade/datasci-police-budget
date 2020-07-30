@@ -3,7 +3,10 @@ Data sources
 San Francisco
 
 San Francisco Spending and Revenue (Spending_and_Revenue.csv) - https://data.sfgov.org/City-Management-and-Ethics/Spending-and-Revenue/bpnb-jwfb
-SF Budget Book - https://sfmayor.org/sites/default/files/CSF_Budget_Book_2017_Final_CMYK_LowRes.pdf
+
+SF Budget Book (2017) - https://sfmayor.org/sites/default/files/CSF_Budget_Book_2017_Final_CMYK_LowRes.pdf
+SF Budget Book (2019) - https://sfmayor.org/sites/default/files/CSF_Budget_Book_June_2019_Final_Web_REV2.pdf
+
 
 San Francisco 311 calls (311_Cases.csv) - https://data.sfgov.org/City-Infrastructure/311-Cases/vw6y-z8j6
 
