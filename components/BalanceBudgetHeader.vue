@@ -6,14 +6,17 @@
                 <div class="Dropdown-Title">
                     Select Your City
                 </div>
-                <v-select :items="cities" label="San Francisco" background-color=#2A6465 outlined dense>
+                <v-select :items="cities" placeholder="San Francisco" 
+                    background-color=white outlined dense color="black">
                 </v-select>
             </v-col>
             <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
                 <div class="Dropdown-Title">
                     Fiscal Year
                 </div>
-                <v-select :items="years" label="2020-2021" background-color=#2A6465 outlined dense></v-select>
+                <v-select :items="years" placeholder="2020-2021" 
+                    background-color=white outlined dense color="black">
+                </v-select>
             </v-col>
         </v-row>
     </v-container>
@@ -31,7 +34,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 @font-face {
   font-family: "Avenir";
   src: url("../assets/AvenirLTStd-Medium.otf");
@@ -61,7 +64,19 @@ export default {
 }
 
 .theme--dark.v-list{
-  background: #2A6465;
+    background: white;
+}
+
+.v-select__selection{
+    color: black !important;
+}
+
+.v-list-item__content{
+    color: black !important;
+}
+
+.v-icon{
+    color: black !important;
 }
 
 </style>
