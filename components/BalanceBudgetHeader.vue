@@ -1,13 +1,15 @@
 <template>
     <v-container fluid class="Balance-Budget-Header-Container" fill-width>
-        <v-row class="Balance-Budget-Header-Title"> Balance My City's Budget </v-row>
+        <v-row class="Balance-Budget-Header-Title"> Balance My City's Budget</v-row>
         <v-row class="Balance-Budget-Header-Dropdown-Container"> 
             <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
                 <div class="Dropdown-Title">
                     Select Your City
                 </div>
                 <v-select :items="cities" placeholder="San Francisco" 
-                    background-color=white outlined dense color="black">
+                    background-color=white outlined dense color="black"
+                    @change="changeCities"
+                    v-model="selected_city">
                 </v-select>
             </v-col>
             <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
@@ -15,7 +17,8 @@
                     Fiscal Year
                 </div>
                 <v-select :items="years" placeholder="2020-2021" 
-                    background-color=white outlined dense color="black">
+                    background-color=white outlined dense color="black"
+                    v-model="selected_year">
                 </v-select>
             </v-col>
         </v-row>
@@ -23,12 +26,23 @@
 </template>
 
 <script>
+import { EventBus } from './event-bus.js';
+
 export default {
     data() {
         return {
+            selected_city: "San Francisco",
+            selected_year: "2020-2021",
             cities: ["San Francisco", "Oakland"],
             years: ["2015-2016","2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"]
         }
+    },
+
+    methods: {
+       changeCities(selection) {
+           EventBus.$emit("New-city", selection);
+       } 
+    
     }
 }
 </script>
