@@ -59,7 +59,7 @@
             </v-row>
         </div>
       </div>
-      
+      <CategoryBreakdown />
     </v-container>
   </v-app>
 </template>
@@ -134,7 +134,6 @@ export default Vue.extend({
 
   .Background-Wrapper {
     background: #f1f8f8;
-    height: 100%;
   }
 
   .origin {
