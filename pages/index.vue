@@ -50,6 +50,7 @@
           </v-container>
         </div>
       </div>
+      <Actions />
       <Faq />
       <Footer />
     </v-container>
@@ -60,11 +61,13 @@
 import Vue from "vue";
 import Footer from "@/components/Footer.vue";
 import Faq from "@/components/Faq.vue";
+import Actions from "@/components/Actions.vue";
 
 export default Vue.extend({
   components: {
     Footer,
-    Faq
+    Faq,
+    Actions
   },
   data() {
     return {
