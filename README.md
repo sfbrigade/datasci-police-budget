@@ -21,3 +21,7 @@ $ yarn dev
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+### Note
+
+If `yarn install` doesn't work to install dependencies, try `npm install`.
