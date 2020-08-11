@@ -26,7 +26,7 @@
 }
 .Actions {
   position: absolute;
-  width: 1440px;
+  width: 1450px;
   height: 442px;
   left: 0px;
   top: 494px;

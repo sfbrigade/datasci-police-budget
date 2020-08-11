@@ -1,8 +1,11 @@
 <template>
   <v-app style="background: #afeeee">
     <v-container fluid class="HomePage-Container">
-      <div class="Background-Wrapper"></div>
+      <div class="Background-Wrapper">
+        <img class="Background-Image" src="/olivia-bliss-HTnycx0h_kk-unsplash.jpg" />
+      </div>
       <Header />
+      <CityFilter />
       <Actions />
       <Faq />
       <Footer />
@@ -37,7 +40,7 @@ export default Vue.extend({
 </script>
 <style lang="scss">
 #app {
-  max-width: 1440px;
+  max-width: 1450px;
   margin: 0 auto;
 }
 .v-application--wrap {
@@ -52,8 +55,13 @@ export default Vue.extend({
   justify-content: space-between;
 
   .Background-Wrapper {
-    background: url("/olivia-bliss-HTnycx0h_kk-unsplash.jpg") center no-repeat;
     height: 100%;
+  }
+  .Background-Image {
+    height: 967px;
+    width: 1450px;
+    top: -340px;
+    position: absolute;
   }
 }
 @media screen and (max-width: 930px) {
