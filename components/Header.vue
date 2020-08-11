@@ -4,11 +4,12 @@
       <v-layout justify="center" align="center">
         <div class="TopNavigation">
           <v-btn
+            class="ma-2 px-10 TopNavigation-Button black--text"
             color="transparent"
             depressed
             v-for="(button, i) in buttons"
             :key="i"
-            class="ma-2 TopNavigation-Button black--text"
+            :style="{'text-transform': button.style, 'font-size': button.size}"
           >{{ button.title }}</v-btn>
         </div>
       </v-layout>
@@ -25,27 +26,37 @@ export default {
         {
           icon: "see_budget",
           title: "See Budget",
-          tab: "FAQ"
+          tab: "FAQ",
+          style: "uppercase",
+          size: "16px"
         },
         {
           icon: "balance_budget",
           title: "Balance Budget",
-          tab: "Stats"
+          tab: "Stats",
+          style: "uppercase",
+          size: "16px"
         },
         {
           icon: "city_budget_tracker",
           title: "City Budget Tracker",
-          tab: "FAQ"
+          tab: "FAQ",
+          style: "none",
+          size: "28px"
         },
         {
           icon: "about_us",
           title: "About Us",
-          tab: "FAQ"
+          tab: "FAQ",
+          style: "uppercase",
+          size: "16px"
         },
         {
-          icon: "contact_us",
-          title: "Contact Us",
-          tab: "Stats"
+          icon: "take_action",
+          title: "Take Action",
+          tab: "Actions",
+          style: "uppercase",
+          size: "16px"
         }
       ];
     }
@@ -56,7 +67,7 @@ export default {
 .origin {
   display: flex;
   flex-direction: column;
-  align: center;
+  text-align: center;
   height: auto;
   font-family: Avenir;
   font-style: normal;
@@ -64,11 +75,10 @@ export default {
   font-size: 28px;
   top: 0;
   position: absolute;
-
+  left: 29px;
   .TopNavigation {
     display: flex;
     margin: 60px 40px;
-    max-width: 900px;
     text-align: center;
   }
   .navigationicon {
