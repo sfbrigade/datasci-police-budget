@@ -12,9 +12,10 @@ export default {
     data() {
         return {
             panels: [
-                {quest: "Who is my local representative at the lowest level (i.e. district supervisor)? How do I contact them?", ans: "Gordan Mar has been a member of the SF Board of Supervisors since 2019, representing District 4. \n\nCity Hall \n1 Dr. Carlton B. Goodlett Place, Room 244 \nSan Francisco, CA 94102-4689 \n(415) 554-7460 - voice \n(415) 554-7432 - fax \nmarstaff@sfgov.org"},
-                {quest: "When and where can I attend public meetings to voice my opinion?", ans: "At XYZ and ABC public forums every 123 days."},
-                {quest: "Test test test?", ans: "Test test test!"}
+                {quest: "Who is my local representative at the lowest level (i.e. district supervisor)? How do I contact them?", ans: "Oakland: To find out who your city representative is and how to contact them, visit the City of Oakland's webpage (https://www.oaklandca.gov/services/look-up-your-city-council-district-and-representative). \n\nSan Francisco: To find out who your city representative is and how to contact them, visit the City of San Francisco's webpage (https://sfplanninggis.org/sffind/)."},
+                {quest: "When and where can I attend public meetings to voice my opinion?", ans: "Upcoming meetings can be found on the City of Oakland's webpage (https://www.oaklandca.gov/meetings?range%5Bdate%5D=1596265200000%3A1598943599999). \n\nSan Francisco: Upcoming meetings can be found on the City of San Francisco's webpage (https://sfgov.org/countyclerk/public-notices-meetings)."},
+                {quest: "When are upcoming elections? Which races have an impact on police spending, or policing in general?", ans: "The next election for city representatives will occur alongside the general election, on November 3, 2020. Updates and details can be found on the respective city's webpage. \n\nOakland: https://www.oaklandca.gov/topics/elections) \nSan Francisco: https://sfelections.sfgov.org/"},
+                {quest: "What other organizations are working on policing issues in my city?", ans:"Oakland: \n Anti Police-Terror Project: https://www.antipoliceterrorproject.org/ \n Defund OPD: https://www.defundopd.org/ \n Black Organizing Project: http://www.blackorganizingproject.org/ \n Coalition for Police Accountability: https://www.coalitionforpoliceaccountability.com/ \n\nCalifornia: \n Ella Baker Center for Human Rights: https://ellabakercenter.org/"}
             ]
         }
     }
