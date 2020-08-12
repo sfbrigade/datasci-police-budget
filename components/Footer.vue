@@ -55,7 +55,7 @@ export default {
 }
 .Footer {
   position: absolute;
-  width: 1440px;
+  width: 1450px;
   height: 120px;
   left: 0px;
   top: 1433px;
