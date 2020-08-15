@@ -66,24 +66,28 @@ $z-index-map: (
   font-size: $size + px;
   font-size: ($size / $base) + rem;
 }
-@mixin card-h1 {
+@mixin h1 {
+  @include font-size(28);
+  font-weight: bold;
+}
+@mixin h2 {
   @include font-size(24);
-  color: $black;
   font-weight: bold;
 }
-@mixin card-h2 {
-  @include font-size(19);
-  color: $black;
+@mixin h3 {
+  @include font-size(18);
   font-weight: bold;
 }
-@mixin body-text {
+@mixin p {
   @include font-size(16);
-  color: $black;
   line-height: 160%;
-  font-weight: normal;
   @include lessThan($small) {
     @include font-size(14);
   }
+}
+@mixin eyebrow {
+  @include font-size(14);
+  line-height: 130%;
 }
 
 // ===================

@@ -1,91 +1,76 @@
 <template>
-  <div class="CityFilter">
-    <div
-      class="CityFilter-Header"
-    >Explaining your city’s public budget information, to empower citizens like you.</div>
-    <div class="CityFilter-Text">You pay taxes. We do too. Where does that money go?</div>
-    <div class="CityFilter-SelectHeader">Select your city</div>
-    <select class="CityFilter-Select">
-      <option value="san_francisco">San Francisco</option>
-    </select>
-    <button class="CityFilter-Button">START EXPLORING</button>
+  <div class="city-filter">
+    <h2 class="city-filter__title">
+      Explaining your city’s public budget information, to empower citizens like you.
+    </h2>
+    <p class="city-filter__subtitle">
+      You pay taxes. We do too. Where does that money go?
+    </p>
+    <div class="city-filter__select">
+      <label for="city-select">Select your city</label>
+      <v-select id="city-select"
+        background-color="#fff"
+        value="san_francisco"
+        :items="items"
+        light
+        outlined>
+      </v-select>
+    </div>
+    <button class="city-filter__button">START EXPLORING</button>
   </div>
 </template>
 
-<style lang="scss" scoped>
-@font-face {
-  font-family: "Avenir";
-  src: url("../assets/AvenirLTStd-Medium.otf");
+<script lang="ts">
+export default {
+  data() {
+    return {
+      items: [
+        {
+          text: 'San Francisco',
+          value: 'san_francisco',
+          disabled: false,
+        },
+      ]
+    };
+  }
 }
-.CityFilter {
-  position: absolute;
-  width: 632px;
-  height: 345px;
-  left: 404px;
-  top: 231px;
-  background: #f1f8f8;
-  z-index: 100;
-  &-Header {
-    position: absolute;
-    width: 553px;
-    height: 66px;
-    left: 39px;
-    top: 34px;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 33px;
-    text-align: center;
-    color: #000000;
-  }
-  &-Text {
-    position: absolute;
-    width: 509px;
-    height: 25px;
-    left: 61px;
-    top: 121px;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 25px;
-    text-align: center;
-    color: #000000;
-  }
-  &-SelectHeader {
-    position: absolute;
-    width: 84px;
-    height: 16px;
-    left: 189px;
-    top: 175px;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-    color: #000000;
-  }
-  &-Select {
-    position: absolute;
-    width: 253px;
-    height: 40px;
-    left: 189px;
-    top: 193px;
-    background: #ffffff;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 2px;
-    text-indent: 13px;
-  }
-  &-Button {
-    position: absolute;
-    width: 227px;
-    height: 40px;
-    left: 202px;
-    top: 265px;
-    background: #2a6465;
-    border-radius: 40px;
-  }
+</script>
+
+<style lang="scss" scoped>
+.city-filter {
+  background: $light-turquoise;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.city-filter__title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.city-filter__subtitle {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.city-filter__select {
+  margin-bottom: 8px;
+  width: 253px;
+}
+
+.city-filter__button {
+  margin: 0 auto;
+  @include p();
+  font-weight: bold;
+  color: $white-1;
+  letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 40px;
+  height: 40px;
+  width: 227px;
+  background: #2a6465;
+  border-radius: 40px;
 }
 </style>

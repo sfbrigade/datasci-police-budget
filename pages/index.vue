@@ -1,14 +1,18 @@
 <template>
-  <v-app style="background: #afeeee">
-    <v-container fluid class="HomePage-Container">
-      <div class="Background-Wrapper">
-        <img class="Background-Image" src="/olivia-bliss-HTnycx0h_kk-unsplash.jpg" />
-      </div>
-      <Header />
-      <CityFilter />
-      <Actions />
-      <Faq />
-      <Footer />
+  <v-app class="floating-header-container">
+    <Header class="floating-header"/>
+    <v-container fluid class="floating-card-container no-padding">
+      <v-row class="hero-image"></v-row>
+      <CityFilter class="floating-card"/>
+      <v-row class="content-row">
+        <Actions />
+      </v-row>
+      <v-row class="content-row">
+        <Faq />
+      </v-row>
+      <v-row>
+        <Footer />
+      </v-row>
     </v-container>
   </v-app>
 </template>
@@ -26,78 +30,72 @@ export default Vue.extend({
     Faq,
     Actions
   },
-  data() {
-    return {
-      width: 1024,
-      height: 768
-    };
-  },
-  mounted() {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-  }
 });
 </script>
 <style lang="scss">
 #app {
-  max-width: 1450px;
-  margin: 0 auto;
+  font-family: Avenir;
+  font-style: normal;
+  color: $black-1;
+  max-width: 100%;
 }
-.v-application--wrap {
-  justify-content: space-between;
+
+h1 {
+  font-size: 28px;
+  font-weight: 800;
 }
-.HomePage-Container {
-  margin: 0 auto;
-  padding: 0 !important;
-  height: 100%;
+
+h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.floating-header-container, .floating-card-container{
+  position: relative;
+}
+
+.floating-header {
+  position: absolute;
+  z-index: 1;
+}
+
+.floating-card {
+  position: absolute;
+  top: 300px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 630px;
+}
+
+.hero-image {
+  background-image: url('/olivia-bliss-HTnycx0h_kk-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 600px;
+  width: 100%;
+  padding-top: 33.5%;
 
-  .Background-Wrapper {
-    height: 100%;
-  }
-  .Background-Image {
-    height: 967px;
-    width: 1450px;
-    top: -340px;
-    position: absolute;
-  }
-}
-@media screen and (max-width: 930px) {
-  .Background-Wrapper {
-    background: url("/gg_955.png") center no-repeat !important;
-  }
 }
 
-@media screen and (max-width: 600px) {
-  .Background-Wrapper {
-    background: url("/gg_680.png") left bottom no-repeat !important;
-  }
-}
-
-@media screen and (max-width: 445px) {
-  .HomePage-Container {
-    .Background-Wrapper {
-      background: url("/gg_530.png") left bottom no-repeat !important;
-    }
-    .logo {
-      margin: 20px 20px 40px 20px;
-      .headericond {
-        width: 40px;
-        height: 40px;
-      }
-      .logo-title-container {
-        padding: 0 10px;
-        .logotitle {
-          @include font-size(16);
-          margin-bottom: 0;
-        }
-        .logosubtitle {
-          @include font-size(10);
-        }
-      }
-    }
-  }
+.content-row {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 </style>
