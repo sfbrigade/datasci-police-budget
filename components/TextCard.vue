@@ -22,15 +22,15 @@
   padding: 20px;
   margin-bottom: 20px;
   &-Heading {
-    @include card-h1();
+    @include h2();
     margin-bottom: 12px;
     a {
-      @include card-h1();
+      @include h2();
     }
   }
   &-Body {
     * {
-      @include body-text();
+      @include p();
     }
     a {
       word-break: break-all;
