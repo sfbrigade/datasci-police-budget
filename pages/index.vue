@@ -83,7 +83,7 @@ p {
 }
 
 .hero-image {
-  background-image: url('/olivia-bliss-HTnycx0h_kk-unsplash.jpg');
+  background-image: url('/hardik-pandya--Ey_0PMz900-unsplash.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
