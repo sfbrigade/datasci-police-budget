@@ -54,15 +54,15 @@
                     </v-btn>
                 </div>
             </v-row>
-            <v-row justify="center" align="center">
+            <v-row justify="center" align="center" class="my-2">
                 <div class="Take-Action-Title"> Take Action </div>
             </v-row>
-            <v-row justify="center" align="center" class="my-1">
+            <v-row justify="center" align="center" class="mb-10">
                 <div class="Take-Action-Subheading"> See something you don't like? Use your voice to create change! </div>
             </v-row>
-            <v-row class="my-5"> <v-spacer /> <v-col col="1">
+            <!-- <v-row class="my-5"> <v-spacer /> <v-col col="1">
                 <v-text-field label="Enter Your Zip Code" outlined placeholder="94110" light dense background-color="white"></v-text-field>
-            </v-col> <v-spacer /> </v-row>
+            </v-col> <v-spacer /> </v-row> -->
             <v-row justify="center" class="mb-5">
                 <ContactUs />
             </v-row>
