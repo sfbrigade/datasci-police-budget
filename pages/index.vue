@@ -1,58 +1,18 @@
 <template>
-  <v-app style="background: #afeeee">
-    <v-container fluid class="HomePage-Container">
-      <div class="Background-Wrapper">
-        <div class="origin">
-          <v-container fill-height>
-            <v-layout justify="center" align="center">
-              <div class="TopNavigation">
-                <v-btn
-                  color="transparent"
-                  depressed
-                  v-for="(button, i) in buttons"
-                  :key="i"
-                  :class="{ active: i === activeTab }"
-                  class="ma-2 TopNavigation-Button black--text"
-                  @click="viewPage(i)"
-                >
-                  <v-icon
-                    v-if="button.icon === 'see_budget'"
-                    class="TopNavigation-IconContainer"
-                    size="20"
-                  >far fa-newspaper</v-icon>
-                  <InfoOutlineIcon
-                    v-else-if="button.icon === 'balance_budget'"
-                    class="TopNavigation-IconContainer"
-                  />
-                  <v-icon
-                    v-if="button.icon === 'see_budget'"
-                    class="TopNavigation-IconContainer"
-                    size="20"
-                  >far fa-newspaper</v-icon>
-                  <v-icon
-                    v-if="button.icon === 'city_budget_tracker'"
-                    class="TopNavigation-IconContainer"
-                    size="20"
-                  >far fa-newspaper</v-icon>
-                  <PollOutlineIcon
-                    v-if="button.icon === 'about_us'"
-                    class="TopNavigation-IconContainer"
-                  />
-                  <v-icon
-                    v-else-if="button.icon === 'take_action'"
-                    class="TopNavigation-IconContainer"
-                    size="20"
-                  >far fa-newspaper</v-icon>
-                  {{ button.title }}
-                </v-btn>
-              </div>
-            </v-layout>
-          </v-container>
-        </div>
-      </div>
-      <Actions />
-      <Faq />
-      <Footer />
+  <v-app class="floating-header-container">
+    <Header class="floating-header"/>
+    <v-container fluid class="floating-card-container no-padding">
+      <v-row class="hero-image"></v-row>
+      <CityFilter class="floating-card"/>
+      <v-row class="content-row">
+        <Actions />
+      </v-row>
+      <v-row class="content-row">
+        <Faq />
+      </v-row>
+      <v-row>
+        <Footer />
+      </v-row>
     </v-container>
   </v-app>
 </template>
@@ -62,6 +22,7 @@ import Vue from "vue";
 import Footer from "@/components/Footer.vue";
 import Faq from "@/components/Faq.vue";
 import Actions from "@/components/Actions.vue";
+import Header from "@/components/Header.vue";
 
 export default Vue.extend({
   components: {
@@ -69,167 +30,72 @@ export default Vue.extend({
     Faq,
     Actions
   },
-  data() {
-    return {
-      width: 1024,
-      height: 768
-    };
-  },
-  computed: {
-    buttons() {
-      return [
-        {
-          icon: "see_budget",
-          title: "See Budget",
-          tab: "FAQ"
-        },
-        {
-          icon: "balance_budget",
-          title: "Balance Budget",
-          tab: "Stats"
-        },
-        {
-          icon: "city_budget_tracker",
-          title: "City Budget Tracker",
-          tab: "FAQ"
-        },
-        {
-          icon: "about_us",
-          title: "About Us",
-          tab: "FAQ"
-        },
-        {
-          icon: "contact_us",
-          title: "Contact Us",
-          tab: "Stats"
-        }
-      ];
-    }
-  },
-  mounted() {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-  }
 });
 </script>
 <style lang="scss">
 #app {
-  max-width: 1440px;
-  margin: 0 auto;
+  font-family: Avenir;
+  font-style: normal;
+  color: $black-1;
+  max-width: 100%;
 }
-.v-application--wrap {
-  justify-content: space-between;
+
+h1 {
+  font-size: 28px;
+  font-weight: 800;
 }
-.HomePage-Container {
-  margin: 0 auto;
-  padding: 0 !important;
-  height: 100%;
+
+h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.floating-header-container, .floating-card-container{
+  position: relative;
+}
+
+.floating-header {
+  position: absolute;
+  z-index: 1;
+}
+
+.floating-card {
+  position: absolute;
+  top: 300px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 630px;
+}
+
+.hero-image {
+  background-image: url('/olivia-bliss-HTnycx0h_kk-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 600px;
+  width: 100%;
+  padding-top: 33.5%;
 
-  .Background-Wrapper {
-    background: url("/olivia-bliss-HTnycx0h_kk-unsplash.jpg") center no-repeat;
-    height: 100%;
-  }
-
-  .origin {
-    display: flex;
-    flex-direction: column;
-    align: center;
-    height: auto;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 28px;
-
-    .TopNavigation {
-      display: flex;
-      margin: 60px 40px;
-      max-width: 900px;
-      text-align: center;
-    }
-    .navigationicon {
-      width: 14px;
-      height: 24px;
-    }
-  }
-}
-@media screen and (max-width: 930px) {
-  .Background-Wrapper {
-    background: url("/gg_955.png") center no-repeat !important;
-  }
-  .origin {
-    .title {
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-      h1 {
-        @include font-size(32);
-      }
-    }
-
-    .navigation {
-      flex-direction: column;
-      margin-top: 40px !important;
-      margin-bottom: 40px !important;
-      .v-card--link {
-        margin-top: 5px;
-        margin-bottom: 5px;
-      }
-    }
-  }
 }
 
-@media screen and (max-width: 600px) {
-  .Background-Wrapper {
-    background: url("/gg_680.png") left bottom no-repeat !important;
-  }
-
-  .origin {
-    .title {
-      h1 {
-        @include font-size(26);
-        max-width: 325px !important;
-      }
-    }
-    .navigation {
-      align-items: center;
-    }
-  }
-}
-
-@media screen and (max-width: 445px) {
-  .HomePage-Container {
-    .Background-Wrapper {
-      background: url("/gg_530.png") left bottom no-repeat !important;
-    }
-    .logo {
-      margin: 20px 20px 40px 20px;
-      .headericond {
-        width: 40px;
-        height: 40px;
-      }
-      .logo-title-container {
-        padding: 0 10px;
-        .logotitle {
-          @include font-size(16);
-          margin-bottom: 0;
-        }
-        .logosubtitle {
-          @include font-size(10);
-        }
-      }
-    }
-
-    .origin {
-      .title {
-        margin: 20px;
-        h1 {
-          @include font-size(24);
-          max-width: 325px !important;
-        }
-      }
-    }
-  }
+.content-row {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 </style>

@@ -8,12 +8,14 @@ To inform citizens on how much money goes towards police department budgets and 
 
 Budget numbers by themselves don’t tell a full story. It needs contextualization re: comparison to other locales, or the spending on other areas within a specific locale.
 
-
 ## Build Setup
 
 ```bash
 # install dependencies
 $ yarn install
+
+# if there is an error, please try
+$ npm install
 
 # serve with hot reload at localhost:3000
 $ yarn dev
@@ -21,7 +23,3 @@ $ yarn dev
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
-
-### Note
-
-If `yarn install` doesn't work to install dependencies, try `npm install`.

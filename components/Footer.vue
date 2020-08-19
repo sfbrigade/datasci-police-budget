@@ -1,14 +1,24 @@
 <template>
-  <div class="Footer">
-    <div class="Footer-About">
-      Bay Area City Budget Tracker is an open-source by Code for San Francisco
-      to help citizens better understand the City of San Francisco’s spending
-      and budget process.
-    </div>
-    <div class="Footer-Data">Data sources:</div>
-    <div class="Footer-Copyright">
-      <span>&copy; 2020 Code for San Francisco</span>
-    </div>
+  <div class="footer">
+    <v-container style="max-width: none">
+      <v-row>
+        <v-col>
+          <p class="footer-p">
+            Bay Area City Budget Tracker is an open-source by Code for San Francisco
+            to help citizens better understand the City of San Francisco’s spending
+            and budget process.
+          </p>
+          <p class="footer-p">
+            Data sources:
+          </p>
+        </v-col>
+        <v-col>
+          <p class="footer-p copyright">
+            &copy; 2020 Code for San Francisco
+          </p>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -49,53 +59,29 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@font-face {
-  font-family: "Avenir";
-  src: url("../assets/AvenirLTStd-Medium.otf");
-}
-.Footer {
-  position: absolute;
-  width: 1440px;
-  height: 120px;
-  left: 0px;
-  top: 1433px;
+.footer {
+  width: 100%;
   background: $dark-turquoise;
-  font-family: "Avenir";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 19px;
+  padding: 20px 40px;
+}
+
+.footer-p {
+  @include eyebrow();
   color: $white-1;
-  &-About {
-    position: absolute;
-    width: 584px;
-    height: 38px;
-    left: 39px;
-    top: 20px;
-  }
-  &-Data {
-    position: absolute;
-    width: 584px;
-    height: 19px;
-    left: 39px;
-    top: 78px;
-  }
-  &-Copyright {
-    position: absolute;
-    width: 201px;
-    height: 19px;
-    left: 1153px;
-    top: 39px;
-    text-align: right;
-  }
+  line-height: 19px;
+}
+
+.copyright {
+  text-align: right;
 }
 
 @include lessThan($small) {
-  .Footer {
+  .footer {
     padding: 22px;
-    &-Copyright {
-      @include font-size(12);
-    }
+  }
+
+  .copyright {
+    @include font-size(12);
   }
 }
 </style>
