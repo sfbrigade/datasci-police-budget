@@ -151,7 +151,7 @@ export default Vue.extend({
   /* identical to box height */
 
 
-  color: #000000;
+  color: $black-1;
 }
 
 .HomePage-Container {
