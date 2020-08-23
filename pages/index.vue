@@ -83,7 +83,7 @@ p {
 }
 
 .hero-image {
-  background-image: url('/hardik-pandya--Ey_0PMz900-unsplash.jpg');
+  background-image: url('/san-francisco-skyline.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
