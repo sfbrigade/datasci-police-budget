@@ -26,6 +26,7 @@ import Header from "@/components/Header.vue";
 
 export default Vue.extend({
   components: {
+    Header,
     Footer,
     Faq,
     Actions
@@ -36,31 +37,37 @@ export default Vue.extend({
 #app {
   font-family: Avenir;
   font-style: normal;
+  background: $light-turquoise;
   color: $black-1;
   max-width: 100%;
 }
 
 h1 {
-  font-size: 28px;
-  font-weight: 800;
+  @include h1();
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: 800;
+  @include h2();
+}
+
+h3 {
+  @include h3();
 }
 
 h4 {
-  font-size: 18px;
+  @include h4();
 }
 
 p {
-  font-size: 16px;
-  font-weight: 500;
+  @include p();
 }
 
 .no-padding {
   padding: 0;
+}
+
+.center {
+  text-align: center;
 }
 
 .floating-header-container, .floating-card-container{
@@ -88,7 +95,7 @@ p {
   background-position: center;
   display: flex;
   height: 600px;
-  width: 100%;
+  width: 100vw;
   padding-top: 33.5%;
 
 }

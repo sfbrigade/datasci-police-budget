@@ -7,7 +7,7 @@
                     Select Your City
                 </div>
                 <v-select :items="cities" placeholder="San Francisco" 
-                    background-color=white outlined dense color="black"
+                    background-color=white outlined dense light color="black"
                     @change="changeCities"
                     v-model="selected_city">
                 </v-select>
@@ -17,7 +17,7 @@
                     Fiscal Year
                 </div>
                 <v-select :items="years" placeholder="2020-2021" 
-                    background-color=white outlined dense color="black"
+                    background-color=white outlined dense light color="black"
                     v-model="selected_year">
                 </v-select>
             </v-col>
@@ -76,21 +76,4 @@ export default {
     color: #000000;
     background-color: transparent;
 }
-
-.theme--dark.v-list{
-    background: white;
-}
-
-.v-select__selection{
-    color: black !important;
-}
-
-.v-list-item__content{
-    color: black !important;
-}
-
-.v-icon{
-    color: black !important;
-}
-
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="About">
-    <h2 class="About-Heading">
+    <h3 class="About-Heading">
       About the website
-    </h2>
+    </h3>
     <TextCard>
       Information about our group
       <br />
