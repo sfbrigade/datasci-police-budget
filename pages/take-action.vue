@@ -135,8 +135,6 @@ export default Vue.extend({
 }
 
 .Take-Action-Title{
-  font-family: Avenir;
-  font-style: normal;
   font-weight: 800;
   font-size: 24px;
   line-height: 33px;
