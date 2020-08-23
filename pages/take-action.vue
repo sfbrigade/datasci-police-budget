@@ -142,7 +142,7 @@ export default Vue.extend({
 
   text-align: center;
 
-  color: #2A6465; 
+  color: $dark-turquoise;
 }
 
 .Take-Action-Subheading{
