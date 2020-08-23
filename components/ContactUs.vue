@@ -1,8 +1,44 @@
 <template>
     <v-expansion-panels accordion light class="Contact-Us-Panels">
-        <v-expansion-panel v-for="panel in panels" :key="panel" class="Contact-Us-Panel"> 
-            <v-expansion-panel-header class="Contact-Us-Header">{{panel.quest}}</v-expansion-panel-header>
-            <v-expansion-panel-content class="Contact-Us-Content">{{panel.ans}}</v-expansion-panel-content>
+        <v-expansion-panel class="Contact-Us-Panel"> 
+            <v-expansion-panel-header class="Contact-Us-Header">Who is my local representative at the lowest level (i.e. district supervisor)? How do I contact them?</v-expansion-panel-header>
+            <v-expansion-panel-content class="Contact-Us-Content">
+                <div>Oakland: To find out who your city representative is and how to contact them, visit <a href="https://www.oaklandca.gov/services/look-up-your-city-council-district-and-representative">the City of Oakland's webpage</a>.</div>
+                <div>San Francisco: To find out who your city representative is and how to contact them, visit <a href="https://sfplanninggis.org/sffind/">the City of San Francisco's webpage</a>.</div>
+            </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="Contact-Us-Panel"> 
+            <v-expansion-panel-header class="Contact-Us-Header">When and where can I attend public meetings to voice my opinion?</v-expansion-panel-header>
+            <v-expansion-panel-content class="Contact-Us-Content">
+                <div>Oakland: Upcoming meetings can be found on <a href="https://www.oaklandca.gov/meetings?range%5Bdate%5D=1596265200000%3A1598943599999">the City of Oakland's webpage</a>.</div>
+                <div>San Francisco: Upcoming meetings can be found on <a href="https://sfgov.org/countyclerk/public-notices-meetings">the City of San Francisco's webpage</a>.</div>
+            </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="Contact-Us-Panel"> 
+            <v-expansion-panel-header class="Contact-Us-Header">When are upcoming elections? Which races have an impact on police spending, or policing in general?</v-expansion-panel-header>
+            <v-expansion-panel-content class="Contact-Us-Content">
+                <div>The next election for city representatives will occur alongside the general election, on November 3, 2020. Updates and details can be found on the respective city's webpage (<a href="https://www.oaklandca.gov/topics/elections">Oakland</a> and <a href="https://sfelections.sfgov.org/">San Francisco</a>).</div>
+            </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel class="Contact-Us-Panel">
+            <v-expansion-panel-header class="Contact-Us-Header">What other organizations are working on policing issues in my city?</v-expansion-panel-header>
+                <v-expansion-panel-content class="Contact-Us-Content">
+                    <div>Oakland:
+                    <ul>
+                        <li><a href="https://www.antipoliceterrorproject.org/">Anti-Police Terror Project</a></li>
+                        <li><a href="https://www.defundopd.org/">Defund OPD</a></li>
+                        <li><a href="http://www.blackorganizingproject.org/">Black Organizing Project</a></li>
+                        <li><a href="https://www.coalitionforpoliceaccountability.com/">Coalition for Police Accountability</a></li>
+                    </ul></div>
+                    <div>San Francisco:
+                    <ul>
+                        <li><a href="https://colemanadvocates.org/">Coleman Advocates</a> on policing in schools</li>
+                    </ul></div>
+                    <div>California:
+                    <ul>
+                        <li><a href="https://ellabakercenter.org/">Ella Baker for Human Rights</a></li>
+                    </ul></div>
+                </v-expansion-panel-content>
         </v-expansion-panel>
     </v-expansion-panels>
 </template>
@@ -10,13 +46,6 @@
 <script>
 export default {
     data() {
-        return {
-            panels: [
-                {quest: "Who is my local representative at the lowest level (i.e. district supervisor)? How do I contact them?", ans: "Gordan Mar has been a member of the SF Board of Supervisors since 2019, representing District 4. \n\nCity Hall \n1 Dr. Carlton B. Goodlett Place, Room 244 \nSan Francisco, CA 94102-4689 \n(415) 554-7460 - voice \n(415) 554-7432 - fax \nmarstaff@sfgov.org"},
-                {quest: "When and where can I attend public meetings to voice my opinion?", ans: "At XYZ and ABC public forums every 123 days."},
-                {quest: "Test test test?", ans: "Test test test!"}
-            ]
-        }
     }
 }
 </script>
@@ -24,8 +53,16 @@ export default {
 <style>
 @font-face {
   font-family: "Avenir";
-  src: url("../assets/AvenirLTStd-Medium.otf");
+  src: url("../assets/AvenirLTStd-Book.otf");
+  font-weight: normal;
 }
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/AvenirLTStd-Medium.otf");
+  font-weight: 800;
+}
+
+
 
 .Contact-Us-Panels{
     width: 820px;
@@ -37,20 +74,18 @@ export default {
 
 .Contact-Us-Header{
     font-family: Avenir;
-    font-style: normal;
-    font-weight: bolder;
     font-size: 18px;
     line-height: 25px;
+    font-weight: 800;
 
     color: #2A6465;
 }
 
 .Contact-Us-Content{
     font-family: Avenir;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 25px;
+    font-weight: normal;
 
     color: #4F4F4F;
     white-space: pre-wrap;

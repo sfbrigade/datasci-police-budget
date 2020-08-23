@@ -54,7 +54,16 @@
                     </v-btn>
                 </div>
             </v-row>
-            <v-row justify="center">
+            <v-row justify="center" align="center" class="my-2">
+                <div class="Take-Action-Title"> Take Action </div>
+            </v-row>
+            <v-row justify="center" align="center" class="mb-10">
+                <div class="Take-Action-Subheading"> See something you don't like? Use your voice to create change! </div>
+            </v-row>
+            <!-- <v-row class="my-5"> <v-spacer /> <v-col col="1">
+                <v-text-field label="Enter Your Zip Code" outlined placeholder="94110" light dense background-color="white"></v-text-field>
+            </v-col> <v-spacer /> </v-row> -->
+            <v-row justify="center" class="mb-5">
                 <ContactUs />
             </v-row>
         </div>
@@ -120,6 +129,27 @@ export default Vue.extend({
 .v-application--wrap {
   justify-content: space-between;
 }
+
+.Take-Action-Title{
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 33px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: $dark-turquoise;
+}
+
+.Take-Action-Subheading{
+  font-size: 18px;
+  line-height: 25px;
+  /* identical to box height */
+
+
+  color: $black-1;
+}
+
 .HomePage-Container {
   margin: 0 auto;
   padding: 0 !important;
