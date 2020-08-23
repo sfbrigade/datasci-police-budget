@@ -146,9 +146,6 @@ export default Vue.extend({
 }
 
 .Take-Action-Subheading{
-  font-family: Avenir;
-  font-style: normal;
-  font-weight: normal;
   font-size: 18px;
   line-height: 25px;
   /* identical to box height */
