@@ -83,7 +83,7 @@ p {
 }
 
 .hero-image {
-  background-image: url('/olivia-bliss-HTnycx0h_kk-unsplash.jpg');
+  background-image: url('/san-francisco-skyline.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
