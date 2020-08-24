@@ -1,9 +1,9 @@
 <template>
   <v-app class="floating-header-container">
-    <Header class="floating-header"/>
+    <Header class="floating-header" />
     <v-container fluid class="floating-card-container no-padding">
       <v-row class="hero-image"></v-row>
-      <CityFilter class="floating-card"/>
+      <CityFilter class="floating-card" />
       <v-row class="content-row">
         <Actions />
       </v-row>
@@ -29,8 +29,9 @@ export default Vue.extend({
     Actions,
     Footer,
     Faq,
-    Header,
-  },
+    Actions,
+    Header
+  }
 });
 </script>
 <style lang="scss">
@@ -66,11 +67,8 @@ p {
   padding: 0;
 }
 
-.center {
-  text-align: center;
-}
-
-.floating-header-container, .floating-card-container{
+.floating-header-container,
+.floating-card-container {
   position: relative;
 }
 
@@ -90,14 +88,13 @@ p {
 }
 
 .hero-image {
-  background-image: url('/san-francisco-skyline.jpg');
+  background-image: url("/san-francisco-skyline.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
   height: 600px;
   width: 100vw;
   padding-top: 33.5%;
-
 }
 
 .content-row {

@@ -162,7 +162,14 @@
                 <v-col cols=2><v-btn rounded color=#2A6465 dark block>NEXT</v-btn></v-col>
                 <v-spacer />
             </v-row>
-        </div>
+          </v-col>
+          <v-spacer />
+        </v-row>
+        <v-row justify="center" class="my-10">
+          <v-spacer />
+        </v-row>
+      </div>
+      <DepartmentsWalkthrough />
       <Footer />
     </v-container>
   </v-app>
@@ -241,7 +248,7 @@ export default Vue.extend({
           this.budget_pie_chart_data.push({name: dept, total: dept_value, dept_color: color})
       }
   }
-})
+});
 </script>
 
 <style lang="scss">
