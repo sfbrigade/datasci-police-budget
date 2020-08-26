@@ -68,18 +68,18 @@
 </template>
 
 <script lang="ts">
-import TextCard from '@/components/TextCard.vue'
+import TextCard from '@/components/TextCard';
 
 export default {
   components: {
-    TextCard
+    TextCard,
   },
   head() {
     return {
-      title: 'About the website'
-    }
-  }
-}
+      title: 'About the website',
+    };
+  },
+};
 </script>
 
 <style lang="scss">

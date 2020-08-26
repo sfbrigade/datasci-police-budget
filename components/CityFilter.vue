@@ -30,10 +30,10 @@ export default {
           value: 'san_francisco',
           disabled: false,
         },
-      ]
+      ],
     };
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

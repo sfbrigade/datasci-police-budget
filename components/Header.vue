@@ -42,28 +42,28 @@ export default {
     leftButtons() {
       return [
         {
-          path: "/see-budget",
-          title: "See Budget",
+          path: '/see-budget',
+          title: 'See Budget',
         },
         {
-          path: "/balance-budget",
-          title: "Balance Budget",
+          path: '/balance-budget',
+          title: 'Balance Budget',
         },
       ];
     },
     rightButtons() {
       return [
         {
-          path: "/about-us",
-          title: "About Us",
+          path: '/about-us',
+          title: 'About Us',
         },
         {
-          path: "/take-action",
-          title: "Take Action",
-        }
+          path: '/take-action',
+          title: 'Take Action',
+        },
       ];
     },
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>

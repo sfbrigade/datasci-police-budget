@@ -18,18 +18,18 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Footer from "@/components/Footer.vue";
-import Faq from "@/components/Faq.vue";
-import Actions from "@/components/Actions.vue";
-import Header from "@/components/Header.vue";
+import Vue from 'vue';
+import Footer from '@/components/Footer';
+import Faq from '@/components/Faq';
+import Actions from '@/components/Actions';
+import Header from '@/components/Header';
 
 export default Vue.extend({
   components: {
-    Header,
+    Actions,
     Footer,
     Faq,
-    Actions
+    Header,
   },
 });
 </script>
@@ -82,10 +82,10 @@ p {
 .floating-card {
   position: absolute;
   top: 300px;
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   width: 630px;
 }
 
