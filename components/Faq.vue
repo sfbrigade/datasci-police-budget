@@ -31,7 +31,7 @@
   padding: 48px;
   background: $light-turquoise;
   &-Header {
-    @include h2();
+    @include h3();
     text-align: center;
     margin-bottom: 40px;
   }

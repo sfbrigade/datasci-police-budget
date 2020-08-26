@@ -1,6 +1,6 @@
 <template>
   <div class="Actions">
-    <h2 class="Actions-Header">Data doesn’t have to be confusing.</h2>
+    <h3 class="Actions-Header">Data doesn’t have to be confusing.</h3>
     <v-container>
       <v-row>
         <v-col cols=3>

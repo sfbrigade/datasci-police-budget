@@ -1,8 +1,8 @@
 <template>
   <div class="city-filter">
-    <h2 class="city-filter__title">
+    <h3 class="city-filter__title">
       Explaining your city’s public budget information, to empower citizens like you.
-    </h2>
+    </h3>
     <p class="city-filter__subtitle">
       You pay taxes. We do too. Where does that money go?
     </p>

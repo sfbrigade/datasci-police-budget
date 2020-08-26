@@ -1,13 +1,13 @@
 <template>
   <div class="TextCard">
-    <h2 v-if="title" class="TextCard-Heading">
+    <h3 v-if="title" class="TextCard-Heading">
       <a v-if="link" :href="link" target="_blank" rel="noopener">
         {{ title }}
       </a>
       <template v-else>
         {{ title }}
       </template>
-    </h2>
+    </h3>
     <!-- eslint-disable-next-line vue/no-v-html -->
     <p v-if="body" class="TextCard-Body" v-html="body" />
     <p class="TextCard-Body">
@@ -22,10 +22,10 @@
   padding: 20px;
   margin-bottom: 20px;
   &-Heading {
-    @include h2();
+    @include h3();
     margin-bottom: 12px;
     a {
-      @include h2();
+      @include h3();
     }
   }
   &-Body {
