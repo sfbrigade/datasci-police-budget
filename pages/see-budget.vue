@@ -37,6 +37,10 @@
               This represents XX% of the general fund spending for SF.
             </h3>
           </v-row>
+          <D3LineChart
+            v-if="isMounted"
+            :config="orgBudgetChartConfig"
+            :datum="orgBudgetByYear" />
         </v-container>
       </v-row>
       <v-row class="content-row body-row">
@@ -62,14 +66,21 @@
 import Vue from 'vue';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { D3LineChart } from 'vue-d3-charts';
+import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
 
 export default Vue.extend({
   components: {
+    D3LineChart,
     Header,
     Footer,
   },
+  mounted() {
+    this.isMounted = true;
+  },
   data() {
     return {
+      isMounted: false,
       selected_city: 'san_francisco',
       selected_start_year: '2020',
       cities: [
@@ -96,6 +107,19 @@ export default Vue.extend({
           disabled: false,
         },
       ],
+      orgBudgetByYear: ORG_BUDGET_BY_YEAR,
+      orgBudgetChartConfig: {
+        values: Object.keys(ORG_BUDGET_BY_YEAR[0]),
+        date: {
+          key: 'year',
+          inputFormat: '%Y',
+          outputFormat: '%Y',
+        },
+        axis: {
+          yFormat: "$.2s",
+        },
+        color: { scheme: 'schemePaired' },
+      }
     };
   },
 });

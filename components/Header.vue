@@ -22,7 +22,7 @@
           </v-btn>
         </v-col>
         <v-col v-for="(button, i) in rightButtons"
-            :key="i">
+            :key="i+2">
           <v-btn
             class="nav-button black--text"
             color="transparent"
