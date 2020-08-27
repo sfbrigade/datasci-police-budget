@@ -32,10 +32,12 @@
             </v-col>
           </v-row>
           <v-row class="content-row body-row">
-            <h3 class="center">In 2019, SF spent $XXX million dollars on their police department. This represents XX% of the general fund spending for SF.</h3>
+            <h3 class="center">
+              In 2019, SF spent $XXX million dollars on their police department.
+              This represents XX% of the general fund spending for SF.
+            </h3>
           </v-row>
         </v-container>
-      </v-row>
       </v-row>
       <v-row class="content-row body-row">
         <h2 class="section-title">How is that money being spent?</h2>
@@ -57,9 +59,9 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
+import Vue from 'vue';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default Vue.extend({
   components: {
@@ -93,13 +95,13 @@ export default Vue.extend({
           value: '2020',
           disabled: false,
         },
-      ]
+      ],
     };
-  }
+  },
 });
 </script>
 <style scoped lang="scss">
-.body-row { 
+.body-row {
   padding: 24px 0;
 }
 

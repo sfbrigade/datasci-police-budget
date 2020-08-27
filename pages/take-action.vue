@@ -3,68 +3,57 @@
     <v-container fluid class="HomePage-Container" fill-height>
       <div class="Background-Wrapper">
         <div class="origin">
-            <v-row justify="center" align="center">
-                <div class="TopNavigation">
-                    <v-btn
-                        color="transparent"
-                        depressed
-                        v-for="(button, i) in buttons"
-                                :key="i"
-                                :class="{ active: i === activeTab }"
-                                class="ma-2 TopNavigation-Button black--text"
-                                @click="viewPage(i)"
-                        >
-                        <v-icon
-                                v-if="button.icon === 'see_budget'"
-                                class="TopNavigation-IconContainer"
-                                size="20"
-                        >
-                            far fa-newspaper
-                        </v-icon>
-                        <InfoOutlineIcon
-                        v-else-if="button.icon === 'balance_budget'"
-                        class="TopNavigation-IconContainer"
-                        />
-                        <v-icon
-                        v-if="button.icon === 'see_budget'"
-                        class="TopNavigation-IconContainer"
-                        size="20"
-                        >
-                                            far fa-newspaper
-                        </v-icon>
-                        <v-icon
-                        v-if="button.icon === 'city_budget_tracker'"
-                        class="TopNavigation-IconContainer"
-                        size="20"
-                        >
-                        far fa-newspaper
-                        </v-icon>
-                        <PollOutlineIcon
-                        v-if="button.icon === 'about_us'"
-                        class="TopNavigation-IconContainer"
-                        />
-                        <v-icon
-                        v-else-if="button.icon === 'take_action'"
-                        class="TopNavigation-IconContainer"
-                        size="20"
-                        >
-                        far fa-newspaper
-                        </v-icon>
-                        {{ button.title }}
-                    </v-btn>
-                </div>
-            </v-row>
+          <v-row justify="center" align="center">
+            <div class="TopNavigation">
+              <v-btn
+                color="transparent"
+                depressed
+                v-for="(button, i) in buttons"
+                  :key="i"
+                  :class="{ active: i === activeTab }"
+                  class="ma-2 TopNavigation-Button black--text"
+                  @click="viewPage(i)">
+                <v-icon
+                  v-if="button.icon === 'see_budget'"
+                  class="TopNavigation-IconContainer"
+                  size="20">
+                  far fa-newspaper
+                </v-icon>
+                <InfoOutlineIcon
+                  v-else-if="button.icon === 'balance_budget'"
+                  class="TopNavigation-IconContainer" />
+                <v-icon
+                  v-if="button.icon === 'see_budget'"
+                  class="TopNavigation-IconContainer"
+                  size="20">
+                    far fa-newspaper
+                </v-icon>
+                <v-icon
+                  v-if="button.icon === 'city_budget_tracker'"
+                  class="TopNavigation-IconContainer"
+                  size="20">
+                  far fa-newspaper
+                </v-icon>
+                <PollOutlineIcon
+                  v-if="button.icon === 'about_us'"
+                  class="TopNavigation-IconContainer" />
+                <v-icon
+                  v-else-if="button.icon === 'take_action'"
+                  class="TopNavigation-IconContainer"
+                  size="20">
+                  far fa-newspaper
+                </v-icon>
+                {{ button.title }}
+              </v-btn>
+            </div>
+          </v-row>
             <v-row justify="center" align="center" class="my-2">
-                <div class="Take-Action-Title"> Take Action </div>
+              <div class="Take-Action-Title"> Take Action </div>
             </v-row>
             <v-row justify="center" align="center" class="mb-10">
-                <div class="Take-Action-Subheading"> See something you don't like? Use your voice to create change! </div>
-            </v-row>
-            <!-- <v-row class="my-5"> <v-spacer /> <v-col col="1">
-                <v-text-field label="Enter Your Zip Code" outlined placeholder="94110" light dense background-color="white"></v-text-field>
-            </v-col> <v-spacer /> </v-row> -->
-            <v-row justify="center" class="mb-5">
-                <ContactUs />
+              <div class="Take-Action-Subheading">
+                See something you don't like? Use your voice to create change!
+              </div>
             </v-row>
         </div>
       </div>
@@ -74,56 +63,55 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Footer from '@/components/Footer.vue'
-import BalanceBudgetHeader from '@/components/BalanceBudgetHeader.vue'
+import Vue from 'vue';
+import Footer from '@/components/Footer.vue';
 
 export default Vue.extend({
   components: {
-    Footer
+    Footer,
   },
   data() {
     return {
       width: 1024,
-      height: 768
-    }
+      height: 768,
+    };
   },
   computed: {
     buttons() {
-        return [
-          {
-            icon: 'see_budget',
-            title: 'See Budget',
-            tab: 'FAQ'
-          },
-          {
-            icon: 'balance_budget',
-            title: 'Balance Budget',
-            tab: 'Stats'
-          },
-          {
-            icon: 'city_budget_tracker',
-            title: 'City Budget Tracker',
-            tab: 'FAQ'
-          },
-          {
-             icon: 'about_us',
-             title: 'About Us',
-             tab: 'FAQ'
-          },
-          {
-             icon: 'contact_us',
-             title: 'Contact Us',
-             tab: 'Stats'
-          }
-        ]
-      }
+      return [
+        {
+          icon: 'see_budget',
+          title: 'See Budget',
+          tab: 'FAQ',
+        },
+        {
+          icon: 'balance_budget',
+          title: 'Balance Budget',
+          tab: 'Stats',
+        },
+        {
+          icon: 'city_budget_tracker',
+          title: 'City Budget Tracker',
+          tab: 'FAQ',
+        },
+        {
+          icon: 'about_us',
+          title: 'About Us',
+          tab: 'FAQ',
+        },
+        {
+          icon: 'contact_us',
+          title: 'Contact Us',
+          tab: 'Stats',
+        },
+      ];
+    },
   },
   mounted() {
-    this.width = window.innerWidth
-    this.height = window.innerHeight
-  }
-})
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+  },
+});
 </script>
 <style lang="scss">
 .v-application--wrap {
@@ -145,7 +133,6 @@ export default Vue.extend({
   font-size: 18px;
   line-height: 25px;
   /* identical to box height */
-
 
   color: $black-1;
 }

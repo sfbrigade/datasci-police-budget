@@ -54,9 +54,6 @@
                     </v-btn>
                 </div>
             </v-row>
-            <v-row>
-                <BalanceBudgetHeader />
-            </v-row>
         </div>
       </div>
       <CategoryBreakdown />
@@ -65,56 +62,51 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Footer from '@/components/Footer.vue'
-import BalanceBudgetHeader from '@/components/BalanceBudgetHeader.vue'
+import Vue from 'vue';
 
 export default Vue.extend({
-  components: {
-    Footer
-  },
   data() {
     return {
       width: 1024,
-      height: 768
-    }
+      height: 768,
+    };
   },
   computed: {
     buttons() {
-        return [
-          {
-            icon: 'see_budget',
-            title: 'See Budget',
-            tab: 'FAQ'
-          },
-          {
-            icon: 'balance_budget',
-            title: 'Balance Budget',
-            tab: 'Stats'
-          },
-          {
-            icon: 'city_budget_tracker',
-            title: 'City Budget Tracker',
-            tab: 'FAQ'
-          },
-          {
-             icon: 'about_us',
-             title: 'About Us',
-             tab: 'FAQ'
-          },
-          {
-             icon: 'contact_us',
-             title: 'Contact Us',
-             tab: 'Stats'
-          }
-        ]
-      }
+      return [
+        {
+          icon: 'see_budget',
+          title: 'See Budget',
+          tab: 'FAQ',
+        },
+        {
+          icon: 'balance_budget',
+          title: 'Balance Budget',
+          tab: 'Stats',
+        },
+        {
+          icon: 'city_budget_tracker',
+          title: 'City Budget Tracker',
+          tab: 'FAQ',
+        },
+        {
+          icon: 'about_us',
+          title: 'About Us',
+          tab: 'FAQ',
+        },
+        {
+          icon: 'contact_us',
+          title: 'Contact Us',
+          tab: 'Stats',
+        },
+      ];
+    },
   },
   mounted() {
-    this.width = window.innerWidth
-    this.height = window.innerHeight
-  }
-})
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+  },
+});
 </script>
 <style lang="scss">
 .v-application--wrap {
