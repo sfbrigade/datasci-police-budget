@@ -1,8 +1,8 @@
 <template>
   <div class="About">
-    <h2 class="About-Heading">
+    <h3 class="About-Heading">
       About the website
-    </h2>
+    </h3>
     <TextCard>
       Information about our group
       <br />
@@ -68,18 +68,18 @@
 </template>
 
 <script lang="ts">
-import TextCard from '@/components/TextCard.vue'
+import TextCard from '@/components/TextCard';
 
 export default {
   components: {
-    TextCard
+    TextCard,
   },
   head() {
     return {
-      title: 'About the website'
-    }
-  }
-}
+      title: 'About the website',
+    };
+  },
+};
 </script>
 
 <style lang="scss">
