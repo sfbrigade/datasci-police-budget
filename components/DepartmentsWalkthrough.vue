@@ -2,13 +2,13 @@
   <v-container class="Category-Background carousel-view" fluid>
     <transition-group class="carousel" tag="div">
       <div
-        v-for="(department) in departments"
+        v-for="(department, i) in departments"
         v-bind:key="department.department"
         v-bind:style="{display: department.display}"
         class="slide"
       >
         <v-row>
-          <v-col class="Category-Title">{{department.header}}</v-col>
+          <v-col class="Category-Title">{{i+1}}. {{department.header}}</v-col>
         </v-row>
         <v-row class="Category-Content">
           <v-col cols="7">
@@ -69,10 +69,11 @@ import Vue from "vue";
 export default {
   data() {
     return {
+      index: 0,
       departments: [
         {
           department: "community-health",
-          header: "1. Community Health",
+          header: "Community Health",
           content:
             "The mission of the Department of Public Health is to protect and promote the health of all San Franciscans through the following divisions:<ul><li>San Francisco Health Network, which includes the Zuckerberg San Francisco General Hospital, Laguna Honda Hospital, ambulatory care, and transitions that oversee client flow throughout the system of care.</li><li>Population Health Division, which addresses public health concerns, including consumer safety, health promotion and disease prevention, and the monitoring of threats to the public’s health.</li></ul><br>Funds:<ul><li>Expand behavioral services for vulnerable residents, many of whom are experiencing homelessness</li><li>Provide department-wide workplace equity training and education</li><li>Implement a new electronic health record that supports clinical operations and revenue collections</li><li>Promote health education, physical activity, and healthy eating in communities with high rates of sugary drink consumption, diabetes, obesity, and heart disease</li><li>Increase staff at the hospitals and budget for other medical supplies including test kits for population health and prevention</li></ul>.",
           budget: "$2,422 mil",
@@ -82,10 +83,56 @@ export default {
         },
         {
           department: "culture-recreation",
-          header: "2. Culture & Recreation",
+          header: "Culture & Recreation",
           content:
             "San Francisco’s recreational, cultural, and educational resources drive our quality of life and underlie our shared experience as a city. Keeping these institutions in a state of good repair is a priority. Departments include:<ul><li>Academy of Sciences</li><li>Arts Commission</li><li>Asian Art Museum</li><li>Fine Arts Museum (de Young and Legion of Honor Museums)</li><li>Law Library</li><li>Public Library (Main Library at Civic Center and 27 branch libraries)</li><li>Recreation & Parks (200+ parks, playgrounds, and open spaces)</li><li>War Memorial (War Memorial Opera House, Veterans Building, Davies Symphony Hall, and adjacent grounds)</li></ul><br>Funds:<ul><li>Subsidize museum free days and the free admission program for San Francisco school groups.</li><li>Provide arts education, arts organizations, affordable space, and support for individual artists</li><li>Maintain buildings and modernize collections management</li><li>Sponsor special exhibitions that educate and stimulate curiosity among broad and diverse audiences</li><li>Increase open hours at public libraries, eliminate overdue fines, increase eCollections circulation</li><li>Maintains all public parks and provides a broad range of recreation programming in community services, cultural arts, sports and athletics, and leisure services</li></ul><br>Source: City of San Francisco Budget Book",
           budget: "$489 mil",
+          display: "none",
+          sliderMax: 16452,
+          storedValue: 0
+        },
+        {
+          department: "general-admin-finance",
+          header: "General Admin & Finanace",
+          content:
+            "A departmental designation for expenditures and revenues that are citywide in nature. Examples are voter mandated General Fund support for transit, libraries, and other baselines, the General Fund portion of retiree health premiums, nonprofit cost of doing business increases, required reserve deposits and debt service. Departments include:<ul><li>Assessor/Recorder</li><li>Board of Supervisors</li><li>City Attorney</li><li>City Planning</li><li>Civil Service Commission</li><li>Controller</li><li>Elections</li><li>Ethics Commission</li><li>General Services Agency - City Administrator (aka Administrative Services)</li><li>General Services Agency - Technology</li><li>Health Service System</li><li>Human Resources</li><li>Mayor</li><li>Medical Examiner (Program under General Services Agency - City Admin)</li><li>Real Estate (Program under General Services Agency - City Admin)</li><li>Retirement System</li><li>Treasurer/Tax Collector</li></ul><br>Funds:<ul><li>Subsidize museum free days and the free admission program for San Francisco school groups.</li><li>Provide arts education, arts organizations, affordable space, and support for individual artists</li><li>Maintain buildings and modernize collections management</li><li>Sponsor special exhibitions that educate and stimulate curiosity among broad and diverse audiences</li><li>Increase open hours at public libraries, eliminate overdue fines, increase eCollections circulation</li><li>Maintains all public parks and provides a broad range of recreation programming in community services, cultural arts, sports and athletics, and leisure services</li></ul><br>Funds:<ul><li>Modernize the city’s property assessment and tax systems</li><li>Pay salaries</li><li>Prepares for future elections and increased voter turnout by increasing temporary staffing and administering the vote-by-mail program</li></ul>",
+          budget: "$x mil",
+          display: "none",
+          sliderMax: 16452,
+          storedValue: 0
+        },
+        {
+          department: "general-city-responsibilities",
+          header: "General City Responsibilities",
+          content: "",
+          budget: "$x mil",
+          display: "none",
+          sliderMax: 16452,
+          storedValue: 0
+        },
+        {
+          department: "human-welfare-neighborhood-development",
+          header: "Human Welfare & Neighborhood Development",
+          content: "",
+          budget: "$x mil",
+          display: "none",
+          sliderMax: 16452,
+          storedValue: 0
+        },
+        {
+          department: "public-protection",
+          header: "Public Protection",
+          content: "",
+          budget: "$x mil",
+          display: "none",
+          sliderMax: 16452,
+          storedValue: 0
+        },
+        {
+          department: "public-works-transportation-commerce",
+          header: "Public Works, Transportation, & Commerce",
+          content: "",
+          budget: "$x mil",
           display: "none",
           sliderMax: 16452,
           storedValue: 0
@@ -143,16 +190,21 @@ export default {
     navigate(button) {
       this.buttons[0].render = true;
       if (button == "next") {
-        const first = this.departments.shift();
-        this.departments = this.departments.concat(first);
-        this.departments[0].display = "inherit";
-        this.departments[1].display = "none";
+        this.departments[this.index].display = "none";
+        this.index += 1;
+        this.departments[this.index].display = "inherit";
+        this.departments[this.index].sliderMax =
+          this.departments[this.index - 1].sliderMax -
+          this.departments[this.index - 1].storedValue;
       } else {
-        const last = this.departments.pop();
-        this.departments = [last].concat(this.departments);
-        console.log(this.departments[0]);
-        this.departments[0].display = "inherit";
-        this.departments[1].display = "none";
+        this.departments[this.index].display = "none";
+        this.index -= 1;
+        this.departments[this.index].display = "inherit";
+        if (this.index == 0) {
+          this.buttons[0].render = false;
+        } else if (this.index == 6) {
+          this.buttons[1].render = false;
+        }
       }
     }
   }
