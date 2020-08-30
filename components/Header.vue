@@ -2,14 +2,15 @@
   <div class="header">
     <v-container class="nav-bar" fluid>
       <v-row>
-        <v-col v-for="(button, i) in leftButtons" :key="i-1">
+        <v-col v-for="(button, i) in leftButtons" :key="i - 1">
           <v-btn
             class="nav-button black--text"
             color="transparent"
             depressed
             :to="button.path"
             nuxt
-          >{{ button.title }}</v-btn>
+            >{{ button.title }}</v-btn
+          >
         </v-col>
         <v-col cols="4">
           <v-btn
@@ -18,16 +19,18 @@
             depressed
             to="/"
             nuxt
-          >City Budget Tracker</v-btn>
+            >City Budget Tracker</v-btn
+          >
         </v-col>
-        <v-col v-for="(button, i) in rightButtons" :key="i-2">
+        <v-col v-for="(button, i) in rightButtons" :key="i + 2">
           <v-btn
             class="nav-button black--text"
             color="transparent"
             depressed
             :to="button.path"
             nuxt
-          >{{ button.title }}</v-btn>
+            >{{ button.title }}</v-btn
+          >
         </v-col>
       </v-row>
     </v-container>

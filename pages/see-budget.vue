@@ -33,10 +33,14 @@
           </v-row>
           <v-row class="content-row body-row">
             <h3 class="center">
-              In 2019, SF spent $XXX million dollars on their police department.
-              This represents XX% of the general fund spending for SF.
+              In 2017, SF spent $XXX million dollars on their police department.
+              This represents XX% of the general fund spending for SF. Explore the breakdown below:
             </h3>
           </v-row>
+          <D3LineChart
+            v-if="isMounted"
+            :config="orgBudgetChartConfig"
+            :datum="orgBudgetByYear" />
         </v-container>
       </v-row>
       <v-row class="content-row body-row">
@@ -44,6 +48,11 @@
       </v-row>
       <v-row class="content-row body-row">
         <h2 class="section-title">Spending by Department</h2>
+        <v-container fluid>
+          <v-row class="content-row body-row">
+            <iframe width="900" height="800" frameborder="0" scrolling="no" src="https://plotly.com/~jamesbaskerville/1.embed"></iframe>
+          </v-row>
+        </v-container>
       </v-row>
       <v-row class="content-row body-row">
         <h2 class="section-title">Compare with Similar Cities</h2>
@@ -62,14 +71,21 @@
 import Vue from 'vue';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { D3LineChart } from 'vue-d3-charts';
+import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
 
 export default Vue.extend({
   components: {
+    D3LineChart,
     Header,
     Footer,
   },
+  mounted() {
+    this.isMounted = true;
+  },
   data() {
     return {
+      isMounted: false,
       selected_city: 'san_francisco',
       selected_start_year: '2020',
       cities: [
@@ -96,6 +112,19 @@ export default Vue.extend({
           disabled: false,
         },
       ],
+      orgBudgetByYear: ORG_BUDGET_BY_YEAR,
+      orgBudgetChartConfig: {
+        values: Object.keys(ORG_BUDGET_BY_YEAR[0]),
+        date: {
+          key: 'year',
+          inputFormat: '%Y',
+          outputFormat: '%Y',
+        },
+        axis: {
+          yFormat: "$.2s",
+        },
+        color: { scheme: 'schemePaired' },
+      }
     };
   },
 });
