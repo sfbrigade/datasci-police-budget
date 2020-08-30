@@ -1,6 +1,6 @@
 <template>
   <div class="Actions">
-    <h2 class="Actions-Header">Data doesn’t have to be confusing.</h2>
+    <h3 class="Actions-Header">Data doesn’t have to be confusing.</h3>
     <v-container>
       <v-row>
         <v-col cols=3>
@@ -15,7 +15,9 @@
           <div class="action-item">
             <div class="icon icon-2"></div>
             <div class="Actions-Title">Explore It</div>
-            <div class="Actions-Text">What if you were in charge? How you budget your city’s revenue?</div>
+            <div class="Actions-Text">
+              What if you were in charge? How you budget your city’s revenue?
+            </div>
           </div>
         </v-col>
         <v-spacer></v-spacer>
@@ -53,7 +55,7 @@
   &-Container {
     line-height: 25px;
     &-A1 {
-      
+
     }
     &-A2 {
     }

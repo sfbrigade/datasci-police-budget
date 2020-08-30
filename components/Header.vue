@@ -72,12 +72,16 @@ export default {
   font-size: 16px;
   text-transform: uppercase;
   text-align: center;
-  margin: 0 auto 140px;
+  margin: 24px auto;
 }
 
 .nav-bar {
-  margin: 24px auto 0;
+  margin: 0 auto;
   max-width: 1200px;
+}
+
+.nav-button {
+  @include p();
 }
 
 .title-button {
