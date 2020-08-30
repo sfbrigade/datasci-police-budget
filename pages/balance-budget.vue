@@ -268,10 +268,6 @@
         </v-row>
         <v-row justify="center" class="my-10">
           <v-spacer />
-          <v-col cols="2">
-            <v-btn rounded color="#2A6465" dark block>NEXT</v-btn>
-          </v-col>
-          <v-spacer />
         </v-row>
       </div>
       <DepartmentsWalkthrough />
