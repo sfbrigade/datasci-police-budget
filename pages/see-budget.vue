@@ -33,8 +33,8 @@
           </v-row>
           <v-row class="content-row body-row">
             <h3 class="center">
-              In 2019, SF spent $XXX million dollars on their police department.
-              This represents XX% of the general fund spending for SF.
+              In 2017, SF spent $XXX million dollars on their police department.
+              This represents XX% of the general fund spending for SF. Explore the breakdown below:
             </h3>
           </v-row>
           <D3LineChart
@@ -48,6 +48,11 @@
       </v-row>
       <v-row class="content-row body-row">
         <h2 class="section-title">Spending by Department</h2>
+        <v-container fluid>
+          <v-row class="content-row body-row">
+            <iframe width="900" height="800" frameborder="0" scrolling="no" src="https://plotly.com/~jamesbaskerville/1.embed"></iframe>
+          </v-row>
+        </v-container>
       </v-row>
       <v-row class="content-row body-row">
         <h2 class="section-title">Compare with Similar Cities</h2>
