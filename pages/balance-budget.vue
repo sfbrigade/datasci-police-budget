@@ -29,14 +29,14 @@
                 <v-col cols=5> 
                       <v-row><div class="Subsection-Title">Revenue</div></v-row>
                       <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
-                      <v-row class="mb-5"><div class="Subsection-Amount">$16,452 mil</div></v-row>
+                      <v-row class="mb-5"><div class="Subsection-Amount">${{total_expenses}} mil</div></v-row>
                       <v-row><div class="Subsection-Title">Expenses</div></v-row>
                       <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
                       <v-row><div class="Subsection-Body">There are 7 categories that make up San Francisco's budget.
                         Use the levers to adjust and balance the spending for each category, then compare to the actual budget.</div></v-row>
                 </v-col>
-                <v-col cols=3> 
-                    <v-card class="pa2" outlined tile>This is a placeholder for the nifty dynamic pie chart (woo), which I'll add next week. Will be approx. this size! </v-card>
+                <v-col cols=4> 
+                    <D3PieChart v-if="is_mounted" :config="budget_pie_chart_config" :datum="budget_pie_chart_data" />
                 </v-col> 
                 <v-spacer />
             </v-row>
@@ -62,7 +62,7 @@
             </v-row>
             <v-row>
                 <v-spacer />
-                <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
+                <v-col cols=2><div class="Slider-Amount">${{value_test}} mil</div></v-col>
                 <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
                 <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
                 <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
@@ -72,7 +72,8 @@
                 <v-spacer />
                 <v-col cols=2>
                     <v-row justify="center">
-                        <v-slider v-model="value" vertical class="test" 
+                        <v-slider v-model="value_test" vertical class="test" :max="max_test" :min="min_test"
+                        @change="editPieChart()"
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -154,23 +155,63 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import Vue from 'vue';
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+import { D3PieChart } from 'vue-d3-charts';
 
+var total_expenses = 1234.0
+var health_expense = total_expenses / 7.0;
+var culture_expense = total_expenses / 7.0;
+var admin_expense = total_expenses / 7.0;
+var city_expense = total_expenses / 7.0;
+var welfare_expense = total_expenses / 7.0;
+var protection_expense = total_expenses / 7.0;
+var transport_expense = total_expenses / 7.0;
+ 
 export default Vue.extend({
   components: {
     Header,
-    Footer
+    Footer,
+    D3PieChart
+  },
+  mounted() {
+      this.is_mounted = true;
   },
   data() {
         return {
+            total_expenses: total_expenses,
             selected_city: "San Francisco",
             selected_year: "2020-2021",
             cities: ["San Francisco", "Oakland"],
-            years: ["2015-2016","2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"]
+            years: ["2015-2016","2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"],
+            is_mounted: false,
+            budget_pie_chart_data: [
+                {name: "Community Health", total: health_expense},
+                {name: "Culture & Recreation", total: culture_expense},
+                {name: "General Admin & Finance", total: admin_expense},
+                {name: "General City Responsibilities", total: city_expense},
+                {name: "Human Welfare & Neighborhood Development", total: welfare_expense},
+                {name: "Public Protection", total: protection_expense},
+                {name: "Public Works, Transportation & Commerce", total: transport_expense}
+            ],
+            budget_pie_chart_config: {
+                key: "name",
+                value: "total",
+                margin: {right: 80, left: 80},
+                color: {scheme: "schemeDark2"}
+            },
+            max_test: total_expenses,
+            min_test: 0,
+            value_test: 0
         }
   },
+  methods: {
+      editPieChart() {
+          this.budget_pie_chart_data.splice(this.budget_pie_chart_data.findIndex(({name}) => name == "Community Health"),1)
+          this.budget_pie_chart_data.push({name: "Community Health", total: this.value_test})
+      }
+  }
 })
 </script>
 
