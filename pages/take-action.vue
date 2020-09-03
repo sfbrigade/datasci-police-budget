@@ -3,7 +3,7 @@
     <v-row class="no-grow">
       <Header />
     </v-row>
-    <v-container fluid class="no-padding grow">
+    <v-container fluid class="no-padding limit-width grow">
       <v-row class="content-row body-row">
         <h2>Take Action</h2>
       </v-row>
