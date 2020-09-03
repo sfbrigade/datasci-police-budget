@@ -10,7 +10,7 @@
       <v-row class="content-row">
         <Faq />
       </v-row>
-      <v-row>
+      <v-row class="no-grow">
         <Footer />
       </v-row>
     </v-container>
@@ -67,6 +67,18 @@ p {
   padding: 0;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
+.no-grow {
+  flex-grow: 0;
+}
+
+.limit-width {
+  max-width: 900px;
+}
+
 .floating-header-container,
 .floating-card-container {
   position: relative;
@@ -95,6 +107,10 @@ p {
   height: 600px;
   width: 100vw;
   padding-top: 33.5%;
+}
+
+.body-row {
+  padding: 24px 0;
 }
 
 .content-row {

@@ -92,14 +92,6 @@
     </v-expansion-panel>
   </v-expansion-panels>
 </template>
-
-<script>
-export default {
-    data() {
-    }
-}
-</script>
-
 <style style="scss">
 .Contact-Us-Panels {
     width: 820px;
