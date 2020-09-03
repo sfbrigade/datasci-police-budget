@@ -75,7 +75,7 @@ export default {
   font-size: 16px;
   text-transform: uppercase;
   text-align: center;
-  margin: 24px auto;
+  margin: 24px auto 0;
 }
 
 .nav-bar {

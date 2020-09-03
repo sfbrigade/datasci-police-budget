@@ -3,7 +3,7 @@
     <v-row>
       <Header />
     </v-row>
-    <v-container fluid class="no-padding">
+    <v-container fluid class="no-padding" fill-height>
       <v-row class="content-row body-row explore-budget">
         <h2 class="section-title">Explore Budget</h2>
         <v-container fluid>
@@ -130,15 +130,11 @@ export default Vue.extend({
 });
 </script>
 <style scoped lang="scss">
-.body-row {
-  padding: 24px 0;
-}
-
 .section-title {
   color: $dark-turquoise;
 }
 
 .explore-budget {
-  width: 60%;
+  max-width: 900px;
 }
 </style>
