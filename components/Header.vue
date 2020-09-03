@@ -55,7 +55,7 @@ export default {
     rightButtons() {
       return [
         {
-          path: "/about-us",
+          path: "/about",
           title: "About Us"
         },
         {

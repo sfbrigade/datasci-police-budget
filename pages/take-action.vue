@@ -1,73 +1,30 @@
 <template>
-  <v-app style="background: #f1f8f8">
-    <v-container fluid class="HomePage-Container" fill-height>
-      <div class="Background-Wrapper">
-        <div class="origin">
-          <v-row justify="center" align="center">
-            <div class="TopNavigation">
-              <v-btn
-                color="transparent"
-                depressed
-                v-for="(button, i) in buttons"
-                  :key="i"
-                  :class="{ active: i === activeTab }"
-                  class="ma-2 TopNavigation-Button black--text"
-                  @click="viewPage(i)">
-                <v-icon
-                  v-if="button.icon === 'see_budget'"
-                  class="TopNavigation-IconContainer"
-                  size="20">
-                  far fa-newspaper
-                </v-icon>
-                <InfoOutlineIcon
-                  v-else-if="button.icon === 'balance_budget'"
-                  class="TopNavigation-IconContainer" />
-                <v-icon
-                  v-if="button.icon === 'see_budget'"
-                  class="TopNavigation-IconContainer"
-                  size="20">
-                    far fa-newspaper
-                </v-icon>
-                <v-icon
-                  v-if="button.icon === 'city_budget_tracker'"
-                  class="TopNavigation-IconContainer"
-                  size="20">
-                  far fa-newspaper
-                </v-icon>
-                <PollOutlineIcon
-                  v-if="button.icon === 'about_us'"
-                  class="TopNavigation-IconContainer" />
-                <v-icon
-                  v-else-if="button.icon === 'take_action'"
-                  class="TopNavigation-IconContainer"
-                  size="20">
-                  far fa-newspaper
-                </v-icon>
-                {{ button.title }}
-              </v-btn>
-            </div>
-          </v-row>
-            <v-row justify="center" align="center" class="my-2">
-              <div class="Take-Action-Title"> Take Action </div>
-            </v-row>
-            <v-row justify="center" align="center" class="mb-10">
-              <div class="Take-Action-Subheading">
-                See something you don't like? Use your voice to create change!
-              </div>
-            </v-row>
+  <v-container fluid class="HomePage-Container" fill-height>
+    <div class="origin">
+      <v-row justify="center" align="center" class="my-2">
+        <div class="Take-Action-Title"> Take Action </div>
+      </v-row>
+      <v-row justify="center" align="center" class="mb-10">
+        <div class="Take-Action-Subheading">
+          See something you don't like? Use your voice to create change!
         </div>
-      </div>
-      <Footer />
-    </v-container>
-  </v-app>
+      </v-row>
+      <v-row justify="center" align="center" class="mb-5">
+        <ContactUs />
+      </v-row>
+    </div>
+    <Footer />
+  </v-container>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Footer from '@/components/Footer.vue';
+import ContactUs from '@/components/ContactUs';
+import Footer from '@/components/Footer';
 
 export default Vue.extend({
   components: {
+    ContactUs,
     Footer,
   },
   data() {
@@ -145,10 +102,6 @@ export default Vue.extend({
   flex-direction: column;
   justify-content: space-between;
 
-  .Background-Wrapper {
-    background: #f1f8f8;
-  }
-
   .origin {
     display: flex;
     flex-direction: column;
@@ -171,9 +124,6 @@ export default Vue.extend({
   }
 }
 @media screen and (max-width: 930px) {
-  .Background-Wrapper {
-    background: #f1f8f8 !important;
-  }
   .origin {
     .title {
       margin-top: 0 !important;
@@ -196,10 +146,6 @@ export default Vue.extend({
 }
 
 @media screen and (max-width: 600px) {
-  .Background-Wrapper {
-    background: #f1f8f8 !important;
-  }
-
   .origin {
     .title {
       h1 {
@@ -215,9 +161,6 @@ export default Vue.extend({
 
 @media screen and (max-width: 445px) {
   .HomePage-Container {
-    .Background-Wrapper {
-      background: #f1f8f8 !important;
-    }
     .logo {
       margin: 20px 20px 40px 20px;
       .headericond {
