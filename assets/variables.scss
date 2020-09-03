@@ -92,6 +92,7 @@ $z-index-map: (
   @include lessThan($small) {
     @include font-size(14);
   }
+  margin-bottom: 0;
 }
 @mixin eyebrow {
   @include font-size(14);
