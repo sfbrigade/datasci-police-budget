@@ -5,11 +5,12 @@
   "description": "Stop Coronavirus in the Bay Area",
   "author": "Code for Stopping Coronavirus",
   "scripts": {
-    "serve": "nuxt serve",
     "build": "nuxt build",
-    "lint": "vue-cli-service lint",
     "dev": "nuxt",
     "export": "nuxt export",
+    "generate": "nuxt generate",
+    "lint": "vue-cli-service lint",
+    "serve": "nuxt serve",
     "start": "nuxt start"
   },
   "dependencies": {
