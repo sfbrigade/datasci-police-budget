@@ -2,8 +2,8 @@
   "name": "datasci-police-budget",
   "version": "1.0.0",
   "private": true,
-  "description": "Stop Coronavirus in the Bay Area",
-  "author": "Code for Stopping Coronavirus",
+  "description": "Explore Bay Area City Budgets",
+  "author": "Code for San Francisco",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt",
