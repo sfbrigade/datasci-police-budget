@@ -87,16 +87,17 @@ export default {
   @include p();
 }
 
-.title-button {
+// Have to be super specific to override Vuetify styles
+.header .nav-bar .nav-button.title-button {
   @include h1();
   text-transform: none;
 }
 
-.header .nav-button.v-btn--active::before {
+.header .nav-bar .nav-button.v-btn--active::before {
   opacity: 0;
 }
 
-.header .nav-button.v-btn--active:hover::before {
+.header .nav-bar .nav-button.v-btn--active:hover::before {
   opacity: 0.08;
 }
 </style>
