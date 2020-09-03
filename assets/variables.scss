@@ -21,7 +21,6 @@ $dark-turquoise: #2a6465;
 $light-turquoise: #f1f8f8;
 $link: #006ca8;
 // $blue: #114473;
-$light-blue: #afeeee;
 $purple-1: #473a8c;
 $purple-2: #7d70bb;
 
@@ -71,10 +70,15 @@ $z-index-map: (
   font-weight: bold;
 }
 @mixin h2 {
+  @include font-size(26);
+  font-weight: bold;
+  color: $dark-turquoise;
+}
+@mixin h3 {
   @include font-size(24);
   font-weight: bold;
 }
-@mixin h3 {
+@mixin h4 {
   @include font-size(18);
   font-weight: bold;
 }

@@ -28,34 +28,34 @@ export default {
     contacts() {
       return [
         {
-          class: "fab fa-meetup",
-          name: "Meetup",
+          class: 'fab fa-meetup',
+          name: 'Meetup',
           link:
-            "https://www.meetup.com/Code-for-San-Francisco-Civic-Hack-Night/"
+            'https://www.meetup.com/Code-for-San-Francisco-Civic-Hack-Night/',
         },
         {
-          class: "fab fa-slack",
-          name: "Slack",
-          link: "https://sfbrigade-slackin.herokuapp.com/"
+          class: 'fab fa-slack',
+          name: 'Slack',
+          link: 'https://sfbrigade-slackin.herokuapp.com/',
         },
         {
-          class: "fab fa-github",
-          name: "Github",
-          link: "https://github.com/sfbrigade/stop-covid19-sfbayarea"
+          class: 'fab fa-github',
+          name: 'Github',
+          link: 'https://github.com/sfbrigade/stop-covid19-sfbayarea',
         },
         {
-          class: "fab fa-twitter",
-          name: "Twitter",
-          link: "https://twitter.com/sfbrigade"
+          class: 'fab fa-twitter',
+          name: 'Twitter',
+          link: 'https://twitter.com/sfbrigade',
         },
         {
-          class: "fab fa-facebook",
-          name: "Facebook",
-          link: "https://www.facebook.com/codeforsanfrancisco"
-        }
+          class: 'fab fa-facebook',
+          name: 'Facebook',
+          link: 'https://www.facebook.com/codeforsanfrancisco',
+        },
       ];
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
