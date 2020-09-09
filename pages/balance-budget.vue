@@ -26,7 +26,7 @@
             </v-row>
             <v-row class="mb-10">
                 <v-spacer /> 
-                <v-col cols=5> 
+                <v-col cols=4> 
                       <v-row><div class="Subsection-Title">Revenue</div></v-row>
                       <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
                       <v-row class="mb-5"><div class="Subsection-Amount">${{total_expenses}} mil</div></v-row>
@@ -62,36 +62,39 @@
             </v-row>
             <v-row>
                 <v-spacer />
-                <v-col cols=2><div class="Slider-Amount">${{value_test}} mil</div></v-col>
-                <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
-                <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
-                <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
+                <v-col cols=2><div class="Slider-Amount">${{health_value}} mil</div></v-col>
+                <v-col cols=2><div class="Slider-Amount">${{culture_value}} mil</div></v-col>
+                <v-col cols=2><div class="Slider-Amount">${{admin_value}} mil</div></v-col>
+                <v-col cols=2><div class="Slider-Amount">${{city_value}} mil</div></v-col>
                 <v-spacer />
             </v-row>
             <v-row>
                 <v-spacer />
                 <v-col cols=2>
                     <v-row justify="center">
-                        <v-slider v-model="value_test" vertical class="test" :max="max_test" :min="min_test"
-                        @change="editPieChart()"
+                        <v-slider v-model="health_value" vertical :max="slider_max" :min="slider_min"
+                        @change="editPieChart('Community Health', health_value, '#2A6465')"
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
                 <v-col cols=2>
                     <v-row justify="center">
-                        <v-slider v-model="value" vertical class="test" 
+                        <v-slider v-model="culture_value" vertical :max="slider_max" :min="slider_min"
+                        @change="editPieChart('Culture & Recreation', culture_value, '#EF896E')"
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
                 <v-col cols=2>
                     <v-row justify="center">
-                        <v-slider v-model="value" vertical class="test" 
+                        <v-slider v-model="admin_value" vertical :max="slider_max" :min="slider_min"
+                        @change="editPieChart('General Admin & Finance', admin_value, '#F5BD41')"
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
                 <v-col cols=2>
                     <v-row justify="center">
-                        <v-slider v-model="value" vertical class="test" 
+                        <v-slider v-model="city_value" vertical :max="slider_max" :min="slider_min"
+                        @change="editPieChart('General City Responsibilities', city_value, '#CAAA97')"
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -116,28 +119,31 @@
             </v-row>
             <v-row>
                 <v-spacer />
-                <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
-                <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
-                <v-col cols=2><div class="Slider-Amount">$0 mil</div></v-col>
+                <v-col cols=2><div class="Slider-Amount">${{welfare_value}} mil</div></v-col>
+                <v-col cols=2><div class="Slider-Amount">${{protection_value}} mil</div></v-col>
+                <v-col cols=2><div class="Slider-Amount">${{transport_value}} mil</div></v-col>
                 <v-spacer />
             </v-row>
             <v-row>
                 <v-spacer />
                 <v-col cols=2>
                     <v-row justify="center">
-                        <v-slider v-model="value" vertical class="test" 
+                        <v-slider v-model="welfare_value" vertical :max="slider_max" :min="slider_min"
+                        @change="editPieChart('Human Welfare & Neighborhood Development', welfare_value, '#4DA54A')"
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
                 <v-col cols=2>
                     <v-row justify="center">
-                        <v-slider v-model="value" vertical class="test" 
+                        <v-slider v-model="protection_value" vertical :max="slider_max" :min="slider_min"
+                        @change="editPieChart('Public Protection', protection_value, '#4296AD')"
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
                 <v-col cols=2>
                     <v-row justify="center">
-                        <v-slider v-model="value" vertical class="test" 
+                        <v-slider v-model="transport_value" vertical :max="slider_max" :min="slider_min"
+                        @change="editPieChart('Public Works, Transportation & Commerce', transport_value, '#CF722A')"
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -161,13 +167,7 @@ import Footer from '@/components/Footer.vue';
 import { D3PieChart } from 'vue-d3-charts';
 
 var total_expenses = 1234.0
-var health_expense = total_expenses / 7.0;
-var culture_expense = total_expenses / 7.0;
-var admin_expense = total_expenses / 7.0;
-var city_expense = total_expenses / 7.0;
-var welfare_expense = total_expenses / 7.0;
-var protection_expense = total_expenses / 7.0;
-var transport_expense = total_expenses / 7.0;
+var starting_expense = total_expenses / 7.0
  
 export default Vue.extend({
   components: {
@@ -187,29 +187,37 @@ export default Vue.extend({
             years: ["2015-2016","2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"],
             is_mounted: false,
             budget_pie_chart_data: [
-                {name: "Community Health", total: health_expense},
-                {name: "Culture & Recreation", total: culture_expense},
-                {name: "General Admin & Finance", total: admin_expense},
-                {name: "General City Responsibilities", total: city_expense},
-                {name: "Human Welfare & Neighborhood Development", total: welfare_expense},
-                {name: "Public Protection", total: protection_expense},
-                {name: "Public Works, Transportation & Commerce", total: transport_expense}
+                {name: "Community Health", total: starting_expense, dept_color: '#2A6465'},
+                {name: "Culture & Recreation", total: starting_expense, dept_color: '#EF896E'},
+                {name: "General Admin & Finance", total: starting_expense, dept_color: '#F5BD41'},
+                {name: "General City Responsibilities", total: starting_expense, dept_color: '#CAAA97'},
+                {name: "Human Welfare & Neighborhood Development", total: starting_expense, dept_color: '#4DA54A'},
+                {name: "Public Protection", total: starting_expense, dept_color: '#4296AD'},
+                {name: "Public Works, Transportation & Commerce", total: starting_expense, dept_color: '#CF722A'}
             ],
             budget_pie_chart_config: {
                 key: "name",
                 value: "total",
-                margin: {right: 80, left: 80},
-                color: {scheme: "schemeDark2"}
+                color: {key: "dept_color"},
+                transition: {duration: 150, ease: "easeLinear"}
             },
-            max_test: total_expenses,
-            min_test: 0,
-            value_test: 0
+            slider_max: total_expenses,
+            slider_min: 0,
+            health_value: starting_expense,
+            culture_value: starting_expense,
+            admin_value: starting_expense,
+            city_value: starting_expense,
+            welfare_value: starting_expense,
+            protection_value: starting_expense,
+            transport_value: starting_expense
         }
   },
   methods: {
-      editPieChart() {
-          this.budget_pie_chart_data.splice(this.budget_pie_chart_data.findIndex(({name}) => name == "Community Health"),1)
-          this.budget_pie_chart_data.push({name: "Community Health", total: this.value_test})
+      editPieChart(dept, dept_value, color) {
+          console.log(dept)
+          console.log(dept_value)
+          this.budget_pie_chart_data.splice(this.budget_pie_chart_data.findIndex(({name}) => name == dept),1)
+          this.budget_pie_chart_data.push({name: dept, total: dept_value, dept_color: color})
       }
   }
 })
