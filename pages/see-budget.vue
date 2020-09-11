@@ -3,10 +3,19 @@
     <v-row>
       <Header />
     </v-row>
+
+
     <v-container fluid class="no-padding" fill-height>
+
+
       <v-row class="content-row body-row explore-budget">
+
+
         <h2 class="section-title">Explore Budget</h2>
-        <v-container fluid>
+
+        <v-container fluid class="page-body">
+          
+
           <v-row class="content-row body-row">
             <v-col>
               <label for="city-select">
@@ -31,18 +40,29 @@
               </v-select>
             </v-col>
           </v-row>
+
+
           <v-row class="content-row body-row">
             <h3 class="center">
               In 2017, SF spent $XXX million dollars on their police department.
               This represents XX% of the general fund spending for SF. Explore the breakdown below:
             </h3>
           </v-row>
+
+
           <D3LineChart
             v-if="isMounted"
             :config="orgBudgetChartConfig"
             :datum="orgBudgetByYear" />
+
+
         </v-container>
+
+        
       </v-row>
+
+
+      
       <v-row class="content-row body-row">
         <h2 class="section-title">How is that money being spent?</h2>
       </v-row>
@@ -60,7 +80,11 @@
       <v-row class="content-row body-row white">
         <h2 class="section-title">Glossary</h2>
       </v-row>
+    
+    
     </v-container>
+
+
     <v-row>
       <Footer />
     </v-row>
@@ -136,5 +160,10 @@ export default Vue.extend({
 
 .explore-budget {
   max-width: 900px;
+}
+
+.page-body {
+  margin-left: 15%;
+  margin-right: 15%;
 }
 </style>
