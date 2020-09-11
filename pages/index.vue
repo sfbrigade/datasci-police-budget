@@ -1,9 +1,13 @@
 <template>
   <v-app class="floating-header-container">
     <Header class="floating-header" />
+    
     <v-container fluid class="floating-card-container no-padding">
+
       <v-row class="hero-image"></v-row>
+      
       <CityFilter class="floating-card" />
+
       <v-row class="content-row">
         <Actions />
       </v-row>
@@ -29,7 +33,6 @@ export default Vue.extend({
     Actions,
     Footer,
     Faq,
-    Actions,
     Header
   }
 });
@@ -118,4 +121,18 @@ p {
   display: flex;
   justify-content: center;
 }
+
+@media only screen and (max-width: 660px) {
+   .floating-card {
+   position: absolute;
+   top: 300px;
+   left: 0;
+   right: 0;
+   margin-left: auto;
+   margin-right: auto;
+   width: 450px;   
+ }
+}
+
+
 </style>
