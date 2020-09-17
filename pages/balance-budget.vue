@@ -1,7 +1,24 @@
 <template>
   <v-app style="background: #f1f8f8">
     <v-container fluid class="HomePage-Container" fill-height>
-        <div class="origin">
+      <div class="origin">
+        <v-row>
+          <Header />
+        </v-row>
+        <v-row justify="center">
+          <h2 class="Section-Title">Balance My City's Budget</h2>
+        </v-row>
+        <v-row class="Balance-Budget-Header-Dropdown-Container">
+          <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
+            <CitySelect />
+          </v-col>
+          <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
+            <FiscalYearSelect />
+          </v-col>
+        </v-row>
+        <v-row class="mb-10">
+          <v-spacer />
+          <v-col cols="5">
             <v-row>
                 <Header />
             </v-row>
@@ -180,6 +197,12 @@ import Vue from 'vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import { D3PieChart } from 'vue-d3-charts';
+import Vue from "vue";
+import CitySelect from "@/components/CitySelect";
+import FiscalYearSelect from "@/components/FiscalYearSelect";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import DepartmentsWalkthrough from "@/components/DepartmentsWalkthrough";
 
 var total_expenses = 1234.0
 var starting_expense = total_expenses / 7.0
@@ -187,6 +210,8 @@ var current_sum_expenses = 1234.0
  
 export default Vue.extend({
   components: {
+    CitySelect,
+    FiscalYearSelect,
     Header,
     Footer,
     D3PieChart
