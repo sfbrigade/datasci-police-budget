@@ -199,6 +199,7 @@ export default Vue.extend({
                 key: "name",
                 value: "total",
                 color: {key: "dept_color"},
+                margin: {left: 125, right: 125},
                 transition: {duration: 150, ease: "easeLinear"}
             },
             slider_max: total_expenses,
@@ -293,6 +294,5 @@ export default Vue.extend({
   text-align: center;
   color: $dark-turquoise;
 }
-
 
 </style>
