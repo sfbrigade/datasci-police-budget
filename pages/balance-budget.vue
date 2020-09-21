@@ -25,7 +25,7 @@
                 </v-col>
             </v-row>
             <v-row class="mb-10">
-                <v-spacer /> 
+                <v-spacer cols=2 />
                 <v-col cols=4> 
                       <v-row><div class="Subsection-Title">Revenue</div></v-row>
                       <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
@@ -34,28 +34,28 @@
                       <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
                       <v-row><div class="Subsection-Body">There are 7 categories that make up San Francisco's budget.
                         Use the levers to adjust and balance the spending for each category, then compare to the actual budget.</div></v-row>
+                      <v-row class="mb-0" v-if="exceeds_limit"><div class="Slider-Hint">Note: Total expenses allocated exceeds revenue.</div></v-row>
                 </v-col>
-                <v-col cols=4> 
+                <v-col cols=6> 
                     <D3PieChart v-if="is_mounted" :config="budget_pie_chart_config" :datum="budget_pie_chart_data" />
                 </v-col> 
-                <v-spacer />
             </v-row>
             <v-row justify="center">
                 <v-spacer />
                 <v-col cols=2>
-                    <div class="Slider-Title">Community Health
+                    <div class="Health-Color" /><div class="Slider-Title">Community Health
                     <v-tooltip bottom><template v-slot:activator="{ on, attrs }"><span v-bind="attrs" v-on="on">(i)</span></template><span>Placeholder, will replace with actual text and icon later</span></v-tooltip></div>
                 </v-col>
                 <v-col cols=2>
-                    <div class="Slider-Title">Culture & Recreation
+                    <div class="Culture-Color" /><div class="Slider-Title">Culture & Recreation
                     <v-tooltip bottom><template v-slot:activator="{ on, attrs }"><span v-bind="attrs" v-on="on">(i)</span></template><span>Placeholder, will replace with actual text and icon later</span></v-tooltip></div>
                 </v-col>
                 <v-col cols=2>
-                    <div class="Slider-Title">General Admin & Finance
+                    <div class="Admin-Color" /><div class="Slider-Title">General Admin & Finance
                     <v-tooltip bottom><template v-slot:activator="{ on, attrs }"><span v-bind="attrs" v-on="on">(i)</span></template><span>Placeholder, will replace with actual text and icon later</span></v-tooltip></div>
                 </v-col>
                 <v-col cols=2>
-                    <div class="Slider-Title">General City Responsibilities
+                    <div class="City-Color" /><div class="Slider-Title">General City Responsibilities
                     <v-tooltip bottom><template v-slot:activator="{ on, attrs }"><span v-bind="attrs" v-on="on">(i)</span></template><span>Placeholder, will replace with actual text and icon later</span></v-tooltip></div>
                 </v-col>
                 <v-spacer />
@@ -68,12 +68,14 @@
                 <v-col cols=2><div class="Slider-Amount">${{city_value}} mil</div></v-col>
                 <v-spacer />
             </v-row>
+            
             <v-row>
                 <v-spacer />
                 <v-col cols=2>
                     <v-row justify="center">
                         <v-slider v-model="health_value" vertical :max="slider_max" :min="slider_min"
                         @change="editPieChart('Community Health', health_value, '#2A6465')"
+                        :rules="test_rule" label=" " 
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -81,6 +83,7 @@
                     <v-row justify="center">
                         <v-slider v-model="culture_value" vertical :max="slider_max" :min="slider_min"
                         @change="editPieChart('Culture & Recreation', culture_value, '#EF896E')"
+                        :rules="test_rule" label=" "
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -88,6 +91,7 @@
                     <v-row justify="center">
                         <v-slider v-model="admin_value" vertical :max="slider_max" :min="slider_min"
                         @change="editPieChart('General Admin & Finance', admin_value, '#F5BD41')"
+                        :rules="test_rule" label=" "
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -95,6 +99,7 @@
                     <v-row justify="center">
                         <v-slider v-model="city_value" vertical :max="slider_max" :min="slider_min"
                         @change="editPieChart('General City Responsibilities', city_value, '#CAAA97')"
+                        :rules="test_rule" label=" "
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -104,15 +109,15 @@
             <v-row justify="center">
                 <v-spacer />
                 <v-col cols=2>
-                    <div class="Slider-Title">Human Welfare & Neighborhood Development
+                    <div class="Welfare-Color" /><div class="Slider-Title">Human Welfare & Neighborhood Development
                     <v-tooltip bottom><template v-slot:activator="{ on, attrs }"><span v-bind="attrs" v-on="on">(i)</span></template><span>Placeholder, will replace with actual text and icon later</span></v-tooltip></div>
                 </v-col>
                 <v-col cols=2>
-                    <div class="Slider-Title">Public Protection
+                    <div class="Protection-Color" /><div class="Slider-Title">Public Protection
                     <v-tooltip bottom><template v-slot:activator="{ on, attrs }"><span v-bind="attrs" v-on="on">(i)</span></template><span>Placeholder, will replace with actual text and icon later</span></v-tooltip></div>
                 </v-col>
                 <v-col cols=2>
-                    <div class="Slider-Title">Public Works, Transportation & Commerce
+                    <div class="Transport-Color" /><div class="Slider-Title">Public Works, Transportation & Commerce
                     <v-tooltip bottom><template v-slot:activator="{ on, attrs }"><span v-bind="attrs" v-on="on">(i)</span></template><span>Placeholder, will replace with actual text and icon later</span></v-tooltip></div>
                 </v-col>
                 <v-spacer />
@@ -130,6 +135,7 @@
                     <v-row justify="center">
                         <v-slider v-model="welfare_value" vertical :max="slider_max" :min="slider_min"
                         @change="editPieChart('Human Welfare & Neighborhood Development', welfare_value, '#4DA54A')"
+                        :rules="test_rule" label=" "
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -137,6 +143,7 @@
                     <v-row justify="center">
                         <v-slider v-model="protection_value" vertical :max="slider_max" :min="slider_min"
                         @change="editPieChart('Public Protection', protection_value, '#4296AD')"
+                        :rules="test_rule" label=" "
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -144,6 +151,7 @@
                     <v-row justify="center">
                         <v-slider v-model="transport_value" vertical :max="slider_max" :min="slider_min"
                         @change="editPieChart('Public Works, Transportation & Commerce', transport_value, '#CF722A')"
+                        :rules="test_rule" label=" "
                         track-color=#B6DADA color=#2A6465 />
                     </v-row>
                 </v-col>
@@ -168,6 +176,7 @@ import { D3PieChart } from 'vue-d3-charts';
 
 var total_expenses = 1234.0
 var starting_expense = total_expenses / 7.0
+var current_sum_expenses = 1234.0
  
 export default Vue.extend({
   components: {
@@ -177,6 +186,7 @@ export default Vue.extend({
   },
   mounted() {
       this.is_mounted = true;
+      this.exceeds_limit = false;
   },
   data() {
         return {
@@ -199,8 +209,8 @@ export default Vue.extend({
                 key: "name",
                 value: "total",
                 color: {key: "dept_color"},
-                margin: {left: 125, right: 125},
-                transition: {duration: 150, ease: "easeLinear"}
+                margin: {left: 100, right: 100},
+                transition: {duration: 100, ease: "easeLinear"}
             },
             slider_max: total_expenses,
             slider_min: 0,
@@ -210,13 +220,21 @@ export default Vue.extend({
             city_value: starting_expense,
             welfare_value: starting_expense,
             protection_value: starting_expense,
-            transport_value: starting_expense
+            transport_value: starting_expense,
+            test_rule: [v => current_sum_expenses <= total_expenses || 'Total expenses allocated exceeds revenue']
         }
   },
   methods: {
       editPieChart(dept, dept_value, color) {
-          console.log(dept)
-          console.log(dept_value)
+          var old_value = this.budget_pie_chart_data[this.budget_pie_chart_data.findIndex(({name}) => name == dept)].total
+          current_sum_expenses -= old_value
+          current_sum_expenses += dept_value
+          if(current_sum_expenses > total_expenses){
+              this.exceeds_limit = true
+          } else {
+              this.exceeds_limit = false
+          }
+
           this.budget_pie_chart_data.splice(this.budget_pie_chart_data.findIndex(({name}) => name == dept),1)
           this.budget_pie_chart_data.push({name: dept, total: dept_value, dept_color: color})
       }
@@ -295,4 +313,59 @@ export default Vue.extend({
   color: $dark-turquoise;
 }
 
+.Slider-Hint{
+    font-size: 18px;
+    font-weight: normal;
+    color: #ff5252;
+}
+
+.Health-Color{
+    height: 20px;
+    width: 20px;
+    background-color: $dark-turquoise;
+    border-radius: 50%;
+    margin-right: 0;
+}
+
+.Culture-Color{
+    height: 20px;
+    width: 20px;
+    background-color: $salmon;
+    border-radius: 50%;
+}
+
+.Admin-Color{
+    height: 20px;
+    width: 20px;
+    background-color: $orange-yellow;
+    border-radius: 50%;
+}
+
+.City-Color{
+    height: 20px;
+    width: 20px;
+    background-color: $tan;
+    border-radius: 50%;
+}
+
+.Welfare-Color{
+    height: 20px;
+    width: 20px;
+    background-color: $green-5;
+    border-radius: 50%;
+}
+
+.Protection-Color{
+    height: 20px;
+    width: 20px;
+    background-color: $blue-1;
+    border-radius: 50%;
+}
+
+.Transport-Color{
+    height: 20px;
+    width: 20px;
+    background-color: $brown-1;
+    border-radius: 50%;
+}
 </style>
