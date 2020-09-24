@@ -1,75 +1,61 @@
 <template>
-  <div class="Faq">
-    <div class="Faq-Header">Frequently Asked Questions</div>
-    <div class="questions">
-      <div class="Faq-Question-Q1">
-        <div class="Faq-Question-Text">Where does all this data come from?</div>
-        <div class="Faq-Question-Expand">+</div>
-      </div>
-      <div class="Faq-Question-Q2">
-        <div class="Faq-Question-Text-Multi">
+  <div class="faq">
+    <h3 class="faq-header">Frequently Asked Questions</h3>
+    <v-expansion-panels accordion light class="expansion-panels">
+      <v-expansion-panel class="expansion-panel">
+        <v-expansion-panel-header class="expansion-panel-header">
+          Where does all this data come from?
+        </v-expansion-panel-header>
+        <v-expansion-panel-content class="expansion-panel-content">
+          TODO
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+      <v-expansion-panel class="expansion-panel">
+        <v-expansion-panel-header class="expansion-panel-header">
           When are upcoming elections?
           Which races have an impact on police spending, or policing in general?
-        </div>
-        <div class="Faq-Question-Expand">+</div>
-      </div>
-      <div class="Faq-Question-Q3">
-        <div class="Faq-Question-Text">Who can I call or write to voice my opinion?</div>
-        <div class="Faq-Question-Expand">+</div>
-      </div>
-    </div>
+        </v-expansion-panel-header>
+        <v-expansion-panel-content class="expansion-panel-content">
+          The next election for city representatives will occur alongside the general election,
+          on November 3, 2020. Updates and details can be found on the respective city's webpage
+          (<a href="https://www.oaklandca.gov/topics/elections">Oakland</a> and
+          <a href="https://sfelections.sfgov.org/">San Francisco</a>).
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+      <v-expansion-panel class="expansion-panel">
+        <v-expansion-panel-header class="expansion-panel-header">
+          Who can I call or write to voice my opinion?
+        </v-expansion-panel-header>
+        <v-expansion-panel-content class="expansion-panel-content">
+          <div> 
+            Oakland:
+            Look up your city representative on the
+            <a href="https://www.oaklandca.gov/services/
+              look-up-your-city-council-district-and-representative">
+              City of Oakland's site</a>.
+            Also check for <a href="https://www.oaklandca.gov/meetings">upcoming meetings</a>.
+          </div>
+          <div>
+            San Francisco:
+            Look up your city representative on the <a href="https://sfplanninggis.org/sffind/">San Francisco Planning Department's map</a>. Also check for
+            <a href="https://sfgov.org/countyclerk/public-notices-meetings">
+              upcoming meetings</a>.
+          </div>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@font-face {
-  font-family: "Avenir";
-  src: url("../assets/AvenirLTStd-Medium.otf");
-}
-.Faq {
-  width: 100%;
-  padding: 48px;
-  background: $light-turquoise;
-  &-Header {
-    @include h3();
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .questions {
-    margin: 0 auto;
-    max-width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  &-Question {
-    background: $white-1;
-    border: 1px solid $gray-5;
-    box-sizing: border-box;
-    &-Q1 {
-      background: $white-1;
-      border: 1px solid $gray-5;
-    }
-    &-Q2 {
-      background: $white-1;
-      border: 1px solid $gray-5;
-    }
-    &-Q3 {
-      background: $white-1;
-      border: 1px solid $gray-5;
-    }
-    &-Text {
-      &-Multi {
-      }
-    }
-    &-Expand {
-    }
-  }
+.faq {
+  width: 100%;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@include lessThan($small) {
-  .Faq {
-    padding: 22px;
-  }
+.faq-header {
+  margin: 40px auto;
 }
 </style>
