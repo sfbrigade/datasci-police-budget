@@ -221,7 +221,7 @@ export default Vue.extend({
             welfare_value: starting_expense,
             protection_value: starting_expense,
             transport_value: starting_expense,
-            test_rule: [v => current_sum_expenses <= total_expenses || 'Total expenses allocated exceeds revenue']
+            test_rule: [v => current_sum_expenses <= total_expenses]
         }
   },
   methods: {
@@ -229,6 +229,8 @@ export default Vue.extend({
           var old_value = this.budget_pie_chart_data[this.budget_pie_chart_data.findIndex(({name}) => name == dept)].total
           current_sum_expenses -= old_value
           current_sum_expenses += dept_value
+          console.log(current_sum_expenses)
+          console.log(total_expenses)
           if(current_sum_expenses > total_expenses){
               this.exceeds_limit = true
           } else {
