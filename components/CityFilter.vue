@@ -16,7 +16,13 @@
         outlined>
       </v-select>
     </div>
-    <button class="city-filter__button">START EXPLORING</button>
+    <v-btn
+      class="city-filter__button"
+      to="/balance-budget"
+      color="#2a6465"
+      nuxt>
+      START EXPLORING
+    </v-btn>
   </div>
 </template>
 
@@ -70,7 +76,6 @@ export default {
   line-height: 40px;
   height: 40px;
   width: 227px;
-  background: #2a6465;
   border-radius: 40px;
 }
 </style>

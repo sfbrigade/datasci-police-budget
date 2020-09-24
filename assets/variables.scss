@@ -30,8 +30,8 @@ $shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
 
 // ==================
 // break-points
-$huge: 1440;
-$large: 1170;
+$huge: 1200;
+$large: 992;
 $medium: 768;
 $small: 600;
 
@@ -88,6 +88,7 @@ $z-index-map: (
   @include lessThan($small) {
     @include font-size(14);
   }
+  margin-bottom: 0;
 }
 @mixin eyebrow {
   @include font-size(14);

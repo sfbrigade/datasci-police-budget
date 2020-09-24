@@ -5,16 +5,20 @@
       <v-row>
         <v-col cols=3>
           <div class="action-item">
-            <div class="icon icon-1"></div>
-            <div class="Actions-Title">Visualize It</div>
+            <NuxtLink to="/see-budget">
+              <div class="icon icon-1"></div>
+              <div class="Actions-Title">Visualize It</div>
+            </NuxtLink>
             <div class="Actions-Text">We analyzed the data so you can examine it for yourself.</div>
           </div>
         </v-col>
         <v-spacer></v-spacer>
         <v-col cols=3>
           <div class="action-item">
-            <div class="icon icon-2"></div>
-            <div class="Actions-Title">Explore It</div>
+            <NuxtLink to="/balance-budget">
+              <div class="icon icon-2"></div>
+              <div class="Actions-Title">Explore It</div>
+            </NuxtLink>
             <div class="Actions-Text">
               What if you were in charge? How you budget your city’s revenue?
             </div>
@@ -23,9 +27,11 @@
         <v-spacer></v-spacer>
         <v-col cols=3>
           <div class="action-item">
-            <div class="icon icon-3"></div>
-            <div class="Actions-Title-Multi">Do Something About It</div>
-            <div class="Actions-Text-Multi">Not pleased? Take action.</div>
+            <NuxtLink to="/take-action">
+              <div class="icon icon-3"></div>
+              <div class="Actions-Title">Do Something About It</div>
+            </NuxtLink>
+            <div class="Actions-Text">Not pleased? Take action.</div>
           </div>
         </v-col>
       </v-row>
@@ -84,18 +90,12 @@
 
   &-Title {
     font-size: 18px;
+    color: initial;
     text-decoration-line: underline;
-    &-Multi {
-      font-size: 18px;
-      text-decoration-line: underline;
-    }
   }
   &-Text {
     font-weight: normal;
     font-size: 18px;
-    &-Multi {
-      font-size: 18px;
-    }
   }
 }
 
