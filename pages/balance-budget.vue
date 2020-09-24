@@ -203,6 +203,7 @@ import FiscalYearSelect from "@/components/FiscalYearSelect";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DepartmentsWalkthrough from "@/components/DepartmentsWalkthrough";
+import { D3PieChart } from 'vue-d3-charts';
 
 var total_expenses = 1234.0
 var starting_expense = total_expenses / 7.0
