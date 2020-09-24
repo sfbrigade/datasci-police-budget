@@ -18,26 +18,10 @@
 
           <v-row class="content-row body-row">
             <v-col>
-              <label for="city-select">
-                Select your city
-              </label>
-              <v-select id="city-select"
-                value="san_francisco"
-                :items="cities"
-                v-model="selected_city"
-                background-color=white outlined dense light>
-              </v-select>
+              <CitySelect />
             </v-col>
             <v-col>
-              <label for="fiscal-year-select">
-                Fiscal Year
-              </label>
-              <v-select id="fiscal-year-select"
-                value="2020"
-                :items="years"
-                v-model="selected_start_year"
-                background-color=white outlined dense light>
-              </v-select>
+              <FiscalYearSelect />
             </v-col>
           </v-row>
 
@@ -93,6 +77,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import CitySelect from '@/components/CitySelect';
+import FiscalYearSelect from '@/components/FiscalYearSelect';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { D3LineChart } from 'vue-d3-charts';
@@ -100,6 +86,8 @@ import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
 
 export default Vue.extend({
   components: {
+    CitySelect,
+    FiscalYearSelect,
     D3LineChart,
     Header,
     Footer,
@@ -110,32 +98,6 @@ export default Vue.extend({
   data() {
     return {
       isMounted: false,
-      selected_city: 'san_francisco',
-      selected_start_year: '2020',
-      cities: [
-        {
-          text: 'San Francisco',
-          value: 'san_francisco',
-          disabled: false,
-        },
-        {
-          text: 'Oakland',
-          value: 'oakland',
-          disabled: false,
-        },
-      ],
-      years: [
-        {
-          text: '2019-2020',
-          value: '2019',
-          disabled: false,
-        },
-        {
-          text: '2020-2021',
-          value: '2020',
-          disabled: false,
-        },
-      ],
       orgBudgetByYear: ORG_BUDGET_BY_YEAR,
       orgBudgetChartConfig: {
         values: Object.keys(ORG_BUDGET_BY_YEAR[0]),

@@ -6,16 +6,7 @@
     <p class="city-filter__subtitle">
       You pay taxes. We do too. Where does that money go?
     </p>
-    <div class="city-filter__select">
-      <label for="city-select">Select your city</label>
-      <v-select id="city-select"
-        background-color="#fff"
-        value="san_francisco"
-        :items="items"
-        light
-        outlined>
-      </v-select>
-    </div>
+    <CitySelect class="city-filter__select" />
     <v-btn
       class="city-filter__button"
       to="/balance-budget"
@@ -27,19 +18,14 @@
 </template>
 
 <script lang="ts">
-export default {
-  data() {
-    return {
-      items: [
-        {
-          text: 'San Francisco',
-          value: 'san_francisco',
-          disabled: false,
-        },
-      ],
-    };
+import Vue from 'vue';
+import CitySelect from '@/components/CitySelect';
+
+export default Vue.extend({
+  components: {
+    CitySelect,
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

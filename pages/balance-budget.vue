@@ -10,26 +10,10 @@
         </v-row>
         <v-row class="Balance-Budget-Header-Dropdown-Container">
           <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
-            <div class="Dropdown-Title">Select Your City</div>
-            <v-select
-              :items="cities"
-              placeholder="San Francisco"
-              background-color="white"
-              outlined
-              dense
-              color="black"
-            ></v-select>
+            <CitySelect />
           </v-col>
           <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
-            <div class="Dropdown-Title">Fiscal Year</div>
-            <v-select
-              :items="years"
-              placeholder="2020-2021"
-              background-color="white"
-              outlined
-              dense
-              color="black"
-            ></v-select>
+            <FiscalYearSelect />
           </v-col>
         </v-row>
         <v-row class="mb-10">
@@ -278,12 +262,16 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import DepartmentsWalkthrough from "@/components/DepartmentsWalkthrough.vue";
+import CitySelect from "@/components/CitySelect";
+import FiscalYearSelect from "@/components/FiscalYearSelect";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import DepartmentsWalkthrough from "@/components/DepartmentsWalkthrough";
 
 export default Vue.extend({
   components: {
+    CitySelect,
+    FiscalYearSelect,
     Header,
     Footer,
     DepartmentsWalkthrough
