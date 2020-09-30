@@ -50,9 +50,12 @@
           </v-col>
           <v-spacer />
         </v-row>
+      
         <v-row justify="center">
-          <v-spacer />
-          <v-col cols="2">
+          
+        <v-col cols="col-lg-2 col-md-2 col-sm-2 col-xsm-1"></v-col>
+
+         <v-col cols="col-md-2">
             <div class="Slider-Title">
               Community Health
               <v-tooltip bottom>
@@ -63,7 +66,9 @@
               </v-tooltip>
             </div>
           </v-col>
-          <v-col cols="2">
+
+
+          <v-col cols="col-md-2">
             <div class="Slider-Title">
               Culture & Recreation
               <v-tooltip bottom>
@@ -74,7 +79,9 @@
               </v-tooltip>
             </div>
           </v-col>
-          <v-col cols="2">
+
+
+         <v-col cols="col-md-2">
             <div class="Slider-Title">
               General Admin & Finance
               <v-tooltip bottom>
@@ -85,7 +92,9 @@
               </v-tooltip>
             </div>
           </v-col>
-          <v-col cols="2">
+
+
+          <v-col cols="col-md-2">
             <div class="Slider-Title">
               General City Responsibilities
               <v-tooltip bottom>
@@ -96,6 +105,8 @@
               </v-tooltip>
             </div>
           </v-col>
+
+
           <v-spacer />
         </v-row>
         <v-row>
@@ -164,8 +175,9 @@
         </v-row>
 
         <v-row justify="center">
-          <v-spacer />
-          <v-col cols="2">
+          <v-col cols="col-lg-2 col-md-2 col-sm-2 col-xsm-1"></v-col>
+         
+          <v-col cols="col-lg-2 col-xsm-1">
             <div class="Slider-Title">
               Human Welfare & Neighborhood Development
               <v-tooltip bottom>
@@ -176,7 +188,7 @@
               </v-tooltip>
             </div>
           </v-col>
-          <v-col cols="2">
+          <v-col cols="col-xsm-1">
             <div class="Slider-Title">
               Public Protection
               <v-tooltip bottom>
@@ -187,7 +199,7 @@
               </v-tooltip>
             </div>
           </v-col>
-          <v-col cols="2">
+          <v-col cols="col-xsm-1">
             <div class="Slider-Title">
               Public Works, Transportation & Commerce
               <v-tooltip bottom>
@@ -202,13 +214,13 @@
         </v-row>
         <v-row>
           <v-spacer />
-          <v-col cols="2">
+          <v-col cols="col-xsm-3 text-center">
             <div class="Slider-Amount">$0 mil</div>
           </v-col>
-          <v-col cols="2">
+          <v-col cols="col-xsm-3 text-center">
             <div class="Slider-Amount">$0 mil</div>
           </v-col>
-          <v-col cols="2">
+          <v-col cols="col-xsm-3 text-center">
             <div class="Slider-Amount">$0 mil</div>
           </v-col>
           <v-spacer />
@@ -364,4 +376,13 @@ export default Vue.extend({
   text-align: center;
   color: $dark-turquoise;
 }
+
+@media only screen and (max-width: 768px) {
+  .Slider-Title {
+    font-size: 17px;
+    line-height: 16px;
+    text-align: center;
+  }
+}
+
 </style>

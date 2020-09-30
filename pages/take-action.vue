@@ -34,5 +34,12 @@ export default Vue.extend({
   },
 });
 </script>
-<style lang="scss">
+<style scoped lang="scss">
+.content-row {
+   margin-left: 15%;
+   margin-right: 15%;
+   @include lessThan($medium);
+   text-align: center;
+}
+
 </style>

@@ -3,7 +3,7 @@
     <v-row class="no-grow">
       <Header />
     </v-row>
-    <v-container fluid class="no-padding limit-width grow">
+    <v-container fluid class=" v-container no-padding limit-width grow">
       <v-row class="content-row body-row">
         <h2>About Us</h2>
       </v-row>
@@ -50,3 +50,17 @@ export default Vue.extend({
   },
 });
 </script>
+<style scoped lang="scss">
+.content-row {
+   margin-left: 15%;
+   margin-right: 15%;
+}
+
+@media only screen and (max-width: 768px) {
+  .content-row {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+</style>

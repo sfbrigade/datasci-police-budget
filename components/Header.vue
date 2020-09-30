@@ -53,7 +53,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-navigation-drawer
+    <v-navigation-drawer app
       v-model="showNavDrawer"
       class="nav-drawer"
       absolute
