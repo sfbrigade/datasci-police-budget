@@ -91,3 +91,7 @@ sw.*
 
 # npm
 package-lock.json
+
+# cypress output
+test/e2e/videos
+test/e2e/screenshots
