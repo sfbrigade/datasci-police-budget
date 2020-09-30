@@ -174,6 +174,7 @@ import { D3PieChart } from 'vue-d3-charts';
 
 import CitySelect from "@/components/CitySelect";
 import FiscalYearSelect from "@/components/FiscalYearSelect";
+
 import DepartmentsWalkthrough from "@/components/DepartmentsWalkthrough";
 
 
@@ -195,7 +196,8 @@ export default Vue.extend({
     FiscalYearSelect,
     Header,
     Footer,
-    D3PieChart
+    D3PieChart,
+    DepartmentsWalkthrough
   },
   mounted() {
       this.is_mounted = true;
@@ -246,80 +248,89 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.Section-Title{
-    color: $dark-turquoise;
+.Section-Title {
+  color: $dark-turquoise;
 }
-.Balance-Budget-Header-Dropdown-Container{
-    justify-content: center;
-}
-
-.Dropdown-Title{
-    text-align: left;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-    color: $black-1;
-    background-color: transparent;
+.Balance-Budget-Header-Dropdown-Container {
+  justify-content: center;
 }
 
-.theme--dark.v-list{
-    background: $white-1;
+.Dropdown-Title {
+  text-align: left;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: $black-1;
+  background-color: transparent;
 }
 
-.v-select__selection{
-    color: $black-1;
+.theme--dark.v-list {
+  background: $white-1;
 }
 
-.v-list-item__content{
-    color: $black-1;
+.v-select__selection {
+  color: $black-1;
 }
 
-.v-icon{
-    color: $black-1;
+.v-list-item__content {
+  color: $black-1;
 }
 
-.Subsection-Title{
+.v-icon {
+  color: $black-1;
+}
+
+.Subsection-Title {
   font-size: 20px;
   line-height: 27px;
   font-weight: 800;
 }
 
-.Subsection-Subtitle{
+.Subsection-Subtitle {
   font-size: 20px;
   line-height: 27px;
   font-weight: normal;
   font-style: italics;
 }
 
-.Subsection-Amount{
+.Subsection-Amount {
   font-size: 40px;
   line-height: 55px;
   color: $dark-turquoise;
 }
 
-.Subsection-Body{
+.Subsection-Body {
   font-size: 18px;
   line-height: 25px;
   font-weight: normal;
 }
 
-.Slider-Title{
+.Slider-Title {
   font-size: 24px;
   line-height: 33px;
   text-align: center;
 }
 
-.Slider-Amount{
+.Slider-Amount {
   font-size: 40px;
   line-height: 55px;
   text-align: center;
   color: $dark-turquoise;
 }
 
+
 .Slider-Hint{
     font-size: 18px;
     font-weight: normal;
     color: #ff5252;
+
+@media only screen and (max-width: 768px) {
+  .Slider-Title {
+    font-size: 17px;
+    line-height: 16px;
+    text-align: center;
+  }
+
 }
 
 .color {
