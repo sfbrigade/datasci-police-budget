@@ -4,6 +4,7 @@
       <Header />
     </v-row>
 
+
     <v-container fluid class="no-padding" fill-height>
 
       <v-row class="content-row body-row explore-budget">
@@ -61,7 +62,7 @@
       </v-row>
     
     </v-container>
-
+    
     <v-row>
       <Footer />
     </v-row>

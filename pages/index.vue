@@ -33,8 +33,9 @@ export default Vue.extend({
     Actions,
     Footer,
     Faq,
-    Header,
-  },
+    Actions,
+    Header
+  }
 });
 </script>
 <style lang="scss">
@@ -76,6 +77,7 @@ p {
 
 .no-grow {
   flex-grow: 0;
+
 }
 
 .limit-width {
