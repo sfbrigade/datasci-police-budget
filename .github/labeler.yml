@@ -1,0 +1,9 @@
+feat:
+  - assets/*
+  - components/*
+  - layouts/*
+  - pages/*
+  - store/*
+
+test:
+  - test/*
