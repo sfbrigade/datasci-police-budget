@@ -56,7 +56,7 @@
     "nodemon": "^2.0.4",
     "nuxt-purgecss": "^0.2.1",
     "nuxt-svg-loader": "^1.2.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "start-server-and-test": "^1.11.4",
     "typescript": "^4.0.3",
