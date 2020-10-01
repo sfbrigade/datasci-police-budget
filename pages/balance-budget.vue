@@ -1,246 +1,235 @@
 <template>
-  <v-app style="background: #f1f8f8">
-    <v-container fluid class="HomePage-Container" fill-height>
-      <div class="origin">
-        <v-row>
-          <Header />
-        </v-row>
+  <v-app>
+    <v-row>
+      <Header />
+    </v-row>
 
-        <v-row justify="center">
-          <h2 class="Section-Title">Balance My City's Budget</h2>
-        </v-row>
+    <v-container fluid class="no-padding" fill-height>
 
-        <v-row class="Balance-Budget-Header-Dropdown-Container">
-          <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
-            <CitySelect />
-          </v-col>
-          <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
-            <FiscalYearSelect />
-          </v-col>
-        </v-row>
+      <v-row justify="center">
+        <h2 class="Section-Title">Balance My City's Budget</h2>
+      </v-row>
 
-        <v-row class="mb-10">
-          <v-spacer cols=2 />
-          <v-col cols=4>
-            <v-row><div class="Subsection-Title">Revenue</div></v-row>
-            <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
-            <v-row class="mb-5">
-              <div class="Subsection-Amount">${{totalExpenses}} mil</div>
-            </v-row>
-            <v-row><div class="Subsection-Title">Expenses</div></v-row>
-            <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
-            <v-row><div class="Subsection-Body">
-              There are 7 categories that make up San Francisco's budget.
-              Use the levers to adjust and balance the spending for each category,
-              then compare to the actual budget.
-            </div></v-row>
-            <v-row class="mb-0" v-if="exceedsLimit">
-              <div class="Slider-Hint">Note: Total expenses allocated exceeds revenue.</div>
-            </v-row>
-          </v-col>
-          <v-col cols=6>
-              <D3PieChart
-                v-if="isMounted"
-                :config="budgetPieChartConfig"
-                :datum="budgetPieChartData" />
-          </v-col>
-        </v-row>
+      <v-row class="Balance-Budget-Header-Dropdown-Container">
+        <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
+          <CitySelect />
+        </v-col>
+        <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
+          <FiscalYearSelect />
+        </v-col>
+      </v-row>
 
-        <v-row justify="center">
-          <v-spacer />
-          <v-col cols=2>
-            <div class="color Health-Color" />
-            <div class="Slider-Title">Community Health
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <span v-bind="attrs" v-on="on">(i)</span>
-                </template>
-                <span>Placeholder</span>
-              </v-tooltip>
-            </div>
-          </v-col>
-          <v-col cols=2>
-            <div class="color Culture-Color" />
-            <div class="Slider-Title">Culture & Recreation
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <span v-bind="attrs" v-on="on">(i)</span>
-                </template>
-                <span>Placeholder</span>
-              </v-tooltip>
-            </div>
-          </v-col>
-          <v-col cols=2>
-            <div class="color Admin-Color" />
-            <div class="Slider-Title">General Admin & Finance
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <span v-bind="attrs" v-on="on">(i)</span>
-                </template>
-                <span>Placeholder</span>
-              </v-tooltip>
-            </div>
-          </v-col>
-          <v-col cols=2>
-            <div class="color City-Color" />
-            <div class="Slider-Title">General City Responsibilities
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <span v-bind="attrs" v-on="on">(i)</span>
-                </template><span>Placeholder</span>
-              </v-tooltip>
-            </div>
-          </v-col>
-          <v-spacer />
-        </v-row>
+      <v-row class="mb-10">
+        <v-spacer cols=2 />
+        <v-col cols=4>
+          <v-row><div class="Subsection-Title">Revenue</div></v-row>
+          <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
+          <v-row class="mb-5">
+            <div class="Subsection-Amount">${{totalExpenses}} mil</div>
+          </v-row>
+          <v-row><div class="Subsection-Title">Expenses</div></v-row>
+          <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
+          <v-row><div class="Subsection-Body">
+            There are 7 categories that make up San Francisco's budget.
+            Use the levers to adjust and balance the spending for each category,
+            then compare to the actual budget.
+          </div></v-row>
+          <v-row class="mb-0" v-if="exceedsLimit">
+            <div class="Slider-Hint">Note: Total expenses allocated exceeds revenue.</div>
+          </v-row>
+        </v-col>
+        <v-col cols=6>
+            <D3PieChart
+              v-if="isMounted && amounts"
+              :config="budgetPieChartConfig"
+              :datum="budgetPieChartData" />
+        </v-col>
+      </v-row>
 
-        <v-row>
-          <v-spacer />
-          <v-col cols=2><div class="Slider-Amount">${{healthValue}} mil</div></v-col>
-          <v-col cols=2><div class="Slider-Amount">${{cultureValue}} mil</div></v-col>
-          <v-col cols=2><div class="Slider-Amount">${{adminValue}} mil</div></v-col>
-          <v-col cols=2><div class="Slider-Amount">${{cityValue}} mil</div></v-col>
-          <v-spacer />
-        </v-row>
+      <v-row justify="center">
+        <v-spacer />
+        <v-col cols=2>
+          <div class="color Health-Color" />
+          <div class="Slider-Title">Community Health
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <span v-bind="attrs" v-on="on">(i)</span>
+              </template>
+              <span>Placeholder</span>
+            </v-tooltip>
+          </div>
+        </v-col>
+        <v-col cols=2>
+          <div class="color Culture-Color" />
+          <div class="Slider-Title">Culture & Recreation
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <span v-bind="attrs" v-on="on">(i)</span>
+              </template>
+              <span>Placeholder</span>
+            </v-tooltip>
+          </div>
+        </v-col>
+        <v-col cols=2>
+          <div class="color Admin-Color" />
+          <div class="Slider-Title">General Admin & Finance
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <span v-bind="attrs" v-on="on">(i)</span>
+              </template>
+              <span>Placeholder</span>
+            </v-tooltip>
+          </div>
+        </v-col>
+        <v-col cols=2>
+          <div class="color City-Color" />
+          <div class="Slider-Title">General City Responsibilities
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <span v-bind="attrs" v-on="on">(i)</span>
+              </template><span>Placeholder</span>
+            </v-tooltip>
+          </div>
+        </v-col>
+        <v-spacer />
+      </v-row>
 
-        <v-row>
-          <v-spacer />
-          <v-col cols=2>
-            <v-row justify="center">
-              <v-slider v-model="healthValue" :max="sliderMax" :min="sliderMin"
-              @change="editPieChart('Community Health', healthValue, '#2A6465')"
-              :rules="revenueLimitRule" label=" "
-              track-color=#B6DADA color=#2A6465 vertical />
-            </v-row>
-          </v-col>
-          <v-col cols=2>
-            <v-row justify="center">
-              <v-slider v-model="cultureValue" :max="sliderMax" :min="sliderMin"
-              @change="editPieChart('Culture & Recreation', cultureValue, '#EF896E')"
-              :rules="revenueLimitRule" label=" "
-              track-color=#B6DADA color=#2A6465 vertical />
-            </v-row>
-          </v-col>
-          <v-col cols=2>
-            <v-row justify="center">
-              <v-slider v-model="adminValue" :max="sliderMax" :min="sliderMin"
-              @change="editPieChart('General Admin & Finance', adminValue, '#F5BD41')"
-              :rules="revenueLimitRule" label=" "
-              track-color=#B6DADA color=#2A6465 vertical />
-            </v-row>
-          </v-col>
-          <v-col cols=2>
-            <v-row justify="center">
-              <v-slider v-model="cityValue" :max="sliderMax" :min="sliderMin"
-              @change="editPieChart('General City Responsibilities', cityValue, '#CAAA97')"
-              :rules="revenueLimitRule" label=" "
-              track-color=#B6DADA color=#2A6465 vertical />
-            </v-row>
-          </v-col>
-          <v-spacer />
-        </v-row>
+      <v-row>
+        <v-spacer />
+        <v-col cols=2><div class="Slider-Amount">${{healthValue}} mil</div></v-col>
+        <v-col cols=2><div class="Slider-Amount">${{cultureValue}} mil</div></v-col>
+        <v-col cols=2><div class="Slider-Amount">${{adminValue}} mil</div></v-col>
+        <v-col cols=2><div class="Slider-Amount">${{cityValue}} mil</div></v-col>
+        <v-spacer />
+      </v-row>
 
-        <v-row justify="center">
-          <v-spacer />
-          <v-col cols=2>
-            <div class="color Welfare-Color" />
-            <div class="Slider-Title">
-              Human Welfare & Neighborhood Development
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <span v-bind="attrs" v-on="on">(i)</span>
-                </template>
-                <span>Placeholder</span>
-              </v-tooltip>
-            </div>
-          </v-col>
-          <v-col cols=2>
-            <div class="color Protection-Color" /><div class="Slider-Title">
-              Public Protection
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <span v-bind="attrs" v-on="on">(i)</span>
-                </template>
-                <span>Placeholder</span>
-              </v-tooltip>
-            </div>
-          </v-col>
-          <v-col cols=2>
-            <div class="color Transport-Color" /><div class="Slider-Title">
-              Public Works, Transportation & Commerce
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <span v-bind="attrs" v-on="on">(i)</span>
-                </template>
-                <span>Placeholder</span>
-              </v-tooltip>
-            </div>
-          </v-col>
-          <v-spacer />
-        </v-row>
+      <v-row>
+        <v-spacer />
+        <v-col cols=2>
+          <v-row justify="center">
+            <v-slider v-model="healthValue" :max="sliderMax" :min="sliderMin"
+                      @change="refreshPieChartData"
+                      :rules="revenueLimitRule" label=" "
+                      track-color=#B6DADA color=#2A6465 vertical />
+          </v-row>
+        </v-col>
+        <v-col cols=2>
+          <v-row justify="center">
+            <v-slider v-model="cultureValue" :max="sliderMax" :min="sliderMin"
+                      @change="refreshPieChartData"
+                      :rules="revenueLimitRule" label=" "
+                      track-color=#B6DADA color=#2A6465 vertical />
+          </v-row>
+        </v-col>
+        <v-col cols=2>
+          <v-row justify="center">
+            <v-slider v-model="adminValue" :max="sliderMax" :min="sliderMin"
+                      @change="refreshPieChartData"
+                      :rules="revenueLimitRule" label=" "
+                      track-color=#B6DADA color=#2A6465 vertical />
+          </v-row>
+        </v-col>
+        <v-col cols=2>
+          <v-row justify="center">
+            <v-slider v-model="cityValue" :max="sliderMax" :min="sliderMin"
+                      @change="refreshPieChartData"
+                      :rules="revenueLimitRule" label=" "
+                      track-color=#B6DADA color=#2A6465 vertical />
+          </v-row>
+        </v-col>
+        <v-spacer />
+      </v-row>
 
-        <v-row>
-          <v-spacer />
-          <v-col cols=2><div class="Slider-Amount">${{welfareValue}} mil</div></v-col>
-          <v-col cols=2><div class="Slider-Amount">${{protectionValue}} mil</div></v-col>
-          <v-col cols=2><div class="Slider-Amount">${{transportValue}} mil</div></v-col>
-          <v-spacer />
-        </v-row>
+      <v-row justify="center">
+        <v-spacer />
+        <v-col cols=2>
+          <div class="color Welfare-Color" />
+          <div class="Slider-Title">
+            Human Welfare & Neighborhood Development
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <span v-bind="attrs" v-on="on">(i)</span>
+              </template>
+              <span>Placeholder</span>
+            </v-tooltip>
+          </div>
+        </v-col>
+        <v-col cols=2>
+          <div class="color Protection-Color" /><div class="Slider-Title">
+            Public Protection
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <span v-bind="attrs" v-on="on">(i)</span>
+              </template>
+              <span>Placeholder</span>
+            </v-tooltip>
+          </div>
+        </v-col>
+        <v-col cols=2>
+          <div class="color Transport-Color" /><div class="Slider-Title">
+            Public Works, Transportation & Commerce
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <span v-bind="attrs" v-on="on">(i)</span>
+              </template>
+              <span>Placeholder</span>
+            </v-tooltip>
+          </div>
+        </v-col>
+        <v-spacer />
+      </v-row>
 
-        <v-row>
-          <v-spacer />
-          <v-col cols=2>
-            <v-row justify="center">
-              <v-slider v-model="welfareValue" :max="sliderMax" :min="sliderMin"
-                        @change="editPieChart(
-                          'Human Welfare & Neighborhood Development',
-                          welfareValue,
-                          '#4DA54A'
-                        )"
-                        :rules="revenueLimitRule" label=" "
-                        track-color=#B6DADA color=#2A6465 vertical />
-            </v-row>
-          </v-col>
-          <v-col cols=2>
-            <v-row justify="center">
-              <v-slider v-model="protectionValue" :max="sliderMax" :min="sliderMin"
-                        @change="editPieChart(
-                          'Public Protection',
-                          protectionValue,
-                          '#4296AD'
-                        )"
-                        :rules="revenueLimitRule" label=" "
-                        track-color=#B6DADA color=#2A6465 vertical />
-            </v-row>
-          </v-col>
-          <v-col cols=2>
-            <v-row justify="center">
-              <v-slider v-model="transportValue" :max="sliderMax" :min="sliderMin"
-              @change="editPieChart(
-                'Public Works, Transportation & Commerce',
-                transportValue,
-                '#CF722A'
-              )"
-              :rules="revenueLimitRule" label=" "
-              track-color=#B6DADA color=#2A6465 vertical />
-            </v-row>
-          </v-col>
-          <v-spacer />
-        </v-row>
+      <v-row>
+        <v-spacer />
+        <v-col cols=2><div class="Slider-Amount">${{welfareValue}} mil</div></v-col>
+        <v-col cols=2><div class="Slider-Amount">${{protectionValue}} mil</div></v-col>
+        <v-col cols=2><div class="Slider-Amount">${{transportValue}} mil</div></v-col>
+        <v-spacer />
+      </v-row>
 
-        <v-row justify="center" class="my-10">
-          <v-spacer />
-          <v-col cols=2><v-btn rounded color=#2A6465 dark block>NEXT</v-btn></v-col>
-          <v-spacer />
-        </v-row>
+      <v-row>
+        <v-spacer />
+        <v-col cols=2>
+          <v-row justify="center">
+            <v-slider v-model="welfareValue" :max="sliderMax" :min="sliderMin"
+                      @change="refreshPieChartData"
+                      :rules="revenueLimitRule" label=" "
+                      track-color=#B6DADA color=#2A6465 vertical />
+          </v-row>
+        </v-col>
+        <v-col cols=2>
+          <v-row justify="center">
+            <v-slider v-model="protectionValue" :max="sliderMax" :min="sliderMin"
+                      @change="refreshPieChartData"
+                      :rules="revenueLimitRule" label=" "
+                      track-color=#B6DADA color=#2A6465 vertical />
+          </v-row>
+        </v-col>
+        <v-col cols=2>
+          <v-row justify="center">
+            <v-slider v-model="transportValue" :max="sliderMax" :min="sliderMin"
+                      @change="refreshPieChartData"
+                      :rules="revenueLimitRule" label=" "
+                      track-color=#B6DADA color=#2A6465 vertical />
+          </v-row>
+        </v-col>
+        <v-spacer />
+      </v-row>
 
-        <v-row justify="center" class="my-10">
-          <v-spacer />
-        </v-row>
-      </div>
+      <v-row justify="center" class="my-10">
+        <v-spacer />
+        <v-col cols=2><v-btn rounded color=#2A6465 dark block>NEXT</v-btn></v-col>
+        <v-spacer />
+      </v-row>
+
+      <v-row justify="center" class="my-10">
+        <v-spacer />
+      </v-row>
       <DepartmentsWalkthrough />
-      <Footer />
     </v-container>
+    <v-row>
+      <Footer />
+    </v-row>
   </v-app>
 </template>
 
@@ -255,45 +244,7 @@ import FiscalYearSelect from '@/components/FiscalYearSelect';
 
 import DepartmentsWalkthrough from '@/components/DepartmentsWalkthrough';
 
-const totalExpenses = 1234.0;
-const startingExpense = totalExpenses / 7.0;
-const currentExpenses = [
-  {
-    name: 'Community Health',
-    total: startingExpense,
-    deptColor: '#2A6465',
-  },
-  {
-    name: 'Culture & Recreation',
-    total: startingExpense,
-    deptColor: '#EF896E',
-  },
-  {
-    name: 'General Admin & Finance',
-    total: startingExpense,
-    deptColor: '#F5BD41',
-  },
-  {
-    name: 'General City Responsibilities',
-    total: startingExpense,
-    deptColor: '#CAAA97',
-  },
-  {
-    name: 'Human Welfare & Neighborhood Development',
-    total: startingExpense,
-    deptColor: '#4DA54A',
-  },
-  {
-    name: 'Public Protection',
-    total: startingExpense,
-    deptColor: '#4296AD',
-  },
-  {
-    name: 'Public Works, Transportation & Commerce',
-    total: startingExpense,
-    deptColor: '#CF722A',
-  },
-];
+const TEMP_TOTAL_AMOUNT = 1234.0;
 
 export default Vue.extend({
   components: {
@@ -305,16 +256,98 @@ export default Vue.extend({
     DepartmentsWalkthrough,
   },
   mounted() {
+    this.initializeTotalAmount();
+    this.refreshPieChartData();
     this.isMounted = true;
-    this.exceedsLimit = false;
+  },
+  computed: {
+    exceedsLimit() { return this.$store.getters['budget/getExceedsLimit']; },
+    totalExpenses() { return this.$store.getters['budget/getTotalAmount']; },
+    amounts() {
+      return Object.values(this.$store.getters['budget/getAmounts'])
+        .some((amount) => amount > 0);
+    },
+    healthValue: {
+      get() { return this.$store.state.budget.amounts.health; },
+      set(v) { this.$store.commit('budget/updateAmounts', { health: v }); },
+    },
+    cultureValue: {
+      get() { return this.$store.state.budget.amounts.culture; },
+      set(v) { this.$store.commit('budget/updateAmounts', { culture: v }); },
+    },
+    adminValue: {
+      get() { return this.$store.state.budget.amounts.admin; },
+      set(v) { this.$store.commit('budget/updateAmounts', { admin: v }); },
+    },
+    cityValue: {
+      get() { return this.$store.state.budget.amounts.city; },
+      set(v) { this.$store.commit('budget/updateAmounts', { city: v }); },
+    },
+    welfareValue: {
+      get() { return this.$store.state.budget.amounts.welfare; },
+      set(v) { this.$store.commit('budget/updateAmounts', { welfare: v }); },
+    },
+    protectionValue: {
+      get() { return this.$store.state.budget.amounts.protection; },
+      set(v) { this.$store.commit('budget/updateAmounts', { protection: v }); },
+    },
+    transportValue: {
+      get() { return this.$store.state.budget.amounts.transport; },
+      set(v) { this.$store.commit('budget/updateAmounts', { transport: v }); },
+    },
+    budgetData() {
+      return [
+        {
+          key: 'health',
+          name: 'Community Health',
+          total: this.healthValue,
+          deptColor: '#2A6465',
+        },
+        {
+          key: 'culture',
+          name: 'Culture & Recreation',
+          total: this.cultureValue,
+          deptColor: '#EF896E',
+        },
+        {
+          key: 'admin',
+          name: 'General Admin & Finance',
+          total: this.adminValue,
+          deptColor: '#F5BD41',
+        },
+        {
+          key: 'city',
+          name: 'General City Responsibilities',
+          total: this.cityValue,
+          deptColor: '#CAAA97',
+        },
+        {
+          key: 'welfare',
+          name: 'Human Welfare & Neighborhood Development',
+          total: this.welfareValue,
+          deptColor: '#4DA54A',
+        },
+        {
+          key: 'protection',
+          name: 'Public Protection',
+          total: this.protectionValue,
+          deptColor: '#4296AD',
+        },
+        {
+          key: 'transport',
+          name: 'Public Works, Transportation & Commerce',
+          total: this.transportValue,
+          deptColor: '#CF722A',
+        },
+      ];
+    },
+    sliderMax() { return this.totalExpenses; },
+    sliderMin() { return 0; },
   },
   data() {
     return {
-      totalExpenses,
-      cities: ['San Francisco', 'Oakland'],
-      years: ['2015-2016', '2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021'],
       isMounted: false,
-      budgetPieChartData: currentExpenses,
+      budgetPieChartData: [],
       budgetPieChartConfig: {
         key: 'name',
         value: 'total',
@@ -322,35 +355,18 @@ export default Vue.extend({
         margin: { left: 100, right: 100 },
         transition: { duration: 100, ease: 'easeLinear' },
       },
-      sliderMax: totalExpenses,
-      sliderMin: 0,
-      healthValue: startingExpense,
-      cultureValue: startingExpense,
-      adminValue: startingExpense,
-      cityValue: startingExpense,
-      welfareValue: startingExpense,
-      protectionValue: startingExpense,
-      transportValue: startingExpense,
-      revenueLimitRule: [(v) => v + currentExpenses.slice(0, 6)
-        .reduce((sum, d) => sum + d.total, 0) <= totalExpenses],
+
+      revenueLimitRule: [], // (v) => v + currentExpenses.slice(0, 6)
+      // .reduce((sum, d) => sum + d.total, 0) <= totalExpenses],
     };
   },
   methods: {
-    editPieChart(dept, deptValue, color) {
-      currentExpenses[currentExpenses.findIndex((a) => a.name === dept)].total = deptValue;
-
-      const currentSumExpenses = currentExpenses.reduce((sum, d) => sum + d.total, 0);
-      if (currentSumExpenses > totalExpenses) {
-        this.exceedsLimit = true;
-      } else {
-        this.exceedsLimit = false;
-      }
-
-      this.budgetPieChartData.splice(
-        this.budgetPieChartData.findIndex(({ name }) => name === dept),
-        1,
-      );
-      this.budgetPieChartData.push({ name: dept, total: deptValue, deptColor: color });
+    initializeTotalAmount() {
+      this.$store.commit('budget/setTotalAmount', TEMP_TOTAL_AMOUNT);
+    },
+    refreshPieChartData() {
+      this.budgetPieChartData = this.budgetData
+        .filter((department) => department.total > 0);
     },
   },
 });
