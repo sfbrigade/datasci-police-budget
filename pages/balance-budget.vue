@@ -434,11 +434,10 @@ export default Vue.extend({
 }
 
 @media only screen and (max-width: 768px) {
-    .Slider-Title {
-      font-size: 17px;
-      line-height: 16px;
-      text-align: center;
-    }
+  .Slider-Title {
+    font-size: 17px;
+    line-height: 16px;
+    text-align: center;
   }
 }
 
