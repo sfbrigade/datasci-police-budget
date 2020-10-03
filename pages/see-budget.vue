@@ -4,7 +4,6 @@
       <Header />
     </v-row>
 
-
     <v-container fluid class="no-padding" fill-height>
 
       <v-row class="content-row body-row explore-budget">
@@ -37,7 +36,7 @@
         </v-container>
 
       </v-row>
-      
+
       <v-row class="content-row body-row">
         <h2 class="section-title">How is that money being spent?</h2>
       </v-row>
@@ -60,9 +59,9 @@
       <v-row class="content-row body-row white">
         <h2 class="section-title">Glossary</h2>
       </v-row>
-    
+
     </v-container>
-    
+
     <v-row>
       <Footer />
     </v-row>
@@ -101,10 +100,10 @@ export default Vue.extend({
           outputFormat: '%Y',
         },
         axis: {
-          yFormat: "$.2s",
+          yFormat: '$.2s',
         },
         color: { scheme: 'schemePaired' },
-      }
+      },
     };
   },
 });
