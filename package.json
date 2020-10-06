@@ -43,7 +43,7 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/test-utils": "^1.1.0",
     "autoprefixer": "^9.7.4",
-    "babel-jest": "^26.5.0",
+    "babel-jest": "^26.5.2",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-cypress": "^2.11.2",
