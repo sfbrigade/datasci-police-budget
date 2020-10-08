@@ -948,6 +948,22 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fullhuman/postcss-purgecss@^1.1.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-1.3.0.tgz#d632900d818f4fcf4678e7326923fb838c3e03a7"
+  integrity sha512-zvfS3dPKD2FAtMcXapMJXGbDgEp9E++mLR6lTgSruv6y37uvV5xJ1crVktuC1gvnmMwsa7Zh1m05FeEiz4VnIQ==
+  dependencies:
+    ajv "^6.12.4"
+    debug "^4.1.1"
+    espree "^7.3.0"
+    globals "^12.1.0"
+    ignore "^4.0.6"
+    import-fresh "^3.2.1"
+    js-yaml "^3.13.1"
+    lodash "^4.17.19"
+    minimatch "^3.0.4"
+    strip-json-comments "^3.1.1"
+
 "@fullhuman/postcss-purgecss@^2.0.5":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-2.3.0.tgz#50a954757ec78696615d3e118e3fee2d9291882e"
@@ -2398,7 +2414,7 @@
   optionalDependencies:
     vue-loader-v16 "npm:vue-loader@^16.0.0-beta.7"
 
-"@vue/cli-shared-utils@^4.5.7":
+"@vue/cli-shared-utils@^4.5.4", "@vue/cli-shared-utils@^4.5.7":
   version "4.5.7"
   resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-4.5.7.tgz#b8e911c2f9b6b77123f5d26988b9613d92dcda95"
   integrity sha512-oicFfx9PvgupxN/LW0s2ktdn1U6bBu8J4lPcW2xj6TtTWUkkxwzis4Tm+XOvgvZnu44+d7216y0Y4TX90q645w==
@@ -13816,8 +13832,7 @@ webpack-sources@^1.0.1, webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-
   dependencies:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
-
-webpack@^4.0.0, webpack@^4.42.1, webpack@^4.44.2:
+webpack@^4.0.0, webpack@^4.44.2:
   version "4.44.2"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.44.2.tgz#6bfe2b0af055c8b2d1e90ed2cd9363f841266b72"
   integrity sha512-6KJVGlCxYdISyurpQ0IPTklv+DULv05rs2hseIXer6D7KrUicRDLFb4IUM1S6LUAKypPM/nSiVSuv8jHu1m3/Q==
