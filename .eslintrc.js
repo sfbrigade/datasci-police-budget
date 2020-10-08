@@ -12,6 +12,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/essential',
+    'plugin:cypress/recommended',
     '@vue/airbnb',
   ],
   parserOptions: {
@@ -23,6 +24,9 @@ module.exports = {
     // avoid resolution issues for Vue components
     'import/no-unresolved': 0,
     'import/extensions': 0,
+    'no-unused-vars': [1, { argsIgnorePattern: '^_' }],
+    // `st` used for Vuex state mutations
+    'no-param-reassign': [1, { ignorePropertyModificationsFor: ['st'] }],
   },
   settings: {
     'import/resolver': {

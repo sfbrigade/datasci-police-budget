@@ -8,9 +8,7 @@
             color="transparent"
             depressed
             :to="button.path"
-            nuxt
-            >{{ button.title }}</v-btn
-          >
+            nuxt>{{ button.title }}</v-btn>
         </v-col>
         <v-col cols="4">
           <v-btn
@@ -18,9 +16,7 @@
             color="transparent"
             depressed
             to="/"
-            nuxt
-            >City Budget Tracker</v-btn
-          >
+            nuxt>City Budget Tracker</v-btn>
         </v-col>
         <v-col v-for="button in rightRoutes" :key="button.key">
           <v-btn
@@ -28,9 +24,7 @@
             color="transparent"
             depressed
             :to="button.path"
-            nuxt
-            >{{ button.title }}</v-btn
-          >
+            nuxt>{{ button.title }}</v-btn>
         </v-col>
       </v-row>
       <v-row class="nav-row" v-else>
@@ -53,7 +47,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-navigation-drawer
+    <v-navigation-drawer app
       v-model="showNavDrawer"
       class="nav-drawer"
       absolute

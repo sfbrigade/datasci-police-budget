@@ -1,5 +1,9 @@
 <template>
+
+
   <div class="city-filter">
+
+
     <h3 class="city-filter__title">
       Explaining your city’s public budget information, to empower citizens like you.
     </h3>
@@ -14,7 +18,13 @@
       nuxt>
       START EXPLORING
     </v-btn>
+
+
+    
+
   </div>
+
+
 </template>
 
 <script lang="ts">
@@ -64,4 +74,20 @@ export default Vue.extend({
   width: 227px;
   border-radius: 40px;
 }
+
+
+@media only screen and (max-width: 660px) {
+   .city-filter__subtitle {
+     margin-bottom: 32px;
+     font-size: 14px;
+     text-align: center;
+ }
+
+.city-filter__button {
+ font-size: 16px;
+}
+
+}
+
+
 </style>

@@ -1,0 +1,7 @@
+enhancement:
+  - assets/*
+  - components/*
+  - layouts/*
+  - pages/*
+  - store/*
+  - test/*

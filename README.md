@@ -14,11 +14,20 @@ Budget numbers by themselves don’t tell a full story. It needs contextualizati
 # install dependencies
 $ yarn install
 
-# if there is an error, please try
-$ npm install
-
 # serve with hot reload at localhost:3000
 $ yarn dev
+
+# serve production build at localhost:3333
+$ yarn serve
+
+# run Cypress end-to-end tests
+$ yarn test
+
+# run Cypress end-to-end tests interactively
+$ yarn test:open
+
+# clean local test screenshots/videos
+$ yarn test:clean
 
 ```
 

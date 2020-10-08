@@ -25,11 +25,12 @@
           <v-col>
             <v-row>
               <div class="Category-Slider">
-                <div class="Slider-Amount">${{ department.storedValue }} mil</div>
+                <div class="Slider-Amount">${{ amounts[department.name] }} mil</div>
                 <v-row justify="center">
                   <v-slider
-                    v-bind:max="department.sliderMax"
-                    v-model="department.storedValue"
+                    v-bind:max="totalAmount"
+                    :value="amounts[department.name]"
+                    @change="value => { updateAmount(department.name, value) }"
                     min="0"
                     vertical
                     track-color="#B6DADA"
@@ -49,7 +50,7 @@
             v-bind:key="button.name"
             class="carousel-controls__button"
             v-bind:class="button.class"
-            v-bind:disabled="department.storedValue == 0"
+            v-bind:disabled="amounts[department.name] == 0"
             v-bind:outlined="button.outlined"
             rounded
             depressed
@@ -66,140 +67,127 @@
 </template>
 
 <script>
-import Vue from "vue";
-
 export default {
+  computed: {
+    totalAmount() { return this.$store.getters['budget/getTotalAmount']; },
+    amounts() {
+      return this.$store.getters['budget/getAmounts'];
+    },
+    buttonsShow() {
+      return this.buttons.filter((button) => button.render);
+    },
+  },
   data() {
     return {
       index: 0,
       departments: [
         {
-          name: "community-health",
-          header: "Community Health",
+          name: 'health',
+          header: 'Community Health',
           content:
-            "The mission of the Department of Public Health is to protect and promote the health of all San Franciscans through the following divisions:<ul><li>San Francisco Health Network, which includes the Zuckerberg San Francisco General Hospital, Laguna Honda Hospital, ambulatory care, and transitions that oversee client flow throughout the system of care.</li><li>Population Health Division, which addresses public health concerns, including consumer safety, health promotion and disease prevention, and the monitoring of threats to the public’s health.</li></ul><br>Funds:<ul><li>Expand behavioral services for vulnerable residents, many of whom are experiencing homelessness</li><li>Provide department-wide workplace equity training and education</li><li>Implement a new electronic health record that supports clinical operations and revenue collections</li><li>Promote health education, physical activity, and healthy eating in communities with high rates of sugary drink consumption, diabetes, obesity, and heart disease</li><li>Increase staff at the hospitals and budget for other medical supplies including test kits for population health and prevention</li></ul>.",
-          budget: "$2,422 mil",
-          display: "inherit",
-          sliderMax: 16452,
-          storedValue: 0
+            'The mission of the Department of Public Health is to protect and promote the health of all San Franciscans through the following divisions:<ul><li>San Francisco Health Network, which includes the Zuckerberg San Francisco General Hospital, Laguna Honda Hospital, ambulatory care, and transitions that oversee client flow throughout the system of care.</li><li>Population Health Division, which addresses public health concerns, including consumer safety, health promotion and disease prevention, and the monitoring of threats to the public’s health.</li></ul><br>Funds:<ul><li>Expand behavioral services for vulnerable residents, many of whom are experiencing homelessness</li><li>Provide department-wide workplace equity training and education</li><li>Implement a new electronic health record that supports clinical operations and revenue collections</li><li>Promote health education, physical activity, and healthy eating in communities with high rates of sugary drink consumption, diabetes, obesity, and heart disease</li><li>Increase staff at the hospitals and budget for other medical supplies including test kits for population health and prevention</li></ul>.',
+          budget: '$2,422 mil',
+          display: 'inherit',
         },
         {
-          name: "culture-recreation",
-          header: "Culture & Recreation",
+          name: 'culture',
+          header: 'Culture & Recreation',
           content:
-            "San Francisco’s recreational, cultural, and educational resources drive our quality of life and underlie our shared experience as a city. Keeping these institutions in a state of good repair is a priority. Departments include:<ul><li>Academy of Sciences</li><li>Arts Commission</li><li>Asian Art Museum</li><li>Fine Arts Museum (de Young and Legion of Honor Museums)</li><li>Law Library</li><li>Public Library (Main Library at Civic Center and 27 branch libraries)</li><li>Recreation & Parks (200+ parks, playgrounds, and open spaces)</li><li>War Memorial (War Memorial Opera House, Veterans Building, Davies Symphony Hall, and adjacent grounds)</li></ul><br>Funds:<ul><li>Subsidize museum free days and the free admission program for San Francisco school groups.</li><li>Provide arts education, arts organizations, affordable space, and support for individual artists</li><li>Maintain buildings and modernize collections management</li><li>Sponsor special exhibitions that educate and stimulate curiosity among broad and diverse audiences</li><li>Increase open hours at public libraries, eliminate overdue fines, increase eCollections circulation</li><li>Maintains all public parks and provides a broad range of recreation programming in community services, cultural arts, sports and athletics, and leisure services</li></ul><br>Source: City of San Francisco Budget Book",
-          budget: "$489 mil",
-          display: "none",
-          sliderMax: 16452,
-          storedValue: 0
+            'San Francisco’s recreational, cultural, and educational resources drive our quality of life and underlie our shared experience as a city. Keeping these institutions in a state of good repair is a priority. Departments include:<ul><li>Academy of Sciences</li><li>Arts Commission</li><li>Asian Art Museum</li><li>Fine Arts Museum (de Young and Legion of Honor Museums)</li><li>Law Library</li><li>Public Library (Main Library at Civic Center and 27 branch libraries)</li><li>Recreation & Parks (200+ parks, playgrounds, and open spaces)</li><li>War Memorial (War Memorial Opera House, Veterans Building, Davies Symphony Hall, and adjacent grounds)</li></ul><br>Funds:<ul><li>Subsidize museum free days and the free admission program for San Francisco school groups.</li><li>Provide arts education, arts organizations, affordable space, and support for individual artists</li><li>Maintain buildings and modernize collections management</li><li>Sponsor special exhibitions that educate and stimulate curiosity among broad and diverse audiences</li><li>Increase open hours at public libraries, eliminate overdue fines, increase eCollections circulation</li><li>Maintains all public parks and provides a broad range of recreation programming in community services, cultural arts, sports and athletics, and leisure services</li></ul><br>Source: City of San Francisco Budget Book',
+          budget: '$489 mil',
+          display: 'none',
         },
         {
-          name: "general-admin-finance",
-          header: "General Admin & Finance",
+          name: 'admin',
+          header: 'General Admin & Finance',
           content:
-            "A departmental designation for expenditures and revenues that are citywide in nature. Examples are voter mandated General Fund support for transit, libraries, and other baselines, the General Fund portion of retiree health premiums, nonprofit cost of doing business increases, required reserve deposits and debt service. Departments include:<ul><li>Assessor/Recorder</li><li>Board of Supervisors</li><li>City Attorney</li><li>City Planning</li><li>Civil Service Commission</li><li>Controller</li><li>Elections</li><li>Ethics Commission</li><li>General Services Agency - City Administrator (aka Administrative Services)</li><li>General Services Agency - Technology</li><li>Health Service System</li><li>Human Resources</li><li>Mayor</li><li>Medical Examiner (Program under General Services Agency - City Admin)</li><li>Real Estate (Program under General Services Agency - City Admin)</li><li>Retirement System</li><li>Treasurer/Tax Collector</li></ul><br>Funds:<ul><li>Subsidize museum free days and the free admission program for San Francisco school groups.</li><li>Provide arts education, arts organizations, affordable space, and support for individual artists</li><li>Maintain buildings and modernize collections management</li><li>Sponsor special exhibitions that educate and stimulate curiosity among broad and diverse audiences</li><li>Increase open hours at public libraries, eliminate overdue fines, increase eCollections circulation</li><li>Maintains all public parks and provides a broad range of recreation programming in community services, cultural arts, sports and athletics, and leisure services</li></ul><br>Funds:<ul><li>Modernize the city’s property assessment and tax systems</li><li>Pay salaries</li><li>Prepares for future elections and increased voter turnout by increasing temporary staffing and administering the vote-by-mail program</li></ul>",
-          budget: "$x mil",
-          display: "none",
-          sliderMax: 16452,
-          storedValue: 0
+            'A departmental designation for expenditures and revenues that are citywide in nature. Examples are voter mandated General Fund support for transit, libraries, and other baselines, the General Fund portion of retiree health premiums, nonprofit cost of doing business increases, required reserve deposits and debt service. Departments include:<ul><li>Assessor/Recorder</li><li>Board of Supervisors</li><li>City Attorney</li><li>City Planning</li><li>Civil Service Commission</li><li>Controller</li><li>Elections</li><li>Ethics Commission</li><li>General Services Agency - City Administrator (aka Administrative Services)</li><li>General Services Agency - Technology</li><li>Health Service System</li><li>Human Resources</li><li>Mayor</li><li>Medical Examiner (Program under General Services Agency - City Admin)</li><li>Real Estate (Program under General Services Agency - City Admin)</li><li>Retirement System</li><li>Treasurer/Tax Collector</li></ul><br>Funds:<ul><li>Subsidize museum free days and the free admission program for San Francisco school groups.</li><li>Provide arts education, arts organizations, affordable space, and support for individual artists</li><li>Maintain buildings and modernize collections management</li><li>Sponsor special exhibitions that educate and stimulate curiosity among broad and diverse audiences</li><li>Increase open hours at public libraries, eliminate overdue fines, increase eCollections circulation</li><li>Maintains all public parks and provides a broad range of recreation programming in community services, cultural arts, sports and athletics, and leisure services</li></ul><br>Funds:<ul><li>Modernize the city’s property assessment and tax systems</li><li>Pay salaries</li><li>Prepares for future elections and increased voter turnout by increasing temporary staffing and administering the vote-by-mail program</li></ul>',
+          budget: '$x mil',
+          display: 'none',
         },
         {
-          name: "general-city-responsibilities",
-          header: "General City Responsibilities",
-          content: "",
-          budget: "$x mil",
-          display: "none",
-          sliderMax: 16452,
-          storedValue: 0
+          name: 'city',
+          header: 'General City Responsibilities',
+          content: '',
+          budget: '$x mil',
+          display: 'none',
         },
         {
-          name: "human-welfare-neighborhood-development",
-          header: "Human Welfare & Neighborhood Development",
-          content: "",
-          budget: "$x mil",
-          display: "none",
-          sliderMax: 16452,
-          storedValue: 0
+          name: 'welfare',
+          header: 'Human Welfare & Neighborhood Development',
+          content: '',
+          budget: '$x mil',
+          display: 'none',
         },
         {
-          name: "public-protection",
-          header: "Public Protection",
-          content: "",
-          budget: "$x mil",
-          display: "none",
-          sliderMax: 16452,
-          storedValue: 0
+          name: 'protection',
+          header: 'Public Protection',
+          content: '',
+          budget: '$x mil',
+          display: 'none',
         },
         {
-          name: "public-works-transportation-commerce",
-          header: "Public Works, Transportation, & Commerce",
-          content: "",
-          budget: "$x mil",
-          display: "none",
-          sliderMax: 16452,
-          storedValue: 0
-        }
+          name: 'transport',
+          header: 'Public Works, Transportation, & Commerce',
+          content: '',
+          budget: '$x mil',
+          display: 'none',
+        },
       ],
       buttons: [
         {
-          name: "prev",
+          name: 'prev',
           outlined: true,
-          method: "previous",
-          class: "",
-          render: false
+          method: 'previous',
+          class: '',
+          render: false,
         },
         {
-          name: "next",
+          name: 'next',
           outlined: false,
-          method: "next",
-          class: "white--text",
-          render: true
+          method: 'next',
+          class: 'white--text',
+          render: true,
         },
         {
-          name: "finish",
+          name: 'finish',
           outlined: false,
-          method: "next",
-          class: "white--text",
-          render: false
-        }
-      ]
+          method: 'next',
+          class: 'white--text',
+          render: false,
+        },
+      ],
     };
-  },
-  computed: {
-    buttonsShow: function() {
-      return this.buttons.filter(function(button) {
-        return button.render;
-      });
-    }
   },
   methods: {
     expand() {
-      const Text = document.querySelector(".Category-Content-Text");
-      Text.style.overflow = "inherit";
-      var Btn = document.getElementById("btn");
+      const Text = document.querySelector('.Category-Content-Text');
+      Text.style.overflow = 'inherit';
+      const Btn = document.getElementById('btn');
       Btn.remove();
     },
     navigate(button) {
       this.buttons[0].render = true;
-      if (button == "next") {
-        this.departments[this.index].display = "none";
+      if (button === 'next') {
+        this.departments[this.index].display = 'none';
         this.index += 1;
-        this.departments[this.index].display = "inherit";
-        this.departments[this.index].sliderMax =
-          this.departments[this.index - 1].sliderMax - this.departments[this.index - 1].storedValue;
-      } else if (button == "prev") {
-        this.departments[this.index].display = "none";
+        this.departments[this.index].display = 'inherit';
+      } else if (button === 'prev') {
+        this.departments[this.index].display = 'none';
         this.index -= 1;
-        this.departments[this.index].display = "inherit";
+        this.departments[this.index].display = 'inherit';
       }
-      if (this.index == 0) {
+      if (this.index === 0) {
         this.buttons[0].render = false;
-      } else if (this.index == 6) {
+      } else if (this.index === 6) {
         this.buttons[1].render = false;
         this.buttons[2].render = true;
       }
-    }
-  }
+    },
+    updateAmount(department, value) {
+      this.$store.commit('budget/updateAmounts', { [department]: value });
+    },
+  },
 };
 </script>
 
