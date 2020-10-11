@@ -32,17 +32,17 @@ export default Vue.extend({
       //change budget-landing to display: none
       const budgetBox = document.querySelector(".budget-landing");
       budgetBox.style.display = "none";
-      //change Balance-Budget-Show to display: none
+      //change floating-card-container to display: none
       const budgetShow = document.getElementById("hide-for-walkthrough");
       budgetShow.style.display = "none";
       //change Category-Background to display: block
       const walkthrough = document.querySelector(".Category-Background");
       walkthrough.style.display = "block";
-      //change header-wrapper and Balance-Budget-Show background color to #f1f8f8 and opacity to 1
+      //change header-wrapper and floating-card-container background color to #f1f8f8 and opacity to 1
       const header = document.getElementById("header-wrapper");
       header.style.background = "#f1f8f8";
       header.style.opacity = 1;
-      const page = document.getElementById("Balance-Budget-Show");
+      const page = document.querySelector(".floating-card-container");
       page.style.background = "#f1f8f8";
       page.style.opacity = 1;
     },
@@ -50,16 +50,21 @@ export default Vue.extend({
       //change budget-landing to display: none
       const budgetBox = document.querySelector(".budget-landing");
       budgetBox.style.display = "none";
-      //change Balance-Budget-Show to display: flex
+      //change floating-card-container to display: flex
       const budgetShow = document.getElementById("hide-for-walkthrough");
       budgetShow.style.display = "block";
-      //change header-wrapper and Balance-Budget-Show background color to #f1f8f8 and opacity to 1
+      //change header-wrapper and floating-card-container background color to #f1f8f8 and opacity to 1
       const header = document.getElementById("header-wrapper");
       header.style.background = "#f1f8f8";
       header.style.opacity = 1;
-      const page = document.getElementById("Balance-Budget-Show");
+      const page = document.querySelector(".floating-card-container");
       page.style.background = "#f1f8f8";
       page.style.opacity = 1;
+      //change footer background color to #2a6465 and opacity to 1
+      const footer = document.querySelector(".footer");
+      footer.style.background = "#2a6465";
+      footer.style.opacity = 1;
+
       //change Category-Background to display: none
       const walkthrough = document.querySelector(".Category-Background");
       walkthrough.style.display = "none";
