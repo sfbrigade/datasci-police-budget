@@ -53,7 +53,7 @@
     "husky": "^4.3.0",
     "jest": "^24.1.0",
     "lint-staged": "^10.4.0",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.5",
     "nuxt-purgecss": "^1.0.0",
     "nuxt-svg-loader": "^1.2.0",
     "prettier": "^2.1.2",
