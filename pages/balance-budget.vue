@@ -9,7 +9,7 @@
     <v-container
       :style="myStyle"
       fluid
-      class="floating-card-container no-padding"
+      class="page-container floating-card-container no-padding"
       fill-height
     >
       <v-row justify="center">
@@ -58,97 +58,30 @@
       </v-row>
 
       <v-row class="hide-for-walkthrough" justify="center">
-        <v-spacer />
-        <v-col cols="2">
+        <v-col class='slider col-12 col-sm-6 col-md-3'
+               v-for="dept in budgetData" :key="dept.key">
+          <v-spacer />
           <div class="Slider-Title">
-            <div class="color Health-Color" />
-            <v-tooltip bottom color="white" close-delay="750">
-              <template v-slot:activator="{ on, attrs }">
-                <span v-bind="attrs" v-on="on">Community Health</span>
-              </template>
-              <div>
-                <span class="Tool-Tip">Public health.</span><br />
-                <span class="Tool-Tip-Link">MORE DETAILS</span>
-              </div>
-            </v-tooltip>
+            <div class="slider-title-internal">
+              <div class="color" v-bind:style="{ 'background-color': dept.color }" />
+              <v-tooltip bottom color="white" close-delay="750">
+                <template v-slot:activator="{ on, attrs }">
+                  <span class='slider-title-span' v-bind="attrs" v-on="on">{{ dept.name }}</span>
+                </template>
+                <div>
+                  <span class="Tool-Tip"
+                    >{{ dept.description }}</span
+                  ><br />
+                  <span class="Tool-Tip-Link">MORE DETAILS</span>
+                </div>
+              </v-tooltip>
+            </div>
           </div>
-        </v-col>
-        <v-col cols="2">
-          <div class="Slider-Title">
-            <div class="color Culture-Color" />
-            <v-tooltip bottom color="white" close-delay="750">
-              <template v-slot:activator="{ on, attrs }">
-                <span v-bind="attrs" v-on="on">Culture & Recreation</span>
-              </template>
-              <div>
-                <span class="Tool-Tip"
-                  >Parks, open spaces, libraries, and cultural facilities.</span
-                ><br />
-                <span class="Tool-Tip-Link">MORE DETAILS</span>
-              </div>
-            </v-tooltip>
-          </div>
-        </v-col>
-        <v-col cols="2">
-          <div class="Slider-Title">
-            <div class="color Admin-Color" />
-            <v-tooltip bottom color="white" close-delay="750">
-              <template v-slot:activator="{ on, attrs }">
-                <span v-bind="attrs" v-on="on">General Admin & Finance</span>
-              </template>
-              <div>
-                <span class="Tool-Tip"
-                  >City planning, retirement, elected officials, and more.</span
-                ><br />
-                <span class="Tool-Tip-Link">MORE DETAILS</span>
-              </div>
-            </v-tooltip>
-          </div>
-        </v-col>
-        <v-col cols="2">
-          <div class="Slider-Title">
-            <div class="color City-Color" />
-            <v-tooltip bottom color="white" close-delay="750">
-              <template v-slot:activator="{ on, attrs }">
-                <span v-bind="attrs" v-on="on"
-                  >General City Responsibilities</span
-                >
-              </template>
-              <div>
-                <span class="Tool-Tip"
-                  >General city and general fund unallocated.</span
-                ><br />
-                <span class="Tool-Tip-Link">MORE DETAILS</span>
-              </div>
-            </v-tooltip>
-          </div>
-        </v-col>
-        <v-spacer />
-      </v-row>
-
-      <v-row class="hide-for-walkthrough">
-        <v-spacer />
-        <v-col cols="2"
-          ><div class="Slider-Amount">${{ healthValue }} mil</div></v-col
-        >
-        <v-col cols="2"
-          ><div class="Slider-Amount">${{ cultureValue }} mil</div></v-col
-        >
-        <v-col cols="2"
-          ><div class="Slider-Amount">${{ adminValue }} mil</div></v-col
-        >
-        <v-col cols="2"
-          ><div class="Slider-Amount">${{ cityValue }} mil</div></v-col
-        >
-        <v-spacer />
-      </v-row>
-
-      <v-row class="hide-for-walkthrough">
-        <v-spacer />
-        <v-col cols="2">
+          <div class="Slider-Amount">${{ dept.total }} mil</div>
           <v-row justify="center">
             <v-slider
-              v-model="healthValue"
+              :value="dept.total"
+              @input="updateAmount(dept.key, $event)"
               :max="sliderMax"
               :min="sliderMin"
               @change="refreshPieChartData"
@@ -160,175 +93,6 @@
             />
           </v-row>
         </v-col>
-        <v-col cols="2">
-          <v-row justify="center">
-            <v-slider
-              v-model="cultureValue"
-              :max="sliderMax"
-              :min="sliderMin"
-              @change="refreshPieChartData"
-              :rules="revenueLimitRule"
-              label=" "
-              track-color="#B6DADA"
-              color="#2A6465"
-              vertical
-            />
-          </v-row>
-        </v-col>
-        <v-col cols="2">
-          <v-row justify="center">
-            <v-slider
-              v-model="adminValue"
-              :max="sliderMax"
-              :min="sliderMin"
-              @change="refreshPieChartData"
-              :rules="revenueLimitRule"
-              label=" "
-              track-color="#B6DADA"
-              color="#2A6465"
-              vertical
-            />
-          </v-row>
-        </v-col>
-        <v-col cols="2">
-          <v-row justify="center">
-            <v-slider
-              v-model="cityValue"
-              :max="sliderMax"
-              :min="sliderMin"
-              @change="refreshPieChartData"
-              :rules="revenueLimitRule"
-              label=" "
-              track-color="#B6DADA"
-              color="#2A6465"
-              vertical
-            />
-          </v-row>
-        </v-col>
-        <v-spacer />
-      </v-row>
-
-      <v-row class="hide-for-walkthrough" justify="center">
-        <v-spacer />
-        <v-col cols="2">
-          <div class="Slider-Title">
-            <div class="color Welfare-Color" />
-            <v-tooltip bottom color="white" close-delay="750">
-              <template v-slot:activator="{ on, attrs }">
-                <span v-bind="attrs" v-on="on"
-                  >Human Welfare & Neighborhood Development</span
-                >
-              </template>
-              <div>
-                <span class="Tool-Tip"
-                  >Child support, housing support, schools, and human
-                  services.</span
-                ><br />
-                <span class="Tool-Tip-Link">MORE DETAILS</span>
-              </div>
-            </v-tooltip>
-          </div>
-        </v-col>
-        <v-col cols="2">
-          <div class="Slider-Title">
-            <div class="color Protection-Color" />
-            <v-tooltip bottom color="white" close-delay="750">
-              <template v-slot:activator="{ on, attrs }">
-                <span v-bind="attrs" v-on="on">Public Protection</span>
-              </template>
-              <div>
-                <span class="Tool-Tip"
-                  >Probation, sheriff, police, and fire dept.</span
-                ><br />
-                <span class="Tool-Tip-Link">MORE DETAILS</span>
-              </div>
-            </v-tooltip>
-          </div>
-        </v-col>
-        <v-col cols="2">
-          <div class="Slider-Title">
-            <div class="color Transport-Color" />
-            <v-tooltip bottom color="white" close-delay="750">
-              <template v-slot:activator="{ on, attrs }">
-                <span v-bind="attrs" v-on="on"
-                  >Public Works, Transportation & Commerce</span
-                >
-              </template>
-              <div>
-                <span class="Tool-Tip"
-                  >Airport, building inspection, public utilities, and
-                  transportation.</span
-                ><br />
-                <span class="Tool-Tip-Link">MORE DETAILS</span>
-              </div>
-            </v-tooltip>
-          </div>
-        </v-col>
-        <v-spacer />
-      </v-row>
-
-      <v-row class="hide-for-walkthrough">
-        <v-spacer />
-        <v-col cols="2"
-          ><div class="Slider-Amount">${{ welfareValue }} mil</div></v-col
-        >
-        <v-col cols="2"
-          ><div class="Slider-Amount">${{ protectionValue }} mil</div></v-col
-        >
-        <v-col cols="2"
-          ><div class="Slider-Amount">${{ transportValue }} mil</div></v-col
-        >
-        <v-spacer />
-      </v-row>
-
-      <v-row class="hide-for-walkthrough">
-        <v-spacer />
-        <v-col cols="2">
-          <v-row justify="center">
-            <v-slider
-              v-model="welfareValue"
-              :max="sliderMax"
-              :min="sliderMin"
-              @change="refreshPieChartData"
-              :rules="revenueLimitRule"
-              label=" "
-              track-color="#B6DADA"
-              color="#2A6465"
-              vertical
-            />
-          </v-row>
-        </v-col>
-        <v-col cols="2">
-          <v-row justify="center">
-            <v-slider
-              v-model="protectionValue"
-              :max="sliderMax"
-              :min="sliderMin"
-              @change="refreshPieChartData"
-              :rules="revenueLimitRule"
-              label=" "
-              track-color="#B6DADA"
-              color="#2A6465"
-              vertical
-            />
-          </v-row>
-        </v-col>
-        <v-col cols="2">
-          <v-row justify="center">
-            <v-slider
-              v-model="transportValue"
-              :max="sliderMax"
-              :min="sliderMin"
-              @change="refreshPieChartData"
-              :rules="revenueLimitRule"
-              label=" "
-              track-color="#B6DADA"
-              color="#2A6465"
-              vertical
-            />
-          </v-row>
-        </v-col>
-        <v-spacer />
       </v-row>
 
       <v-row class="hide-for-walkthrough my-10" justify="center">
@@ -354,15 +118,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import { D3PieChart } from "vue-d3-charts";
+import Vue from 'vue';
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+import { D3PieChart } from 'vue-d3-charts';
 
-import CitySelect from "@/components/CitySelect";
-import FiscalYearSelect from "@/components/FiscalYearSelect";
+import CitySelect from '@/components/CitySelect';
+import FiscalYearSelect from '@/components/FiscalYearSelect';
 
-import DepartmentsWalkthrough from "@/components/DepartmentsWalkthrough";
+import DepartmentsWalkthrough from '@/components/DepartmentsWalkthrough';
 
 const TEMP_TOTAL_AMOUNT = 1234.0;
 
@@ -382,14 +146,14 @@ export default Vue.extend({
   },
   computed: {
     exceedsLimit() {
-      return this.$store.getters["budget/getExceedsLimit"];
+      return this.$store.getters['budget/getExceedsLimit'];
     },
     totalExpenses() {
-      return this.$store.getters["budget/getTotalAmount"];
+      return this.$store.getters['budget/getTotalAmount'];
     },
     amounts() {
-      return Object.values(this.$store.getters["budget/getAmounts"]).some(
-        (amount) => amount > 0
+      return Object.values(this.$store.getters['budget/getAmounts']).some(
+        (amount) => amount > 0,
       );
     },
     healthValue: {
@@ -397,7 +161,7 @@ export default Vue.extend({
         return this.$store.state.budget.amounts.health;
       },
       set(v) {
-        this.$store.commit("budget/updateAmounts", { health: v });
+        this.$store.commit('budget/updateAmounts', { health: v });
       },
     },
     cultureValue: {
@@ -405,7 +169,7 @@ export default Vue.extend({
         return this.$store.state.budget.amounts.culture;
       },
       set(v) {
-        this.$store.commit("budget/updateAmounts", { culture: v });
+        this.$store.commit('budget/updateAmounts', { culture: v });
       },
     },
     adminValue: {
@@ -413,7 +177,7 @@ export default Vue.extend({
         return this.$store.state.budget.amounts.admin;
       },
       set(v) {
-        this.$store.commit("budget/updateAmounts", { admin: v });
+        this.$store.commit('budget/updateAmounts', { admin: v });
       },
     },
     cityValue: {
@@ -421,7 +185,7 @@ export default Vue.extend({
         return this.$store.state.budget.amounts.city;
       },
       set(v) {
-        this.$store.commit("budget/updateAmounts", { city: v });
+        this.$store.commit('budget/updateAmounts', { city: v });
       },
     },
     welfareValue: {
@@ -429,7 +193,7 @@ export default Vue.extend({
         return this.$store.state.budget.amounts.welfare;
       },
       set(v) {
-        this.$store.commit("budget/updateAmounts", { welfare: v });
+        this.$store.commit('budget/updateAmounts', { welfare: v });
       },
     },
     protectionValue: {
@@ -437,7 +201,7 @@ export default Vue.extend({
         return this.$store.state.budget.amounts.protection;
       },
       set(v) {
-        this.$store.commit("budget/updateAmounts", { protection: v });
+        this.$store.commit('budget/updateAmounts', { protection: v });
       },
     },
     transportValue: {
@@ -445,52 +209,59 @@ export default Vue.extend({
         return this.$store.state.budget.amounts.transport;
       },
       set(v) {
-        this.$store.commit("budget/updateAmounts", { transport: v });
+        this.$store.commit('budget/updateAmounts', { transport: v });
       },
     },
     budgetData() {
       return [
         {
-          key: "health",
-          name: "Community Health",
+          key: 'health',
+          name: this.$t('departments.health.name'),
+          description: this.$t('departments.health.description'),
           total: this.healthValue,
-          deptColor: "#2A6465",
+          color: '#2A6465',
         },
         {
-          key: "culture",
-          name: "Culture & Recreation",
+          key: 'culture',
+          name: this.$t('departments.culture.name'),
+          description: this.$t('departments.culture.description'),
           total: this.cultureValue,
-          deptColor: "#EF896E",
+          color: '#EF896E',
         },
         {
-          key: "admin",
-          name: "General Admin & Finance",
+          key: 'admin',
+          name: this.$t('departments.admin.name'),
+          description: this.$t('departments.admin.description'),
           total: this.adminValue,
-          deptColor: "#F5BD41",
+          color: '#F5BD41',
         },
         {
-          key: "city",
-          name: "General City Responsibilities",
+          key: 'city',
+          name: this.$t('departments.city.name'),
+          description: this.$t('departments.city.description'),
           total: this.cityValue,
-          deptColor: "#CAAA97",
+          color: '#CAAA97',
         },
         {
-          key: "welfare",
-          name: "Human Welfare & Neighborhood Development",
+          key: 'welfare',
+          name: this.$t('departments.welfare.name'),
+          description: this.$t('departments.welfare.description'),
           total: this.welfareValue,
-          deptColor: "#4DA54A",
+          color: '#4DA54A',
         },
         {
-          key: "protection",
-          name: "Public Protection",
+          key: 'protection',
+          name: this.$t('departments.protection.name'),
+          description: this.$t('departments.protection.description'),
           total: this.protectionValue,
-          deptColor: "#4296AD",
+          color: '#4296AD',
         },
         {
-          key: "transport",
-          name: "Public Works, Transportation & Commerce",
+          key: 'transport',
+          name: this.$t('departments.transport.name'),
+          description: this.$t('departments.transport.description'),
           total: this.transportValue,
-          deptColor: "#CF722A",
+          color: '#CF722A',
         },
       ];
     },
@@ -504,17 +275,17 @@ export default Vue.extend({
   data() {
     return {
       myStyle: {
-        backgroundColor: "#333333",
-        opacity: "1",
+        backgroundColor: '#333333',
+        opacity: '1',
       },
       isMounted: false,
       budgetPieChartData: [],
       budgetPieChartConfig: {
-        key: "name",
-        value: "total",
-        color: { key: "deptColor" },
+        key: 'name',
+        value: 'total',
+        color: { key: 'color' },
         margin: { left: 100, right: 100 },
-        transition: { duration: 100, ease: "easeLinear" },
+        transition: { duration: 100, ease: 'easeLinear' },
       },
 
       revenueLimitRule: [], // (v) => v + currentExpenses.slice(0, 6)
@@ -523,18 +294,25 @@ export default Vue.extend({
   },
   methods: {
     initializeTotalAmount() {
-      this.$store.commit("budget/setTotalAmount", TEMP_TOTAL_AMOUNT);
+      this.$store.commit('budget/setTotalAmount', TEMP_TOTAL_AMOUNT);
     },
     refreshPieChartData() {
       this.budgetPieChartData = this.budgetData.filter(
-        (department) => department.total > 0
+        (department) => department.total > 0,
       );
+    },
+    updateAmount(key, value) {
+      this.$store.commit('budget/updateAmounts', { [key]: value });
     },
   },
 });
 </script>
 
 <style lang="scss">
+.page-container {
+  max-width: 90%;
+}
+
 .Section-Title {
   color: $dark-turquoise;
 }
@@ -592,10 +370,28 @@ export default Vue.extend({
   font-weight: normal;
 }
 
+.slider {
+  margin-bottom: 50px;
+}
+
+.slider-title-internal {
+  display: inline-block;
+  align-self: flex-end;
+}
+
 .Slider-Title {
+  min-height: 96px;
   font-size: 24px;
-  line-height: 33px;
+  line-height: 32px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+
+  @include lessThan($medium) {
+    min-height: 32px;
+    font-size: 16px;
+    line-height: 16px;
+  }
 
   &.Health-Color {
     background-color: $dark-turquoise;
@@ -633,19 +429,16 @@ export default Vue.extend({
   color: #ff5252;
 }
 
-@media only screen and (max-width: 768px) {
-  .Slider-Title {
-    font-size: 17px;
-    line-height: 16px;
-    text-align: center;
-  }
-}
-
 .color {
   height: 20px;
   width: 20px;
   border-radius: 50%;
   display: inline-block;
+
+  @include lessThan($medium) {
+    height: 12px;
+    width: 12px;
+  }
 
   &.Health-Color {
     background-color: $dark-turquoise;
