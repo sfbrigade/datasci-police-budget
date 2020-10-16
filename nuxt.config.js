@@ -52,7 +52,25 @@ export default {
   */
   modules: [
     '@nuxtjs/pwa',
+    'nuxt-i18n',
   ],
+  /*
+  ** nuxt-i18n config
+  ** https://i18n.nuxtjs.org
+   */
+  i18n: {
+    defaultLocale: 'en',
+    lazy: true,
+    langDir: 'translations/',
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-US.js',
+      },
+    ],
+    vueI18nLoader: true,
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
