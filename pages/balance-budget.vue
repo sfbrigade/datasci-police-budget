@@ -1,13 +1,12 @@
 <template>
   <v-app>
-    <div :style="myStyle" id="header-wrapper">
+    <div id="header-wrapper">
       <v-row>
         <Header />
       </v-row>
     </div>
 
     <v-container
-      :style="myStyle"
       fluid
       class="page-container floating-card-container no-padding"
       fill-height
@@ -106,10 +105,12 @@
       <v-row class="hide-for-walkthrough my-10" justify="center">
         <v-spacer />
       </v-row>
-      <BudgetLandingBox class="floating-card-budget" />
     </v-container>
+    <v-dialog v-model="showLandingModal" max-width="624" overlay-opacity="0.7" >
+      <BudgetLandingBox :onExit="dismissLandingModal" />
+    </v-dialog>
     <DepartmentsWalkthrough />
-    <div :style="myStyle" id="footer-wrapper">
+    <div id="footer-wrapper">
       <v-row>
         <Footer />
       </v-row>
@@ -274,10 +275,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      myStyle: {
-        backgroundColor: '#333333',
-        opacity: '1',
-      },
+      showLandingModal: true,
       isMounted: false,
       budgetPieChartData: [],
       budgetPieChartConfig: {
@@ -303,6 +301,9 @@ export default Vue.extend({
     },
     updateAmount(key, value) {
       this.$store.commit('budget/updateAmounts', { [key]: value });
+    },
+    dismissLandingModal() {
+      this.showLandingModal = false;
     },
   },
 });
@@ -464,13 +465,7 @@ export default Vue.extend({
 }
 
 .floating-card-budget {
-  position: absolute;
-  top: 442px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 623px;
+  max-width: 600px;
 }
 
 .Tool-Tip {

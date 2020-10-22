@@ -84,6 +84,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   computed: {
     totalAmount() {
@@ -95,61 +97,66 @@ export default {
     buttonsShow() {
       return this.buttons.filter((button) => button.render);
     },
-  },
-  data() {
-    return {
-      index: 0,
-      departments: [
+    ...mapState({
+      selectedCity: 'city',
+    }),
+    departments() {
+      return [
         {
           name: 'health',
           header: 'Community Health',
-          content: this.$t(`departments.health.longDescription.${this.$store.state.city}`),
+          content: this.$t(`departments.health.longDescription.${this.selectedCity}`),
           budget: '$2,422 mil',
           display: 'inherit',
         },
         {
           name: 'culture',
           header: 'Culture & Recreation',
-          content: this.$t(`departments.culture.longDescription.${this.$store.state.city}`),
+          content: this.$t(`departments.culture.longDescription.${this.selectedCity}`),
           budget: '$489 mil',
           display: 'none',
         },
         {
           name: 'admin',
           header: 'General Admin & Finance',
-          content: this.$t(`departments.admin.longDescription.${this.$store.state.city}`),
+          content: this.$t(`departments.admin.longDescription.${this.selectedCity}`),
           budget: '$x mil',
           display: 'none',
         },
         {
           name: 'city',
           header: 'General City Responsibilities',
-          content: this.$t(`departments.city.longDescription.${this.$store.state.city}`),
+          content: this.$t(`departments.city.longDescription.${this.selectedCity}`),
           budget: '$x mil',
           display: 'none',
         },
         {
           name: 'welfare',
           header: 'Human Welfare & Neighborhood Development',
-          content: this.$t(`departments.welfare.longDescription.${this.$store.state.city}`),
+          content: this.$t(`departments.welfare.longDescription.${this.selectedCity}`),
           budget: '$x mil',
           display: 'none',
         },
         {
           name: 'protection',
           header: 'Public Protection',
-          content: this.$t(`departments.protection.longDescription.${this.$store.state.city}`),
+          content: this.$t(`departments.protection.longDescription.${this.selectedCity}`),
           budget: '$x mil',
           display: 'none',
         },
         {
           name: 'transport',
           header: 'Public Works, Transportation, & Commerce',
-          content: this.$t(`departments.transport.longDescription.${this.$store.state.city}`),
+          content: this.$t(`departments.transport.longDescription.${this.selectedCity}`),
           budget: '$x mil',
           display: 'none',
         },
-      ],
+      ];
+    },
+  },
+  data() {
+    return {
+      index: 0,
       buttons: [
         {
           name: 'prev',
