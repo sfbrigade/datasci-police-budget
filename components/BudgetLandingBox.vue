@@ -20,56 +20,36 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import CitySelect from "@/components/CitySelect";
+import Vue from 'vue';
+import CitySelect from '@/components/CitySelect';
+
 export default Vue.extend({
+  props: ['onExit'],
   components: {
     CitySelect,
   },
   methods: {
     showWalkthrough() {
-      //change budget-landing to display: none
-      const budgetBox = document.querySelector(".budget-landing");
-      budgetBox.style.display = "none";
-      //change floating-card-container to display: none
-      const budgetShowDivs = document.querySelectorAll(".hide-for-walkthrough");
-      budgetShowDivs.forEach(function (budgetShow) {
-        budgetShow.style.display = "none";
+      // change floating-card-container to display: none
+      const budgetShowDivs = document.querySelectorAll('.hide-for-walkthrough');
+      budgetShowDivs.forEach((budgetShow) => {
+        budgetShow.style.display = 'none';
       });
-      //change Category-Background to display: block
-      const walkthrough = document.querySelector(".Category-Background");
-      walkthrough.style.display = "block";
-      //change header-wrapper and floating-card-container background color to #f1f8f8 and opacity to 1
-      const header = document.getElementById("header-wrapper");
-      header.style.background = "#f1f8f8";
-      header.style.opacity = 1;
-      const page = document.querySelector(".floating-card-container");
-      page.style.background = "#f1f8f8";
-      page.style.opacity = 1;
+      // change Category-Background to display: block
+      const walkthrough = document.querySelector('.Category-Background');
+      walkthrough.style.display = 'block';
+      this.onExit();
     },
     showBudget() {
-      //change budget-landing to display: none
-      const budgetBox = document.querySelector(".budget-landing");
-      budgetBox.style.display = "none";
-      //change floating-card-container to display: flex
-      const budgetShowDivs = document.querySelectorAll(".hide-for-walkthrough");
-      budgetShowDivs.forEach(function (budgetShow) {
-        budgetShow.style.display = "flex";
+      // change floating-card-container to display: flex
+      const budgetShowDivs = document.querySelectorAll('.hide-for-walkthrough');
+      budgetShowDivs.forEach((budgetShow) => {
+        budgetShow.style.display = 'flex';
       });
-      //change header-wrapper and floating-card-container background color to #f1f8f8 and opacity to 1
-      const header = document.getElementById("header-wrapper");
-      header.style.background = "#f1f8f8";
-      header.style.opacity = 1;
-      const page = document.querySelector(".floating-card-container");
-      page.style.background = "#f1f8f8";
-      page.style.opacity = 1;
-      //change footer background color to #2a6465 and opacity to 1
-      const footer = document.querySelector(".footer");
-      footer.style.background = "#2a6465";
-      footer.style.opacity = 1;
-      //change Category-Background to display: none
-      const walkthrough = document.querySelector(".Category-Background");
-      walkthrough.style.display = "none";
+      // change Category-Background to display: none
+      const walkthrough = document.querySelector('.Category-Background');
+      walkthrough.style.display = 'none';
+      this.onExit();
     },
   },
 });
