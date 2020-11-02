@@ -42,7 +42,7 @@
     "@types/chart.js": "^2.9.27",
     "@vue/cli-plugin-eslint": "~4.5.7",
     "@vue/eslint-config-airbnb": "^5.0.2",
-    "@vue/test-utils": "^1.1.0",
+    "@vue/test-utils": "^1.1.1",
     "autoprefixer": "^9.7.4",
     "babel-jest": "^26.6.1",
     "eslint": "^7.12.1",
