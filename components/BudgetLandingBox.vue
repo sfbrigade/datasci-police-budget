@@ -30,25 +30,11 @@ export default Vue.extend({
   },
   methods: {
     showWalkthrough() {
-      // change floating-card-container to display: none
-      const budgetShowDivs = document.querySelectorAll('.hide-for-walkthrough');
-      budgetShowDivs.forEach((budgetShow) => {
-        budgetShow.style.display = 'none';
-      });
-      // change Category-Background to display: block
-      const walkthrough = document.querySelector('.Category-Background');
-      walkthrough.style.display = 'block';
+      this.$store.commit('departments/goToWalkthrough');
       this.onExit();
     },
     showBudget() {
-      // change floating-card-container to display: flex
-      const budgetShowDivs = document.querySelectorAll('.hide-for-walkthrough');
-      budgetShowDivs.forEach((budgetShow) => {
-        budgetShow.style.display = 'flex';
-      });
-      // change Category-Background to display: none
-      const walkthrough = document.querySelector('.Category-Background');
-      walkthrough.style.display = 'none';
+      this.$store.commit('departments/goToOverview');
       this.onExit();
     },
   },

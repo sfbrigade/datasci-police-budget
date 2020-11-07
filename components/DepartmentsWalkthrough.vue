@@ -1,69 +1,63 @@
 <template>
-  <v-container class="Category-Background carousel-view" fluid>
-    <transition-group class="carousel" tag="div">
-      <div
-        v-for="(department, i) in departments"
-        v-bind:key="department.name"
-        v-bind:style="{ display: department.display }"
-        class="slide"
-      >
-        <v-row>
-          <v-col class="Category-Title"
-            >{{ i + 1 }}. {{ department.header }}</v-col
-          >
-        </v-row>
-        <v-row class="Category-Content">
-          <v-col cols="7">
-            <v-row class="Category-Content-Text text-sm-body-1">
-              <span v-html="department.content"></span>
-            </v-row>
-            <v-row justify="center">
-              <v-btn
-                id="btn"
-                elevation="0"
-                outlined
-                color="#BDBDBD"
-                @click="expand"
-                >SEE MORE v</v-btn
-              >
-            </v-row>
-          </v-col>
-          <v-col cols="1"></v-col>
-          <v-col>
-            <v-row>
-              <div class="Category-Slider">
-                <div class="Slider-Amount">
-                  ${{ amounts[department.name] }} mil
-                </div>
-                <v-row justify="center">
-                  <v-slider
-                    v-bind:max="totalAmount"
-                    :value="amounts[department.name]"
-                    @change="
-                      (value) => {
-                        updateAmount(department.name, value);
-                      }
-                    "
-                    min="0"
-                    vertical
-                    track-color="#B6DADA"
-                    color="#2A6465"
-                  />
-                </v-row>
-              </div>
-            </v-row>
-            <v-row class="Category-Budget-Caption text-sm-body-1"
-              >Last year’s budget: {{ department.budget }}</v-row
+  <v-container class="Category-Background carousel-view" v-if="!shouldShowOverview" fluid>
+    <div class="slide">
+      <v-row>
+        <v-col class="Category-Title">
+          {{ activeDepartment.number }}. {{ activeDepartment.header }}
+        </v-col>
+      </v-row>
+      <v-row class="Category-Content">
+        <v-col cols="7">
+          <v-row class="Category-Content-Text text-sm-body-1">
+            <span v-html="activeDepartment.content"></span>
+          </v-row>
+          <v-row justify="center">
+            <v-btn
+              id="btn"
+              elevation="0"
+              outlined
+              color="#BDBDBD"
+              @click="expand"
+              >SEE MORE v</v-btn
             >
-          </v-col>
-        </v-row>
+          </v-row>
+        </v-col>
+        <v-col cols="1"></v-col>
+        <v-col>
+          <v-row>
+            <div class="Category-Slider">
+              <div class="Slider-Amount">
+                ${{ amounts[activeDepartment.name] }} mil
+              </div>
+              <v-row justify="center">
+                <v-slider
+                  v-bind:max="totalAmount"
+                  :value="amounts[activeDepartment.name]"
+                  @change="
+                    (value) => {
+                      updateAmount(activeDepartment.name, value);
+                    }
+                  "
+                  min="0"
+                  vertical
+                  track-color="#B6DADA"
+                  color="#2A6465"
+                />
+              </v-row>
+            </div>
+          </v-row>
+          <v-row class="Category-Budget-Caption text-sm-body-1"
+            >Last year’s budget: {{ activeDepartment.budget }}</v-row
+          >
+        </v-col>
+      </v-row>
+      <v-row class="controls">
         <div class="carousel-controls">
           <v-btn
             v-for="button in buttonsShow"
             v-bind:key="button.name"
             class="carousel-controls__button"
             v-bind:class="button.class"
-            v-bind:disabled="amounts[department.name] == 0"
             v-bind:outlined="button.outlined"
             rounded
             depressed
@@ -73,8 +67,8 @@
             >{{ button.name }}</v-btn
           >
         </div>
-      </div>
-    </transition-group>
+      </v-row>
+    </div>
     <div class="skip">
       <v-btn text @click="showBudget" class="skip" color="#2a6465"
         >SKIP TO OVERVIEW</v-btn
@@ -88,6 +82,9 @@ import { mapState } from 'vuex';
 
 export default {
   computed: {
+    shouldShowOverview() {
+      return this.$store.getters['departments/shouldShowOverview'];
+    },
     totalAmount() {
       return this.$store.getters['budget/getTotalAmount'];
     },
@@ -103,6 +100,7 @@ export default {
     departments() {
       return [
         {
+          number: 1,
           name: 'health',
           header: 'Community Health',
           content: this.$t(`departments.health.longDescription.${this.selectedCity}`),
@@ -110,6 +108,7 @@ export default {
           display: 'inherit',
         },
         {
+          number: 2,
           name: 'culture',
           header: 'Culture & Recreation',
           content: this.$t(`departments.culture.longDescription.${this.selectedCity}`),
@@ -117,6 +116,7 @@ export default {
           display: 'none',
         },
         {
+          number: 3,
           name: 'admin',
           header: 'General Admin & Finance',
           content: this.$t(`departments.admin.longDescription.${this.selectedCity}`),
@@ -124,6 +124,7 @@ export default {
           display: 'none',
         },
         {
+          number: 4,
           name: 'city',
           header: 'General City Responsibilities',
           content: this.$t(`departments.city.longDescription.${this.selectedCity}`),
@@ -131,6 +132,7 @@ export default {
           display: 'none',
         },
         {
+          number: 5,
           name: 'welfare',
           header: 'Human Welfare & Neighborhood Development',
           content: this.$t(`departments.welfare.longDescription.${this.selectedCity}`),
@@ -138,6 +140,7 @@ export default {
           display: 'none',
         },
         {
+          number: 6,
           name: 'protection',
           header: 'Public Protection',
           content: this.$t(`departments.protection.longDescription.${this.selectedCity}`),
@@ -145,6 +148,7 @@ export default {
           display: 'none',
         },
         {
+          number: 7,
           name: 'transport',
           header: 'Public Works, Transportation, & Commerce',
           content: this.$t(`departments.transport.longDescription.${this.selectedCity}`),
@@ -152,6 +156,11 @@ export default {
           display: 'none',
         },
       ];
+    },
+    activeDepartment() {
+      return this.departments.find(
+        (dep) => dep.name === this.$store.getters['departments/getActiveDepartmentName'],
+      );
     },
   },
   data() {
@@ -161,21 +170,18 @@ export default {
         {
           name: 'prev',
           outlined: true,
-          method: 'previous',
           class: '',
           render: false,
         },
         {
           name: 'next',
           outlined: false,
-          method: 'next',
           class: 'white--text',
           render: true,
         },
         {
           name: 'finish',
           outlined: false,
-          method: 'next',
           class: 'white--text',
           render: false,
         },
@@ -192,24 +198,15 @@ export default {
     navigate(button) {
       this.buttons[0].render = true;
       if (button === 'next') {
-        this.departments[this.index].display = 'none';
-        this.index += 1;
-        this.departments[this.index].display = 'inherit';
+        this.$store.commit('departments/nextDepartment');
       } else if (button === 'prev') {
-        this.departments[this.index].display = 'none';
-        this.index -= 1;
-        this.departments[this.index].display = 'inherit';
+        this.$store.commit('departments/previousDepartment');
       } else if (button === 'finish') {
-        // change Balance-Budget-Show to display: flex
-        const budgetShow = document.getElementById('hide-for-walkthrough');
-        budgetShow.style.display = 'block';
-        // change Category-Background to display: none
-        const walkthrough = document.querySelector('.Category-Background');
-        walkthrough.style.display = 'none';
+        this.showBudget();
       }
-      if (this.index === 0) {
+      if (this.$store.getters['departments/getActiveDepartmentName'] === 'health') {
         this.buttons[0].render = false;
-      } else if (this.index === 6) {
+      } else if (this.$store.getters['departments/getActiveDepartmentName'] === 'transport') {
         this.buttons[1].render = false;
         this.buttons[2].render = true;
       }
@@ -218,14 +215,7 @@ export default {
       this.$store.commit('budget/updateAmounts', { [department]: value });
     },
     showBudget() {
-      // change Balance-Budget-Show to display: flex
-      const budgetShowDivs = document.querySelectorAll('.hide-for-walkthrough');
-      budgetShowDivs.forEach((budgetShow) => {
-        budgetShow.style.display = 'flex';
-      });
-      // change Category-Background to display: none
-      const walkthrough = document.querySelector('.Category-Background');
-      walkthrough.style.display = 'none';
+      this.$store.commit('departments/goToOverview');
     },
   },
 };
@@ -239,7 +229,6 @@ export default {
 .Category-Background {
   background: #f1f8f8;
   width: 1280px;
-  display: none;
 }
 .Category-Title {
   color: #000000;
@@ -284,18 +273,13 @@ export default {
   color: #4f4f4f;
   padding: 10px;
 }
-.carousel {
-  overflow: none;
-  background: #ffffff;
-}
 .slide {
-  height: 750px;
+  background: #ffffff;
   overflow: hidden;
 }
-.carousel-controls {
-  background: #ffffff;
+.controls {
+  justify-content: center;
   text-align: center;
-  z-index: 100;
   padding-bottom: 100px;
 }
 .skip {
