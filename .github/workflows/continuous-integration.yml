@@ -19,6 +19,19 @@ jobs:
         with:
           config-file: cypress.json
           command: yarn test
+      # after the test run completes, store any videos/screenshots
+      - name: Upload failed screenshots
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: test/e2e/screenshots
+      - name: Upload failed videos
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-videos
+          path: test/e2e/videos
 
   merge-me:
     name: Auto-merge dependabot PRs
