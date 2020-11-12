@@ -56,7 +56,7 @@
         </v-col>
       </v-row>
 
-      <v-row class="hide-for-walkthrough" justify="center">
+      <v-row v-if="showBudgetOverview" justify="center">
         <v-col class='slider col-12 col-sm-6 col-md-3'
                v-for="dept in budgetData" :key="dept.key">
           <v-spacer />
@@ -94,7 +94,7 @@
         </v-col>
       </v-row>
 
-      <v-row class="hide-for-walkthrough my-10" justify="center">
+      <v-row v-if="showBudgetOverview" class="my-10" justify="center">
         <v-spacer />
         <v-col cols="2"
           ><v-btn rounded color="#2A6465" dark block>NEXT</v-btn></v-col
@@ -102,7 +102,7 @@
         <v-spacer />
       </v-row>
 
-      <v-row class="hide-for-walkthrough my-10" justify="center">
+      <v-row v-if="showBudgetOverview" class="my-10" justify="center">
         <v-spacer />
       </v-row>
     </v-container>
@@ -146,6 +146,9 @@ export default Vue.extend({
     this.isMounted = true;
   },
   computed: {
+    showBudgetOverview() {
+      return this.$store.getters['departments/shouldShowOverview'];
+    },
     exceedsLimit() {
       return this.$store.getters['budget/getExceedsLimit'];
     },
