@@ -109,7 +109,8 @@
     <v-dialog v-model="showLandingModal" max-width="624" overlay-opacity="0.7" >
       <BudgetLandingBox :onExit="dismissLandingModal" />
     </v-dialog>
-    <DepartmentsWalkthrough />
+    <DepartmentsWalkthrough
+      @refresh-pie-chart="refreshPieChartData"/>
     <div id="footer-wrapper">
       <v-row>
         <Footer />

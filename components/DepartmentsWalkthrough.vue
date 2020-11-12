@@ -213,6 +213,7 @@ export default {
     },
     updateAmount(department, value) {
       this.$store.commit('budget/updateAmounts', { [department]: value });
+      this.$emit('refresh-pie-chart');
     },
     showBudget() {
       this.$store.commit('departments/goToOverview');
