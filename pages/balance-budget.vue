@@ -27,10 +27,14 @@
       <v-row class="mb-10">
         <v-spacer cols="2" />
         <v-col cols="4">
-          <v-row><div class="Subsection-Title">Revenue</div></v-row>
+          <v-row>
+            <div class="Subsection-Title">
+              {{ hasAnyAmount ? "Remaining" : "" }} Revenue
+            </div>
+          </v-row>
           <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
           <v-row class="mb-5">
-            <div class="Subsection-Amount">${{ totalExpenses }} mil</div>
+            <div class="Subsection-Amount">${{ remainingAmount }} mil</div>
           </v-row>
           <v-row><div class="Subsection-Title">Expenses</div></v-row>
           <v-row><div class="Subsection-Subtitle">(in millions)</div></v-row>
@@ -49,7 +53,7 @@
         </v-col>
         <v-col cols="6">
           <D3PieChart
-            v-if="isMounted && amounts"
+            v-if="isMounted && hasAnyAmount"
             :config="budgetPieChartConfig"
             :datum="budgetPieChartData"
           />
@@ -84,7 +88,7 @@
               :max="sliderMax"
               :min="sliderMin"
               @change="refreshPieChartData"
-              :rules="revenueLimitRule"
+              :rules="sliderRules"
               label=" "
               track-color="#B6DADA"
               color="#2A6465"
@@ -109,8 +113,7 @@
     <v-dialog v-model="showLandingModal" max-width="624" overlay-opacity="0.7" >
       <BudgetLandingBox :onExit="dismissLandingModal" />
     </v-dialog>
-    <DepartmentsWalkthrough
-      @refresh-pie-chart="refreshPieChartData"/>
+    <DepartmentsWalkthrough @refresh-pie-chart="refreshPieChartData"/>
     <div id="footer-wrapper">
       <v-row>
         <Footer />
@@ -124,6 +127,7 @@ import Vue from 'vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import { D3PieChart } from 'vue-d3-charts';
+import { mapGetters } from 'vuex';
 
 import CitySelect from '@/components/CitySelect';
 import FiscalYearSelect from '@/components/FiscalYearSelect';
@@ -131,6 +135,16 @@ import FiscalYearSelect from '@/components/FiscalYearSelect';
 import DepartmentsWalkthrough from '@/components/DepartmentsWalkthrough';
 
 const TEMP_TOTAL_AMOUNT = 1234.0;
+
+const DEPARTMENT_COLOR_MAP = Object.freeze({
+  health: '#2A6465',
+  culture: '#EF896E',
+  admin: '#F5BD41',
+  city: '#CAAA97',
+  welfare: '#4DA54A',
+  protection: '#4296AD',
+  transport: '#CF722A',
+});
 
 export default Vue.extend({
   components: {
@@ -147,134 +161,32 @@ export default Vue.extend({
     this.isMounted = true;
   },
   computed: {
-    showBudgetOverview() {
-      return this.$store.getters['departments/shouldShowOverview'];
-    },
-    exceedsLimit() {
-      return this.$store.getters['budget/getExceedsLimit'];
-    },
-    totalExpenses() {
-      return this.$store.getters['budget/getTotalAmount'];
-    },
-    amounts() {
-      return Object.values(this.$store.getters['budget/getAmounts']).some(
-        (amount) => amount > 0,
-      );
-    },
-    healthValue: {
-      get() {
-        return this.$store.state.budget.amounts.health;
-      },
-      set(v) {
-        this.$store.commit('budget/updateAmounts', { health: v });
-      },
-    },
-    cultureValue: {
-      get() {
-        return this.$store.state.budget.amounts.culture;
-      },
-      set(v) {
-        this.$store.commit('budget/updateAmounts', { culture: v });
-      },
-    },
-    adminValue: {
-      get() {
-        return this.$store.state.budget.amounts.admin;
-      },
-      set(v) {
-        this.$store.commit('budget/updateAmounts', { admin: v });
-      },
-    },
-    cityValue: {
-      get() {
-        return this.$store.state.budget.amounts.city;
-      },
-      set(v) {
-        this.$store.commit('budget/updateAmounts', { city: v });
-      },
-    },
-    welfareValue: {
-      get() {
-        return this.$store.state.budget.amounts.welfare;
-      },
-      set(v) {
-        this.$store.commit('budget/updateAmounts', { welfare: v });
-      },
-    },
-    protectionValue: {
-      get() {
-        return this.$store.state.budget.amounts.protection;
-      },
-      set(v) {
-        this.$store.commit('budget/updateAmounts', { protection: v });
-      },
-    },
-    transportValue: {
-      get() {
-        return this.$store.state.budget.amounts.transport;
-      },
-      set(v) {
-        this.$store.commit('budget/updateAmounts', { transport: v });
-      },
-    },
+    ...mapGetters({
+      amounts: 'budget/getAmounts',
+      exceedsLimit: 'budget/getExceedsLimit',
+      hasAnyAmount: 'budget/hasAnyAmount',
+      remainingAmount: 'budget/getRemainingAmount',
+      showBudgetOverview: 'departments/shouldShowOverview',
+      totalAmount: 'budget/getTotalAmount',
+    }),
     budgetData() {
-      return [
-        {
-          key: 'health',
-          name: this.$t('departments.health.name'),
-          description: this.$t('departments.health.description'),
-          total: this.healthValue,
-          color: '#2A6465',
-        },
-        {
-          key: 'culture',
-          name: this.$t('departments.culture.name'),
-          description: this.$t('departments.culture.description'),
-          total: this.cultureValue,
-          color: '#EF896E',
-        },
-        {
-          key: 'admin',
-          name: this.$t('departments.admin.name'),
-          description: this.$t('departments.admin.description'),
-          total: this.adminValue,
-          color: '#F5BD41',
-        },
-        {
-          key: 'city',
-          name: this.$t('departments.city.name'),
-          description: this.$t('departments.city.description'),
-          total: this.cityValue,
-          color: '#CAAA97',
-        },
-        {
-          key: 'welfare',
-          name: this.$t('departments.welfare.name'),
-          description: this.$t('departments.welfare.description'),
-          total: this.welfareValue,
-          color: '#4DA54A',
-        },
-        {
-          key: 'protection',
-          name: this.$t('departments.protection.name'),
-          description: this.$t('departments.protection.description'),
-          total: this.protectionValue,
-          color: '#4296AD',
-        },
-        {
-          key: 'transport',
-          name: this.$t('departments.transport.name'),
-          description: this.$t('departments.transport.description'),
-          total: this.transportValue,
-          color: '#CF722A',
-        },
-      ];
+      return Object.entries(this.amounts).map(([key, total]) => ({
+        key,
+        total,
+        name: this.$t(`departments.${key}.name`),
+        description: this.$t(`departments.${key}.description`),
+        color: DEPARTMENT_COLOR_MAP[key],
+      }));
     },
     sliderMax() {
-      return this.totalExpenses;
+      return this.totalAmount;
     },
     sliderMin() {
       return 0;
+    },
+    sliderRules() {
+      // return false for error state
+      return [!this.exceedsLimit];
     },
   },
   data() {
@@ -289,9 +201,6 @@ export default Vue.extend({
         margin: { left: 100, right: 100 },
         transition: { duration: 100, ease: 'easeLinear' },
       },
-
-      revenueLimitRule: [], // (v) => v + currentExpenses.slice(0, 6)
-      // .reduce((sum, d) => sum + d.total, 0) <= totalExpenses],
     };
   },
   methods: {
