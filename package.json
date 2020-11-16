@@ -36,7 +36,7 @@
     "@babel/core": "^7.12.3",
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "@nuxt/typescript-build": "^1.0.3",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/google-analytics": "^2.2.3",
     "@nuxtjs/vuetify": "^1.0.0",
     "@types/chart.js": "^2.9.27",
