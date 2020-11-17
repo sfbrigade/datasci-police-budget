@@ -156,7 +156,7 @@ export default Vue.extend({
     DepartmentsWalkthrough,
   },
   mounted() {
-    this.initializeTotalAmount();
+    this.initializeRealAmounts();
     this.refreshPieChartData();
     this.isMounted = true;
   },
@@ -204,7 +204,7 @@ export default Vue.extend({
     };
   },
   methods: {
-    initializeTotalAmount() {
+    initializeRealAmounts() {
       this.$store.commit('budget/setTotalAmount', TEMP_TOTAL_AMOUNT);
     },
     refreshPieChartData() {
