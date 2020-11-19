@@ -7,6 +7,7 @@ const departments = [
   'protection',
   'transport',
   'overview',
+  'overviewWithOverlay',
 ];
 
 export const state = () => ({
@@ -22,6 +23,9 @@ export const getters = {
   },
   shouldShowOverview(st) {
     return st.active_department === 7;
+  },
+  shouldShowOverviewWithOverlay(st) {
+    return st.active_department === 8;
   },
 };
 
@@ -44,5 +48,9 @@ export const mutations = {
 
   goToOverview(st) {
     st.active_department = 7;
+  },
+
+  goToOverviewWithOverlay(st) {
+    st.active_department = 8;
   },
 };

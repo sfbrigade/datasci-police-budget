@@ -1,5 +1,7 @@
 <template>
-  <v-container class="Category-Background carousel-view" v-if="!shouldShowOverview" fluid>
+  <v-container class="Category-Background carousel-view"
+               v-if="!shouldShowOverview && !shouldShowOverviewWithOverlay"
+               fluid>
     <div class="slide">
       <v-row>
         <v-col class="Category-Title">
@@ -78,19 +80,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   computed: {
-    shouldShowOverview() {
-      return this.$store.getters['departments/shouldShowOverview'];
-    },
-    totalAmount() {
-      return this.$store.getters['budget/getTotalAmount'];
-    },
-    amounts() {
-      return this.$store.getters['budget/getAmounts'];
-    },
+    ...mapGetters({
+      shouldShowOverview: 'departments/shouldShowOverview',
+      shouldShowOverviewWithOverlay: 'departments/shouldShowOverviewWithOverlay',
+      totalAmount: 'budget/getTotalAmount',
+      amounts: 'budget/getAmounts',
+    }),
     buttonsShow() {
       return this.buttons.filter((button) => button.render);
     },
