@@ -131,10 +131,10 @@ import { mapGetters } from 'vuex';
 
 import CitySelect from '@/components/CitySelect';
 import FiscalYearSelect from '@/components/FiscalYearSelect';
-
 import DepartmentsWalkthrough from '@/components/DepartmentsWalkthrough';
+import ALL_BUDGETS_BY_YEAR from '../assets/data/all_yearly_budgets_by_org.json';
 
-const TEMP_TOTAL_AMOUNT = 1234.0;
+const TEMP_SELECTED_CITY_YEAR = 'oakland-2020-2021';
 
 const DEPARTMENT_COLOR_MAP = Object.freeze({
   health: '#2A6465',
@@ -156,7 +156,8 @@ export default Vue.extend({
     DepartmentsWalkthrough,
   },
   mounted() {
-    this.initializeTotalAmount();
+    this.initializeTotalAmount(ALL_BUDGETS_BY_YEAR[TEMP_SELECTED_CITY_YEAR]);
+    this.updateRealAmounts(ALL_BUDGETS_BY_YEAR[TEMP_SELECTED_CITY_YEAR]);
     this.refreshPieChartData();
     this.isMounted = true;
   },
@@ -204,8 +205,11 @@ export default Vue.extend({
     };
   },
   methods: {
-    initializeTotalAmount() {
-      this.$store.commit('budget/setTotalAmount', TEMP_TOTAL_AMOUNT);
+    initializeTotalAmount(values) {
+      this.$store.commit('budget/setTotalAmount', Object.values(values).reduce((a, b) => a + b));
+    },
+    updateRealAmounts(values) {
+      this.$store.commit('budget/updateRealAmounts', { values });
     },
     refreshPieChartData() {
       this.budgetPieChartData = this.budgetData.filter(
