@@ -33,8 +33,14 @@ export const getters = {
   getRealAmounts(st) {
     return st.real_amounts;
   },
+  getAllAmounts(st) {
+    return Object.entries(st.amounts).reduce((hash, [key, value]) => {
+      hash[key] = [value, st.real_amounts[key]];
+      return hash;
+    }, {});
+  },
   getRemainingAmount(st) {
-    return st.total_amount - Object.values(st.amounts).reduce((a, b) => a + b);
+    return st.total_amount - Object.values(st.amounts).reduce((a, b) => a + b, 0);
   },
   getExceedsLimit(st) {
     return Object.values(st.amounts)

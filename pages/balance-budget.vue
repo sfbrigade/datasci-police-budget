@@ -45,8 +45,8 @@
               then compare to the actual budget.
             </div></v-row
           >
-          <v-row class="mb-0" v-if="exceedsLimit">
-            <div class="Slider-Hint">
+          <v-row class="mb-0">
+            <div class="Slider-Hint" :class="{ invisible: !exceedsLimit }">
               Note: Total expenses allocated exceeds revenue.
             </div>
           </v-row>
@@ -60,7 +60,7 @@
         </v-col>
       </v-row>
 
-      <v-row v-if="showBudgetOverview" justify="center">
+      <v-row v-if="showBudgetOverview || showBudgetOverviewWithOverlay" justify="center">
         <v-col class='slider col-12 col-sm-6 col-md-3'
                v-for="dept in budgetData" :key="dept.key">
           <v-spacer />
@@ -81,8 +81,9 @@
             </div>
           </div>
           <div class="Slider-Amount">${{ dept.total }} mil</div>
-          <v-row justify="center">
+          <v-row class="slider-input-container" justify="center">
             <v-slider
+              class="slider-input"
               :value="dept.total"
               @input="updateAmount(dept.key, $event)"
               :max="sliderMax"
@@ -94,15 +95,29 @@
               color="#2A6465"
               vertical
             />
+            <v-slider
+              class="slider-input slider-input--overlay"
+              v-if="showBudgetOverviewWithOverlay"
+              :value="dept.realTotal"
+              :max="sliderMax"
+              :min="sliderMin"
+              label=" "
+              readonly
+              track-color="rgba(0,0,0,0)"
+              color="#EF896E"
+              vertical
+            />
           </v-row>
         </v-col>
       </v-row>
 
       <v-row v-if="showBudgetOverview" class="my-10" justify="center">
         <v-spacer />
-        <v-col cols="2"
-          ><v-btn rounded color="#2A6465" dark block>NEXT</v-btn></v-col
-        >
+          <v-col cols="2">
+            <v-btn rounded color="#2A6465" dark block @click="goToOverviewWithOverlay">
+              NEXT
+            </v-btn>
+          </v-col>
         <v-spacer />
       </v-row>
 
@@ -163,17 +178,19 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters({
-      amounts: 'budget/getAmounts',
+      allAmounts: 'budget/getAllAmounts',
       exceedsLimit: 'budget/getExceedsLimit',
       hasAnyAmount: 'budget/hasAnyAmount',
       remainingAmount: 'budget/getRemainingAmount',
       showBudgetOverview: 'departments/shouldShowOverview',
+      showBudgetOverviewWithOverlay: 'departments/shouldShowOverviewWithOverlay',
       totalAmount: 'budget/getTotalAmount',
     }),
     budgetData() {
-      return Object.entries(this.amounts).map(([key, total]) => ({
+      return Object.entries(this.allAmounts).map(([key, [total, realTotal]]) => ({
         key,
         total,
+        realTotal,
         name: this.$t(`departments.${key}.name`),
         description: this.$t(`departments.${key}.description`),
         color: DEPARTMENT_COLOR_MAP[key],
@@ -209,7 +226,7 @@ export default Vue.extend({
       this.$store.commit('budget/setTotalAmount', Object.values(values).reduce((a, b) => a + b));
     },
     updateRealAmounts(values) {
-      this.$store.commit('budget/updateRealAmounts', { values });
+      this.$store.commit('budget/updateRealAmounts', values);
     },
     refreshPieChartData() {
       this.budgetPieChartData = this.budgetData.filter(
@@ -221,6 +238,9 @@ export default Vue.extend({
     },
     dismissLandingModal() {
       this.showLandingModal = false;
+    },
+    goToOverviewWithOverlay() {
+      this.$store.commit('departments/goToOverviewWithOverlay');
     },
   },
 });
@@ -345,6 +365,36 @@ export default Vue.extend({
   font-size: 18px;
   font-weight: normal;
   color: #ff5252;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.slider-input-container {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.slider-input {
+  .v-slider__thumb {
+    z-index: 2;
+  }
+}
+
+.slider-input--overlay {
+  z-index: 1;
+  margin-left: -100%;
+
+  .v-slider .v-slider__track-background {
+    background: rgba(0,0,0,0);
+  }
+
+  .v-slider .v-slider__track-fill,
+  .v-slider .v-slider__thumb {
+    background: #EF896E;
+  }
 }
 
 .color {
