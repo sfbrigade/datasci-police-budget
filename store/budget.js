@@ -60,4 +60,11 @@ export const mutations = {
   updateRealAmounts(st, amountUpdates) {
     st.real_amounts = { ...st.real_amounts, ...amountUpdates };
   },
+
+  resetAmounts(st) {
+    st.amounts = Object.keys(st.amounts).reduce((hash, key) => {
+      hash[key] = 0;
+      return hash;
+    }, {});
+  },
 };
