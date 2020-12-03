@@ -17,24 +17,24 @@
 export default {
   computed: {
     selectedFiscalYear: {
-      get() { return this.$store.state.year; },
-      set(value) { this.$store.commit('updateFiscalYear', value); },
-    }    
+      get() { return this.$store.getters.getFiscalYear; },
+      set(value) {
+        this.$store.commit('updateFiscalYear', value);
+        this.$emit('update-fiscal-year');
+        return value;
+      },
+    },
   },
   data() {
     return {
-      years: [
-        {
-          text: '2020-2021',
-          value: '2020',
+      years: Array.from(Array(22), (_, i) => {
+        const year = i + 1999;
+        return {
+          text: `${year}-${year + 1}`,
+          value: `${year}`,
           disabled: false,
-        },
-        {
-          text: '2019-2020',
-          value: '2019',
-          disabled: false,
-        },
-      ],
+        };
+      }).reverse(),
     };
   },
 };
@@ -43,4 +43,4 @@ export default {
   label {
     @include font-size(12);
   }
-</style>  
+</style>
