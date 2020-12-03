@@ -199,7 +199,6 @@ import ALL_BUDGETS_BY_YEAR from '../assets/data/all_yearly_budgets_by_org.json';
 
 const TEMP_SELECTED_CITY = 'oakland';
 const TEMP_SELECTED_YEAR = '2020';
-const TEMP_SELECTED_CITY_YEAR = `${TEMP_SELECTED_CITY}-${TEMP_SELECTED_YEAR}`;
 
 const DEPARTMENT_COLOR_MAP = Object.freeze({
   health: '#2A6465',
@@ -223,7 +222,6 @@ export default Vue.extend({
   mounted() {
     this.$store.commit('updateCity', TEMP_SELECTED_CITY);
     this.$store.commit('updateFiscalYear', TEMP_SELECTED_YEAR);
-    this.initializeTotalAmount(ALL_BUDGETS_BY_YEAR[TEMP_SELECTED_CITY_YEAR]);
     this.updateRealAmounts(TEMP_SELECTED_CITY, TEMP_SELECTED_YEAR);
     this.refreshPieChartData();
     this.isMounted = true;
@@ -236,7 +234,6 @@ export default Vue.extend({
       remainingAmount: 'budget/getRemainingAmount',
       showBudgetOverview: 'departments/shouldShowOverview',
       showBudgetOverviewWithOverlay: 'departments/shouldShowOverviewWithOverlay',
-      totalAmount: 'budget/getTotalAmount',
       city: 'getCity',
       fiscalYear: 'getFiscalYear',
     }),
@@ -284,9 +281,6 @@ export default Vue.extend({
     },
     sliderMax(actualAmount) {
       return actualAmount * 1.3;
-    },
-    initializeTotalAmount(values) {
-      this.$store.commit('budget/setTotalAmount', Object.values(values).reduce((a, b) => a + b));
     },
     updateRealAmounts(city, fiscalYear) {
       const cityYearKey = `${city}-${fiscalYear}`;

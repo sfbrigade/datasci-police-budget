@@ -53,12 +53,9 @@ export const mutations = {
     st.amounts = { ...st.amounts, ...amountUpdates };
   },
 
-  setTotalAmount(st, totalAmount) {
-    st.total_amount = totalAmount;
-  },
-
   updateRealAmounts(st, amountUpdates) {
     st.real_amounts = { ...st.real_amounts, ...amountUpdates };
+    st.total_amount = Object.values(st.real_amounts).reduce((a, b) => a + b, 0);
   },
 
   resetAmounts(st) {
@@ -69,6 +66,7 @@ export const mutations = {
   },
 
   resetRealAmounts(st) {
+    st.total_amount = 0;
     st.real_amounts = Object.keys(st.real_amounts).reduce((hash, key) => {
       hash[key] = 0;
       return hash;
