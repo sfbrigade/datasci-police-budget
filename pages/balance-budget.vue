@@ -17,10 +17,10 @@
 
       <v-row class="Balance-Budget-Header-Dropdown-Container">
         <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
-          <CitySelect />
+          <CitySelect @update-city="refreshRealAmounts" />
         </v-col>
         <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
-          <FiscalYearSelect />
+          <FiscalYearSelect @update-fiscal-year="refreshRealAmounts" />
         </v-col>
       </v-row>
 
@@ -197,7 +197,9 @@ import FiscalYearSelect from '@/components/FiscalYearSelect';
 import DepartmentsWalkthrough from '@/components/DepartmentsWalkthrough';
 import ALL_BUDGETS_BY_YEAR from '../assets/data/all_yearly_budgets_by_org.json';
 
-const TEMP_SELECTED_CITY_YEAR = 'oakland-2020';
+const TEMP_SELECTED_CITY = 'oakland';
+const TEMP_SELECTED_YEAR = '2020';
+const TEMP_SELECTED_CITY_YEAR = `${TEMP_SELECTED_CITY}-${TEMP_SELECTED_YEAR}`;
 
 const DEPARTMENT_COLOR_MAP = Object.freeze({
   health: '#2A6465',
@@ -219,8 +221,10 @@ export default Vue.extend({
     DepartmentsWalkthrough,
   },
   mounted() {
+    this.$store.commit('updateCity', TEMP_SELECTED_CITY);
+    this.$store.commit('updateFiscalYear', TEMP_SELECTED_YEAR);
     this.initializeTotalAmount(ALL_BUDGETS_BY_YEAR[TEMP_SELECTED_CITY_YEAR]);
-    this.updateRealAmounts(ALL_BUDGETS_BY_YEAR[TEMP_SELECTED_CITY_YEAR]);
+    this.updateRealAmounts(TEMP_SELECTED_CITY, TEMP_SELECTED_YEAR);
     this.refreshPieChartData();
     this.isMounted = true;
   },
@@ -233,6 +237,8 @@ export default Vue.extend({
       showBudgetOverview: 'departments/shouldShowOverview',
       showBudgetOverviewWithOverlay: 'departments/shouldShowOverviewWithOverlay',
       totalAmount: 'budget/getTotalAmount',
+      city: 'getCity',
+      fiscalYear: 'getFiscalYear',
     }),
     budgetData() {
       return Object.entries(this.allAmounts).map(([key, [total, realTotal]]) => ({
@@ -273,14 +279,25 @@ export default Vue.extend({
     };
   },
   methods: {
+    refreshRealAmounts() {
+      this.updateRealAmounts(this.city, this.fiscalYear);
+    },
     sliderMax(actualAmount) {
       return actualAmount * 1.3;
     },
     initializeTotalAmount(values) {
       this.$store.commit('budget/setTotalAmount', Object.values(values).reduce((a, b) => a + b));
     },
-    updateRealAmounts(values) {
-      this.$store.commit('budget/updateRealAmounts', values);
+    updateRealAmounts(city, fiscalYear) {
+      const cityYearKey = `${city}-${fiscalYear}`;
+      const values = ALL_BUDGETS_BY_YEAR[cityYearKey];
+      console.log(cityYearKey);
+      console.log(values);
+      if (values) {
+        this.$store.commit('budget/updateRealAmounts', values);
+      } else {
+        this.$store.commit('budget/resetRealAmounts');
+      }
     },
     refreshPieChartData() {
       this.budgetPieChartData = this.budgetData.filter(

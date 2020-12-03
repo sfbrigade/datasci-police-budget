@@ -18,8 +18,12 @@ export default {
   computed: {
     selectedCity: {
       get() { return this.$store.state.city; },
-      set(value) { this.$store.commit('updateCity', value); },
-    }    
+      set(value) {
+        this.$store.commit('updateCity', value);
+        this.$emit('update-city');
+        return value;
+      },
+    },
   },
   data() {
     return {
@@ -43,4 +47,4 @@ export default {
   label {
     @include font-size(12);
   }
-</style>  
+</style>

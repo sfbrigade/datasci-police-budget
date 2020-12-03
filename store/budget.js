@@ -67,4 +67,11 @@ export const mutations = {
       return hash;
     }, {});
   },
+
+  resetRealAmounts(st) {
+    st.real_amounts = Object.keys(st.real_amounts).reduce((hash, key) => {
+      hash[key] = 0;
+      return hash;
+    }, {});
+  },
 };
