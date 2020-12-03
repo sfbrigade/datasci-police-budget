@@ -149,7 +149,7 @@ import FiscalYearSelect from '@/components/FiscalYearSelect';
 import DepartmentsWalkthrough from '@/components/DepartmentsWalkthrough';
 import ALL_BUDGETS_BY_YEAR from '../assets/data/all_yearly_budgets_by_org.json';
 
-const TEMP_SELECTED_CITY_YEAR = 'oakland-2020-2021';
+const TEMP_SELECTED_CITY_YEAR = 'oakland-2020';
 
 const DEPARTMENT_COLOR_MAP = Object.freeze({
   health: '#2A6465',
