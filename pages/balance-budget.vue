@@ -25,8 +25,7 @@
       </v-row>
 
       <v-row class="mb-10">
-        <v-spacer cols="2" />
-        <v-col cols="4">
+        <v-col :cols="showBudgetOverviewWithOverlay ? 4 : 6">
           <v-row>
             <div class="Subsection-Title">
               {{ hasAnyAmount ? "Remaining" : "" }} Revenue
@@ -51,12 +50,21 @@
             </div>
           </v-row>
         </v-col>
-        <v-col cols="6">
+        <v-col :cols="showBudgetOverviewWithOverlay ? 4 : 6" class="pie-chart-container">
           <D3PieChart
             v-if="isMounted && hasAnyAmount"
             :config="budgetPieChartConfig"
             :datum="budgetPieChartData"
           />
+          Your Budget
+        </v-col>
+        <v-col cols="4" v-if="showBudgetOverviewWithOverlay" class="pie-chart-container">
+          <D3PieChart
+            v-if="isMounted && hasAnyAmount"
+            :config="budgetPieChartConfigReal"
+            :datum="budgetData"
+          />
+          Mayor's Budget
         </v-col>
       </v-row>
 
@@ -81,12 +89,13 @@
             </div>
           </div>
           <div class="Slider-Amount">${{ dept.total }} mil</div>
-          <v-row class="slider-input-container" justify="center">
+          <div v-if="!showBudgetOverviewWithOverlay">
+            <v-row class="slider-input-container" justify="center">
             <v-slider
               class="slider-input"
               :value="dept.total"
               @input="updateAmount(dept.key, $event)"
-              :max="sliderMax"
+              :max="sliderMax(dept.realTotal)"
               :min="sliderMin"
               @change="refreshPieChartData"
               :rules="sliderRules"
@@ -108,14 +117,53 @@
               vertical
             />
           </v-row>
+        </div>
+        <div v-else>
+          <v-row class="slider-input-container" justify="center">
+            <v-slider
+              class="slider-input"
+              :value="dept.total"
+              :max="sliderMax(dept.realTotal)"
+              :min="sliderMin"
+              readonly
+              :rules="sliderRules"
+              label=" "
+              track-color="#B6DADA"
+              color="#2A6465"
+              vertical
+            />
+            <v-slider
+              class="slider-input slider-input--overlay"
+              :value="dept.realTotal"
+              :max="sliderMax(dept.realTotal)"
+              :min="sliderMin"
+              label=" "
+              readonly
+              track-color="rgba(0,0,0,0)"
+              color="#EF896E"
+              vertical
+            />
+          </v-row>
+          <div class="Slider-RealAmount">${{ dept.realTotal }} mil</div>
+        </div>
         </v-col>
       </v-row>
 
       <v-row v-if="showBudgetOverview" class="my-10" justify="center">
         <v-spacer />
           <v-col cols="2">
-            <v-btn rounded color="#2A6465" dark block @click="goToOverviewWithOverlay">
-              NEXT
+            <v-btn rounded color="#EF896E" dark block @click="goToOverviewWithOverlay">
+              COMPARE TO ACTUAL BUDGET
+            </v-btn>
+          </v-col>
+        <v-spacer />
+      </v-row>
+
+      <v-row v-if="showBudgetOverviewWithOverlay" class="my-10" justify="center">
+        <v-spacer />
+          <v-col cols="2">
+            <v-btn rounded color="#2A6465" dark block @click="resetAndStartOver">
+              RESET & START OVER
             </v-btn>
           </v-col>
         <v-spacer />
@@ -196,12 +244,7 @@ export default Vue.extend({
         color: DEPARTMENT_COLOR_MAP[key],
       }));
     },
-    sliderMax() {
-      return this.totalAmount;
-    },
-    sliderMin() {
-      return 0;
-    },
+
     sliderRules() {
       // return false for error state
       return [!this.exceedsLimit];
@@ -219,9 +262,20 @@ export default Vue.extend({
         margin: { left: 100, right: 100 },
         transition: { duration: 100, ease: 'easeLinear' },
       },
+      budgetPieChartConfigReal: {
+        key: 'name',
+        value: 'realTotal',
+        color: { key: 'color' },
+        margin: { left: 100, right: 100 },
+        transition: { duration: 100, ease: 'easeLinear' },
+      },
+      sliderMin: 0,
     };
   },
   methods: {
+    sliderMax(actualAmount) {
+      return actualAmount * 1.3;
+    },
     initializeTotalAmount(values) {
       this.$store.commit('budget/setTotalAmount', Object.values(values).reduce((a, b) => a + b));
     },
@@ -238,6 +292,11 @@ export default Vue.extend({
     },
     dismissLandingModal() {
       this.showLandingModal = false;
+    },
+    resetAndStartOver() {
+      this.$store.commit('budget/resetAmounts');
+      this.$store.commit('departments/goToWalkthrough');
+      this.showLandingModal = true;
     },
     goToOverviewWithOverlay() {
       this.$store.commit('departments/goToOverviewWithOverlay');
@@ -308,6 +367,10 @@ export default Vue.extend({
   font-weight: normal;
 }
 
+.pie-chart-container {
+  text-align: center;
+}
+
 .slider {
   margin-bottom: 50px;
 }
@@ -355,10 +418,19 @@ export default Vue.extend({
 }
 
 .Slider-Amount {
+  margin: 24px 0;
   font-size: 40px;
   line-height: 55px;
   text-align: center;
   color: $dark-turquoise;
+}
+
+.Slider-RealAmount {
+  margin: 24px 0;
+  font-size: 40px;
+  line-height: 55px;
+  text-align: center;
+  color: $salmon;
 }
 
 .Slider-Hint {
