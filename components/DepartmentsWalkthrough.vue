@@ -1,56 +1,65 @@
 <template>
-  <v-container class="Category-Background carousel-view" fluid>
-    <transition-group class="carousel" tag="div">
-      <div
-        v-for="(department, i) in departments"
-        v-bind:key="department.name"
-        v-bind:style="{ display: department.display }"
-        class="slide"
-      >
-        <v-row>
-          <v-col class="Category-Title">{{ i + 1 }}. {{ department.header }}</v-col>
-        </v-row>
-        <v-row class="Category-Content">
-          <v-col cols="7">
-            <v-row class="Category-Content-Text text-sm-body-1">
-              <span v-html="department.content"></span>
-            </v-row>
-            <v-row justify="center">
-              <v-btn id="btn" elevation="0" outlined color="#BDBDBD" @click="expand"
-                >SEE MORE v</v-btn
-              >
-            </v-row>
-          </v-col>
-          <v-col cols="1"></v-col>
-          <v-col>
-            <v-row>
-              <div class="Category-Slider">
-                <div class="Slider-Amount">${{ amounts[department.name] }} mil</div>
-                <v-row justify="center">
-                  <v-slider
-                    v-bind:max="totalAmount"
-                    :value="amounts[department.name]"
-                    @change="value => { updateAmount(department.name, value) }"
-                    min="0"
-                    vertical
-                    track-color="#B6DADA"
-                    color="#2A6465"
-                  />
-                </v-row>
-              </div>
-            </v-row>
-            <v-row class="Category-Budget-Caption text-sm-body-1"
-              >Last year’s budget: {{ department.budget }}</v-row
+  <v-container class="Category-Background carousel-view"
+               v-if="!shouldShowOverview && !shouldShowOverviewWithOverlay"
+               fluid>
+    <div class="slide">
+      <v-row>
+        <v-col class="Category-Title">
+          {{ activeDepartment.number }}. {{ activeDepartment.header }}
+        </v-col>
+      </v-row>
+      <v-row class="Category-Content">
+        <v-col cols="7">
+          <v-row class="Category-Content-Text text-sm-body-1">
+            <span v-html="activeDepartment.content"></span>
+          </v-row>
+          <v-row justify="center">
+            <v-btn
+              id="btn"
+              elevation="0"
+              outlined
+              color="#BDBDBD"
+              @click="expand"
+              >SEE MORE v</v-btn
             >
-          </v-col>
-        </v-row>
+          </v-row>
+        </v-col>
+        <v-col cols="1"></v-col>
+        <v-col>
+          <v-row>
+            <div class="Category-Slider">
+              <div class="Slider-Amount">
+                ${{ amounts[activeDepartment.name] }} mil
+              </div>
+              <v-row justify="center">
+                <v-slider
+                  v-bind:max="totalAmount"
+                  :value="amounts[activeDepartment.name]"
+                  @change="
+                    (value) => {
+                      updateAmount(activeDepartment.name, value);
+                    }
+                  "
+                  min="0"
+                  vertical
+                  track-color="#B6DADA"
+                  color="#2A6465"
+                />
+              </v-row>
+            </div>
+          </v-row>
+          <v-row class="Category-Budget-Caption text-sm-body-1"
+            >Last year’s budget: {{ activeDepartment.budget }}</v-row
+          >
+        </v-col>
+      </v-row>
+      <v-row class="controls">
         <div class="carousel-controls">
           <v-btn
             v-for="button in buttonsShow"
             v-bind:key="button.name"
             class="carousel-controls__button"
             v-bind:class="button.class"
-            v-bind:disabled="amounts[department.name] == 0"
             v-bind:outlined="button.outlined"
             rounded
             depressed
@@ -60,99 +69,118 @@
             >{{ button.name }}</v-btn
           >
         </div>
-      </div>
-    </transition-group>
-    <div class="skip">SKIP TO OVERVIEW</div>
+      </v-row>
+    </div>
+    <div class="skip">
+      <v-btn text @click="showBudget" class="skip" color="#2a6465"
+        >SKIP TO OVERVIEW</v-btn
+      >
+    </div>
   </v-container>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+
 export default {
   computed: {
-    totalAmount() { return this.$store.getters['budget/getTotalAmount']; },
-    amounts() {
-      return this.$store.getters['budget/getAmounts'];
-    },
+    ...mapGetters({
+      shouldShowOverview: 'departments/shouldShowOverview',
+      shouldShowOverviewWithOverlay: 'departments/shouldShowOverviewWithOverlay',
+      totalAmount: 'budget/getTotalAmount',
+      amounts: 'budget/getAmounts',
+    }),
     buttonsShow() {
       return this.buttons.filter((button) => button.render);
+    },
+    ...mapState({
+      selectedCity: 'city',
+    }),
+    departments() {
+      return [
+        {
+          number: 1,
+          name: 'health',
+          header: 'Community Health',
+          content: this.$t(`departments.health.longDescription.${this.selectedCity}`),
+          budget: '$2,422 mil',
+          display: 'inherit',
+        },
+        {
+          number: 2,
+          name: 'culture',
+          header: 'Culture & Recreation',
+          content: this.$t(`departments.culture.longDescription.${this.selectedCity}`),
+          budget: '$489 mil',
+          display: 'none',
+        },
+        {
+          number: 3,
+          name: 'admin',
+          header: 'General Admin & Finance',
+          content: this.$t(`departments.admin.longDescription.${this.selectedCity}`),
+          budget: '$x mil',
+          display: 'none',
+        },
+        {
+          number: 4,
+          name: 'city',
+          header: 'General City Responsibilities',
+          content: this.$t(`departments.city.longDescription.${this.selectedCity}`),
+          budget: '$x mil',
+          display: 'none',
+        },
+        {
+          number: 5,
+          name: 'welfare',
+          header: 'Human Welfare & Neighborhood Development',
+          content: this.$t(`departments.welfare.longDescription.${this.selectedCity}`),
+          budget: '$x mil',
+          display: 'none',
+        },
+        {
+          number: 6,
+          name: 'protection',
+          header: 'Public Protection',
+          content: this.$t(`departments.protection.longDescription.${this.selectedCity}`),
+          budget: '$x mil',
+          display: 'none',
+        },
+        {
+          number: 7,
+          name: 'transport',
+          header: 'Public Works, Transportation, & Commerce',
+          content: this.$t(`departments.transport.longDescription.${this.selectedCity}`),
+          budget: '$x mil',
+          display: 'none',
+        },
+      ];
+    },
+    activeDepartment() {
+      return this.departments.find(
+        (dep) => dep.name === this.$store.getters['departments/getActiveDepartmentName'],
+      );
     },
   },
   data() {
     return {
       index: 0,
-      departments: [
-        {
-          name: 'health',
-          header: 'Community Health',
-          content:
-            'The mission of the Department of Public Health is to protect and promote the health of all San Franciscans through the following divisions:<ul><li>San Francisco Health Network, which includes the Zuckerberg San Francisco General Hospital, Laguna Honda Hospital, ambulatory care, and transitions that oversee client flow throughout the system of care.</li><li>Population Health Division, which addresses public health concerns, including consumer safety, health promotion and disease prevention, and the monitoring of threats to the public’s health.</li></ul><br>Funds:<ul><li>Expand behavioral services for vulnerable residents, many of whom are experiencing homelessness</li><li>Provide department-wide workplace equity training and education</li><li>Implement a new electronic health record that supports clinical operations and revenue collections</li><li>Promote health education, physical activity, and healthy eating in communities with high rates of sugary drink consumption, diabetes, obesity, and heart disease</li><li>Increase staff at the hospitals and budget for other medical supplies including test kits for population health and prevention</li></ul>.',
-          budget: '$2,422 mil',
-          display: 'inherit',
-        },
-        {
-          name: 'culture',
-          header: 'Culture & Recreation',
-          content:
-            'San Francisco’s recreational, cultural, and educational resources drive our quality of life and underlie our shared experience as a city. Keeping these institutions in a state of good repair is a priority. Departments include:<ul><li>Academy of Sciences</li><li>Arts Commission</li><li>Asian Art Museum</li><li>Fine Arts Museum (de Young and Legion of Honor Museums)</li><li>Law Library</li><li>Public Library (Main Library at Civic Center and 27 branch libraries)</li><li>Recreation & Parks (200+ parks, playgrounds, and open spaces)</li><li>War Memorial (War Memorial Opera House, Veterans Building, Davies Symphony Hall, and adjacent grounds)</li></ul><br>Funds:<ul><li>Subsidize museum free days and the free admission program for San Francisco school groups.</li><li>Provide arts education, arts organizations, affordable space, and support for individual artists</li><li>Maintain buildings and modernize collections management</li><li>Sponsor special exhibitions that educate and stimulate curiosity among broad and diverse audiences</li><li>Increase open hours at public libraries, eliminate overdue fines, increase eCollections circulation</li><li>Maintains all public parks and provides a broad range of recreation programming in community services, cultural arts, sports and athletics, and leisure services</li></ul><br>Source: City of San Francisco Budget Book',
-          budget: '$489 mil',
-          display: 'none',
-        },
-        {
-          name: 'admin',
-          header: 'General Admin & Finance',
-          content:
-            'A departmental designation for expenditures and revenues that are citywide in nature. Examples are voter mandated General Fund support for transit, libraries, and other baselines, the General Fund portion of retiree health premiums, nonprofit cost of doing business increases, required reserve deposits and debt service. Departments include:<ul><li>Assessor/Recorder</li><li>Board of Supervisors</li><li>City Attorney</li><li>City Planning</li><li>Civil Service Commission</li><li>Controller</li><li>Elections</li><li>Ethics Commission</li><li>General Services Agency - City Administrator (aka Administrative Services)</li><li>General Services Agency - Technology</li><li>Health Service System</li><li>Human Resources</li><li>Mayor</li><li>Medical Examiner (Program under General Services Agency - City Admin)</li><li>Real Estate (Program under General Services Agency - City Admin)</li><li>Retirement System</li><li>Treasurer/Tax Collector</li></ul><br>Funds:<ul><li>Subsidize museum free days and the free admission program for San Francisco school groups.</li><li>Provide arts education, arts organizations, affordable space, and support for individual artists</li><li>Maintain buildings and modernize collections management</li><li>Sponsor special exhibitions that educate and stimulate curiosity among broad and diverse audiences</li><li>Increase open hours at public libraries, eliminate overdue fines, increase eCollections circulation</li><li>Maintains all public parks and provides a broad range of recreation programming in community services, cultural arts, sports and athletics, and leisure services</li></ul><br>Funds:<ul><li>Modernize the city’s property assessment and tax systems</li><li>Pay salaries</li><li>Prepares for future elections and increased voter turnout by increasing temporary staffing and administering the vote-by-mail program</li></ul>',
-          budget: '$x mil',
-          display: 'none',
-        },
-        {
-          name: 'city',
-          header: 'General City Responsibilities',
-          content: '',
-          budget: '$x mil',
-          display: 'none',
-        },
-        {
-          name: 'welfare',
-          header: 'Human Welfare & Neighborhood Development',
-          content: '',
-          budget: '$x mil',
-          display: 'none',
-        },
-        {
-          name: 'protection',
-          header: 'Public Protection',
-          content: '',
-          budget: '$x mil',
-          display: 'none',
-        },
-        {
-          name: 'transport',
-          header: 'Public Works, Transportation, & Commerce',
-          content: '',
-          budget: '$x mil',
-          display: 'none',
-        },
-      ],
       buttons: [
         {
           name: 'prev',
           outlined: true,
-          method: 'previous',
           class: '',
           render: false,
         },
         {
           name: 'next',
           outlined: false,
-          method: 'next',
           class: 'white--text',
           render: true,
         },
         {
           name: 'finish',
           outlined: false,
-          method: 'next',
           class: 'white--text',
           render: false,
         },
@@ -169,29 +197,31 @@ export default {
     navigate(button) {
       this.buttons[0].render = true;
       if (button === 'next') {
-        this.departments[this.index].display = 'none';
-        this.index += 1;
-        this.departments[this.index].display = 'inherit';
+        this.$store.commit('departments/nextDepartment');
       } else if (button === 'prev') {
-        this.departments[this.index].display = 'none';
-        this.index -= 1;
-        this.departments[this.index].display = 'inherit';
+        this.$store.commit('departments/previousDepartment');
+      } else if (button === 'finish') {
+        this.showBudget();
       }
-      if (this.index === 0) {
+      if (this.$store.getters['departments/getActiveDepartmentName'] === 'health') {
         this.buttons[0].render = false;
-      } else if (this.index === 6) {
+      } else if (this.$store.getters['departments/getActiveDepartmentName'] === 'transport') {
         this.buttons[1].render = false;
         this.buttons[2].render = true;
       }
     },
     updateAmount(department, value) {
       this.$store.commit('budget/updateAmounts', { [department]: value });
+      this.$emit('refresh-pie-chart');
+    },
+    showBudget() {
+      this.$store.commit('departments/goToOverview');
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 @font-face {
   font-family: "Avenir";
   src: url("../assets/AvenirLTStd-Medium.otf");
@@ -243,18 +273,13 @@ export default {
   color: #4f4f4f;
   padding: 10px;
 }
-.carousel {
-  overflow: none;
-  background: #ffffff;
-}
 .slide {
-  height: 750px;
+  background: #ffffff;
   overflow: hidden;
 }
-.carousel-controls {
-  background: #ffffff;
+.controls {
+  justify-content: center;
   text-align: center;
-  z-index: 100;
   padding-bottom: 100px;
 }
 .skip {

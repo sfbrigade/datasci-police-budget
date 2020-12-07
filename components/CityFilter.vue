@@ -1,11 +1,8 @@
 <template>
-
-
   <div class="city-filter">
-
-
     <h3 class="city-filter__title">
-      Explaining your city’s public budget information, to empower citizens like you.
+      Explaining your city’s public budget information, to empower citizens like
+      you.
     </h3>
     <p class="city-filter__subtitle">
       You pay taxes. We do too. Where does that money go?
@@ -15,21 +12,16 @@
       class="city-filter__button"
       to="/balance-budget"
       color="#2a6465"
-      nuxt>
+      nuxt
+    >
       START EXPLORING
     </v-btn>
-
-
-    
-
   </div>
-
-
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import CitySelect from '@/components/CitySelect';
+import Vue from "vue";
+import CitySelect from "@/components/CitySelect";
 
 export default Vue.extend({
   components: {
@@ -45,6 +37,7 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 1;
 }
 
 .city-filter__title {
@@ -75,19 +68,15 @@ export default Vue.extend({
   border-radius: 40px;
 }
 
-
 @media only screen and (max-width: 660px) {
-   .city-filter__subtitle {
-     margin-bottom: 32px;
-     font-size: 14px;
-     text-align: center;
- }
+  .city-filter__subtitle {
+    margin-bottom: 32px;
+    font-size: 14px;
+    text-align: center;
+  }
 
-.city-filter__button {
- font-size: 16px;
+  .city-filter__button {
+    font-size: 16px;
+  }
 }
-
-}
-
-
 </style>
