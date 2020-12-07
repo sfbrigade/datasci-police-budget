@@ -22,7 +22,7 @@
     "@vue/cli-service": "^4.5.9",
     "chart.js": ">=2.9.4",
     "cypress": "^6.0.1",
-    "dayjs": "^1.9.6",
+    "dayjs": "^1.9.7",
     "debounce": "^1.2.0",
     "nuxt": "^2.14.9",
     "nuxt-i18n": "^6.15.4",
