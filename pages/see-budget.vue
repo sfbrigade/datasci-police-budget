@@ -46,7 +46,7 @@
 
         <v-container fluid>
           <v-row class="content-row body-row">
-            <iframe width="900" height="800" frameborder="0" scrolling="no" src="https://plotly.com/~jamesbaskerville/1.embed"></iframe>
+            <Plotly :data="treeMapData" :layout="layout" :display-mode-bar="false"/>
           </v-row>
         </v-container>
 
@@ -75,7 +75,18 @@ import FiscalYearSelect from '@/components/FiscalYearSelect';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { D3LineChart } from 'vue-d3-charts';
+import { Plotly } from 'vue-plotly';
 import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
+import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
+
+const labels = [];
+const parents = [];
+const values = [];
+SF_BUDGET_TREE_MAP_FORMAT.forEach((item) => {
+  labels.push(item.Department);
+  parents.push(item.Parent);
+  values.push(item['2017']);
+});
 
 export default Vue.extend({
   components: {
@@ -84,6 +95,7 @@ export default Vue.extend({
     D3LineChart,
     Header,
     Footer,
+    Plotly,
   },
   mounted() {
     this.isMounted = true;
@@ -103,6 +115,28 @@ export default Vue.extend({
           yFormat: '$.2s',
         },
         color: { scheme: 'schemePaired' },
+      },
+      treeMapData: [{
+        type: 'treemap',
+        branchvalues: 'total',
+        labels,
+        parents,
+        values,
+      }],
+      layout: {
+        title: {
+          text: 'San Francisco Budget 2017',
+          font: {
+            size: 24,
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        margin: {
+          t: 45,
+        },
+        paper_bgcolor: 'rgba(0,0,0,0)',
       },
     };
   },
