@@ -30,10 +30,16 @@ export const getters = {
     return round(st.total_amount);
   },
   getAmounts(st) {
-    return st.amounts.map((a) => round(a));
+    return Object.entries(st.amounts).reduce((hash, [key, value]) => {
+      hash[key] = round(value);
+      return hash;
+    }, {});
   },
   getRealAmounts(st) {
-    return st.real_amounts.map((a) => round(a));
+    return Object.entries(st.real_amounts).reduce((hash, [key, value]) => {
+      hash[key] = round(value);
+      return hash;
+    }, {});
   },
   getAllAmounts(st) {
     return Object.entries(st.amounts).reduce((hash, [key, value]) => {
