@@ -20,27 +20,29 @@ export const state = () => ({
   },
 });
 
+const round = (x) => x.toFixed(2);
+
 export const getters = {
   hasAnyAmount(st) {
     return Object.values(st.amounts).some((amount) => amount > 0);
   },
   getTotalAmount(st) {
-    return st.total_amount;
+    return round(st.total_amount);
   },
   getAmounts(st) {
-    return st.amounts;
+    return st.amounts.map((a) => round(a));
   },
   getRealAmounts(st) {
-    return st.real_amounts;
+    return st.real_amounts.map((a) => round(a));
   },
   getAllAmounts(st) {
     return Object.entries(st.amounts).reduce((hash, [key, value]) => {
-      hash[key] = [value, st.real_amounts[key]];
+      hash[key] = [round(value), round(st.real_amounts[key])];
       return hash;
     }, {});
   },
   getRemainingAmount(st) {
-    return st.total_amount - Object.values(st.amounts).reduce((a, b) => a + b, 0);
+    return round(st.total_amount - Object.values(st.amounts).reduce((a, b) => a + b, 0));
   },
   getExceedsLimit(st) {
     return Object.values(st.amounts)

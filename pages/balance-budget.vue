@@ -8,10 +8,10 @@
 
     <v-container
       fluid
-      class="page-container floating-card-container no-padding"
+      class="balance-budget-container floating-card-container no-padding"
       fill-height
     >
-      <v-row justify="center">
+      <v-row justify="center" class="body-row">
         <h2 class="Section-Title">Balance My City's Budget</h2>
       </v-row>
 
@@ -149,34 +149,46 @@
         </v-col>
       </v-row>
 
-      <v-row v-if="showBudgetOverview" class="my-10" justify="center">
-        <v-spacer />
-          <v-col cols="2">
-            <v-btn rounded color="#EF896E" dark block @click="goToOverviewWithOverlay">
-              COMPARE TO ACTUAL BUDGET
+      <v-row justify="center" v-if="showBudgetOverview || showBudgetOverviewWithOverlay">
+        <div class="section">
+          <h2 class="Section-Title body-row" v-if="showBudgetOverview">Your Proposed Budget</h2>
+          <h2 class="Section-Title body-row" v-else>Your Budget vs. The Mayor’s Budget</h2>
+          <p class="section-content" v-if="showBudgetOverview">
+            Congrats, you’ve created a spending budget for the city of San Francisco, with a
+            ${{Math.abs(remainingAmount)}}mil {{remainingAmount > 0 ? 'surplus' : 'deficit'}}.
+            Make any additional adjustments, then compare your numbers to the mayor’s planned
+            budget.
+          </p>
+          <p class="section-content" v-else>
+            How do your numbers differ from the proposed budget? Learn more about the Mayor’s
+            Budget here or voice your opinions by taking action.
+          </p>
+          <v-btn class="section-button" rounded color="#EF896E" dark
+                 @click="goToOverviewWithOverlay" v-if="showBudgetOverview">
+            COMPARE TO ACTUAL BUDGET
+          </v-btn>
+          <div v-if="showBudgetOverviewWithOverlay">
+            <v-btn class="section-button" rounded color="#2A6465" dark @click="print">
+              PRINT
             </v-btn>
-          </v-col>
-        <v-spacer />
-      </v-row>
-
-      <v-row v-if="showBudgetOverviewWithOverlay" class="my-10" justify="center">
-        <v-spacer />
-          <v-col cols="2">
-            <v-btn rounded color="#2A6465" dark block @click="resetAndStartOver">
-              RESET & START OVER
+            <v-btn class="section-button" rounded color="#2A6465" dark to="take-action" nuxt>
+              TAKE ACTION
             </v-btn>
-          </v-col>
-        <v-spacer />
-      </v-row>
-
-      <v-row v-if="showBudgetOverview" class="my-10" justify="center">
-        <v-spacer />
+          </div>
+          <v-btn class="section-button" text color="#2a6465"
+               @click="resetAndStartOver" v-if="showBudgetOverviewWithOverlay">
+            RESET & START OVER
+          </v-btn>
+        </div>
       </v-row>
     </v-container>
     <v-dialog v-model="showLandingModal" max-width="624" overlay-opacity="0.7" >
       <BudgetLandingBox :onExit="dismissLandingModal" />
     </v-dialog>
     <DepartmentsWalkthrough @refresh-pie-chart="refreshPieChartData"/>
+    <v-row class="my-10" justify="center">
+      <v-spacer />
+    </v-row>
     <div id="footer-wrapper">
       <v-row>
         <Footer />
@@ -276,6 +288,9 @@ export default Vue.extend({
     };
   },
   methods: {
+    print() {
+      window.print();
+    },
     refreshRealAmounts() {
       this.updateRealAmounts(this.city, this.fiscalYear);
     },
@@ -307,7 +322,6 @@ export default Vue.extend({
     resetAndStartOver() {
       this.$store.commit('budget/resetAmounts');
       this.$store.commit('departments/goToWalkthrough');
-      this.showLandingModal = true;
     },
     goToOverviewWithOverlay() {
       this.$store.commit('departments/goToOverviewWithOverlay');
@@ -317,13 +331,32 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.page-container {
+
+.balance-budget-container {
   max-width: 90%;
 }
 
 .Section-Title {
   color: $dark-turquoise;
 }
+
+.section {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section .section-content {
+  margin-bottom: 0;
+}
+
+.section-button {
+  margin: 24px 8px 0;
+  width: 315px;
+}
+
 .Balance-Budget-Header-Dropdown-Container {
   justify-content: center;
 }
