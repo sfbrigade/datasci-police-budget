@@ -292,7 +292,6 @@ export default {
   text-align: center;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding-bottom: 129px;
-  padding-top: 89px;
+  padding: 40px 0 0;
 }
 </style>
