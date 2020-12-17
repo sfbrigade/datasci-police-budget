@@ -171,7 +171,7 @@
             <v-btn class="section-button" rounded color="#2A6465" dark @click="print">
               PRINT
             </v-btn>
-            <v-btn class="section-button" rounded color="#2A6465" dark to="take-action" nuxt>
+            <v-btn class="section-button" rounded color="#2A6465" dark to="/take-action" nuxt>
               TAKE ACTION
             </v-btn>
           </div>
