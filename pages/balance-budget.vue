@@ -19,9 +19,6 @@
         <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
           <CitySelect @update-city="refreshRealAmounts" />
         </v-col>
-        <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
-          <FiscalYearSelect @update-fiscal-year="refreshRealAmounts" />
-        </v-col>
       </v-row>
 
       <v-row class="mb-10">
@@ -176,7 +173,7 @@
       </v-row>
     </v-container>
     <v-dialog v-model="showLandingModal" max-width="624" overlay-opacity="0.7" >
-      <BudgetLandingBox :onExit="dismissLandingModal" />
+      <BudgetLandingBox :onExit="dismissLandingModal" @update-city="refreshRealAmounts" />
     </v-dialog>
     <DepartmentsWalkthrough />
     <v-row class="my-10" justify="center">
@@ -198,12 +195,13 @@ import PieChart from '@/components/PieChart.vue';
 import { mapGetters } from 'vuex';
 
 import CitySelect from '@/components/CitySelect';
-import FiscalYearSelect from '@/components/FiscalYearSelect';
 import DepartmentsWalkthrough from '@/components/DepartmentsWalkthrough';
 import ALL_BUDGETS_BY_YEAR from '../assets/data/all_yearly_budgets_by_org.json';
 
-const TEMP_SELECTED_CITY = 'oakland';
-const TEMP_SELECTED_YEAR = '2020';
+const MOST_RECENT_YEAR_BY_CITY = {
+  oakland: '2020',
+  san_francisco: '2017',
+};
 
 const DEPARTMENT_COLOR_MAP = Object.freeze({
   health: '#2A6465',
@@ -218,16 +216,13 @@ const DEPARTMENT_COLOR_MAP = Object.freeze({
 export default Vue.extend({
   components: {
     CitySelect,
-    FiscalYearSelect,
     Header,
     Footer,
     PieChart,
     DepartmentsWalkthrough,
   },
   mounted() {
-    this.$store.commit('updateCity', TEMP_SELECTED_CITY);
-    this.$store.commit('updateFiscalYear', TEMP_SELECTED_YEAR);
-    this.updateRealAmounts(TEMP_SELECTED_CITY, TEMP_SELECTED_YEAR);
+    this.updateRealAmounts(this.city);
     this.isMounted = true;
   },
   computed: {
@@ -239,7 +234,6 @@ export default Vue.extend({
       showBudgetOverview: 'departments/shouldShowOverview',
       showBudgetOverviewWithOverlay: 'departments/shouldShowOverviewWithOverlay',
       city: 'getCity',
-      fiscalYear: 'getFiscalYear',
     }),
     pieData() {
       const userData = [];
@@ -308,13 +302,13 @@ export default Vue.extend({
       window.print();
     },
     refreshRealAmounts() {
-      this.updateRealAmounts(this.city, this.fiscalYear);
+      this.updateRealAmounts(this.city);
     },
     sliderMax(actualAmount) {
       return actualAmount * 1.3;
     },
-    updateRealAmounts(city, fiscalYear) {
-      const cityYearKey = `${city}-${fiscalYear}`;
+    updateRealAmounts(city) {
+      const cityYearKey = `${city}-${MOST_RECENT_YEAR_BY_CITY[city]}`;
       const values = ALL_BUDGETS_BY_YEAR[cityYearKey];
       console.log(cityYearKey);
       console.log(values);
