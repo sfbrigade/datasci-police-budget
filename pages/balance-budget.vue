@@ -50,21 +50,15 @@
             </div>
           </v-row>
         </v-col>
-        <v-col :cols="showBudgetOverviewWithOverlay ? 4 : 6" class="pie-chart-container">
-          <D3PieChart
-            v-if="isMounted && hasAnyAmount"
-            :config="budgetPieChartConfig"
-            :datum="budgetPieChartData"
-          />
-          Your Budget
-        </v-col>
-        <v-col cols="4" v-if="showBudgetOverviewWithOverlay" class="pie-chart-container">
-          <D3PieChart
-            v-if="isMounted && hasAnyAmount"
-            :config="budgetPieChartConfigReal"
-            :datum="budgetData"
-          />
-          Mayor's Budget
+        <v-col :cols="showBudgetOverviewWithOverlay ? 8 : 6" class="pie-charts-container">
+          <div class="pie-chart-container">
+            <PieChart :chartData="userPieData" :options="pieOptions" />
+            Your Budget
+          </div>
+          <div v-if="showBudgetOverviewWithOverlay" class="pie-chart-container">
+            <PieChart :chartData="realPieData" :options="pieOptions" />
+            Mayor's Budget
+          </div>
         </v-col>
       </v-row>
 
@@ -97,7 +91,6 @@
               @input="updateAmount(dept.key, $event)"
               :max="sliderMax(dept.realTotal)"
               :min="sliderMin"
-              @change="refreshPieChartData"
               :rules="sliderRules"
               label=" "
               track-color="#B6DADA"
@@ -185,7 +178,7 @@
     <v-dialog v-model="showLandingModal" max-width="624" overlay-opacity="0.7" >
       <BudgetLandingBox :onExit="dismissLandingModal" />
     </v-dialog>
-    <DepartmentsWalkthrough @refresh-pie-chart="refreshPieChartData"/>
+    <DepartmentsWalkthrough />
     <v-row class="my-10" justify="center">
       <v-spacer />
     </v-row>
@@ -201,7 +194,7 @@
 import Vue from 'vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
-import { D3PieChart } from 'vue-d3-charts';
+import PieChart from '@/components/PieChart.vue';
 import { mapGetters } from 'vuex';
 
 import CitySelect from '@/components/CitySelect';
@@ -228,14 +221,13 @@ export default Vue.extend({
     FiscalYearSelect,
     Header,
     Footer,
-    D3PieChart,
+    PieChart,
     DepartmentsWalkthrough,
   },
   mounted() {
     this.$store.commit('updateCity', TEMP_SELECTED_CITY);
     this.$store.commit('updateFiscalYear', TEMP_SELECTED_YEAR);
     this.updateRealAmounts(TEMP_SELECTED_CITY, TEMP_SELECTED_YEAR);
-    this.refreshPieChartData();
     this.isMounted = true;
   },
   computed: {
@@ -249,6 +241,46 @@ export default Vue.extend({
       city: 'getCity',
       fiscalYear: 'getFiscalYear',
     }),
+    pieData() {
+      const userData = [];
+      const realData = [];
+      const labels = [];
+      const backgroundColor = [];
+      Object.entries(this.allAmounts).forEach(([key, [total, realTotal]]) => {
+        userData.push(total);
+        realData.push(realTotal);
+        labels.push(this.$t(`departments.${key}.name`));
+        backgroundColor.push(DEPARTMENT_COLOR_MAP[key]);
+      });
+      return [
+        { datasets: [{ data: userData, backgroundColor }], labels },
+        { datasets: [{ data: realData, backgroundColor }], labels },
+      ];
+    },
+    userPieData() {
+      return this.pieData[0];
+    },
+    realPieData() {
+      return this.pieData[1];
+    },
+    pieOptions() {
+      return {
+        legend: {
+          display: false,
+        },
+        tooltips: {
+          callbacks: {
+            label(tooltipItem, data) {
+              let label = data.labels[tooltipItem.index] || '';
+              if (label) {
+                label += `: ${data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]} mil`;
+              }
+              return label;
+            },
+          },
+        },
+      };
+    },
     budgetData() {
       return Object.entries(this.allAmounts).map(([key, [total, realTotal]]) => ({
         key,
@@ -259,7 +291,6 @@ export default Vue.extend({
         color: DEPARTMENT_COLOR_MAP[key],
       }));
     },
-
     sliderRules() {
       // return false for error state
       return [!this.exceedsLimit];
@@ -269,21 +300,6 @@ export default Vue.extend({
     return {
       showLandingModal: true,
       isMounted: false,
-      budgetPieChartData: [],
-      budgetPieChartConfig: {
-        key: 'name',
-        value: 'total',
-        color: { key: 'color' },
-        margin: { left: 100, right: 100 },
-        transition: { duration: 100, ease: 'easeLinear' },
-      },
-      budgetPieChartConfigReal: {
-        key: 'name',
-        value: 'realTotal',
-        color: { key: 'color' },
-        margin: { left: 100, right: 100 },
-        transition: { duration: 100, ease: 'easeLinear' },
-      },
       sliderMin: 0,
     };
   },
@@ -307,11 +323,6 @@ export default Vue.extend({
       } else {
         this.$store.commit('budget/resetRealAmounts');
       }
-    },
-    refreshPieChartData() {
-      this.budgetPieChartData = this.budgetData.filter(
-        (department) => department.total > 0,
-      );
     },
     updateAmount(key, value) {
       this.$store.commit('budget/updateAmounts', { [key]: value });
@@ -413,6 +424,12 @@ export default Vue.extend({
 
 .pie-chart-container {
   text-align: center;
+  max-width: 350px;
+}
+
+.pie-charts-container {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .slider {
