@@ -16,7 +16,7 @@
             color="transparent"
             depressed
             to="/"
-            nuxt>City Budget Tracker</v-btn>
+            nuxt>Police Budget Tracker</v-btn>
         </v-col>
         <v-col v-for="button in rightRoutes" :key="button.key">
           <v-btn
@@ -61,7 +61,7 @@
           link
         >
           <v-list-item-content>
-            <NuxtLink :to="route.path" class="nav-item"> 
+            <NuxtLink :to="route.path" class="nav-item">
               {{ route.title }}
             </NuxtLink>
           </v-list-item-content>
@@ -79,27 +79,27 @@ export default {
       showNavDrawer: false,
       routes: [
         {
-          key: "see-budget",
-          path: "/see-budget",
-          title: "See Budget"
+          key: 'see-budget',
+          path: '/see-budget',
+          title: 'See Budget',
         },
         {
-          key: "balance-budget",
-          path: "/balance-budget",
-          title: "Balance Budget"
+          key: 'balance-budget',
+          path: '/balance-budget',
+          title: 'Balance Budget',
         },
         {
-          key: "about",
-          path: "/about",
-          title: "About Us"
+          key: 'about',
+          path: '/about',
+          title: 'About Us',
         },
         {
-          key: "take-action",
-          path: "/take-action",
-          title: "Take Action"
-        }
-      ]
-    }
+          key: 'take-action',
+          path: '/take-action',
+          title: 'Take Action',
+        },
+      ],
+    };
   },
   created() {
     this.onResize();
@@ -109,7 +109,7 @@ export default {
     onResize() {
       this.fullView = window.innerWidth > 1200;
       this.showNavDrawer = this.showNavDrawer && !this.fullView;
-    }
+    },
   },
   computed: {
     routeCount() {
@@ -117,15 +117,15 @@ export default {
     },
     leftRoutes() {
       return this.routes.slice(
-        0, Math.ceil(this.routeCount / 2)
+        0, Math.ceil(this.routeCount / 2),
       );
     },
     rightRoutes() {
       return this.routes.slice(
-        Math.ceil(this.routeCount / 2), this.routeCount
+        Math.ceil(this.routeCount / 2), this.routeCount,
       );
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

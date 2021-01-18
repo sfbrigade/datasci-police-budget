@@ -212,7 +212,6 @@ export default {
     },
     updateAmount(department, value) {
       this.$store.commit('budget/updateAmounts', { [department]: value });
-      this.$emit('refresh-pie-chart');
     },
     showBudget() {
       this.$store.commit('departments/goToOverview');
@@ -292,7 +291,6 @@ export default {
   text-align: center;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding-bottom: 129px;
-  padding-top: 89px;
+  padding: 40px 0 0;
 }
 </style>

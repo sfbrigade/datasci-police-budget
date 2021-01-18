@@ -8,19 +8,16 @@
 
     <v-container
       fluid
-      class="page-container floating-card-container no-padding"
+      class="balance-budget-container floating-card-container no-padding"
       fill-height
     >
-      <v-row justify="center">
+      <v-row justify="center" class="body-row">
         <h2 class="Section-Title">Balance My City's Budget</h2>
       </v-row>
 
       <v-row class="Balance-Budget-Header-Dropdown-Container">
         <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
           <CitySelect @update-city="refreshRealAmounts" />
-        </v-col>
-        <v-col class="Balance-Budget-Header-Dropdown" xs="3" md="3">
-          <FiscalYearSelect @update-fiscal-year="refreshRealAmounts" />
         </v-col>
       </v-row>
 
@@ -50,21 +47,15 @@
             </div>
           </v-row>
         </v-col>
-        <v-col :cols="showBudgetOverviewWithOverlay ? 4 : 6" class="pie-chart-container">
-          <D3PieChart
-            v-if="isMounted && hasAnyAmount"
-            :config="budgetPieChartConfig"
-            :datum="budgetPieChartData"
-          />
-          Your Budget
-        </v-col>
-        <v-col cols="4" v-if="showBudgetOverviewWithOverlay" class="pie-chart-container">
-          <D3PieChart
-            v-if="isMounted && hasAnyAmount"
-            :config="budgetPieChartConfigReal"
-            :datum="budgetData"
-          />
-          Mayor's Budget
+        <v-col :cols="showBudgetOverviewWithOverlay ? 8 : 6" class="pie-charts-container">
+          <div class="pie-chart-container">
+            <PieChart :chartData="userPieData" :options="pieOptions" />
+            Your Budget
+          </div>
+          <div v-if="showBudgetOverviewWithOverlay" class="pie-chart-container">
+            <PieChart :chartData="realPieData" :options="pieOptions" />
+            Mayor's Budget
+          </div>
         </v-col>
       </v-row>
 
@@ -97,7 +88,6 @@
               @input="updateAmount(dept.key, $event)"
               :max="sliderMax(dept.realTotal)"
               :min="sliderMin"
-              @change="refreshPieChartData"
               :rules="sliderRules"
               label=" "
               track-color="#B6DADA"
@@ -149,34 +139,46 @@
         </v-col>
       </v-row>
 
-      <v-row v-if="showBudgetOverview" class="my-10" justify="center">
-        <v-spacer />
-          <v-col cols="2">
-            <v-btn rounded color="#EF896E" dark block @click="goToOverviewWithOverlay">
-              COMPARE TO ACTUAL BUDGET
+      <v-row justify="center" v-if="showBudgetOverview || showBudgetOverviewWithOverlay">
+        <div class="section">
+          <h2 class="Section-Title body-row" v-if="showBudgetOverview">Your Proposed Budget</h2>
+          <h2 class="Section-Title body-row" v-else>Your Budget vs. The Mayor’s Budget</h2>
+          <p class="section-content" v-if="showBudgetOverview">
+            Congrats, you’ve created a spending budget for the city of San Francisco, with a
+            ${{Math.abs(remainingAmount)}}mil {{remainingAmount > 0 ? 'surplus' : 'deficit'}}.
+            Make any additional adjustments, then compare your numbers to the mayor’s planned
+            budget.
+          </p>
+          <p class="section-content" v-else>
+            How do your numbers differ from the proposed budget? Learn more about the Mayor’s
+            Budget here or voice your opinions by taking action.
+          </p>
+          <v-btn class="section-button" rounded color="#EF896E" dark
+                 @click="goToOverviewWithOverlay" v-if="showBudgetOverview">
+            COMPARE TO ACTUAL BUDGET
+          </v-btn>
+          <div v-if="showBudgetOverviewWithOverlay">
+            <v-btn class="section-button" rounded color="#2A6465" dark @click="print">
+              PRINT
             </v-btn>
-          </v-col>
-        <v-spacer />
-      </v-row>
-
-      <v-row v-if="showBudgetOverviewWithOverlay" class="my-10" justify="center">
-        <v-spacer />
-          <v-col cols="2">
-            <v-btn rounded color="#2A6465" dark block @click="resetAndStartOver">
-              RESET & START OVER
+            <v-btn class="section-button" rounded color="#2A6465" dark to="/take-action" nuxt>
+              TAKE ACTION
             </v-btn>
-          </v-col>
-        <v-spacer />
-      </v-row>
-
-      <v-row v-if="showBudgetOverview" class="my-10" justify="center">
-        <v-spacer />
+          </div>
+          <v-btn class="section-button" text color="#2a6465"
+               @click="resetAndStartOver" v-if="showBudgetOverviewWithOverlay">
+            RESET & START OVER
+          </v-btn>
+        </div>
       </v-row>
     </v-container>
     <v-dialog v-model="showLandingModal" max-width="624" overlay-opacity="0.7" >
-      <BudgetLandingBox :onExit="dismissLandingModal" />
+      <BudgetLandingBox :onExit="dismissLandingModal" @update-city="refreshRealAmounts" />
     </v-dialog>
-    <DepartmentsWalkthrough @refresh-pie-chart="refreshPieChartData"/>
+    <DepartmentsWalkthrough />
+    <v-row class="my-10" justify="center">
+      <v-spacer />
+    </v-row>
     <div id="footer-wrapper">
       <v-row>
         <Footer />
@@ -189,16 +191,17 @@
 import Vue from 'vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
-import { D3PieChart } from 'vue-d3-charts';
+import PieChart from '@/components/PieChart.vue';
 import { mapGetters } from 'vuex';
 
 import CitySelect from '@/components/CitySelect';
-import FiscalYearSelect from '@/components/FiscalYearSelect';
 import DepartmentsWalkthrough from '@/components/DepartmentsWalkthrough';
 import ALL_BUDGETS_BY_YEAR from '../assets/data/all_yearly_budgets_by_org.json';
 
-const TEMP_SELECTED_CITY = 'oakland';
-const TEMP_SELECTED_YEAR = '2020';
+const MOST_RECENT_YEAR_BY_CITY = {
+  oakland: '2020',
+  san_francisco: '2017',
+};
 
 const DEPARTMENT_COLOR_MAP = Object.freeze({
   health: '#2A6465',
@@ -213,17 +216,13 @@ const DEPARTMENT_COLOR_MAP = Object.freeze({
 export default Vue.extend({
   components: {
     CitySelect,
-    FiscalYearSelect,
     Header,
     Footer,
-    D3PieChart,
+    PieChart,
     DepartmentsWalkthrough,
   },
   mounted() {
-    this.$store.commit('updateCity', TEMP_SELECTED_CITY);
-    this.$store.commit('updateFiscalYear', TEMP_SELECTED_YEAR);
-    this.updateRealAmounts(TEMP_SELECTED_CITY, TEMP_SELECTED_YEAR);
-    this.refreshPieChartData();
+    this.updateRealAmounts(this.city);
     this.isMounted = true;
   },
   computed: {
@@ -235,8 +234,47 @@ export default Vue.extend({
       showBudgetOverview: 'departments/shouldShowOverview',
       showBudgetOverviewWithOverlay: 'departments/shouldShowOverviewWithOverlay',
       city: 'getCity',
-      fiscalYear: 'getFiscalYear',
     }),
+    pieData() {
+      const userData = [];
+      const realData = [];
+      const labels = [];
+      const backgroundColor = [];
+      Object.entries(this.allAmounts).forEach(([key, [total, realTotal]]) => {
+        userData.push(total);
+        realData.push(realTotal);
+        labels.push(this.$t(`departments.${key}.name`));
+        backgroundColor.push(DEPARTMENT_COLOR_MAP[key]);
+      });
+      return [
+        { datasets: [{ data: userData, backgroundColor }], labels },
+        { datasets: [{ data: realData, backgroundColor }], labels },
+      ];
+    },
+    userPieData() {
+      return this.pieData[0];
+    },
+    realPieData() {
+      return this.pieData[1];
+    },
+    pieOptions() {
+      return {
+        legend: {
+          display: false,
+        },
+        tooltips: {
+          callbacks: {
+            label(tooltipItem, data) {
+              let label = data.labels[tooltipItem.index] || '';
+              if (label) {
+                label += `: ${data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]} mil`;
+              }
+              return label;
+            },
+          },
+        },
+      };
+    },
     budgetData() {
       return Object.entries(this.allAmounts).map(([key, [total, realTotal]]) => ({
         key,
@@ -247,7 +285,6 @@ export default Vue.extend({
         color: DEPARTMENT_COLOR_MAP[key],
       }));
     },
-
     sliderRules() {
       // return false for error state
       return [!this.exceedsLimit];
@@ -257,33 +294,21 @@ export default Vue.extend({
     return {
       showLandingModal: true,
       isMounted: false,
-      budgetPieChartData: [],
-      budgetPieChartConfig: {
-        key: 'name',
-        value: 'total',
-        color: { key: 'color' },
-        margin: { left: 100, right: 100 },
-        transition: { duration: 100, ease: 'easeLinear' },
-      },
-      budgetPieChartConfigReal: {
-        key: 'name',
-        value: 'realTotal',
-        color: { key: 'color' },
-        margin: { left: 100, right: 100 },
-        transition: { duration: 100, ease: 'easeLinear' },
-      },
       sliderMin: 0,
     };
   },
   methods: {
+    print() {
+      window.print();
+    },
     refreshRealAmounts() {
-      this.updateRealAmounts(this.city, this.fiscalYear);
+      this.updateRealAmounts(this.city);
     },
     sliderMax(actualAmount) {
       return actualAmount * 1.3;
     },
-    updateRealAmounts(city, fiscalYear) {
-      const cityYearKey = `${city}-${fiscalYear}`;
+    updateRealAmounts(city) {
+      const cityYearKey = `${city}-${MOST_RECENT_YEAR_BY_CITY[city]}`;
       const values = ALL_BUDGETS_BY_YEAR[cityYearKey];
       console.log(cityYearKey);
       console.log(values);
@@ -292,11 +317,6 @@ export default Vue.extend({
       } else {
         this.$store.commit('budget/resetRealAmounts');
       }
-    },
-    refreshPieChartData() {
-      this.budgetPieChartData = this.budgetData.filter(
-        (department) => department.total > 0,
-      );
     },
     updateAmount(key, value) {
       this.$store.commit('budget/updateAmounts', { [key]: value });
@@ -307,7 +327,6 @@ export default Vue.extend({
     resetAndStartOver() {
       this.$store.commit('budget/resetAmounts');
       this.$store.commit('departments/goToWalkthrough');
-      this.showLandingModal = true;
     },
     goToOverviewWithOverlay() {
       this.$store.commit('departments/goToOverviewWithOverlay');
@@ -317,13 +336,32 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.page-container {
+
+.balance-budget-container {
   max-width: 90%;
 }
 
 .Section-Title {
   color: $dark-turquoise;
 }
+
+.section {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section .section-content {
+  margin-bottom: 0;
+}
+
+.section-button {
+  margin: 24px 8px 0;
+  width: 315px;
+}
+
 .Balance-Budget-Header-Dropdown-Container {
   justify-content: center;
 }
@@ -380,6 +418,12 @@ export default Vue.extend({
 
 .pie-chart-container {
   text-align: center;
+  max-width: 350px;
+}
+
+.pie-charts-container {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .slider {

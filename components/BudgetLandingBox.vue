@@ -6,7 +6,7 @@
       How would you balance your city’s budget for the fiscal year?<br />
       Learn how your city appropriate funds in this interactive tool.
     </p>
-    <CitySelect class="budget-landing__select" />
+    <CitySelect class="budget-landing__select" @update-city="onUpdateCity" />
     <v-btn
       class="budget-landing__button"
       color="#2a6465"
@@ -29,6 +29,9 @@ export default Vue.extend({
     CitySelect,
   },
   methods: {
+    onUpdateCity() {
+      this.$emit('update-city');
+    },
     showWalkthrough() {
       this.$store.commit('departments/goToWalkthrough');
       this.onExit();
