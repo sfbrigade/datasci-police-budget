@@ -18,7 +18,7 @@
 
         <v-row v-if="city === 'san_francisco'">
           <v-row class="content-row body-row white">
-            <v-col cols=6>
+            <v-col cols=5>
               <h2 class="summary-title">Summary</h2>
               <p class="summary-text">
                 From 1999-2017, the total city budget spending for San Francisco averaged
@@ -27,11 +27,11 @@
               </p>
               <v-row>
                 <v-col cols=6>
-                  <p class="summary-text">average annual total budget</p>
+                  <p class="summary-highlight-text">average annual total budget</p>
                   <p class="summary-highlight-number">$1.1B</p>
                 </v-col>
                 <v-col cols=6>
-                  <p class="summary-text">average annual police budget</p>
+                  <p class="summary-highlight-text">average annual police budget</p>
                   <p class="summary-highlight-number">$420M</p>
                 </v-col>
               </v-row>
@@ -49,12 +49,13 @@
               <p class="section-text">
                 The police department budget lies under the Public Protection organization.
               </p>
-              <p class="section-text">
-                It makes up this much of the Public Protection budget
+              <p class="highlight-text">
+                It makes up this much of the Public Protection budget:
               </p>
               <p class="highlight-number">37.5%</p>
-              <p class="section-text">
-                and this much of the city's overall budget.
+              <br />
+              <p class="highlight-text">
+                and this much of the city's overall budget:
               </p>
               <p class="highlight-number">4.4%</p>
             </v-col>
@@ -87,15 +88,17 @@
             <v-spacer />
             <v-col cols=4>
               <h2 class="section-title">2. Police Budget Trends</h2>
-              <p class="section-text">Police budget spending has increased an average of </p>
+              <p class="highlight-text">Police budget spending has increased an average of </p>
               <p class="highlight-number">4.8%</p>
-              <p class="section-text">per year over the past 20 years.</p>
+              <p class="highlight-text">per year over the past 20 years.</p>
+              <br />
               <p class="section-text">
                 Excluding the year 2004, police spending has risen each year,
                 including years in which the number of crime incidents fell.
               </p>
               <br />
-              <p class="section-text">
+              <br />
+              <p class="highlight-text">
                 The increase in Police Budget is largely driven by an increase in
                 Patrol Officer Salaries.
               </p>
@@ -113,7 +116,29 @@
             </v-col>
             <v-col cols=4>
               <img src="../assets/images/incidents-v-police-budget.png" width="500">
+              <br />
+              <br />
               <img src="../assets/images/training-budget.png" width="500">
+            </v-col>
+            <v-spacer />
+          </v-row>
+
+          <v-row class="content-row body-row white">
+            <v-spacer />
+            <v-col cols=8 class="transition-box">
+              <img src="../assets/images/lightbulb-icon.png" width="50">
+              <h2 class="section-title">What does police training involve?</h2>
+              <p class="section-text">
+                Each member of the San Francisco Police Department is trained at the Basic
+                Academy, where they spend 34 weeks learning state laws, criminal
+                investigations, patrol procedures, firearms training, traffic control,
+                defensive driving, self-defense, first aid, and use of force policies. Physical
+                training and fieldwork include investigating mock criminal scenes, directing
+                traffic, operating police vehicles, arrest techniques, using firearms, and
+                interrogation methods. Following graduation, newly sworn SFPD officers undergo
+                a 16-week field-training program under the supervision Field training
+                Officers at various district stations.
+              </p>
             </v-col>
             <v-spacer />
           </v-row>
@@ -142,11 +167,13 @@
               </p>
               <br /> <br />
               <p class="highlight-number">38%</p>
-              <p class="section-text">
-                of people in all UOF incidents were black, which is a largely
-                disproportionate number to the population. This pattern was observed
-                during the time period of 2015 to 2019.
+              <p class="highlight-text">
+                of people in all UOF incidents from 2015 to 2019 were black,
               </p>
+              <p class="section-text">
+                which is a largely disproportionate number to the population.
+              </p>
+              <br />
               <p class="section-text">
                 In pointing of firearms incidents, there are considerably more incidents
                 against Black people versus any other racial group.
@@ -269,35 +296,59 @@ export default Vue.extend({
 });
 </script>
 <style scoped lang="scss">
+
+.transition-box {
+  background: $gray-6;
+  border-radius: 16px;
+}
+
 .section-title {
   color: $dark-turquoise;
+  margin-top: 28px;
+  margin-bottom: 14px;
 }
 
 .section-text {
   font-size: 18px;
-  margin-top: 12px;
-  margin-bottom: 12px;
 }
 
 .highlight-number {
-  font-size: 50px;
+  font-size: 75px;
+  font-family: Bebas;
+  line-height: 75px;
+}
+
+.highlight-text{
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
 }
 
 .summary-title {
   color: $dark-turquoise;
   text-align: center;
+  margin-top: 28px;
+  margin-bottom: 14px;
 }
 
 .summary-text {
   font-size: 18px;
-  margin-top: 12px;
-  margin-bottom: 12px;
   text-align: center;
 }
 
 .summary-highlight-number {
-  font-size: 50px;
+  font-size: 75px;
   text-align: center;
+  font-family: Bebas;
+  line-height: 75px;
+}
+
+.summary-highlight-text {
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 18px;
+  margin-bottom: 6px;
 }
 
 .explore-budget {
