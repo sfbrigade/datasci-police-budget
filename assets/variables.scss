@@ -145,10 +145,10 @@ $z-index-map: (
 // font
 @font-face {
   font-family: Bebas;
-  src: url(../assets/Bebas-Regular.ttf);
+  src: url(/assets/Bebas-Regular.ttf);
 }
 
 @font-face {
   font-family: "Avenir";
-  src: url("../assets/AvenirLTStd-Book.otf");
+  src: url("/assets/AvenirLTStd-Book.otf");
 }
