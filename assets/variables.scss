@@ -11,6 +11,7 @@ $gray-2: #c8c8c8;
 $gray-3: #808080;
 $gray-4: #d9d9d9;
 $gray-5: #bdbdbd;
+$gray-6: #e5e5e5;
 $white-1: #ffffff;
 $white-2: #f8f9fa;
 $black: #2d2d2d;
@@ -138,4 +139,16 @@ $z-index-map: (
   background-color: $white-1;
   box-shadow: $shadow;
   border-radius: 10px;
+}
+
+// ===================
+// font
+@font-face {
+  font-family: Bebas;
+  src: url(/assets/Bebas-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("/assets/AvenirLTStd-Book.otf");
 }
