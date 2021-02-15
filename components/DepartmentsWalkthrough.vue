@@ -221,10 +221,6 @@ export default {
 </script>
 
 <style scoped>
-@font-face {
-  font-family: "Avenir";
-  src: url("../assets/AvenirLTStd-Medium.otf");
-}
 .Category-Background {
   background: #f1f8f8;
   width: 1280px;
