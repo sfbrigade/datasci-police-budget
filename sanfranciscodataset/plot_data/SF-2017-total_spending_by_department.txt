@@ -1,0 +1,60 @@
+Department
+CSC Civil Service Commission      6.772782e+05
+BOA Board Of Appeals - PAB        8.770071e+05
+LLB Law Library                   1.411218e+06
+HRC Human Rights Commission       2.759961e+06
+ETH Ethics Commission             3.517078e+06
+SCI Academy Of Sciences           5.412715e+06
+RNT Rent Arbitration Board        6.753790e+06
+WOM Status Of Women               7.129334e+06
+CFC Children & Families Commsn    8.281414e+06
+DT GSA - Technology               9.877253e+06
+AAM Asian Art Museum              1.053407e+07
+CSS Child Support Services        1.282539e+07
+BOS Board Of Supervisors          1.393494e+07
+REG Elections                     1.482924e+07
+WAR War Memorial                  1.507344e+07
+CON Controller                    1.623678e+07
+ART Arts Commission               1.863167e+07
+HRD Human Resources               1.870055e+07
+ENV Environment                   1.910098e+07
+CAT City Attorney                 1.950002e+07
+FAM Fine Arts Museum              2.162174e+07
+ASR Assessor / Recorder           2.349723e+07
+HHP CleanPowerSF                  2.733270e+07
+CCD SF Communtiy College Dist     2.801706e+07
+ADP Adult Probation               3.150772e+07
+TTX Treasurer/Tax Collector       3.203537e+07
+PDR Public Defender               3.345404e+07
+JUV Juvenile Probation            3.444975e+07
+ECN Economic & Wrkfrce Dvlpmnt    4.024463e+07
+CPC City Planning                 4.535942e+07
+DAT District Attorney             5.644937e+07
+DBI Building Inspection           6.526031e+07
+DEM Emergency Management          7.526858e+07
+CRT Superior Court                9.220779e+07
+PRT Port                          9.270719e+07
+CII Commty Invest & Infrstrctr    1.123509e+08
+LIB Public Library                1.160456e+08
+USD County Education Office       1.239405e+08
+HHP Hetch Hetchy Water & Power    1.435673e+08
+PUB Public Utilities Bureaus      1.674350e+08
+HOM HOMELESSNESS SERVICES         1.690317e+08
+CTA SF County Transprtn Auth      1.693961e+08
+REC Recreation & Park Commsn      1.712878e+08
+CHF Children;Youth & Families     1.788106e+08
+SHF Sheriff                       1.900087e+08
+WWE Wastewater Enterprise         2.314125e+08
+MYR Mayor                         2.407326e+08
+ADM Gen Svcs Agency-City Admin    2.488992e+08
+DPW GSA - Public Works            3.132328e+08
+FIR Fire Department               3.740877e+08
+WTR Water Enterprise              3.998059e+08
+GEN General City / Unallocated    4.280393e+08
+POL Police                        5.740110e+08
+HSA Human Services Agency         7.544935e+08
+HSS Health Service System         8.451443e+08
+AIR Airport Commission            9.748305e+08
+RET Retirement System             1.343753e+09
+MTA Municipal Transprtn Agncy     1.492136e+09
+DPH Public Health                 1.949161e+09
