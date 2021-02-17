@@ -115,7 +115,7 @@
               </p>
             </v-col>
             <v-col cols=4>
-              <img src="../assets/images/incidents-v-police-budget.png" width="500">
+              <Plotly :data="sf_police_budget" :layout="police_budget_layout" :display-mode-bar="false"/>
               <br />
               <br />
               <img src="../assets/images/training-budget.png" width="500">
@@ -228,6 +228,7 @@ import { Plotly } from 'vue-plotly';
 import { mapGetters } from 'vuex';
 import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
 import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
+import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
 
 const labels = [];
 const parents = [];
@@ -236,6 +237,13 @@ SF_BUDGET_TREE_MAP_FORMAT.forEach((item) => {
   labels.push(item.Department);
   parents.push(item.Parent);
   values.push(item['2017']);
+});
+
+const police_spending_x = [];
+const police_spending_y= [];
+SF_POLICE_BUDGET_DATA.foreach((item) => {
+  police_spending_x.push(item.Year);
+  police_spending_y.push(item.Amount);
 });
 
 export default Vue.extend({
@@ -276,6 +284,11 @@ export default Vue.extend({
         parents,
         values,
       }],
+      sf_police_budget: [{
+        type: 'scatter',
+        police_spending_x,
+        police_spending_y,
+      }],
       layout: {
         title: {
           text: 'San Francisco City Spending Data from 2017',
@@ -290,6 +303,21 @@ export default Vue.extend({
           t: 45,
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
+      },
+      police_budget_layout: {
+        title: {
+          text: "San Francisco City Police Department Budget 1999-2017",
+          font: {
+            size: 18,
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        margin: {
+          t: 45,
+        },
+        paper_bgcolor: 'rgba(0, 0, 0, 0)',
       },
     };
   },
