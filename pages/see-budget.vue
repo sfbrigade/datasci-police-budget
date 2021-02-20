@@ -300,13 +300,13 @@ export default Vue.extend({
         title: {
           text: 'SF Total City Spend in 2017 by Department',
           font: {
-            family: 'Avenir',
+            family: 'Nunito',
             size: 18,
             color: '#000000',
           },
         },
         font: {
-          family: 'Avenir',
+          family: 'Nunito',
         },
         margin: {
           l: 10,
@@ -340,7 +340,7 @@ export default Vue.extend({
 
 .highlight-number {
   font-size: 75px;
-  font-family: Bebas;
+  font-family: 'Bebas Neue', cursive;
   line-height: 75px;
 }
 
@@ -365,7 +365,7 @@ export default Vue.extend({
 .summary-highlight-number {
   font-size: 75px;
   text-align: center;
-  font-family: Bebas;
+  font-family: 'Bebas Neue', cursive;
   line-height: 75px;
 }
 

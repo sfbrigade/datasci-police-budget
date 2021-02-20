@@ -143,13 +143,15 @@ $z-index-map: (
 
 // ===================
 // font
-@font-face {
-  font-family: Bebas;
-  src: url("/./assets/Bebas-Regular.ttf");
-}
+// @font-face {
+//   font-family: Bebas;
+//   src: url("/./assets/Bebas-Regular.ttf");
+// }
 
-@font-face {
-  font-family: Avenir;
-  src: url("/./assets/AvenirLTStd-Light.otf");
-}
+// @font-face {
+//   font-family: Avenir;
+//   src: url("/./assets/AvenirLTStd-Light.otf");
+// }
+
+@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@200&display=swap"
 

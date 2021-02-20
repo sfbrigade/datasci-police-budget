@@ -39,7 +39,7 @@ export default Vue.extend({
 </script>
 <style lang="scss">
 #app {
-  font-family: Avenir;
+  font-family: 'Nunito', sans-serif;
   font-style: normal;
   background: $light-turquoise;
   color: $black-1;
