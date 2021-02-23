@@ -1,0 +1,12 @@
+[{"year":2016,"Force Description":"Physical Control", "incident_count":688},
+     {"year":2016,"Force Description":"Pointing of Firearms","incident_count":2605}, 
+     {"year":2016,"Force Description":"Strike by Object/Fist","incident_count":234},
+      {"year":2017,"Force Description":"Physical Control","incident_count":744},
+       {"year":2017,"Force Description":"Pointing of Firearms","incident_count":2046},
+        {"year":2017,"Force Description":"Strike by Object/Fist","incident_count":205},
+         {"year":2018,"Force Description":"Physical Control","incident_count":678},
+          {"year":2018,"Force Description":"Pointing of Firearms","incident_count":1489},
+           {"year":2018,"Force Description":"Strike by Object/Fist","incident_count":342},
+            {"year":2019,"Force Description":"Physical Control","incident_count":641},
+             {"year":2019,"Force Description":"Pointing of Firearms","incident_count":875},
+              {"year":2019,"Force Description":"Strike by Object/Fist","incident_count":286}]
