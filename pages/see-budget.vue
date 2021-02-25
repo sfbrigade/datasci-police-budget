@@ -65,8 +65,9 @@
             <v-spacer />
             <v-col cols=8>
               <p class="summary-text">
-                San Francisco spends more on policing than on certain departments -
-                [insert sub department where SF spends less on average]. These departments need more
+                In 2017, San Francisco spent more on the police sub-department than it spent on
+                the sub-department of Homelessness Services and the whole Culture and Recreation
+                department, combined. These departments need more
                 funding to strengthen our communities and shared well-being. Think through how YOU
                 would allocate funds using our Balance Budget tool!
               </p>
@@ -159,7 +160,7 @@
               <p class="graph-title">
                 SF Police Use of Force Incidents
               </p>
-              <v-img :src="require('../assets/images/uof-over-time.png')" />
+              <v-img :src="require('../assets/images/SF_uof_annual_lineplot.png')" />
               <br /> <br /> <br /> <br /> <br />
               <p class="graph-title">
                 SF Police Use of Force Incidents by Population
@@ -299,13 +300,13 @@ export default Vue.extend({
         title: {
           text: 'SF Total City Spend in 2017 by Department',
           font: {
-            family: 'Avenir',
+            family: 'Nunito',
             size: 18,
             color: '#000000',
           },
         },
         font: {
-          family: 'Avenir',
+          family: 'Nunito',
         },
         margin: {
           l: 10,
@@ -339,7 +340,7 @@ export default Vue.extend({
 
 .highlight-number {
   font-size: 75px;
-  font-family: Bebas;
+  font-family: 'Bebas Neue', cursive;
   line-height: 75px;
 }
 
@@ -364,7 +365,7 @@ export default Vue.extend({
 .summary-highlight-number {
   font-size: 75px;
   text-align: center;
-  font-family: Bebas;
+  font-family: 'Bebas Neue', cursive;
   line-height: 75px;
 }
 
