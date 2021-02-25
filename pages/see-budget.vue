@@ -18,7 +18,7 @@
 
         <v-row v-if="city === 'san_francisco'">
           <v-row class="content-row body-row white">
-            <v-col cols=6>
+            <v-col cols=5>
               <h2 class="summary-title">Summary</h2>
               <p class="summary-text">
                 From 1999-2017, the total city budget spending for San Francisco averaged
@@ -60,16 +60,18 @@
               <p class="highlight-number">4.4%</p>
             </v-col>
             <v-col cols=4>
-                <Plotly :data="treeMapData" :layout="layout" :display-mode-bar="false"/>
+              <v-container fluid>
+                <v-row class="content-row body-row">
+                  <Plotly :data="treeMapData" :layout="layout" :display-mode-bar="false"/>
+                </v-row>
+              </v-container>
             </v-col>
             <v-spacer />
             <v-col cols=8>
               <p class="summary-text">
-                In 2017, San Francisco spent more on the police sub-department than it spent on
-                the sub-department of Homelessness Services and the whole Culture and Recreation
-                department, combined. These departments need more
-                funding to strengthen our communities and shared well-being. Think through how YOU
-                would allocate funds using our Balance Budget tool!
+                San Francisco spends more on policing than on certain departments -
+                [insert sub department where SF spends less on average]. These departments need more
+                funding to strengthen our communities and shared well-being.
               </p>
               <v-row align-content="center"> <v-btn
                 class="city-filter__button"
@@ -88,11 +90,11 @@
               <h2 class="section-title">2. Police Budget Trends</h2>
               <p class="highlight-text">Police budget spending has increased an average of </p>
               <p class="highlight-number">4.8%</p>
-              <p class="highlight-text">per year, compounded over the past 20 years.</p>
+              <p class="highlight-text">per year over the past 20 years.</p>
               <br />
               <p class="section-text">
-                This spending has risen almost every year, including years in which
-                the number of crime incidents reported fell.
+                Excluding the year 2004, police spending has risen each year,
+                including years in which the number of crime incidents fell.
               </p>
               <br />
               <br />
@@ -101,55 +103,44 @@
                 Patrol Officer Salaries.
               </p>
               <p class="section-text">
-                Though the city's overall spend on Patrol has increased, sources show that the size
-                of the SFPD patrol force has remained largely constant throughout this time period.
-                Some of this salary increase may be attributed to the steady rise in the Consumer
-                Price Index (CPI) in the Bay Area during this same period of time.
+                Sources show that the size of the SFPD patrol force has
+                remained largely constant throughout this time period. However, this increase
+                may be attributed to the steady rise in the Consumer Price Index (CPI) in the
+                Bay Area during this same period of time.
               </p>
               <p class="section-text">
                 In contrast, police spending on training has remained relatively stable.
-                In fact, between 1999 and 2016, the police training budget has only
+                In fact, between 1999 and 2016, the police training budget had only
                 increased by around $170,000.
               </p>
             </v-col>
             <v-col cols=4>
-              <p class="graph-title">
-                SF Police Budget and Crime Incident Reports
-              </p>
-              <v-img :src="require('../assets/images/incidents-v-police-budget.png')" />
+              <Plotly :data="sf_police_budget" :layout="police_budget_layout"
+              :display-mode-bar="false"/>
               <br />
               <br />
-              <p class="graph-title">
-                SF Police Budget by Program
-              </p>
-              <v-img :src="require('../assets/images/training-budget.png')" />
+              <Plotly :data="sf_police_budget_detail" :layout="police_budget_detail_layout"
+              :display-mode-bar="fasle"/>
             </v-col>
             <v-spacer />
           </v-row>
 
           <v-row class="content-row body-row white">
             <v-spacer />
-            <v-col cols=9 class="transition-box">
-              <v-row>
-                <v-col cols=1 align="center">
-                  <br />
-                  <v-img :src="require('../assets/images/Bulb_icon.png')" max-width="25" />
-                </v-col>
-                <v-col cols=11>
-                  <h2 class="section-title">What does police training involve?</h2>
-                  <p class="section-text">
-                    Each member of the San Francisco Police Department is trained at the Basic
-                    Academy, where they spend 34 weeks learning state laws, criminal
-                    investigations, patrol procedures, firearms training, traffic control,
-                    defensive driving, self-defense, first aid, and use of force policies. Physical
-                    training and fieldwork include investigating mock criminal scenes, directing
-                    traffic, operating police vehicles, arrest techniques, using firearms, and
-                    interrogation methods. Following graduation, newly sworn SFPD officers undergo
-                    a 16-week field-training program under the supervision Field training
-                    Officers at various district stations.
-                  </p>
-                </v-col>
-              </v-row>
+            <v-col cols=8 class="transition-box">
+              <img src="../assets/images/lightbulb-icon.png" width="50">
+              <h2 class="section-title">What does police training involve?</h2>
+              <p class="section-text">
+                Each member of the San Francisco Police Department is trained at the Basic
+                Academy, where they spend 34 weeks learning state laws, criminal
+                investigations, patrol procedures, firearms training, traffic control,
+                defensive driving, self-defense, first aid, and use of force policies. Physical
+                training and fieldwork include investigating mock criminal scenes, directing
+                traffic, operating police vehicles, arrest techniques, using firearms, and
+                interrogation methods. Following graduation, newly sworn SFPD officers undergo
+                a 16-week field-training program under the supervision Field training
+                Officers at various district stations.
+              </p>
             </v-col>
             <v-spacer />
           </v-row>
@@ -157,40 +148,37 @@
           <v-row class="content-row body-row">
             <v-spacer />
             <v-col cols=4>
-              <p class="graph-title">
-                SF Police Use of Force Incidents
-              </p>
-              <v-img :src="require('../assets/images/SF_uof_annual_lineplot.png')" />
-              <br /> <br /> <br /> <br /> <br />
-              <p class="graph-title">
-                SF Police Use of Force Incidents by Population
-              </p>
-              <v-img :src="require('../assets/images/uof-by-race.png')" />
+              <Plotly :data="sf_force_type" :layout="force_type_layout" :displaly-mode-bar="false"/>
+              <img src="../assets/images/uof-by-race.png" width="500">
             </v-col>
             <v-col cols=4>
               <h2 class="section-title">3. Police Use of Force (UOF)</h2>
               <p class="section-text">
-                Overall since 2015, the number of use of force (UOF) incidents by police
-                officers has decreased, largely due to a decrease in the number of
+                Overall since 2015, the use of force (UOF) by police officers has decreased,
+                largely due to a decrease in the number of
                 firearm pointing incidents. In 2015, there were around 2,600 firearm pointing
                 incidents while in 2019 there were around 900.
               </p>
               <p class="section-text">
-                However, the rates of other forms of UOF incidents have stayed at around
-                the same level. This suggests there is still much improvement to be made
-                in police training and calls into question the rising budget
-                the city allocates towards its police force.
+                However, the rates of other
+                forms of UOF incidents have stayed at around the same level. This may indicate
+                that there is still much improvement to be made in police training.
+              </p>
+              <p class="section-text">
+                TODO: insert elaboration on other use of force types here
               </p>
               <br /> <br />
               <p class="highlight-number">38%</p>
               <p class="highlight-text">
-                of people in all UOF incidents from 2015 to 2019 were Black.
+                of people in all UOF incidents from 2015 to 2019 were black,
+              </p>
+              <p class="section-text">
+                which is a largely disproportionate number to the population.
               </p>
               <br />
               <p class="section-text">
                 In pointing of firearms incidents, there are considerably more incidents
-                against Black people versus against any other racial group, both in
-                absolute terms and as a percentage of the total Black population.
+                against Black people versus any other racial group.
               </p>
             </v-col>
             <v-spacer />
@@ -198,23 +186,17 @@
 
           <v-row class="content-row body-row white">
             <v-col cols=8>
+              TODO: decide if we want this conclusion or the one in the design
               <p class="section-text">
-                Though our analysis reflects that the SF police force has changed throughout
-                the past few decades, there remain many areas of improvement for
-                this city spending to better serve our community.
+                In conclusion, the police budget is a sizable portion of the total SF budget
+                and has been increasing over time. This could be partially explained by
+                inflation and other external factors not exclusive to the police department.
+                However, the spending for police training has stayed the same despite the
+                public outcry against police violence.
               </p>
               <p class="section-text">
-                In the mayor's most recent proposed budget, the city plans to re-invest
-                $120M in funds over 2 years, predominantly pulling from the city's
-                law enforcement departments in order to fund efforts towards repairing
-                the legacy of racially disparate policies in health, housing, and economic
-                relief on the Black community. 60% of the funding will be directed
-                towards mental health, wellness, and homelessness, and 35% directed to
-                education, youth development, and economic opportunity.
-              </p>
-              <p class="section-text">
-                What do you think of this proposal? How do you feel about SF's history
-                of police budget spending? Get involved and make your voice heard!
+                The pointing of firearms rate has actually decreased, but every other
+                type of Use of Force has stayed around the same level.
               </p>
               <v-row align-content="center"> <v-btn
                 class="city-filter__button"
@@ -222,7 +204,7 @@
                 color="#2a6465"
                 nuxt
               >
-                TAKE ACTION
+                ACTIONS TO TAKE
               </v-btn> </v-row>
             </v-col>
           </v-row>
@@ -248,6 +230,11 @@ import { Plotly } from 'vue-plotly';
 import { mapGetters } from 'vuex';
 import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
 import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
+import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
+// import SF_INCIDENTS_DATA from '../assets/data/sf_incidents.json';
+// import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json'
+import SF_FORCE_CATEGORY_DATA from '../assets/data/sf_force.json';
+// import SF_FORCE_BY_RACE_DATA from '../assets/data/sf_race_uof_and_pop_share.json'
 
 const labels = [];
 const parents = [];
@@ -258,6 +245,27 @@ SF_BUDGET_TREE_MAP_FORMAT.forEach((item) => {
   values.push(item['2017']);
 });
 
+const policeSpendingX = [];
+const policeSpendingY = [];
+SF_POLICE_BUDGET_DATA.forEach((item) => {
+  policeSpendingX.push(item.Year);
+  policeSpendingY.push(item.Amount);
+});
+
+const physicalControl = [];
+const fireArm = [];
+const strike = [];
+const forceYear = [];
+for (let i = 0; i < SF_FORCE_CATEGORY_DATA.length; i += 1) {
+  if (SF_FORCE_CATEGORY_DATA[i]['Force Description'] === 'Physical Control') {
+    physicalControl.push(SF_FORCE_CATEGORY_DATA[i].incident_count);
+    forceYear.push(SF_FORCE_CATEGORY_DATA[i].year);
+  } else if (SF_FORCE_CATEGORY_DATA[i]['Force Description'] === 'Pointing of Firearms') {
+    fireArm.push(SF_FORCE_CATEGORY_DATA[i].incident_count);
+  } else if (SF_FORCE_CATEGORY_DATA[i]['Force Description'] === 'Strike by Object/Fist') {
+    strike.push(SF_FORCE_CATEGORY_DATA[i].incident_count);
+  }
+}
 export default Vue.extend({
   components: {
     CitySelect,
@@ -296,26 +304,93 @@ export default Vue.extend({
         parents,
         values,
       }],
+      sf_police_budget: [{
+        type: 'scatter',
+        x: policeSpendingX,
+        y: policeSpendingY,
+      }],
+      sf_force_type: [
+        {
+          type: 'bar',
+          x: forceYear,
+          y: strike,
+          name: 'Strike',
+        },
+        {
+          type: 'bar',
+          x: forceYear,
+          y: fireArm,
+          name: 'Firearm',
+        },
+        {
+          type: 'bar',
+          x: forceYear,
+          y: physicalControl,
+          name: 'Physical Control',
+        },
+      ],
       layout: {
         title: {
-          text: 'SF Total City Spend in 2017 by Department',
+          text: 'San Francisco City Spending Data from 2017',
           font: {
-            family: 'Nunito',
             size: 18,
-            color: '#000000',
           },
-        },
-        font: {
-          family: 'Nunito',
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
         },
         margin: {
-          l: 10,
-          r: 10,
-          t: 100,
-          b: 10,
+          t: 45,
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
-        colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
+      },
+      force_type_layout: {
+        title: {
+          text: 'Use of Force',
+          font: {
+            size: 18,
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        margin: {
+          t: 45,
+        },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+      },
+      police_budget_layout: {
+        title: {
+          text: 'San Francisco City Police Department Budget 1999-2017',
+          font: {
+            size: 11,
+          },
+          yref: 'paper',
+          y: 1,
+          yanchor: 'bottom',
+        },
+        xaxis: {
+          autorange: true,
+          range: [1995, 2020],
+          type: 'linear',
+        },
+        yaxis: {
+          autorange: false,
+          range: [0, 600000000],
+          type: 'linear',
+          tickformat: ',.2f',
+          tickprefix: '$',
+        },
+        font: {
+          size: 10,
+        },
+        width: 500,
+        height: 400,
+        margin: {
+          t: 45,
+          l: 45,
+        },
+        paper_bgcolor: 'rgba(0, 0, 0, 0)',
       },
     };
   },
@@ -340,7 +415,7 @@ export default Vue.extend({
 
 .highlight-number {
   font-size: 75px;
-  font-family: 'Bebas Neue', cursive;
+  font-family: Bebas;
   line-height: 75px;
 }
 
@@ -365,7 +440,7 @@ export default Vue.extend({
 .summary-highlight-number {
   font-size: 75px;
   text-align: center;
-  font-family: 'Bebas Neue', cursive;
+  font-family: Bebas;
   line-height: 75px;
 }
 
@@ -375,12 +450,6 @@ export default Vue.extend({
   text-align: center;
   margin-top: 18px;
   margin-bottom: 6px;
-}
-
-.graph-title {
-  font-size: 18px;
-  margin-top: 28px;
-  text-align: center;
 }
 
 .explore-budget {
