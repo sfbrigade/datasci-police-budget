@@ -1,0 +1,38 @@
+,year,race,count
+0,2015,American Indian,1
+1,2015,Asian or Pacific Islander,6
+2,2015,Black,27
+3,2015,Hispanic,17
+4,2015,Unknown,1
+5,2015,White,24
+6,2015,nan,699
+7,2016,American Indian,1
+8,2016,Asian or Pacific Islander,139
+9,2016,Black,786
+10,2016,Hispanic,391
+11,2016,Unknown,44
+12,2016,White,411
+13,2016,nan,3
+14,2017,Asian or Pacific Islander,87
+15,2017,Black,667
+16,2017,Hispanic,361
+17,2017,Unknown,59
+18,2017,White,396
+19,2017,nan,2
+20,2018,Asian or Pacific Islander,84
+21,2018,Black,616
+22,2018,Hispanic,294
+23,2018,Unknown,56
+24,2018,White,415
+25,2019,American Indian,2
+26,2019,Asian or Pacific Islander,53
+27,2019,Black,471
+28,2019,Hispanic,247
+29,2019,Unknown,38
+30,2019,White,290
+31,2020,American Indian,1
+32,2020,Asian or Pacific Islander,15
+33,2020,Black,146
+34,2020,Hispanic,102
+35,2020,Unknown,15
+36,2020,White,105
