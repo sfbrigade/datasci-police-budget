@@ -265,6 +265,7 @@
               </p>
               <v-row>
                 <v-col cols=6>
+                  <br /><br />
                   <p class="highlight-text">
                     It makes up this much of the Public Protection budget:
                   </p>
@@ -384,7 +385,7 @@ export default Vue.extend({
         margin: {
           l: 10,
           r: 10,
-          t: 100,
+          t: this.$store.state.city === 'oakland' ? 30 : 100,
           b: 10,
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
