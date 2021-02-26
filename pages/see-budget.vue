@@ -277,7 +277,7 @@
                   <p class="highlight-number">TBD%</p>
                 </v-col>
                 <v-col cols=6>
-                  <Plotly :data="treeMapData" :layout="layout" :display-mode-bar="false"/>
+                  <Plotly :data="TBD" :layout="layout" :display-mode-bar="false"/>
                 </v-col>
               </v-row>
               <v-spacer />
@@ -386,7 +386,7 @@ export default Vue.extend({
           l: 10,
           r: 10,
           t: this.$store.state.city === 'oakland' ? 30 : 100,
-          b: 10,
+          b: this.$store.state.city === 'oakland' ? 20 : 10,
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
         colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
