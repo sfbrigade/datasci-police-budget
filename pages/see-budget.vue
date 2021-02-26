@@ -113,10 +113,12 @@
               </p>
             </v-col>
             <v-col cols=4>
-              <Plotly :data="sf_police_budget" :layout="police_budget_layout" :display-mode-bar="false"/>
+              <Plotly :data="sf_police_budget"
+              :layout="police_budget_layout" :display-mode-bar="false"/>
               <br />
               <br />
-              <Plotly :data="sf_police_budget_detail" :layout="police_budget_detail_layout" :display-mode-bar="false"/>
+              <Plotly :data="sf_police_budget_detail"
+              :layout="police_budget_detail_layout" :display-mode-bar="false"/>
             </v-col>
             <v-spacer />
           </v-row>
@@ -157,7 +159,8 @@
               <p class="graph-title">
                 SF Police Use of Force Incidents by Population
               </p>
-              <v-img :src="require('../assets/images/uof-by-race.png')" />
+              <Plotly :data="sf_force_by_race"
+              :layout="force_type_layout" :display-mode-bar="false"/>
             </v-col>
             <v-col cols=4>
               <h2 class="section-title">3. Police Use of Force (UOF)</h2>
@@ -241,8 +244,7 @@ import { mapGetters } from 'vuex';
 import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
 import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
 import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
-import SF_INCIDENTS_DATA from '../assets/data/sf_incidents.json';
-import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json'
+import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json';
 import SF_FORCE_CATEGORY_DATA from '../assets/data/sf_force.json';
 // import SF_FORCE_BY_RACE_DATA from '../assets/data/sf_race_uof_and_pop_share.json'
 
@@ -275,6 +277,21 @@ for (let i = 0; i < SF_FORCE_CATEGORY_DATA.length; i += 1) {
     strike.push(SF_FORCE_CATEGORY_DATA[i].incident_count);
   }
 }
+
+const budgetDetailY = [];
+const patrol = [];
+const ops = [];
+const specialOps = [];
+const recruitment = [];
+const training = [];
+SF_POLICE_BUDGET_DETAIL_DATA.forEach((item) => {
+  budgetDetailY.push(item.Year);
+  patrol.push(item.Patrol);
+  ops.push(item['Operations and Administration']);
+  specialOps.push(item['Special Operations']);
+  recruitment.push(item['SFPD-Recruitment And Examination Program']);
+  training.push(item['SFPD Training']);
+});
 
 export default Vue.extend({
   components: {
@@ -314,11 +331,43 @@ export default Vue.extend({
         parents,
         values,
       }],
-sf_police_budget: [{
+      sf_police_budget: [{
         type: 'scatter',
         x: policeSpendingX,
         y: policeSpendingY,
       }],
+      sf_police_budget_detail: [
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: patrol,
+          name: 'Patrol',
+        },
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: ops,
+          name: 'Operations and Administration',
+        },
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: specialOps,
+          name: 'Special Operations',
+        },
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: recruitment,
+          name: 'SFPD-Recruitment And Examination Program',
+        },
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: training,
+          name: 'SFPD Training',
+        },
+      ],
       sf_force_type: [
         {
           type: 'bar',
@@ -370,6 +419,19 @@ sf_police_budget: [{
           y: 2,
           yanchor: 'bottom',
         },
+      },
+      police_budget_detail_layout: {
+        title: {
+          text: 'Detailed Spending',
+          font: {
+            size: 18,
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+          showlegend: true,
+        },
+        showlegend: false,
       },
       police_budget_layout: {
         title: {
