@@ -52,12 +52,12 @@
               <p class="highlight-text">
                 It makes up this much of the Public Protection budget:
               </p>
-              <p class="highlight-number">37.5%</p>
+              <p class="highlight-number">39.3%</p>
               <br />
               <p class="highlight-text">
                 and this much of the city's overall budget:
               </p>
-              <p class="highlight-number">4.4%</p>
+              <p class="highlight-number">4.6%</p>
             </v-col>
             <v-col cols=4>
                 <Plotly :data="treeMapData" :layout="layout" :display-mode-bar="false"/>
