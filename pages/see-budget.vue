@@ -160,7 +160,7 @@
                 SF Police Use of Force Incidents by Population
               </p>
               <Plotly :data="sf_force_by_race"
-              :layout="force_type_layout" :display-mode-bar="false"/>
+              :layout="force_race_layout" :display-mode-bar="false"/>
             </v-col>
             <v-col cols=4>
               <h2 class="section-title">3. Police Use of Force (UOF)</h2>
@@ -246,7 +246,7 @@ import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format'
 import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
 import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json';
 import SF_FORCE_CATEGORY_DATA from '../assets/data/sf_force.json';
-// import SF_FORCE_BY_RACE_DATA from '../assets/data/sf_race_uof_and_pop_share.json'
+import SF_FORCE_BY_RACE_DATA from '../assets/data/sf_race_uof_and_pop_share.json';
 
 const labels = [];
 const parents = [];
@@ -291,6 +291,20 @@ SF_POLICE_BUDGET_DETAIL_DATA.forEach((item) => {
   specialOps.push(item['Special Operations']);
   recruitment.push(item['SFPD-Recruitment And Examination Program']);
   training.push(item['SFPD Training']);
+});
+
+const uofWhite = [];
+const uofBlack = [];
+const uofHisp = [];
+const uofAsian = [];
+const uofYear = [];
+
+SF_FORCE_BY_RACE_DATA.forEach((item) => {
+  uofYear.push(item.year);
+  uofWhite.push(item.White);
+  uofBlack.push(item.Black);
+  uofHisp.push(item.Hispanic);
+  uofAsian.push(item['Asian or Pacific Islander']);
 });
 
 export default Vue.extend({
@@ -388,6 +402,32 @@ export default Vue.extend({
           name: 'Physical Control',
         },
       ],
+      sf_force_by_race: [
+        {
+          type: 'scatter',
+          x: uofYear,
+          y: uofWhite,
+          name: 'White',
+        },
+        {
+          type: 'scatter',
+          x: uofYear,
+          y: uofBlack,
+          name: 'Black',
+        },
+        {
+          type: 'scatter',
+          x: uofYear,
+          y: uofHisp,
+          name: 'Hispanic / Latino',
+        },
+        {
+          type: 'scatter',
+          x: uofYear,
+          y: uofAsian,
+          name: 'Asian or Pacific Islander',
+        },
+      ],
       layout: {
         title: {
           text: 'San Francisco Total City Spend in 2017 by Department',
@@ -412,6 +452,17 @@ export default Vue.extend({
       force_type_layout: {
         title: {
           text: 'Use of Force',
+          font: {
+            size: 18,
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+      },
+      force_race_layout: {
+        title: {
+          text: 'Use of Force by Race per 100k',
           font: {
             size: 18,
           },
