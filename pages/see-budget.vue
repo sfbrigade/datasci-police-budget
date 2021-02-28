@@ -113,16 +113,12 @@
               </p>
             </v-col>
             <v-col cols=4>
-              <p class="graph-title">
-                SF Police Budget and Crime Incident Reports
-              </p>
-              <v-img :src="require('../assets/images/incidents-v-police-budget.png')" />
+              <Plotly :data="sf_police_budget"
+              :layout="police_budget_layout" :display-mode-bar="false"/>
               <br />
               <br />
-              <p class="graph-title">
-                SF Police Budget by Program
-              </p>
-              <v-img :src="require('../assets/images/training-budget.png')" />
+              <Plotly :data="sf_police_budget_detail"
+              :layout="police_budget_detail_layout" :display-mode-bar="false"/>
             </v-col>
             <v-spacer />
           </v-row>
@@ -157,15 +153,14 @@
           <v-row class="content-row body-row">
             <v-spacer />
             <v-col cols=4>
-              <p class="graph-title">
-                SF Police Use of Force Incidents
-              </p>
-              <v-img :src="require('../assets/images/SF_uof_annual_lineplot.png')" />
+               <Plotly :data="sf_force_type" :layout="force_type_layout" :display-mode-bar="false"/>
+
               <br /> <br /> <br /> <br /> <br />
               <p class="graph-title">
                 SF Police Use of Force Incidents by Population
               </p>
-              <v-img :src="require('../assets/images/uof-by-race.png')" />
+              <Plotly :data="sf_force_by_race"
+              :layout="force_race_layout" :display-mode-bar="false"/>
             </v-col>
             <v-col cols=4>
               <h2 class="section-title">3. Police Use of Force (UOF)</h2>
@@ -248,6 +243,10 @@ import { Plotly } from 'vue-plotly';
 import { mapGetters } from 'vuex';
 import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
 import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
+import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
+import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json';
+import SF_FORCE_CATEGORY_DATA from '../assets/data/sf_force.json';
+import SF_FORCE_BY_RACE_DATA from '../assets/data/sf_race_uof_and_pop_share.json';
 
 const labels = [];
 const parents = [];
@@ -256,6 +255,56 @@ SF_BUDGET_TREE_MAP_FORMAT.forEach((item) => {
   labels.push(item.Department);
   parents.push(item.Parent);
   values.push(item['2017']);
+});
+
+const policeSpendingX = [];
+const policeSpendingY = [];
+SF_POLICE_BUDGET_DATA.forEach((item) => {
+  policeSpendingX.push(item.Year);
+  policeSpendingY.push(item.Amount);
+});
+const physicalControl = [];
+const fireArm = [];
+const strike = [];
+const forceYear = [];
+for (let i = 0; i < SF_FORCE_CATEGORY_DATA.length; i += 1) {
+  if (SF_FORCE_CATEGORY_DATA[i]['Force Description'] === 'Physical Control') {
+    physicalControl.push(SF_FORCE_CATEGORY_DATA[i].incident_count);
+    forceYear.push(SF_FORCE_CATEGORY_DATA[i].year);
+  } else if (SF_FORCE_CATEGORY_DATA[i]['Force Description'] === 'Pointing of Firearms') {
+    fireArm.push(SF_FORCE_CATEGORY_DATA[i].incident_count);
+  } else if (SF_FORCE_CATEGORY_DATA[i]['Force Description'] === 'Strike by Object/Fist') {
+    strike.push(SF_FORCE_CATEGORY_DATA[i].incident_count);
+  }
+}
+
+const budgetDetailY = [];
+const patrol = [];
+const ops = [];
+const specialOps = [];
+const recruitment = [];
+const training = [];
+SF_POLICE_BUDGET_DETAIL_DATA.forEach((item) => {
+  budgetDetailY.push(item.Year);
+  patrol.push(item.Patrol);
+  ops.push(item['Operations and Administration']);
+  specialOps.push(item['Special Operations']);
+  recruitment.push(item['SFPD-Recruitment And Examination Program']);
+  training.push(item['SFPD Training']);
+});
+
+const uofWhite = [];
+const uofBlack = [];
+const uofHisp = [];
+const uofAsian = [];
+const uofYear = [];
+
+SF_FORCE_BY_RACE_DATA.forEach((item) => {
+  uofYear.push(item.year);
+  uofWhite.push(item.White);
+  uofBlack.push(item.Black);
+  uofHisp.push(item.Hispanic);
+  uofAsian.push(item['Asian or Pacific Islander']);
 });
 
 export default Vue.extend({
@@ -296,9 +345,92 @@ export default Vue.extend({
         parents,
         values,
       }],
+      sf_police_budget: [{
+        type: 'scatter',
+        x: policeSpendingX,
+        y: policeSpendingY,
+      }],
+      sf_police_budget_detail: [
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: patrol,
+          name: 'Patrol',
+        },
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: ops,
+          name: 'Operations and Administration',
+        },
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: specialOps,
+          name: 'Special Operations',
+        },
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: recruitment,
+          name: 'SFPD-Recruitment And Examination Program',
+        },
+        {
+          type: 'scatter',
+          x: budgetDetailY,
+          y: training,
+          name: 'SFPD Training',
+        },
+      ],
+      sf_force_type: [
+        {
+          type: 'bar',
+          x: forceYear,
+          y: strike,
+          name: 'Strike',
+        },
+        {
+          type: 'bar',
+          x: forceYear,
+          y: fireArm,
+          name: 'Firearm',
+        },
+        {
+          type: 'bar',
+          x: forceYear,
+          y: physicalControl,
+          name: 'Physical Control',
+        },
+      ],
+      sf_force_by_race: [
+        {
+          type: 'scatter',
+          x: uofYear,
+          y: uofWhite,
+          name: 'White',
+        },
+        {
+          type: 'scatter',
+          x: uofYear,
+          y: uofBlack,
+          name: 'Black',
+        },
+        {
+          type: 'scatter',
+          x: uofYear,
+          y: uofHisp,
+          name: 'Hispanic / Latino',
+        },
+        {
+          type: 'scatter',
+          x: uofYear,
+          y: uofAsian,
+          name: 'Asian or Pacific Islander',
+        },
+      ],
       layout: {
         title: {
-          text: 'SF Total City Spend in 2017 by Department',
+          text: 'San Francisco Total City Spend in 2017 by Department',
           font: {
             family: 'Nunito',
             size: 18,
@@ -316,6 +448,71 @@ export default Vue.extend({
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
         colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
+      },
+      force_type_layout: {
+        title: {
+          text: 'Use of Force',
+          font: {
+            size: 18,
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+      },
+      force_race_layout: {
+        title: {
+          text: 'Use of Force by Race per 100k',
+          font: {
+            size: 18,
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+      },
+      police_budget_detail_layout: {
+        title: {
+          text: 'Detailed Spending',
+          font: {
+            size: 18,
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+          showlegend: true,
+        },
+        showlegend: false,
+      },
+      police_budget_layout: {
+        title: {
+          text: 'San Francisco City Police Department Budget 1999-2017',
+          font: {
+            size: 18,
+            family: 'Nunito',
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        xaxis: {
+          autorange: true,
+          range: [1995, 2020],
+          type: 'linear',
+        },
+        yaxis: {
+          autorange: false,
+          range: [0, 600000000],
+          type: 'linear',
+        },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        margin: {
+          t: 45,
+        },
+        paper_bgcolor: 'rgba(0, 0, 0, 0)',
       },
     };
   },
