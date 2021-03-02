@@ -223,7 +223,81 @@
           </v-row>
         </v-row>
         <v-row v-if="city === 'oakland'">
-          Placeholder for Oakland narrative once finalized
+          <v-row class="content-row body-row white">
+            <v-col cols=6>
+              <h2 class="summary-title">Summary</h2>
+              <p class="summary-text">
+                From 2013-2020, the total city budget spending for Oakland averaged at around 1.3 billion dollars annually, 
+                while the annual police budget in Oakland averaged at around 258 million dollars. To better understand the role 
+                that the police department plays in Oakland, let’s dive into some of the details of how the police budget is used.
+              </p>
+              <v-row>
+                <v-col cols=6>
+                  <p class="summary-highlight-text">average annual total budget</p>
+                  <p class="summary-highlight-number">$TBD</p>
+                </v-col>
+                <v-col cols=6>
+                  <p class="summary-highlight-text">average annual police budget</p>
+                  <p class="summary-highlight-number">$TBD</p>
+                </v-col>
+              </v-row>
+              <p class="summary-text">
+                To better understand the role that the police department plays in Oakland,
+                let’s dive into some of the details of how the police budget is used.
+              </p>
+            </v-col>
+          </v-row>
+
+          <v-row class="content-row body-row">
+            <v-col cols=8>
+              <h2 class="section-title">1. Budget Overview</h2>
+              <p class="section-text">
+                There are five categories of organizations within Oakland -- General Administration & Finance, 
+                Human Welfare and Neighborhood Development, Culture & Recreation, Public Works, Transportation, 
+                and Commerce, and Public Protection. Oakland’s police department lies under the Public Protection 
+                organization. In FY 2020-2021, the police department spending made up about 20% of the total city 
+                budget, or about $330 million.
+              </p>
+              <v-row>
+                <v-col cols=6>
+                  <br /><br />
+                  <p class="highlight-text">
+                    It makes up this much of the Public Protection budget:
+                  </p>
+                  <p class="highlight-number">TBD%</p>
+                  <br />
+                  <p class="highlight-text">
+                    and this much of the city's overall budget:
+                  </p>
+                  <p class="highlight-number">TBD%</p>
+                </v-col>
+                <v-col cols=6>
+                  <Plotly :data="TBD" :layout="layout" :display-mode-bar="false"/>
+                </v-col>
+              </v-row>
+              <v-spacer />
+                <p class="summary-text">
+                  The other departments under the Public Protection organization are the Police Commission, the 
+                  Department of Violence Prevention and the Race and Equity Division. The violence prevention 
+                  department was established in 2019 to reduce violent crimes, improve emergency response times, and 
+                  invest in violence prevention strategies in the community. The Race and Equity department was 
+                  established in 2015 to eliminate systemic causes of racial disparities and promote inclusion in 
+                  city government and Oakland community. In 2020, the Police Department was the most funded department 
+                  by far in comparison to Race and Equity ($760k, or about 0.05% of the budget) or the Department of 
+                  Violence Prevention ($1.2 million, about 0.07% of the budget). Think through how YOU would allocate 
+                  funds using our Balance Budget tool!
+                </p>
+                <v-row align-content="center"> <v-btn
+                  class="city-filter__button"
+                  to="/balance-budget"
+                  color="#2a6465"
+                  nuxt
+                >
+                  BALANCE BUDGET
+                </v-btn>
+              </v-row>
+            </v-col>
+          </v-row>
         </v-row>
       </v-container>
     </v-main>
@@ -430,7 +504,7 @@ export default Vue.extend({
       ],
       layout: {
         title: {
-          text: 'San Francisco Total City Spend in 2017 by Department',
+          text: `${this.$store.state.city === 'oakland' ? 'Oakland' : 'San Francisco'} Total City Spend in 2017 by Department`,
           font: {
             family: 'Nunito',
             size: 18,
@@ -443,8 +517,8 @@ export default Vue.extend({
         margin: {
           l: 10,
           r: 10,
-          t: 100,
-          b: 10,
+          t: this.$store.state.city === 'oakland' ? 30 : 100,
+          b: this.$store.state.city === 'oakland' ? 20 : 10,
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
         colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
