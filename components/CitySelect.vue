@@ -21,6 +21,7 @@ export default {
       set(value) {
         this.$store.commit('updateCity', value);
         this.$emit('update-city');
+        console.log('test');
         return value;
       },
     },

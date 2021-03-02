@@ -25,7 +25,8 @@
         </v-col>
         <v-col col="6">
             <p class="city-filter__subtitle">
-              Or, deep-dive into your city's police budget spending and use of force statistics.
+              Or, deep-dive into your city's police budget spending trends
+              and use of force statistics.
             </p>
             <v-row align-content="center"> <v-btn
               class="city-filter__button"
@@ -33,7 +34,7 @@
               color="#2a6465"
               nuxt
             >
-              SEE BUDGET
+              EXPLORE TRENDS
             </v-btn> </v-row>
         </v-col>
     </v-row>
