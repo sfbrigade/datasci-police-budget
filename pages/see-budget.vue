@@ -232,11 +232,11 @@
               <v-row>
                 <v-col cols=6>
                   <p class="summary-highlight-text">average annual total budget</p>
-                  <p class="summary-highlight-number">$TBD</p>
+                  <p class="summary-highlight-number">$1.3B</p>
                 </v-col>
                 <v-col cols=6>
                   <p class="summary-highlight-text">average annual police budget</p>
-                  <p class="summary-highlight-number">$TBD</p>
+                  <p class="summary-highlight-number">$258M</p>
                 </v-col>
               </v-row>
               <p class="summary-text">
@@ -266,15 +266,15 @@
                   <p class="highlight-text">
                     It makes up this much of the Public Protection budget:
                   </p>
-                  <p class="highlight-number">TBD%</p>
+                  <p class="highlight-number">64%</p>
                   <br />
                   <p class="highlight-text">
                     and this much of the city's overall budget:
                   </p>
-                  <p class="highlight-number">TBD%</p>
+                  <p class="highlight-number">20%</p>
                 </v-col>
                 <v-col cols=6>
-                  <Plotly :data="TBD" :layout="layout" :display-mode-bar="false"/>
+                  <Plotly :data="oaktreeMapData" :layout="layout" :display-mode-bar="false"/>
                 </v-col>
               </v-row>
               <v-spacer />
@@ -326,7 +326,8 @@ import Footer from '@/components/Footer';
 import { Plotly } from 'vue-plotly';
 import { mapGetters } from 'vuex';
 import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
-import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
+import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format'
+import OAKLAND_BUDGET_TREE_MAP_FORMAT from '../assets/data/oakland_budget_tree_map_format'
 import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
 import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json';
 import SF_FORCE_CATEGORY_DATA from '../assets/data/sf_force.json';
@@ -335,10 +336,19 @@ import SF_FORCE_BY_RACE_DATA from '../assets/data/sf_race_uof_and_pop_share.json
 const labels = [];
 const parents = [];
 const values = [];
+const oaklabels = [];
+const oakparents = [];
+const oakvalues = [];
 SF_BUDGET_TREE_MAP_FORMAT.forEach((item) => {
   labels.push(item.Department);
   parents.push(item.Parent);
   values.push(item['2017']);
+});
+
+OAKLAND_BUDGET_TREE_MAP_FORMAT.forEach((item) => {
+  oaklabels.push(item.Department);
+  oakparents.push(item.Parent);
+  oakvalues.push(item['2020']);
 });
 
 const policeSpendingX = [];
@@ -428,6 +438,13 @@ export default Vue.extend({
         labels,
         parents,
         values,
+      }],
+      oaktreeMapData: [{
+        type: 'treemap',
+        branchvalues: 'total',
+        oaklabels,
+        oakparents,
+        oakvalues,
       }],
       sf_police_budget: [{
         type: 'scatter',
