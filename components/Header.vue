@@ -2,7 +2,7 @@
   <div class="header">
     <v-container class="nav-bar" fluid>
       <v-row class="nav-row" v-if="fullView">
-        <v-col v-for="button in leftRoutes" :key="button.key">
+        <v-col v-for="button in leftRoutes" :key="button.key" cols="2">
           <v-btn
             class="nav-item black--text"
             color="transparent"
@@ -16,9 +16,9 @@
             color="transparent"
             depressed
             to="/"
-            nuxt>Police Budget Tracker</v-btn>
+            nuxt>Police Trends</v-btn>
         </v-col>
-        <v-col v-for="button in rightRoutes" :key="button.key">
+        <v-col v-for="button in rightRoutes" :key="button.key" cols="2">
           <v-btn
             class="nav-item black--text"
             color="transparent"
@@ -35,7 +35,7 @@
             depressed
             to="/"
             nuxt
-            >City Budget Tracker</NuxtLink
+            >Police Trends</NuxtLink
           >
         </v-col>
         <v-col class="nav-icon-col no-grow">
@@ -81,7 +81,7 @@ export default {
         {
           key: 'see-budget',
           path: '/see-budget',
-          title: 'See Budget',
+          title: 'Explore Trends',
         },
         {
           key: 'balance-budget',

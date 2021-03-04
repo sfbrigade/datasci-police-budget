@@ -7,7 +7,7 @@
     <v-main>
       <v-container fluid fill-height>
         <v-row justify="center" class="body-row">
-          <h2 class="Section-Title">See Budget</h2>
+          <h2 class="Section-Title">Explore Trends</h2>
         </v-row>
 
         <v-row class="content-row body-row">
@@ -115,8 +115,6 @@
             <v-col cols=4>
               <Plotly :data="sf_police_budget"
               :layout="police_budget_layout" :display-mode-bar="false"/>
-              <br />
-              <br />
               <Plotly :data="sf_police_budget_detail"
               :layout="police_budget_detail_layout" :display-mode-bar="false"/>
             </v-col>
@@ -154,11 +152,6 @@
             <v-spacer />
             <v-col cols=4>
                <Plotly :data="sf_force_type" :layout="force_type_layout" :display-mode-bar="false"/>
-
-              <br /> <br /> <br /> <br /> <br />
-              <p class="graph-title">
-                SF Police Use of Force Incidents by Population
-              </p>
               <Plotly :data="sf_force_by_race"
               :layout="force_race_layout" :display-mode-bar="false"/>
             </v-col>
@@ -176,14 +169,16 @@
                 in police training and calls into question the rising budget
                 the city allocates towards its police force.
               </p>
-              <br /> <br />
+              <br />
               <p class="highlight-number">38%</p>
               <p class="highlight-text">
-                of people in all UOF incidents from 2015 to 2019 were Black.
+                of people in all UOF incidents from 2015 to 2020 were Black, though Black folks
+                only made up ~5% of the total SF population in that same time period.
               </p>
               <br />
               <p class="section-text">
-                In pointing of firearms incidents, there are considerably more incidents
+                In pointing of firearms incidents in particular, there were
+                considerably more incidents
                 against Black people versus against any other racial group, both in
                 absolute terms and as a percentage of the total Black population.
               </p>
@@ -227,9 +222,12 @@
             <v-col cols=6>
               <h2 class="summary-title">Summary</h2>
               <p class="summary-text">
-                From 2013-2020, the total city budget spending for Oakland averaged at around 1.3 billion dollars annually, 
-                while the annual police budget in Oakland averaged at around 258 million dollars. To better understand the role 
-                that the police department plays in Oakland, let’s dive into some of the details of how the police budget is used.
+                From 2013-2020, the total city budget spending for Oakland
+                averaged at around 1.3 billion dollars annually,
+                while the annual police budget in Oakland averaged at around
+                258 million dollars. To better understand the role
+                that the police department plays in Oakland, let’s dive into
+                some of the details of how the police budget is used.
               </p>
               <v-row>
                 <v-col cols=6>
@@ -252,10 +250,14 @@
             <v-col cols=8>
               <h2 class="section-title">1. Budget Overview</h2>
               <p class="section-text">
-                There are five categories of organizations within Oakland -- General Administration & Finance, 
-                Human Welfare and Neighborhood Development, Culture & Recreation, Public Works, Transportation, 
-                and Commerce, and Public Protection. Oakland’s police department lies under the Public Protection 
-                organization. In FY 2020-2021, the police department spending made up about 20% of the total city 
+                There are five categories of organizations within Oakland
+                -- General Administration & Finance,
+                Human Welfare and Neighborhood Development, Culture & Recreation,
+                Public Works, Transportation,
+                and Commerce, and Public Protection. Oakland’s police department
+                lies under the Public Protection
+                organization. In FY 2020-2021, the police department spending made
+                up about 20% of the total city
                 budget, or about $330 million.
               </p>
               <v-row>
@@ -277,14 +279,22 @@
               </v-row>
               <v-spacer />
                 <p class="summary-text">
-                  The other departments under the Public Protection organization are the Police Commission, the 
-                  Department of Violence Prevention and the Race and Equity Division. The violence prevention 
-                  department was established in 2019 to reduce violent crimes, improve emergency response times, and 
-                  invest in violence prevention strategies in the community. The Race and Equity department was 
-                  established in 2015 to eliminate systemic causes of racial disparities and promote inclusion in 
-                  city government and Oakland community. In 2020, the Police Department was the most funded department 
-                  by far in comparison to Race and Equity ($760k, or about 0.05% of the budget) or the Department of 
-                  Violence Prevention ($1.2 million, about 0.07% of the budget). Think through how YOU would allocate 
+                  The other departments under the Public Protection organization
+                  are the Police Commission, the
+                  Department of Violence Prevention and the Race and Equity Division.
+                  The violence prevention
+                  department was established in 2019 to reduce violent crimes,
+                  improve emergency response times, and
+                  invest in violence prevention strategies in the community.
+                  The Race and Equity department was
+                  established in 2015 to eliminate systemic causes of racial disparities
+                  and promote inclusion in
+                  city government and Oakland community. In 2020, the Police Department
+                  was the most funded department
+                  by far in comparison to Race and Equity ($760k, or about 0.05% of the
+                  budget) or the Department of
+                  Violence Prevention ($1.2 million, about 0.07% of the budget). Think
+                  through how YOU would allocate
                   funds using our Balance Budget tool!
                 </p>
                 <v-row align-content="center"> <v-btn
@@ -423,6 +433,9 @@ export default Vue.extend({
         type: 'scatter',
         x: policeSpendingX,
         y: policeSpendingY,
+        line: {
+          color: 'rgb(42, 100, 101)',
+        },
       }],
       sf_police_budget_detail: [
         {
@@ -430,30 +443,45 @@ export default Vue.extend({
           x: budgetDetailY,
           y: patrol,
           name: 'Patrol',
+          line: {
+            color: '#2A6465',
+          },
         },
         {
           type: 'scatter',
           x: budgetDetailY,
           y: ops,
           name: 'Operations and Administration',
+          line: {
+            color: '#4DA54A',
+          },
         },
         {
           type: 'scatter',
           x: budgetDetailY,
           y: specialOps,
           name: 'Special Operations',
+          line: {
+            color: '#EF896E',
+          },
         },
         {
           type: 'scatter',
           x: budgetDetailY,
           y: recruitment,
           name: 'SFPD-Recruitment And Examination Program',
+          line: {
+            color: '#4296AD',
+          },
         },
         {
           type: 'scatter',
           x: budgetDetailY,
           y: training,
           name: 'SFPD Training',
+          line: {
+            color: '#F5BD41',
+          },
         },
       ],
       sf_force_type: [
@@ -462,18 +490,27 @@ export default Vue.extend({
           x: forceYear,
           y: strike,
           name: 'Strike',
+          marker: {
+            color: '#2A6465',
+          },
         },
         {
           type: 'bar',
           x: forceYear,
           y: fireArm,
           name: 'Firearm',
+          marker: {
+            color: '#EF896E',
+          },
         },
         {
           type: 'bar',
           x: forceYear,
           y: physicalControl,
           name: 'Physical Control',
+          marker: {
+            color: '#F5BD41',
+          },
         },
       ],
       sf_force_by_race: [
@@ -504,7 +541,7 @@ export default Vue.extend({
       ],
       layout: {
         title: {
-          text: `${this.$store.state.city === 'oakland' ? 'Oakland' : 'San Francisco'} Total City Spend in 2017 by Department`,
+          text: `${this.$store.state.city === 'oakland' ? 'Oakland' : 'SF'} Total City Spend by Department (2017)`,
           font: {
             family: 'Nunito',
             size: 18,
@@ -525,42 +562,72 @@ export default Vue.extend({
       },
       force_type_layout: {
         title: {
-          text: 'Use of Force',
+          text: 'SF Use of Force by Type (2016-2019)',
           font: {
             size: 18,
+            family: 'Nunito',
           },
           yref: 'paper',
           y: 2,
           yanchor: 'bottom',
         },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        showlegend: true,
+        legend: {
+          orientation: 'h',
+        },
+        plot_bgcolor: '#F1F8F8',
+        paper_bgcolor: 'F1F8F8',
       },
       force_race_layout: {
         title: {
-          text: 'Use of Force by Race per 100k',
+          text: 'SF Use of Force by Race per 100K (2015-2020)',
           font: {
             size: 18,
+            family: 'Nunito',
           },
           yref: 'paper',
           y: 2,
           yanchor: 'bottom',
         },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        showlegend: true,
+        legend: {
+          orientation: 'h',
+        },
+        plot_bgcolor: '#F1F8F8',
+        paper_bgcolor: 'F1F8F8',
       },
       police_budget_detail_layout: {
         title: {
-          text: 'Detailed Spending',
+          text: 'SF City Police Sub-Departments (1999-2017)',
           font: {
             size: 18,
+            family: 'Nunito',
           },
           yref: 'paper',
           y: 2,
           yanchor: 'bottom',
-          showlegend: true,
+        },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        margin: {
+          t: 40,
+          pad: 5,
         },
         showlegend: false,
       },
       police_budget_layout: {
         title: {
-          text: 'San Francisco City Police Department Budget 1999-2017',
+          text: 'SF City Police Department Budget (1999-2017)',
           font: {
             size: 18,
             family: 'Nunito',
@@ -584,7 +651,8 @@ export default Vue.extend({
           family: 'Nunito',
         },
         margin: {
-          t: 45,
+          t: 110,
+          pad: 5,
         },
         paper_bgcolor: 'rgba(0, 0, 0, 0)',
       },
