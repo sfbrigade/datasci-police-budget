@@ -326,8 +326,8 @@ import Footer from '@/components/Footer';
 import { Plotly } from 'vue-plotly';
 import { mapGetters } from 'vuex';
 import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
-import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format'
-import OAKLAND_BUDGET_TREE_MAP_FORMAT from '../assets/data/oakland_budget_tree_map_format'
+import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
+import OAKLAND_BUDGET_TREE_MAP_FORMAT from '../assets/data/oakland_budget_tree_map_format';
 import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
 import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json';
 import SF_FORCE_CATEGORY_DATA from '../assets/data/sf_force.json';
@@ -601,7 +601,7 @@ export default Vue.extend({
       },
       force_race_layout: {
         title: {
-          text: 'SF Use of Force by Race per 100K (2015-2020)',
+          text: 'SF Use of Force by Race per 100K (2016-2020)',
           font: {
             size: 18,
             family: 'Nunito',
