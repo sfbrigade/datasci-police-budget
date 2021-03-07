@@ -95,3 +95,19 @@ package-lock.json
 # cypress output
 test/e2e/videos
 test/e2e/screenshots
+sanfranciscodataset/.ipynb_checkpoints/San_Francisco_Incidents_Analysis-checkpoint.ipynb
+sanfranciscodataset/.ipynb_checkpoints/SF_UseOfForceAnalysis-checkpoint.ipynb
+sanfranciscodataset/.ipynb_checkpoints/TS_SF_UseOfForceAnalysis-checkpoint.ipynb
+sanfranciscodataset/.ipynb_checkpoints/Use of Force Data Analysis-checkpoint.ipynb
+*.xlsx
+sanfranciscodataset/graphs/images/SF_uof_monthly_15-20Apr.png
+sanfranciscodataset/plot_data/.ipynb_checkpoints/sf_police_uof-checkpoint.csv
+sanfranciscodataset/plot_data/.ipynb_checkpoints/SF_Use_of_Force_Stats(2015-2020)-checkpoint.csv
+sanfranciscodataset/SF_UseOfForceAnalysis.ipynb
+oaklanddataset/data/.ipynb_checkpoints/oakland_budget_history_depts-checkpoint.csv
+oaklanddataset/.ipynb_checkpoints/DRC_police_budgets-checkpoint.ipynb
+oaklanddataset/.ipynb_checkpoints/TS_police_budgets_oak-checkpoint.ipynb
+oaklanddataset/Agencies by Category.ipynb
+oaklanddataset/data_aggregation_frompdf.ipynb
+oaklanddataset/dataexploration.ipynb
+.ipynb_checkpoints
