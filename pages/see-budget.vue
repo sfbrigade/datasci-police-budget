@@ -308,6 +308,141 @@
               </v-row>
             </v-col>
           </v-row>
+
+          <v-row class="content-row body-row">
+            <v-col cols=8>
+              <h2 class="section-title">3. Use Of Force</h2>
+              <p class="section-text">
+                Use of force is defined as any physical or mechanical intervention used by
+                a member or employee to defend, control, overpower, restrain or overcome the
+                resistance of an individual.
+              </p>
+
+              <p class="section-text">
+                From 2007 to 2016, use of force incidents with serious injuries or
+                death averaged around 6 incidents annually. Other use of force incidents
+                rates varied but at large declined significantly. However, in 2016,
+                there were 470 reported level 4 incidents, which can include any intentional
+                pointing of a firearm or a weaponless defense technique applied to a
+                vulnerable area.
+              </p>
+
+              <p class="section-text">
+                Tab through the levels to view use of force definitions and trends.
+              </p>
+              <br /> <br />
+              <v-row
+                align="center"
+                justify="center"
+              >
+                <v-btn-toggle
+                  v-model="text"
+                  rounded
+                  align-content="center"
+                  color="white"
+                >
+                  <v-btn
+                    value="Level 1"
+                    class="btn-toggle"
+                    active-class="btn-toggled"
+                  >
+                    Level 1
+                  </v-btn>
+
+                  <v-btn
+                    value="Level 2"
+                    class="btn-toggle"
+                    active-class="btn-toggled"
+                  >
+                    Level 2
+                  </v-btn>
+
+                  <v-btn
+                    value="Level 3"
+                    class="btn-toggle"
+                    active-class="btn-toggled"
+                  >
+                    Level 3
+                  </v-btn>
+
+                  <v-btn
+                    value="Level 4"
+                    class="btn-toggle"
+                    active-class="btn-toggled"
+                  >
+                    Level 4
+                  </v-btn>
+                </v-btn-toggle>
+              </v-row>
+              <br />
+              <v-row
+                align="center"
+                justify="center"
+              >
+                <v-col cols=6>
+                  <v-img :src="require('../assets/images/oakland-uof-over-time.png')" />
+                </v-col>
+                <v-col cols=6
+                >
+                  <p class="highlight-text">
+                    Level 1 Uses of Force include the following:
+                  </p>
+                  <ul>
+                    <li>Any use of force resulting in death</li>
+                    <li>Any intentional firearm discharge at a person, regardless of injury</li>
+                    <li>Any force with a substantial risk of causing death</li>
+                    <li>Any force resulting in serious bodily injuries</li>
+                    <li>Any unintentional firearm discharge with injury or as directed by
+                      the Bureau of Investigations Deputy Chief</li>
+                    <li>Any intentional impact weapon strike to the head</li>
+                    <li>Any use of force investigation elevated to Level 1
+                      approved by a Watch Commander</li>
+                  </ul>
+                </v-col>
+              </v-row>
+              <br /><br />
+              <v-row align="center"
+                justify="center">
+                <p>
+                  Additionally, the proportion of police stops which involve Black community
+                  members are nearly double the proportion of Black people in Oakland and
+                  the numbers aren’t going down.  A lever for change could be focusing on the
+                  department’s proportion of Black officers, which in contrast is only 60% of
+                  the proportion of Black Oakland residents.
+                </p>
+              </v-row>
+              <v-row>
+                <v-col cols=6>
+                  <br /><br />
+                  <p class="highlight-text">
+                    In 2018, Black or African Americans make up
+                  </p>
+                  <br />
+                  <div class="highlight-div">
+                    <p class="highlight-number">17%</p>
+                    <p class="highlight-text">
+                      of Oakland's Police Department
+                    </p>
+                  </div>
+                  <div class="highlight-div">
+                    <p class="highlight-number">28%</p>
+                    <p class="highlight-text">
+                      of Oakland's Population
+                    </p>
+                  </div>
+                  <div class="highlight-div">
+                    <p class="highlight-number">60%</p>
+                    <p class="highlight-text">
+                      of discretionary stops by police officers
+                    </p>
+                  </div>
+                </v-col>
+                <v-col cols=6 >
+                  <v-img :src="require('../assets/images/oakland-disc-stops.png')" />
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
         </v-row>
       </v-container>
     </v-main>
@@ -694,6 +829,12 @@ export default Vue.extend({
   font-size: 18px;
 }
 
+.highlight-div {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
 .highlight-number {
   font-size: 75px;
   font-family: 'Bebas Neue', cursive;
@@ -704,6 +845,10 @@ export default Vue.extend({
   font-size: 18px;
   font-weight: 800;
   margin-bottom: 6px;
+}
+
+.highlight-div .highlight-text {
+  margin-left: 10px;
 }
 
 .summary-title {
@@ -759,5 +904,14 @@ export default Vue.extend({
   height: 40px;
   width: 227px;
   border-radius: 40px;
+}
+
+.btn-toggle {
+color: #2A6465;
+}
+
+.btn-toggled {
+  background: rgba(42, 100, 101, 0.2) !important;
+  color: #2A6465 !important;
 }
 </style>
