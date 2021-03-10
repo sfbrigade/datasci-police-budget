@@ -309,6 +309,51 @@
             </v-col>
           </v-row>
 
+          <v-row class="content-row body-row white">
+            <v-spacer />
+            <v-col cols=4>
+              <h2 class="section-title">2. Police Budget Trends</h2>
+              <p class="section-text">On average, the police department budget grew by: </p>
+              <p class="highlight-number">10.5%</p>
+              <p class="section-text">per year, compounded over the past 8 years. Around the
+                same period, the authorized hiring of police officers increased by:
+              </p>
+              <p class="highlight-number">9.7%</p>
+              <p class="section-text">
+                Actual filled positions experienced an initial dip in the early 2010s
+                but rose back to around 750 hires in 2018.
+              </p>
+            </v-col>
+            <v-col cols=4>
+              <p class="graph-title">Oakland Police Department Budget (20XX-20XX)</p>
+              <v-img :src="require('../assets/images/oakland-police-budget-over-time.png')" />
+              <p class="graph-title">Oakland Police All Sworn Staff (20XX-20XX)</p>
+              <v-img :src="require('../assets/images/oakland-staff-over-time.png')" />
+            </v-col>
+            <v-spacer />
+          </v-row>
+          <v-row class="content-row body-row white">
+            <v-col cols=6>
+              <p class="summary-text">
+                As of 2018, the department is about 17% Black or African American, an
+                under-representation compared to Black or African Americans making up about
+                28% of the broader Oakland community.
+              </p>
+            </v-col>
+          </v-row>
+          <v-row class="content-row body-row white">
+            <v-spacer />
+            <v-col cols=4>
+              <p class="graph-title"> Race and Ethnicity: All Oakland Sworn Staff (2018)</p>
+              <v-img :src="require('../assets/images/oakland-all-sworn-staff.png')" />
+            </v-col>
+            <v-col cols=4>
+              <p class="graph-title"> Race and Ethnicity: Oakland Population (2010)</p>
+              <v-img :src="require('../assets/images/oakland-population.png')" />
+            </v-col>
+            <v-spacer />
+          </v-row>
+
           <v-row class="content-row body-row">
             <v-col cols=8>
               <h2 class="section-title">3. Use Of Force</h2>
