@@ -1,0 +1,915 @@
+CntyCode,County,Code,Agency,Start,End
+01,Alameda County,0100,Alameda Co. Sheriff's Department,,
+01,Alameda County,0101,Alameda,,
+01,Alameda County,0102,Albany,,
+01,Alameda County,0103,Berkeley,,
+01,Alameda County,0104,Emeryville,,
+01,Alameda County,0105,Fremont,,
+01,Alameda County,0106,Hayward,,
+01,Alameda County,0107,Livermore,,
+01,Alameda County,0108,Newark,,
+01,Alameda County,0109,Oakland,,
+01,Alameda County,0110,Piedmont,,
+01,Alameda County,0111,Pleasanton,,
+01,Alameda County,0112,San Leandro,,
+01,Alameda County,0113,Union City,,
+01,Alameda County,0114,East Bay Reg. Park Dist. - Alameda,,
+01,Alameda County,0115,CSU East Bay,,
+01,Alameda County,0116,Union Pacific RR - Alameda,1/1/1997,
+01,Alameda County,011A,ABC Oakland,1/1/2003,12/31/2003
+01,Alameda County,0121,Alameda BART,,
+01,Alameda County,0122,UC Lawrence-Livermore,,6/30/2007
+01,Alameda County,0127,UC Lawrence-Berkeley,1/1/1980,6/30/1992
+01,Alameda County,0128,Santa Fe RR - Alameda,1/1/1981,5/31/1990
+01,Alameda County,0129,Southern Pacific RR - Alameda,7/1/1981,12/31/1996
+01,Alameda County,0130,Dublin,2/1/1982,
+01,Alameda County,0131,East Bay Mun. Util. Dist. - Alameda,12/1/1983,12/31/2016
+01,Alameda County,0132,Union Pacific RR - Alameda,3/1/1985,12/31/1996
+01,Alameda County,0197,UC Berkeley,,
+01,Alameda County,0198,CA State Police - Alameda,,6/30/1995
+01,Alameda County,0199,CA Highway Patrol - Alameda,,
+02,Alpine County,0200,Alpine Co. Sheriff's Department,,
+02,Alpine County,0299,CA Highway Patrol - Alpine,,
+03,Amador County,0300,Amador Co. Sheriff's Department,,
+03,Amador County,0301,Amador,,prior to 1979
+03,Amador County,0302,Ione,,
+03,Amador County,0303,Jackson,,
+03,Amador County,0304,Plymouth,,9/30/1985
+03,Amador County,0305,Sutter Creek,,
+03,Amador County,0306,Union Pacific RR - Amador,7/1/1981,
+03,Amador County,0399,CA Highway Patrol - Amador,,
+04,Butte County,0400,Butte Co. Sheriff's Department,,
+04,Butte County,0401,Biggs,,
+04,Butte County,0402,Chico,,
+04,Butte County,0403,Gridley,,
+04,Butte County,0404,Oroville,,
+04,Butte County,0405,Paradise,,
+04,Butte County,0406,Union Pacific RR - Butte,7/1/1981,
+04,Butte County,0407,Northern Buttes DPR,1/1/1985,
+04,Butte County,0409,Upper Valley DPR,7/1/1987,12/31/1992
+04,Butte County,0411,Union Pacific RR - Butte,1/1/1990,12/31/1996
+04,Butte County,0497,CSU Chico,,
+04,Butte County,0498,CA State Police - Butte,,6/30/1995
+04,Butte County,0499,CA Highway Patrol - Butte,,
+05,Calaveras County,0500,Calaveras Co. Sheriff's Department,,
+05,Calaveras County,0501,Angels Camp,,
+05,Calaveras County,0502,Union Pacific RR - Calaveras,7/1/1981,
+05,Calaveras County,0503,Calaveras DPR,1/1/1985,
+05,Calaveras County,0599,CA Highway Patrol - Calaveras,,
+06,Colusa County,0600,Colusa Co. Sheriff's Department,,
+06,Colusa County,0601,Colusa,,
+06,Colusa County,0602,Williams,,
+06,Colusa County,0603,Union Pacific RR - Colusa,7/1/1981,
+06,Colusa County,0699,CA Highway Patrol - Colusa,,
+07,Contra Costa County,0700,Contra Costa Co. Sheriff's Department,,
+07,Contra Costa County,0701,Antioch,,
+07,Contra Costa County,0702,Brentwood,,
+07,Contra Costa County,0703,Clayton,,
+07,Contra Costa County,0704,Concord,,
+07,Contra Costa County,0705,El Cerrito,,
+07,Contra Costa County,0706,Hercules,,
+07,Contra Costa County,0707,Pinole,,
+07,Contra Costa County,0708,Pittsburg,,
+07,Contra Costa County,0709,Pleasant Hill,,
+07,Contra Costa County,0710,Richmond,,
+07,Contra Costa County,0711,San Pablo,,
+07,Contra Costa County,0712,Walnut Creek,,
+07,Contra Costa County,0713,Kensington,,
+07,Contra Costa County,0714,Martinez,,
+07,Contra Costa County,0715,Lafayette,,
+07,Contra Costa County,0716,Moraga,,
+07,Contra Costa County,0717,East Bay Reg. Park Dist. - Contra Costa,,12/31/2016
+07,Contra Costa County,0718,Contra Costa BART,,
+07,Contra Costa County,0719,Santa Fe RR - Contra Costa,1/1/1981,5/31/1990
+07,Contra Costa County,0720,Southern Pacific RR - Contra Costa,7/1/1981,12/31/1996
+07,Contra Costa County,0721,Contra Costa Community College,7/1/1983,
+07,Contra Costa County,0723,Danville,8/1/1982,
+07,Contra Costa County,0724,San Ramon,1/1/1984,
+07,Contra Costa County,0725,Diablo DPR,1/1/1985,12/31/1992
+07,Contra Costa County,0726,Orinda,7/1/1986,
+07,Contra Costa County,0733,Union Pacific RR - Contra Costa,1/1/1997,
+07,Contra Costa County,0734,Oakley,7/1/2000,
+07,Contra Costa County,0798,CA State Police - Contra Costa,,6/30/1995
+07,Contra Costa County,0799,CA Highway Patrol - Contra Costa,,
+08,Del Norte County,0800,Del Norte Co. Sheriff's Department,,
+08,Del Norte County,0801,Crescent City,,
+08,Del Norte County,0899,CA Highway Patrol - Del Norte,,
+09,El Dorado County,0900,El Dorado Co. Sheriff's Department,,
+09,El Dorado County,0901,Placerville,,
+09,El Dorado County,0902,South Lake Tahoe,,
+09,El Dorado County,0903,Union Pacific RR - El Dorado,7/1/1981,
+09,El Dorado County,0923,Marshall Gold DPR,1/1/1985,12/31/1992
+09,El Dorado County,0999,CA Highway Patrol - El Dorado,,
+10,Fresno County,1000,Fresno Co. Sheriff's Department,,
+10,Fresno County,1001,Clovis,,
+10,Fresno County,1002,Coalinga,,
+10,Fresno County,1003,Firebaugh,,
+10,Fresno County,1004,Fowler,,
+10,Fresno County,1005,Fresno,,
+10,Fresno County,1006,Huron,,
+10,Fresno County,1007,Kerman,,
+10,Fresno County,1008,Kingsburg,,
+10,Fresno County,1009,Mendota,9/1/2009,
+10,Fresno County,1010,Orange Cove,1/1/2013,
+10,Fresno County,1011,Parlier,1/1/1992,
+10,Fresno County,1012,Reedley,,
+10,Fresno County,1013,Sanger,,
+10,Fresno County,1015,Selma,,
+10,Fresno County,1017,State Center Community College,1/1/1990,
+10,Fresno County,1018,Santa Fe RR - Fresno,1/1/1981,5/31/1990
+10,Fresno County,1019,Southern Pacific RR - Fresno,7/1/1981,12/31/1996
+10,Fresno County,101A,ABC Fresno,1/1/2003,12/31/2003
+10,Fresno County,1024,Union Pacific RR - Fresno,1/1/1997,
+10,Fresno County,1030,San Joaquin DPR,1/1/1985,
+10,Fresno County,1031,Reedley Community College,1/1/1991,12/31/2009
+10,Fresno County,1044,Clovis Unified School,2/1/2019,
+10,Fresno County,1097,CSU Fresno,,
+10,Fresno County,1098,CA State Police - Fresno,,6/30/1995
+10,Fresno County,1099,CA Highway Patrol - Fresno,,
+10,Fresno County,10M1,Coalinga State Hospital,1/1/2008,
+11,Glenn County,1100,Glenn Co. Sheriff's Department,,
+11,Glenn County,1101,Orland,,
+11,Glenn County,1102,Willows,,6/30/2017
+11,Glenn County,1103,Union Pacific RR - Glenn,7/1/1981,
+11,Glenn County,1199,CA Highway Patrol - Glenn,,
+12,Humboldt County,1200,Humboldt Co. Sheriff's Department,,
+12,Humboldt County,1201,Arcata,,
+12,Humboldt County,1202,Blue Lake,1/1/1989,6/30/2008
+12,Humboldt County,1203,Eureka,,
+12,Humboldt County,1204,Ferndale,,
+12,Humboldt County,1205,Fortuna,,
+12,Humboldt County,1206,Trinidad,1/1/1989,6/30/2010
+12,Humboldt County,1207,Rio Dell,,
+12,Humboldt County,1208,CSU Humboldt,,
+12,Humboldt County,1209,Union Pacific RR - Humboldt,7/1/1981,
+12,Humboldt County,1210,Eel River DPR,1/1/1985,12/31/1992
+12,Humboldt County,1211,Northern Coast Redwoods DPR,1/1/1985,
+12,Humboldt County,121A,ABC Eureka,1/1/2003,12/31/2003
+12,Humboldt County,1299,CA Highway Patrol - Humboldt,,
+13,Imperial County,1300,Imperial Co. Sheriff's Department,,
+13,Imperial County,1301,Brawley,,
+13,Imperial County,1302,Calexico,,
+13,Imperial County,1303,Calipatria,,
+13,Imperial County,1304,El Centro,,
+13,Imperial County,1305,Holtville,,
+13,Imperial County,1306,Imperial,,
+13,Imperial County,1307,Westmorland,,
+13,Imperial County,1308,Union Pacific RR - Imperial,7/1/1981,
+13,Imperial County,1309,Montane DPR,1/1/1985,12/31/1986
+13,Imperial County,1398,CA State Police - Imperial,,6/30/1995
+13,Imperial County,1399,CA Highway Patrol - Imperial,,
+14,Inyo County,1400,Inyo Co. Sheriff's Department,,
+14,Inyo County,1401,Bishop,,
+14,Inyo County,1403,Union Pacific RR - Inyo,7/1/1981,
+14,Inyo County,1499,CA Highway Patrol - Inyo,,
+15,Kern County,1500,Kern Co. Sheriff's Department,,
+15,Kern County,1501,Arvin,,
+15,Kern County,1502,Bakersfield,,
+15,Kern County,1503,Delano,,
+15,Kern County,1504,Maricopa,,12/31/1999
+15,Kern County,1505,McFarland,1/1/2010,
+15,Kern County,1506,Ridgecrest,,
+15,Kern County,1507,Shafter,,
+15,Kern County,1508,Taft,,
+15,Kern County,1509,Tehachapi,1/1/2009,
+15,Kern County,1510,Wasco,,12/31/1981
+15,Kern County,1511,California City,,
+15,Kern County,1513,China Lake,,1/1/1995
+15,Kern County,1514,Stallion Springs,,
+15,Kern County,1515,Bear Valley,,
+15,Kern County,1516,Santa Fe RR - Kern,1/1/1981,5/31/1990
+15,Kern County,1517,Southern Pacific RR - Kern,7/1/1981,12/31/1996
+15,Kern County,151A,ABC Bakersfield,1/1/2003,12/31/2003
+15,Kern County,1521,Kern High School,1/1/2018,
+15,Kern County,1522,Union Pacific RR - Kern,1/1/1997,
+15,Kern County,1597,CSU Bakersfield,,
+15,Kern County,1598,CA State Police - Kern,,6/30/1995
+15,Kern County,1599,CA Highway Patrol - Kern,,
+16,Kings County,1600,Kings Co. Sheriff's Department,,
+16,Kings County,1601,Corcoran,,
+16,Kings County,1602,Hanford,,
+16,Kings County,1603,Lemoore,,
+16,Kings County,1604,Santa Fe RR - Kings,1/1/1981,5/31/1990
+16,Kings County,1605,Union Pacific RR - Kings,7/1/1981,
+16,Kings County,1606,Porterville Developmental Center,1/1/1985,
+16,Kings County,1607,Avenal,1/1/1992,
+16,Kings County,1698,CA State Police - Kings,,6/30/1995
+16,Kings County,1699,CA Highway Patrol - Kings,,
+17,Lake County,1700,Lake Co. Sheriff's Department,,
+17,Lake County,1701,Lakeport,,
+17,Lake County,1702,Clearlake,10/1/1981,
+17,Lake County,1703,Clear Lake DPR,1/1/1985,12/31/1992
+17,Lake County,1799,CA Highway Patrol - Lake,,
+18,Lassen County,1800,Lassen Co. Sheriff's Department,,
+18,Lassen County,1801,Susanville,,
+18,Lassen County,1803,Union Pacific RR - Lassen,7/1/1981,
+18,Lassen County,1804,Union Pacific RR - Lassen,1/1/1990,12/31/1996
+18,Lassen County,1898,CA State Police - Lassen,,6/30/1995
+18,Lassen County,1899,CA Highway Patrol - Lassen,,
+19,Los Angeles County,1900,Los Angeles Co. Sheriff's Department,,
+19,Los Angeles County,1901,Alhambra,,
+19,Los Angeles County,1902,Arcadia,,
+19,Los Angeles County,1903,Artesia,,
+19,Los Angeles County,1904,Avalon,,
+19,Los Angeles County,1905,Azusa,,
+19,Los Angeles County,1906,Baldwin Park,,
+19,Los Angeles County,1907,Bell,,
+19,Los Angeles County,1908,Bellflower,,
+19,Los Angeles County,1909,Bell Gardens,,
+19,Los Angeles County,190C,El Camino College,1/1/1994,
+19,Los Angeles County,190D,La Habra Heights,,
+19,Los Angeles County,190E,Santa Fe RR - Los Angeles,1/1/1981,5/31/1990
+19,Los Angeles County,190G,Los Angeles Housing Authority,8/1/1981,6/30/1985
+19,Los Angeles County,190H,Southern Pacific RR - Los Angeles,7/1/1981,12/31/1996
+19,Los Angeles County,190i,Union Pacific RR - Los Angeles,1/1/1997,
+19,Los Angeles County,190K,Metropolitan Transit Authority (MTA),1/1/1995,
+19,Los Angeles County,190M,Union Pacific RR - Los Angeles,10/1/1982,12/31/1996
+19,Los Angeles County,190P,Long Beach City College,1/1/2001,7/31/2003
+19,Los Angeles County,190R,Pasadena Community College,1/1/1988,
+19,Los Angeles County,190X,Westlake Village,7/1/1982,
+19,Los Angeles County,1910,Beverly Hills,,
+19,Los Angeles County,1911,Bradbury,,
+19,Los Angeles County,1912,Burbank,,
+19,Los Angeles County,1913,Claremont,,
+19,Los Angeles County,1914,Commerce,,
+19,Los Angeles County,1915,Compton,,
+19,Los Angeles County,1916,Covina,,
+19,Los Angeles County,1917,Cudahy,,
+19,Los Angeles County,1918,Culver City,,
+19,Los Angeles County,1919,Cerritos,,
+19,Los Angeles County,191B,High Desert DPR,1/1/1985,12/31/1992
+19,Los Angeles County,191C,Hungry Valley DPR,1/1/1985,12/31/1989
+19,Los Angeles County,191E,Lanterman Developmental Center,1/1/1985,6/30/2015
+19,Los Angeles County,191F,Agoura Hills,,
+19,Los Angeles County,191H,West Hollywood,1/1/1986,
+19,Los Angeles County,191N,Baldwin Park School,6/1/2019,
+19,Los Angeles County,191P,Santa Clarita,1/1/1988,12/31/1989
+19,Los Angeles County,191R,Santa Clarita,1/1/1990,
+19,Los Angeles County,191T,ABC Southern,1/1/2002,12/31/2003
+19,Los Angeles County,191W,Diamond Bar,7/1/1989,
+19,Los Angeles County,1920,Downey,,
+19,Los Angeles County,1921,Duarte,,
+19,Los Angeles County,1922,El Monte,,
+19,Los Angeles County,1923,El Segundo,,
+19,Los Angeles County,1924,Gardena,,
+19,Los Angeles County,1925,Glendale,,
+19,Los Angeles County,1926,Glendora,,
+19,Los Angeles County,1927,Hawaiian Gardens,,
+19,Los Angeles County,1928,Hawthorne,,
+19,Los Angeles County,1929,Hermosa Beach,,
+19,Los Angeles County,192H,Calabasas,7/1/1991,
+19,Los Angeles County,192J,Malibu,1/1/1991,
+19,Los Angeles County,192K,Los Angeles Impact,7/1/1991,12/31/2013
+19,Los Angeles County,192Q,Los Angeles City College,1/1/1993,12/31/2000
+19,Los Angeles County,192R,Los Angeles Transit Serv. Bureau,1/1/1993,12/31/1994
+19,Los Angeles County,192U,Los Angeles Transit Serv. Bureau,1/1/1995,
+19,Los Angeles County,1930,Hidden Hills,,
+19,Los Angeles County,1931,Huntington Park,,
+19,Los Angeles County,1932,Industry,,
+19,Los Angeles County,1933,Inglewood,,
+19,Los Angeles County,1934,Irwindale,,
+19,Los Angeles County,1935,Lakewood,,
+19,Los Angeles County,1936,La Mirada,,
+19,Los Angeles County,1937,La Puente,,
+19,Los Angeles County,1938,La Verne,,
+19,Los Angeles County,1939,Lawndale,,
+19,Los Angeles County,1940,Lomita,,
+19,Los Angeles County,1941,Long Beach,,
+19,Los Angeles County,1942,Los Angeles,,
+19,Los Angeles County,1943,Lynwood,,
+19,Los Angeles County,1944,Manhattan Beach,,
+19,Los Angeles County,1945,Maywood,,
+19,Los Angeles County,1946,Monrovia,,
+19,Los Angeles County,1947,Montebello,,
+19,Los Angeles County,1948,Monterey Park,,
+19,Los Angeles County,1949,Norwalk,,
+19,Los Angeles County,1950,Palmdale,,
+19,Los Angeles County,1951,Palos Verdes Estates,,
+19,Los Angeles County,1952,Paramount,,
+19,Los Angeles County,1953,Pasadena,,
+19,Los Angeles County,1954,Pico Rivera,,
+19,Los Angeles County,1955,Pomona,,
+19,Los Angeles County,1956,Redondo Beach,,
+19,Los Angeles County,1957,Rolling Hills,,
+19,Los Angeles County,1958,Rolling Hills Estates,,
+19,Los Angeles County,1959,Rosemead,,
+19,Los Angeles County,1960,San Dimas,,
+19,Los Angeles County,1961,San Fernando,,
+19,Los Angeles County,1962,San Gabriel,,
+19,Los Angeles County,1963,San Marino,,
+19,Los Angeles County,1964,Santa Fe Springs,,
+19,Los Angeles County,1965,Santa Monica,,
+19,Los Angeles County,1966,Sierra Madre,,
+19,Los Angeles County,1967,Signal Hill,,
+19,Los Angeles County,1968,South El Monte,,
+19,Los Angeles County,1969,South Gate,,
+19,Los Angeles County,1970,South Pasadena,,
+19,Los Angeles County,1971,Temple City,,
+19,Los Angeles County,1972,Torrance,,
+19,Los Angeles County,1973,Vernon,,
+19,Los Angeles County,1974,Walnut,,
+19,Los Angeles County,1975,West Covina,,
+19,Los Angeles County,1976,Whittier,,
+19,Los Angeles County,1977,Carson,,
+19,Los Angeles County,1978,Cal Poly - Pomona,,
+19,Los Angeles County,1980,Rancho Palos Verdes,,
+19,Los Angeles County,1981,CSU Dominguez Hills,,
+19,Los Angeles County,1982,CSU Long Beach,,
+19,Los Angeles County,1983,CSU Los Angeles,,
+19,Los Angeles County,1984,CSU Northridge,,
+19,Los Angeles County,1990,La Canada-Flintridge,,
+19,Los Angeles County,1996,Lancaster,,
+19,Los Angeles County,1997,UC Los Angeles,,
+19,Los Angeles County,1998,CA State Police - Los Angeles,,6/30/1995
+19,Los Angeles County,1999,CA Highway Patrol - Los Angeles,,
+19,Los Angeles County,19A9,Metropolitan State Hospital,1/1/2017,
+19,Los Angeles County,19B2,ABC El Monte,1/1/2003,12/31/2003
+19,Los Angeles County,19B3,ABC Inglewood,1/1/2003,12/31/2003
+19,Los Angeles County,19B4,ABC Lakewood,1/1/2003,12/31/2003
+19,Los Angeles County,19B5,ABC Metro,1/1/2003,12/31/2003
+19,Los Angeles County,19B6,ABC Van Nuys,1/1/2003,12/31/2003
+20,Madera County,2000,Madera Co. Sheriff's Department,,
+20,Madera County,2001,Chowchilla,,
+20,Madera County,2002,Madera,,
+20,Madera County,2003,Santa Fe RR - Madera,1/1/1981,5/31/1990
+20,Madera County,2004,Union Pacific RR - Madera,7/1/1981,
+20,Madera County,2099,CA Highway Patrol - Madera,,
+21,Marin County,2100,Marin Co. Sheriff's Department,,
+21,Marin County,2101,Belvedere,,
+21,Marin County,2102,Corte Madera,,12/31/1980
+21,Marin County,2103,Fairfax,,
+21,Marin County,2104,Twin Cities,,12/31/2012
+21,Marin County,2105,Mill Valley,,
+21,Marin County,2106,Novato,,
+21,Marin County,2107,Ross,,
+21,Marin County,2108,San Anselmo,,12/31/2012
+21,Marin County,2109,San Rafael,,
+21,Marin County,2110,Sausalito,,
+21,Marin County,2111,Tiburon,,
+21,Marin County,2112,Union Pacific RR - Marin,7/1/1981,
+21,Marin County,2113,Marin Community College,7/1/1982,
+21,Marin County,2114,Marin DPR,1/1/1985,
+21,Marin County,2116,NARC Task Force,1/1/1989,12/31/2008
+21,Marin County,2117,Central Marin Police Authority,1/1/2013,
+21,Marin County,2198,CA State Police - Marin,1/1/1984,1/31/1984
+21,Marin County,2199,CA Highway Patrol - Marin,,
+22,Mariposa County,2200,Mariposa Co. Sheriff's Department,,
+22,Mariposa County,2299,CA Highway Patrol - Mariposa,,
+23,Mendocino County,2300,Mendocino Co. Sheriff's Department,,
+23,Mendocino County,2301,Fort Bragg,,
+23,Mendocino County,2302,Point Arena,,prior to 1979
+23,Mendocino County,2303,Ukiah,,
+23,Mendocino County,2304,Willits,,
+23,Mendocino County,2305,Southern Pacific RR - Mendocino,7/1/1981,12/31/1996
+23,Mendocino County,2306,Mendocino DPR,7/1/2001,12/31/2016
+23,Mendocino County,2309,Union Pacific RR - Mendocino,1/1/1997,
+23,Mendocino County,2399,CA Highway Patrol - Mendocino,,
+24,Merced County,2400,Merced Co. Sheriff's Department,,
+24,Merced County,2401,Atwater,,
+24,Merced County,2402,Dos Palos,,
+24,Merced County,2403,Gustine,,
+24,Merced County,2404,Livingston,,
+24,Merced County,2405,Los Banos,,
+24,Merced County,2406,Merced,,
+24,Merced County,2407,Santa Fe RR - Merced,1/1/1981,5/31/1990
+24,Merced County,2408,Union Pacific RR - Merced,7/1/1981,
+24,Merced County,2409,Merced College,1/1/1982,12/31/1992
+24,Merced County,2410,Four Rivers DPR,1/1/1985,
+24,Merced County,2412,UC Merced,1/1/2006,
+24,Merced County,2498,CA State Police - Merced,,6/30/1995
+24,Merced County,2499,CA Highway Patrol - Merced,,
+25,Modoc County,2500,Modoc Co. Sheriff's Department,,
+25,Modoc County,2501,Alturas,,
+25,Modoc County,2502,Union Pacific RR - Modoc,7/1/1981,
+25,Modoc County,2599,CA Highway Patrol - Modoc,,
+26,Mono County,2600,Mono Co. Sheriff's Department,,
+26,Mono County,2601,Mammoth Lakes,7/1/1986,
+26,Mono County,2699,CA Highway Patrol - Mono,,
+27,Monterey County,2700,Monterey Co. Sheriff's Department,,
+27,Monterey County,2701,Carmel,,
+27,Monterey County,2702,Del Rey Oaks,,
+27,Monterey County,2703,Gonzales,,
+27,Monterey County,2704,Greenfield,,
+27,Monterey County,2705,King City,,
+27,Monterey County,2706,Monterey,,
+27,Monterey County,2707,Pacific Grove,,
+27,Monterey County,2708,Salinas,,
+27,Monterey County,2709,Sand City,,
+27,Monterey County,2710,Seaside,,
+27,Monterey County,2711,Soledad,,
+27,Monterey County,2712,Marina,,
+27,Monterey County,2714,Monterey Airport,,9/30/2018
+27,Monterey County,2715,Union Pacific RR - Monterey,7/1/1981,
+27,Monterey County,2716,Big Sur DPR,1/1/1985,12/31/1992
+27,Monterey County,2717,Monterey DPR,1/1/1985,
+27,Monterey County,2719,CSU Monterey Bay,1/1/1995,
+27,Monterey County,271A,ABC Salinas,1/1/2003,12/31/2003
+27,Monterey County,2799,CA Highway Patrol - Monterey,,
+28,Napa County,2800,Napa Co. Sheriff's Department,,
+28,Napa County,2801,Calistoga,,
+28,Napa County,2802,Napa,,
+28,Napa County,2803,St. Helena,,
+28,Napa County,2806,Union Pacific RR - Napa,7/1/1981,
+28,Napa County,2807,Napa DPR,1/1/1985,12/31/1992
+28,Napa County,2808,Napa State Hospital,1/1/1985,
+28,Napa County,2809,American Canyon,7/1/1993,
+28,Napa County,2810,Yountville,7/1/1993,
+28,Napa County,2810 (LEP),Napa County Dept. of Corrections,1/1/2004,12/31/2004
+28,Napa County,2898,CA State Police - Napa,1/1/1984,1/31/1984
+28,Napa County,2899,CA Highway Patrol - Napa,,
+29,Nevada County,2900,Nevada Co. Sheriff's Department,,
+29,Nevada County,2901,Grass Valley,,
+29,Nevada County,2902,Nevada City,,
+29,Nevada County,2903,Union Pacific RR - Nevada,7/1/1981,
+29,Nevada County,2904,Gold Mines DPR,1/1/1985,12/31/1992?
+29,Nevada County,2908,Truckee,1/1/2002,
+29,Nevada County,2999,CA Highway Patrol - Nevada,,
+30,Orange County,3000,Orange Co. Sheriff's Department,,
+30,Orange County,3001,Anaheim,,
+30,Orange County,3002,Brea,,
+30,Orange County,3003,Buena Park,,
+30,Orange County,3004,Costa Mesa,,
+30,Orange County,3005,Cypress,,
+30,Orange County,3006,La Palma,,
+30,Orange County,3007,Fountain Valley,,
+30,Orange County,3008,Fullerton,,
+30,Orange County,3009,Garden Grove,,
+30,Orange County,3010,Huntington Beach,,
+30,Orange County,3011,Laguna Beach,,
+30,Orange County,3012,La Habra,,
+30,Orange County,3013,Los Alamitos,,
+30,Orange County,3014,Newport Beach,,
+30,Orange County,3015,Orange,,
+30,Orange County,3016,Placentia,,
+30,Orange County,3017,San Clemente,,
+30,Orange County,3018,San Juan Capistrano,,
+30,Orange County,3019,Santa Ana,,
+30,Orange County,301A,ABC Santa Ana,1/1/2003,12/31/2003
+30,Orange County,3020,Seal Beach,,
+30,Orange County,3021,Stanton,,
+30,Orange County,3022,Tustin,,
+30,Orange County,3023,Villa Park,,
+30,Orange County,3024,Westminster,,
+30,Orange County,3025,Yorba Linda,,
+30,Orange County,3026,Irvine,,
+30,Orange County,3027,CSU Fullerton,,
+30,Orange County,3028,Santa Fe RR - Orange,1/1/1981,5/31/1990
+30,Orange County,3029,Union Pacific RR - Orange,7/1/1981,
+30,Orange County,3030,Union Pacific RR - Orange,10/1/1982,12/31/1996
+30,Orange County,3032,Orange Coast DPR,1/1/1985,
+30,Orange County,3033,Pendleton Coast DPR,1/1/1985,12/31/1992
+30,Orange County,3034,Fairview Developmental Center,1/1/1985,
+30,Orange County,3035,Mission Viejo,,
+30,Orange County,3036,Dana Point,1/1/1989,
+30,Orange County,3039,Laguna Niguel,1/1/1990,
+30,Orange County,3042,Laguna Hills,1/1/1992,
+30,Orange County,3043,Lake Forest,1/1/1992,
+30,Orange County,3047,Laguna Woods,7/1/1999,
+30,Orange County,3048,Rancho Santa Margarita,7/1/2000,
+30,Orange County,3049,Aliso Viejo,7/1/2001,
+30,Orange County,3091,Orange County Marshal,4/1/1987,6/30/2000
+30,Orange County,3096,Irvine Valley College,1/1/2016,
+30,Orange County,3097,UC Irvine,,
+30,Orange County,3098,CA State Police - Orange,,6/30/1995
+30,Orange County,3099,CA Highway Patrol - Orange,,
+31,Placer County,3100,Placer Co. Sheriff's Department,,
+31,Placer County,3101,Auburn,,
+31,Placer County,3102,Colfax,,6/30/1996
+31,Placer County,3103,Lincoln,,
+31,Placer County,3104,Rocklin,,
+31,Placer County,3105,Roseville,,
+31,Placer County,3106,Southern Pacific RR - Placer,7/1/1981,12/31/1996
+31,Placer County,3107,Sierra DPR,1/1/1985,
+31,Placer County,3112,Union Pacific RR - Placer,1/1/1997,
+31,Placer County,3199,CA Highway Patrol - Placer,,
+32,Plumas County,3200,Plumas Co. Sheriff's Department,,
+32,Plumas County,3201,Portola,,prior to 1979
+32,Plumas County,3202,Plumas-Eureka DPR,1/1/1985,12/31/1992
+32,Plumas County,3203,Union Pacific RR - Plumas,3/1/1985,
+32,Plumas County,3299,CA Highway Patrol - Plumas,,
+33,Riverside County,3300,Riverside Co. Sheriff's Department,,
+33,Riverside County,3301,Banning,,
+33,Riverside County,3302,Beaumont,,
+33,Riverside County,3303,Blythe,,
+33,Riverside County,3305,Coachella,,
+33,Riverside County,3306,Desert Hot Springs,,
+33,Riverside County,3307,Elsinore,,prior to 1977
+33,Riverside County,3308,Hemet,,
+33,Riverside County,3309,Indio,,
+33,Riverside County,3310,Norco,1/1/1990,
+33,Riverside County,3311,Palm Springs,,
+33,Riverside County,3312,Perris,,
+33,Riverside County,3313,Riverside,,
+33,Riverside County,3314,San Jacinto,,
+33,Riverside County,3315,Corona,,
+33,Riverside County,3316,Indian Wells,1/1/1990,
+33,Riverside County,3317,Rancho Mirage,,
+33,Riverside County,3318,Palm Desert,1/1/1990,
+33,Riverside County,331A,ABC Rancho Mirage,1/1/2003,12/31/2003
+33,Riverside County,3320,Santa Fe RR - Riverside,1/1/1981,5/31/1990
+33,Riverside County,3321,Union Pacific RR - Riverside,7/1/1981,
+33,Riverside County,3322,Union Pacific RR - Riverside,10/1/1982,12/31/1996
+33,Riverside County,3324,Inland Empire DPR,1/1/1985,
+33,Riverside County,3325,Cathedral City,7/1/1984,
+33,Riverside County,3326,Mt. San Jacinto DPR,1/1/1985,12/31/1992
+33,Riverside County,3327,Salton Sea DPR,1/1/1985,12/31/1992
+33,Riverside County,3328,Picacho DPR,1/1/1985,12/31/1992
+33,Riverside County,332A,ABC Riverside,1/1/2003,12/31/2003
+33,Riverside County,3330,Lake Elsinore,1/1/1990,
+33,Riverside County,3331,La Quinta,1/1/1990,
+33,Riverside County,3332,Moreno Valley,1/1/1990,
+33,Riverside County,3337,Chino Hills DPR,1/1/1990,12/31/1992
+33,Riverside County,3338,Temecula,7/1/1990,
+33,Riverside County,3340,Calimesa,7/1/1991,
+33,Riverside County,3341,Canyon Lake,1/1/1992,
+33,Riverside County,3342,Murrieta,1/1/1993,
+33,Riverside County,3344,Riverside Community College,1/1/2000,
+33,Riverside County,3377,Wildomar,7/1/2008,
+33,Riverside County,3378,Menifee,10/1/2008,
+33,Riverside County,3379,Eastvale,1/1/2011,
+33,Riverside County,3397,UC Riverside,,
+33,Riverside County,3398,CA State Police - Riverside,,6/30/1995
+33,Riverside County,3399,CA Highway Patrol - Riverside,,
+33,Riverside County,33A0,Jurupa Valley,7/1/2011,
+33,Riverside County,33A1,Mount San Jacinto Community College,1/1/2016,
+34,Sacramento County,3400,Sacramento Co. Sheriff's Department,,
+34,Sacramento County,3401,Folsom,,
+34,Sacramento County,3402,Galt,,
+34,Sacramento County,3403,Isleton,,
+34,Sacramento County,3404,Sacramento,,
+34,Sacramento County,3408,CSU Sacramento,,
+34,Sacramento County,340H,Elk Grove,7/1/2006,
+34,Sacramento County,3412,Gold Fields DPR,1/1/1985,
+34,Sacramento County,3414,Twin Rivers Unified School District,2/1/2001,
+34,Sacramento County,3415,Southern Pacific RR - Sacramento,7/1/1981,12/31/1996
+34,Sacramento County,3420,CA State Fair,1/1/1987,
+34,Sacramento County,3422,Capital DPR,1/1/1985,
+34,Sacramento County,3423,Union Pacific RR - Sacramento,3/1/1985,12/31/1996
+34,Sacramento County,342A,ABC Sacramento,1/1/2003,12/31/2003
+34,Sacramento County,3430,ABC Northern,1/1/2002,12/31/2003
+34,Sacramento County,3433,Twin Cities DPR,1/1/1990,
+34,Sacramento County,3448,Union Pacific RR - Sacramento,1/1/1997,
+34,Sacramento County,3455,Rancho Cordova,1/1/2009,
+34,Sacramento County,3477,California Developmental Centers (LEP only),1/1/2003,
+34,Sacramento County,3496,Citrus Heights,7/1/2006,
+34,Sacramento County,3497,UC Med Center Sacramento,,
+34,Sacramento County,3498,CA State Police - Sacramento,,6/30/1995
+34,Sacramento County,3499,CA Highway Patrol - Sacramento,,
+35,San Benito County,3500,San Benito Co. Sheriff's Department,,
+35,San Benito County,3501,Hollister,,
+35,San Benito County,3502,San Juan Bautisto,,12/31/1992
+35,San Benito County,3503,Union Pacific RR - San Benito,7/1/1981,
+35,San Benito County,3504,Hollister Hills DPR,1/1/1985,
+35,San Benito County,3505,Gavilan DPR,1/1/1985,12/31/1992
+35,San Benito County,3598,CA State Police - San Benito,1/1/1984,1/31/1984
+35,San Benito County,3599,CA Highway Patrol - San Benito,,
+36,San Bernardino County,3600,San Bernardino Co. Sheriff's Department,,
+36,San Bernardino County,3601,Barstow,,
+36,San Bernardino County,3602,Chino,,
+36,San Bernardino County,3603,Colton,,
+36,San Bernardino County,3604,Fontana,,
+36,San Bernardino County,3605,Montclair,,
+36,San Bernardino County,3606,Needles,,
+36,San Bernardino County,3607,Ontario,,
+36,San Bernardino County,3608,Redlands,,
+36,San Bernardino County,3609,Rialto,,
+36,San Bernardino County,3610,San Bernardino,,
+36,San Bernardino County,3611,Upland,,
+36,San Bernardino County,3612,Victorville,1/1/1984,
+36,San Bernardino County,3613,Adelanto,,
+36,San Bernardino County,3614,CSU San Bernardino,,
+36,San Bernardino County,3616,Rancho Cucamonga,1/1/1984,
+36,San Bernardino County,3617,Santa Fe RR - San Bernardino,1/1/1981,5/31/1990
+36,San Bernardino County,3618,Southern Pacific RR - San Bernardino,7/1/1981,12/31/1996
+36,San Bernardino County,3619,Union Pacific RR - San Bernardino,10/1/1982,12/31/1996
+36,San Bernardino County,3620,Big Bear,1/1/1984,
+36,San Bernardino County,3621,Grand Terrace,1/1/1984,
+36,San Bernardino County,3622,Loma Linda,1/1/1984,
+36,San Bernardino County,3623,San Bernardino Unified School District,1/1/1997,
+36,San Bernardino County,3625,Mojave River DPR,1/1/1985,12/21/1992
+36,San Bernardino County,3626,Chaffey College,1/1/2018,
+36,San Bernardino County,3629,Chino Hills DPR,1/1/1989,12/31/1989
+36,San Bernardino County,3630,Highland,7/1/1988,
+36,San Bernardino County,3631,Twentynine Palms,7/1/1988,
+36,San Bernardino County,3632,Hesperia,1/1/1989,
+36,San Bernardino County,3633,Apple Valley,1/1/1989,
+36,San Bernardino County,3635,Yucaipa,4/1/1990,
+36,San Bernardino County,3639,San Bernardino College,1/1/1992,
+36,San Bernardino County,3640,Chino Hills,7/1/1992,
+36,San Bernardino County,3641,Yucca Valley,7/1/1992,
+36,San Bernardino County,3650,Fontana Unified School District,1/1/1997,
+36,San Bernardino County,3654,Union Pacific RR - San Bernardino,1/1/1997,
+36,San Bernardino County,3657,Patton State Hospital,1/1/2008,
+36,San Bernardino County,3659,Tehachapi DPR,1/1/2009,
+36,San Bernardino County,3698,CA State Police - San Bernardino,,6/30/1995
+36,San Bernardino County,3699,CA Highway Patrol - San Bernardino,,
+37,San Diego County,3700,San Diego Co. Sheriff's Department,,
+37,San Diego County,3701,Carlsbad,,
+37,San Diego County,3702,Chula Vista,,
+37,San Diego County,3703,Coronado,,
+37,San Diego County,3704,Del Mar,1/1/1997,
+37,San Diego County,3705,El Cajon,,
+37,San Diego County,3706,Escondido,,
+37,San Diego County,3707,Imperial Beach,1/1/1997,
+37,San Diego County,3708,La Mesa,,
+37,San Diego County,3709,National City,,
+37,San Diego County,3710,Oceanside,,
+37,San Diego County,3711,San Diego,,
+37,San Diego County,3712,San Marcos,1/1/1997,
+37,San Diego County,3713,Vista,1/1/1997,
+37,San Diego County,3714,CSU San Diego,,
+37,San Diego County,3715,San Diego Harbor,1/1/1993,
+37,San Diego County,3717,Santa Fe RR - San Diego,1/1/1981,5/31/1990
+37,San Diego County,3718,Southern Pacific RR - San Diego,7/1/1981,4/30/1989
+37,San Diego County,371A,ABC San Diego,1/1/2003,12/31/2003
+37,San Diego County,3722,Colorado DPR,1/1/1985,
+37,San Diego County,3723,Frontera DPR,1/1/1985,12/31/1992
+37,San Diego County,3724,Ocotillo Wells DPR,1/1/1985,
+37,San Diego County,3725,San Diego Coast DPR,1/1/1985,
+37,San Diego County,3727,Montane DPR,1/1/1987,12/31/1992
+37,San Diego County,372A,ABC San Marcos,1/1/2003,12/31/2003
+37,San Diego County,3732,CSU San Marcos,7/1/1993,
+37,San Diego County,3797,UC San Diego,,
+37,San Diego County,3798,CA State Police - San Diego,,6/30/1995
+37,San Diego County,3799,CA Highway Patrol - San Diego,,
+37,San Diego County,37A1,Lemon Grove,1/1/1997,
+37,San Diego County,37A2,Santee,1/1/1997,
+37,San Diego County,37A3,Poway,1/1/1997,
+37,San Diego County,37A4,Encinitas,1/1/1997,
+37,San Diego County,37A5,Solana Beach,1/1/1997,
+38,San Francisco County,3800,San Francisco Sheriff's Department,,12/31/1989
+38,San Francisco County,3801,San Francisco,,
+38,San Francisco County,3803,CSU San Francisco,,
+38,San Francisco County,3805,San Francisco BART,,
+38,San Francisco County,3807,Santa Fe RR - San Francisco,1/1/1981,5/31/1990
+38,San Francisco County,3808,Southern Pacific RR - San Francisco,7/1/1981,12/31/1996
+38,San Francisco County,3810,San Francisco DPR,1/1/1985,12/31/1992
+38,San Francisco County,3816,UC Hastings College of Law,1/1/1993,12/31/2016
+38,San Francisco County,3819,Union Pacific RR - San Francisco,1/1/1997,
+38,San Francisco County,381A,ABC San Francisco,1/1/2003,12/31/2003
+38,San Francisco County,3897,UC San Francisco,,
+38,San Francisco County,3898,CA State Police - San Francisco,,6/30/1995
+38,San Francisco County,3899,CA Highway Patrol - San Francisco,,
+39,San Joaquin County,3900,San Joaquin Co. Sheriff's Department,,
+39,San Joaquin County,3901,Escalon,,
+39,San Joaquin County,3902,Lodi,.,
+39,San Joaquin County,3903,Manteca,,
+39,San Joaquin County,3904,Ripon,,
+39,San Joaquin County,3905,Stockton,,
+39,San Joaquin County,3906,Tracy,,
+39,San Joaquin County,3909,Santa Fe RR - San Joaquin,1/1/1981,5/31/1990
+39,San Joaquin County,3910,Southern Pacific RR - San Joaquin,7/1/1981,12/31/1996
+39,San Joaquin County,3912,Union Pacific RR - San Joaquin,3/1/1985,12/31/1996
+39,San Joaquin County,3914,Stockton Developmental Center,1/1/1985,6/30/1997
+39,San Joaquin County,3915,Stockton Unified School District,1/1/1991,
+39,San Joaquin County,391A,ABC Stockton,1/1/2003,12/31/2003
+39,San Joaquin County,3921,Union Pacific RR - San Joaquin,1/1/1997,
+39,San Joaquin County,3923,CSU Stockton,1/1/1999,6/30/2002
+39,San Joaquin County,3998,CA State Police - San Joaquin,,6/30/1995
+39,San Joaquin County,3999,CA Highway Patrol - San Joaquin,,
+40,San Luis Obispo County,4000,San Luis Obispo Co. Sheriff's Department,,
+40,San Luis Obispo County,4001,Arroyo Grande,,
+40,San Luis Obispo County,4002,Grover Beach,,
+40,San Luis Obispo County,4003,Morro Bay,,
+40,San Luis Obispo County,4004,Paso Robles,,
+40,San Luis Obispo County,4005,Pismo Beach,,
+40,San Luis Obispo County,4006,San Luis Obispo,,
+40,San Luis Obispo County,4007,Cal Poly San Luis Obispo,,
+40,San Luis Obispo County,4008,Atascadero,,
+40,San Luis Obispo County,4009,Southern Pacific RR - San Luis Obispo,7/1/1981,12/31/1996
+40,San Luis Obispo County,4012,San Simeon DPR,1/1/1985,12/31/2003
+40,San Luis Obispo County,4013,San Luis Obispo Coast DPR,1/1/1985,
+40,San Luis Obispo County,4014,Oceano Dunes DPR,1/1/1985,
+40,San Luis Obispo County,4016,Atascadero State Hospital,1/1/1991,
+40,San Luis Obispo County,4018,Union Pacific RR - San Luis Obispo,1/1/1997,
+40,San Luis Obispo County,4019,Cuesta College,7/1/1999,
+40,San Luis Obispo County,401A,ABC San Luis Obispo,1/1/2003,12/31/2003
+40,San Luis Obispo County,4099,CA Highway Patrol - San Luis Obispo,,
+41,San Mateo County,4100,San Mateo Co. Sheriff's Department,,
+41,San Mateo County,4101,Atherton,,
+41,San Mateo County,4102,Belmont,,
+41,San Mateo County,4103,Brisbane,,
+41,San Mateo County,4104,Burlingame,,
+41,San Mateo County,4105,Colma,,
+41,San Mateo County,4106,Daly City,,
+41,San Mateo County,4107,Half Moon Bay,,6/30/2011
+41,San Mateo County,4108,Hillsborough,,
+41,San Mateo County,4109,Menlo Park,,
+41,San Mateo County,4110,Millbrae,,2/29/2012
+41,San Mateo County,4111,Pacifica,,
+41,San Mateo County,4113,Redwood City,,
+41,San Mateo County,4114,San Bruno,,
+41,San Mateo County,4115,San Carlos,,10/31/2010
+41,San Mateo County,4116,San Mateo,,
+41,San Mateo County,4117,South San Francisco,,
+41,San Mateo County,4119,Broadmoor,,
+41,San Mateo County,4120,Foster City,,
+41,San Mateo County,4123,San Mateo BART,,
+41,San Mateo County,4124,Union Pacific RR - San Mateo,7/1/1981,
+41,San Mateo County,4126,Bay Area DPR,1/1/1985,
+41,San Mateo County,4127,East Palo Alto,7/1/1985,
+41,San Mateo County,4198,CA State Police - San Mateo,,6/30/1995
+41,San Mateo County,4199,CA Highway Patrol - San Mateo,,
+42,Santa Barbara County,4200,Santa Barbara Co. Sheriff's Department,,
+42,Santa Barbara County,4201,Guadalupe,,
+42,Santa Barbara County,4202,Lompoc,,
+42,Santa Barbara County,4203,Santa Barbara,,
+42,Santa Barbara County,4204,Santa Maria,,
+42,Santa Barbara County,4205,Carpinteria,,
+42,Santa Barbara County,4207,Union Pacific RR - Santa Barbara,7/1/1981,
+42,Santa Barbara County,4208,Gaviota DPR,1/1/1985,12/31/1992
+42,Santa Barbara County,4209,La Purisma Mission DPR,1/1/1985,12/31/1992
+42,Santa Barbara County,4210,Solvang,7/1/1985,
+42,Santa Barbara County,4211,Allen Hancock College,1/1/1992,
+42,Santa Barbara County,4212,Buellton,7/1/1992,
+42,Santa Barbara County,4214,Goleta,2/1/2002,
+42,Santa Barbara County,421A,ABC Santa Barbara,1/1/2003,12/31/2003
+42,Santa Barbara County,4297,UC Santa Barbara,,
+42,Santa Barbara County,4298,CA State Police - Santa Barbara,,6/30/1995
+42,Santa Barbara County,4299,CA Highway Patrol - Santa Barbara,,
+43,Santa Clara County,4300,Santa Clara Co. Sheriff's Department,,
+43,Santa Clara County,4302,Campbell,,
+43,Santa Clara County,4303,Cupertino,,
+43,Santa Clara County,4304,Gilroy,,
+43,Santa Clara County,4305,Los Altos,,
+43,Santa Clara County,4306,Los Altos Hills,,
+43,Santa Clara County,4307,Los Gatos,,
+43,Santa Clara County,4308,Milpitas,,
+43,Santa Clara County,4309,Monte Sereno,,
+43,Santa Clara County,4310,Morgan Hill,,
+43,Santa Clara County,4311,Mountain View,,
+43,Santa Clara County,4312,Palo Alto,,
+43,Santa Clara County,4313,San Jose,,
+43,Santa Clara County,4314,Santa Clara,,
+43,Santa Clara County,4315,Saratoga,,
+43,Santa Clara County,4316,Sunnyvale,,
+43,Santa Clara County,4317,CSU San Jose,,
+43,Santa Clara County,4319,Southern Pacific RR - Santa Clara,7/1/1981,12/31/1996
+43,Santa Clara County,431A,ABC San Jose,1/1/2003,12/31/2003
+43,Santa Clara County,4320,San Jose Community College,1/1/1983,
+43,Santa Clara County,4321,West Valley College District,1/1/1983,
+43,Santa Clara County,4324,Agnews Developmental Center,1/1/1985,7/31/2009
+43,Santa Clara County,4325,Union Pacific RR - Santa Clara,3/1/1985,12/31/1996
+43,Santa Clara County,4327,Foothill College,9/1/1985,
+43,Santa Clara County,4336,Union Pacific RR - Santa Clara,1/1/1997,
+43,Santa Clara County,4395,Santa Clara Transit District,1/1/1992,
+43,Santa Clara County,4398,CA State Police - Santa Clara,,6/30/1995
+43,Santa Clara County,4399,CA Highway Patrol - Santa Clara,,
+44,Santa Cruz County,4400,Santa Cruz Co. Sheriff's Department,,
+44,Santa Cruz County,4401,Capitola,,
+44,Santa Cruz County,4402,Santa Cruz,,
+44,Santa Cruz County,4403,Watsonville,,
+44,Santa Cruz County,4404,Scotts Valley,,
+44,Santa Cruz County,4405,Cabrillo College,10/1/1984,12/31/1997
+44,Santa Cruz County,4406,Union Pacific RR - Santa Cruz,7/1/1981,
+44,Santa Cruz County,4407,Pajaro Coast DPR,1/1/1985,12/31/1992
+44,Santa Cruz County,4408,Santa Cruz Mtns. DPR,1/1/1985,
+44,Santa Cruz County,4497,UC Santa Cruz,,
+44,Santa Cruz County,4499,CA Highway Patrol - Santa Cruz,,
+45,Shasta County,4500,Shasta Co. Sheriff's Department,,
+45,Shasta County,4501,Anderson,,
+45,Shasta County,4502,Redding,,
+45,Shasta County,4503,Union Pacific RR - Shasta,7/1/1981,
+45,Shasta County,4505,Cascade DPR,1/1/1985,12/31/1992
+45,Shasta County,451A,ABC Redding,1/1/2003,12/31/2003
+45,Shasta County,4591,Shasta County Marshal,1/1/2010,
+45,Shasta County,4598,CA State Police - Shasta,,6/30/1995
+45,Shasta County,4599,CA Highway Patrol - Shasta,,
+46,Sierra County,4600,Sierra Co. Sheriff's Department,,
+46,Sierra County,4601,Loyalton,,prior to 1979
+46,Sierra County,4602,Union Pacific RR - Sierra,7/1/1981,
+46,Sierra County,4699,CA Highway Patrol - Sierra,,
+47,Siskiyou County,4700,Siskiyou Co. Sheriff's Department,,
+47,Siskiyou County,4701,Dorris,,
+47,Siskiyou County,4702,Dunsmuir,1/1/1997,
+47,Siskiyou County,4703,Etna,,
+47,Siskiyou County,4704,Fort Jones,1/1/1997,
+47,Siskiyou County,4705,Montague,1/1/1997,
+47,Siskiyou County,4706,Mount Shasta,,
+47,Siskiyou County,4707,Tulelake,,
+47,Siskiyou County,4708,Weed,,
+47,Siskiyou County,4709,Yreka,,
+47,Siskiyou County,4710,Lake Shastina,2/1/1981,
+47,Siskiyou County,4711,Southern Pacific RR - Siskiyou,7/1/1981,12/31/1996
+47,Siskiyou County,4713,Union Pacific RR - Siskiyou,,12/31/1996
+47,Siskiyou County,4716,Union Pacific RR - Siskiyou,1/1/1997,
+47,Siskiyou County,4799,CA Highway Patrol - Siskiyou,,
+48,Solano County,4800,Solano Co. Sheriff's Department,,
+48,Solano County,4801,Benicia,,
+48,Solano County,4802,Dixon,,
+48,Solano County,4803,Fairfield,,
+48,Solano County,4804,Rio Vista,,
+48,Solano County,4805,Suisun,,
+48,Solano County,4806,Vacaville,,
+48,Solano County,4807,Vallejo,,
+48,Solano County,4808,Union Pacific RR - Solano,7/1/1981,
+48,Solano County,4809,Delta/Brandon Island DPR,1/1/1985,12/31/1989
+48,Solano County,4813,Solano Community College,1/1/2003,8/31/2014
+48,Solano County,4898,CA State Police - Solano,,6/30/1995
+48,Solano County,4899,CA Highway Patrol - Solano,,
+49,Sonoma County,4900,Sonoma Co. Sheriff's Department,,
+49,Sonoma County,4901,Cloverdale,,
+49,Sonoma County,4902,Cotati,,
+49,Sonoma County,4903,Healdsburg,,
+49,Sonoma County,4904,Rohnert Park,,
+49,Sonoma County,4905,Santa Rosa,,
+49,Sonoma County,4906,Sebastopol,,
+49,Sonoma County,4907,Sonoma,,
+49,Sonoma County,4908,Petaluma,,
+49,Sonoma County,4909,CSU Sonoma,,
+49,Sonoma County,4910,Union Pacific RR - Sonoma,7/1/1981,
+49,Sonoma County,4911,Sonoma DPR,1/1/1985,
+49,Sonoma County,4912,Sonoma Mendocino Coast DPR,1/1/1985,
+49,Sonoma County,4913,Sonoma Developmental Center,1/1/1985,12/31/2018
+49,Sonoma County,4914,Sonoma Co. Junior College,1/1/1989,
+49,Sonoma County,4915,Windsor,1/1/1993,
+49,Sonoma County,491A,ABC Santa Rosa,1/1/2003,12/31/2003
+49,Sonoma County,4998,CA State Police - Sonoma,,6/31/1995
+49,Sonoma County,4999,CA Highway Patrol - Sonoma,,
+50,Stanislaus County,5000,Stanislaus Co. Sheriff's Department,,
+50,Stanislaus County,5001,Ceres,,
+50,Stanislaus County,5002,Modesto,,
+50,Stanislaus County,5003,Newman,,
+50,Stanislaus County,5004,Oakdale,,
+50,Stanislaus County,5005,Patterson,,
+50,Stanislaus County,5006,Riverbank,,
+50,Stanislaus County,5007,Turlock,,
+50,Stanislaus County,5008,Waterford,,
+50,Stanislaus County,5009,Hughson,,
+50,Stanislaus County,500X,Stanislaus Narcotic Task Force,1/1/1988,12/31/1990
+50,Stanislaus County,5010,CSU Stanislaus,,
+50,Stanislaus County,5011,Santa Fe RR - Stanislaus,1/1/1981,5/31/1990
+50,Stanislaus County,5012,Union Pacific RR - Stanislaus,7/1/1981,
+50,Stanislaus County,5014,Union Pacific RR - Stanislaus,3/1/1985,12/31/1996
+50,Stanislaus County,5015,Yosemite Community College,6/1/1985,10/31/1988
+50,Stanislaus County,5098,CA State Police - Stanislaus,,6/30/1995
+50,Stanislaus County,5099,CA Highway Patrol - Stanislaus,,
+51,Sutter County,5100,Sutter Co. Sheriff's Department,,
+51,Sutter County,5102,Yuba City,,
+51,Sutter County,5104,Union Pacific RR - Sutter,1/1/1990,
+51,Sutter County,511A,ABC Yuba City,1/1/2003,12/31/2003
+51,Sutter County,5199,CA Highway Patrol - Sutter,,
+52,Tehama County,5200,Tehama Co. Sheriff's Department,,
+52,Tehama County,5201,Corning,,
+52,Tehama County,5202,Red Bluff,,
+52,Tehama County,5203,Tehama,,prior to 1979
+52,Tehama County,5204,Union Pacific RR - Tehama,7/1/1981,
+52,Tehama County,5299,CA Highway Patrol - Tehama,,
+53,Trinity County,5300,Trinity Co. Sheriff's Department,,
+53,Trinity County,5301,Union Pacific RR - Trinity,7/1/1981,
+53,Trinity County,5399,CA Highway Patrol - Trinity,,
+54,Tulare County,5400,Tulare Co. Sheriff's Department,,
+54,Tulare County,5401,Dinuba,,
+54,Tulare County,5402,Exeter,,
+54,Tulare County,5403,Farmersville,,
+54,Tulare County,5404,Lindsay,,
+54,Tulare County,5405,Porterville,,
+54,Tulare County,5406,Tulare,,
+54,Tulare County,5407,Visalia,,
+54,Tulare County,5408,Woodlake,,
+54,Tulare County,5409,Santa Fe RR - Tulare,1/1/1981,5/31/1990
+54,Tulare County,5410,Union Pacific RR - Tulare,7/1/1981,
+54,Tulare County,5411,College of the Sequoias,1/1/1982,
+54,Tulare County,5499,CA Highway Patrol - Tulare,,
+55,Tuolumne County,5500,Tuolumne Co. Sheriff's Department,,
+55,Tuolumne County,5501,Sonora,,
+55,Tuolumne County,5502,Columbia DPR,1/1/1985,12/31/1992
+55,Tuolumne County,5599,CA Highway Patrol - Tuolumne,,
+56,Ventura County,5600,Ventura Co. Sheriff's Department,,
+56,Ventura County,5601,Camarillo,,
+56,Ventura County,5602,Fillmore,,
+56,Ventura County,5603,Ojai,,
+56,Ventura County,5604,Oxnard,,
+56,Ventura County,5605,Port Hueneme,,
+56,Ventura County,5606,Santa Paula,,
+56,Ventura County,5607,Thousand Oaks,,
+56,Ventura County,5608,Ventura,,
+56,Ventura County,5609,Simi Valley,,
+56,Ventura County,5610,Southern Pacific RR - Ventura,7/1/1981,12/31/1996
+56,Ventura County,5613,Angeles DPR,1/1/1985,
+56,Ventura County,5614,Moorpark,7/1/1983,
+56,Ventura County,5615,Channel Coast DPR,1/1/1985,
+56,Ventura County,5616,Camarillo Developmental Center,1/1/1985,3/31/1998
+56,Ventura County,5617,Hungry Valley DPR,1/1/1990,
+56,Ventura County,5621,Union Pacific RR - Ventura,1/1/1997,
+56,Ventura County,5622,CSU Channel Islands,1/1/2000,
+56,Ventura County,5680,Ventura Community College,1/1/2006,
+56,Ventura County,5691,Ventura Marshal,,9/30/1980
+56,Ventura County,5698,CA State Police - Ventura,,6/30/1995
+56,Ventura County,5699,CA Highway Patrol - Ventura,,
+57,Yolo County,5700,Yolo Co. Sheriff's Department,,
+57,Yolo County,5701,Davis,,
+57,Yolo County,5702,Winters,,
+57,Yolo County,5703,Woodland,,
+57,Yolo County,5704,West Sacramento,7/1/1987,
+57,Yolo County,5705,Union Pacific RR - Yolo,7/1/1981,
+57,Yolo County,5706,Union Pacific RR - Yolo,1/1/1990,12/31/1996
+57,Yolo County,5797,UC Davis,,
+57,Yolo County,5798,CA State Police - Yolo,,6/30/1995
+57,Yolo County,5799,CA Highway Patrol - Yolo,,
+58,Yuba County,5800,Yuba Co. Sheriff's Department,,
+58,Yuba County,5801,Marysville,,
+58,Yuba County,5802,Wheatland,,
+58,Yuba County,5803,Union Pacific RR - Yuba,7/1/1981,
+58,Yuba County,5804,Union Pacific RR - Yuba,3/1/1985,12/31/1996
+58,Yuba County,5899,CA Highway Patrol - Yuba,,
