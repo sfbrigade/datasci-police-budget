@@ -5,7 +5,7 @@
       <v-row>
         <v-col cols=3>
           <div class="action-item">
-            <NuxtLink to="/see-budget">
+            <NuxtLink to="/explore-trends">
               <div class="icon icon-1"></div>
               <div class="Actions-Title">Visualize It</div>
             </NuxtLink>
