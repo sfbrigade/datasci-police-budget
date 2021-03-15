@@ -1,1 +1,4 @@
-"{\"total\":204178776,\"general_fund\":179148647.0,\"year\":2013} {\"total\":219657802,\"general_fund\":194023498.0,\"year\":2014} {\"total\":235570787,\"general_fund\":211713264.0,\"year\":2015} {\"total\":242535092,\"general_fund\":218529408.0,\"year\":2016}"
+[{"total":204178776,"general_fund":179148647.0,"year":2013},
+     {"total":219657802,"general_fund":194023498.0,"year":2014},
+      {"total":235570787,"general_fund":211713264.0,"year":2015},
+       {"total":242535092,"general_fund":218529408.0,"year":2016}]
