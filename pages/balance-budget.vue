@@ -214,6 +214,7 @@ const DEPARTMENT_COLOR_MAP = Object.freeze({
 });
 
 export default Vue.extend({
+  title: 'Balance Budget | Police Trends',
   components: {
     CitySelect,
     Header,

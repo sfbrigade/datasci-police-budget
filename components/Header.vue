@@ -79,8 +79,8 @@ export default {
       showNavDrawer: false,
       routes: [
         {
-          key: 'see-budget',
-          path: '/see-budget',
+          key: 'explore-trends',
+          path: '/explore-trends',
           title: 'Explore Trends',
         },
         {

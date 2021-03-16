@@ -582,6 +582,7 @@ SF_FORCE_BY_RACE_DATA.forEach((item) => {
 });
 
 export default Vue.extend({
+  title: 'Explore Trends | Police Trends',
   components: {
     CitySelect,
     Header,

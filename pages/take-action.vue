@@ -27,6 +27,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 export default Vue.extend({
+  title: 'Take Action | Police Trends',
   components: {
     ContactUs,
     Footer,

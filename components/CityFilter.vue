@@ -30,7 +30,7 @@
             </p>
             <v-row align-content="center"> <v-btn
               class="city-filter__button"
-              to="/see-budget"
+              to="/explore-trends"
               color="#2a6465"
               nuxt
             >
