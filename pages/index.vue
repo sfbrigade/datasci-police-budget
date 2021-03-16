@@ -27,8 +27,12 @@ import Footer from '@/components/Footer';
 import Faq from '@/components/Faq';
 import Actions from '@/components/Actions';
 import Header from '@/components/Header';
+import titleMixin from '@/mixins/titleMixin';
+
+Vue.mixin(titleMixin);
 
 export default Vue.extend({
+  title: 'Home | Police Trends',
   components: {
     Actions,
     Footer,
