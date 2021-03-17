@@ -506,8 +506,8 @@ import Footer from '@/components/Footer';
 import { Plotly } from 'vue-plotly';
 import { mapGetters } from 'vuex';
 import ORG_BUDGET_BY_YEAR from '../assets/data/sf_yearly_budgets_by_org.json';
-import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
 import OAKLAND_BUDGET_TREE_MAP_FORMAT from '../assets/data/oakland_budget_tree_map_format';
+import SF_BUDGET_TREE_MAP_FORMAT from '../assets/data/sf_budget_tree_map_format';
 import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
 import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json';
 import SF_FORCE_CATEGORY_DATA from '../assets/data/sf_force.json';
@@ -536,6 +536,8 @@ OAKLAND_BUDGET_TREE_MAP_FORMAT.forEach((item) => {
   oakparents.push(item.Parent);
   oakvalues.push(item['2020']);
 });
+
+
 
 const policeSpendingX = [];
 const policeSpendingY = [];
@@ -640,6 +642,7 @@ OAK_STAFFING_DATA.forEach((item) => {
 });
 
 export default Vue.extend({
+  title: 'Explore Trends | Police Trends',
   components: {
     CitySelect,
     Header,
@@ -670,19 +673,19 @@ export default Vue.extend({
         },
         color: { scheme: 'schemePaired' },
       },
+      oaktreeMapData: [{
+        type: 'treemap',
+        branchvalues: 'total',
+        labels: oaklabels,
+        parents: oakparents,
+        values: oakvalues,
+      }],
       treeMapData: [{
         type: 'treemap',
         branchvalues: 'total',
         labels,
         parents,
         values,
-      }],
-      oaktreeMapData: [{
-        type: 'treemap',
-        branchvalues: 'total',
-        oaklabels,
-        oakparents,
-        oakvalues,
       }],
       sf_police_budget: [{
         type: 'scatter',

@@ -34,19 +34,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default Vue.extend({
+  title: 'About Us | Police Trends',
   components: {
     Header,
     Footer,
-  },
-  head() {
-    return {
-      title: 'About the website',
-    };
   },
 });
 </script>
