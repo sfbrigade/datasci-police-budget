@@ -526,6 +526,12 @@ import SF_POLICE_BUDGET_DATA from '../assets/data/sf_police_budget_data.json';
 import SF_POLICE_BUDGET_DETAIL_DATA from '../assets/data/sf_police_budget_detail.json';
 import SF_FORCE_CATEGORY_DATA from '../assets/data/sf_force.json';
 import SF_FORCE_BY_RACE_DATA from '../assets/data/sf_race_uof_and_pop_share.json';
+import OAK_POLICE_BUDGET_DATA from '../oaklanddataset/plot_data/oak_police_budget_data.json';
+import OAK_STAFFING_DATA from '../oaklanddataset/plot_data/oakland_sworn_ftes.json';
+import OAK_UOF_1 from '../oaklanddataset/plot_data/oakland_l1.json';
+import OAK_UOF_2 from '../oaklanddataset/plot_data/oakland_l2.json';
+import OAK_UOF_3 from '../oaklanddataset/plot_data/oakland_l3.json';
+import OAK_UOF_4 from '../oaklanddataset/plot_data/oakland_l4.json';
 
 const labels = [];
 const parents = [];
@@ -597,6 +603,58 @@ SF_FORCE_BY_RACE_DATA.forEach((item) => {
   uofAsian.push(item['Asian or Pacific Islander']);
 });
 
+const oakBudgetYear = [];
+const oakBudgetTotal = [];
+const oakBudgetGf = [];
+
+OAK_POLICE_BUDGET_DATA.forEach((item) => {
+  oakBudgetYear.push(item.Year);
+  oakBudgetTotal.push(item.Total);
+  oakBudgetGf.push(item.general_fund);
+});
+
+const uofL1Year = [];
+const uofL1Force = [];
+
+const uofL2Year = [];
+const uofL2Force = [];
+
+const uofL3Year = [];
+const uofL3Force = [];
+
+const uofL4Year = [];
+const uofL4Force = [];
+
+OAK_UOF_1.forEach((item) => {
+  uofL1Year.push(item.year);
+  uofL1Force.push(item.lv_1);
+});
+
+OAK_UOF_2.forEach((item) => {
+  uofL2Year.push(item.year);
+  uofL2Force.push(item.lv_2);
+});
+
+OAK_UOF_3.forEach((item) => {
+  uofL3Year.push(item.year);
+  uofL3Force.push(item.lv_3);
+});
+
+OAK_UOF_4.forEach((item) => {
+  uofL4Year.push(item.year);
+  uofL4Force.push(item.lv_4);
+});
+
+const oakStaffingDate = [];
+const oakStaffBudgeted = [];
+const oakStaffActual = [];
+
+OAK_STAFFING_DATA.forEach((item) => {
+  oakStaffingDate.push(item.Date);
+  oakStaffBudgeted.push(item['Authorized Sworn FTE']);
+  oakStaffActual.push(item['Actual Sworn FTE']);
+});
+
 export default Vue.extend({
   title: 'Explore Trends | Police Trends',
   components: {
@@ -651,6 +709,54 @@ export default Vue.extend({
           color: 'rgb(42, 100, 101)',
         },
       }],
+      oak_police_budget: [
+        {
+          type: 'scatter',
+          x: oakBudgetYear,
+          y: oakBudgetTotal,
+          name: 'Total',
+        },
+        {
+          type: 'scatter',
+          x: oakBudgetTotal,
+          y: oakBudgetGf,
+          name: 'General Fund',
+        },
+      ],
+      oak_uof_l1: [{
+        type: 'scatter',
+        x: uofL1Year,
+        y: uofL1Force,
+      }],
+      oak_uof_l2: [{
+        type: 'scatter',
+        x: uofL2Year,
+        y: uofL2Force,
+      }],
+      oak_uof_l3: [{
+        type: 'scatter',
+        x: uofL3Year,
+        y: uofL3Force,
+      }],
+      oak_uof_l4: [{
+        type: 'scatter',
+        x: uofL4Year,
+        y: uofL4Force,
+      }],
+      oak_police_ftes: [
+        {
+          type: 'scatter',
+          x: oakStaffingDate,
+          y: oakStaffBudgeted,
+          name: 'Authorized',
+        },
+        {
+          type: 'scatter',
+          x: oakStaffingDate,
+          y: oakStaffActual,
+          name: 'Actual',
+        },
+      ],
       sf_police_budget_detail: [
         {
           type: 'scatter',
