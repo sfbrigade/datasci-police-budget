@@ -1,1 +1,4 @@
-"{\"Race\\/Ethnicity\":\"African American\",\"Population of Oakland\":96981} {\"Race\\/Ethnicity\":\"Asian\",\"Population of Oakland\":67535} {\"Race\\/Ethnicity\":\"Latino\",\"Population of Oakland\":109762} {\"Race\\/Ethnicity\":\"White\",\"Population of Oakland\":116230} {\"Race\\/Ethnicity\":\"Citywide\",\"Population of Oakland\":419987}"
+[{"Race/Ethnicity":"African American","Population of Oakland":96981},
+     {"Race/Ethnicity":"Asian","Population of Oakland":67535},
+      {"Race/Ethnicity":"Latino","Population of Oakland":109762},
+       {"Race/Ethnicity":"White","Population of Oakland":116230}]
