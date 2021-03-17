@@ -266,7 +266,6 @@
                     It makes up this much of the Public Protection budget:
                   </p>
                   <p class="highlight-number">64%</p>
-                  <br />
                   <p class="highlight-text">
                     and this much of the city's overall budget:
                   </p>
@@ -279,7 +278,7 @@
               </v-row>
               <v-row>
                 <v-col cols=6>
-                  <p class="summary-text">
+                  <p class="section-text">
                     The other departments under the Public Protection organization are the 
                     Fire Department, Police Commission, the Department of Violence Prevention 
                     and the Race and Equity Division. The Violence Prevention Department was 
@@ -290,7 +289,7 @@
                     Department of Violence Prevention:
                   </p>
                   <p class="highlight-number">$1.2 M</p>
-                  <p class="highlight-text">
+                  <p class="section-text">
                     The Race and Equity department was established in 2015 to eliminate 
                     systemic causes of racial disparities and promote inclusion in city 
                     government and Oakland community.
