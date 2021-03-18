@@ -6,13 +6,13 @@ describe('Sample tests', () => {
     });
 
     it('Visits index page', () => {
-      cy.contains('.header', 'City Budget Tracker');
+      cy.contains('.header', 'Police Trends');
       cy.get('a.v-btn.nav-item').its('length').should('eq', 5);
     });
 
     it('Goes to See Budget page', () => {
-      cy.get('a.v-btn.nav-item').eq(0).contains('See Budget').click();
-      cy.location('pathname').should('eq', '/see-budget');
+      cy.get('a.v-btn.nav-item').eq(0).contains('Explore Budget').click();
+      cy.location('pathname').should('eq', '/explore-budget');
       cy.contains('h2', 'Explore Budget');
     });
 
@@ -23,7 +23,7 @@ describe('Sample tests', () => {
     });
 
     it('Goes to index page', () => {
-      cy.get('a.v-btn.nav-item').eq(2).contains('City Budget Tracker').click();
+      cy.get('a.v-btn.nav-item').eq(2).contains('Police Trends').click();
       cy.location('pathname').should('eq', '/');
       cy.contains('h3', 'Explaining your city’s public budget information, to empower citizens like you.');
     });
