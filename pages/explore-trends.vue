@@ -248,56 +248,69 @@
 
           <v-row class="content-row body-row">
             <v-col cols=8>
-              <h2 class="section-title">1. Budget Overview</h2>
-              <p class="section-text">
-                There are five categories of organizations within Oakland
-                -- General Administration & Finance,
-                Human Welfare and Neighborhood Development, Culture & Recreation,
-                Public Works, Transportation,
-                and Commerce, and Public Protection. Oakland’s police department
-                lies under the Public Protection
-                organization. In FY 2020-2021, the police department spending made
-                up about 20% of the total city
-                budget, or about $330 million.
-              </p>
               <v-row>
                 <v-col cols=6>
-                  <br /><br />
+                  <h2 class="section-title">1. Budget Overview</h2>
+                  <p class="section-text">
+                    There are five categories of organizations within Oakland
+                    -- General Administration & Finance,
+                    Human Welfare and Neighborhood Development, Culture & Recreation,
+                    Public Works, Transportation,
+                    and Commerce, and Public Protection. Oakland’s police department
+                    lies under the Public Protection
+                    organization. In FY 2020-2021, the police department spending made
+                    up about 20% of the total city
+                    budget, or about $330 million.
+                  </p>
                   <p class="highlight-text">
                     It makes up this much of the Public Protection budget:
                   </p>
                   <p class="highlight-number">64%</p>
-                  <br />
                   <p class="highlight-text">
                     and this much of the city's overall budget:
                   </p>
                   <p class="highlight-number">20%</p>
                 </v-col>
                 <v-col cols=6>
+                  <br /><br />
+                  <Plotly :data="oaktreeMapData" :layout="layout" :display-mode-bar="false"/>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols=6>
+                  <p class="section-text">
+                    The other departments under the Public Protection organization are the 
+                    Fire Department, Police Commission, the Department of Violence Prevention 
+                    and the Race and Equity Division. The Violence Prevention Department was 
+                    established in 2019 to reduce violent crimes, improve emergency response 
+                    times, and invest in violence prevention strategies in the community.
+                  </p>
+                  <p class="highlight-text">
+                    Department of Violence Prevention:
+                  </p>
+                  <p class="highlight-number">$1.2 M</p>
+                  <p class="section-text">
+                    The Race and Equity department was established in 2015 to eliminate 
+                    systemic causes of racial disparities and promote inclusion in city 
+                    government and Oakland community.
+                  </p>
+                  <br />
+                  <p class="highlight-text">
+                    Department of Race and Equity budget:
+                  </p>
+                  <p class="highlight-number">$760 K</p>
+                </v-col>
+                <v-col cols=6>
+                  <br /><br />
                   <Plotly :data="oaktreeMapData" :layout="layout" :display-mode-bar="false"/>
                 </v-col>
               </v-row>
               <v-spacer />
-                <p class="summary-text">
-                  The other departments under the Public Protection organization
-                  are the Police Commission, the
-                  Department of Violence Prevention and the Race and Equity Division.
-                  The violence prevention
-                  department was established in 2019 to reduce violent crimes,
-                  improve emergency response times, and
-                  invest in violence prevention strategies in the community.
-                  The Race and Equity department was
-                  established in 2015 to eliminate systemic causes of racial disparities
-                  and promote inclusion in
-                  city government and Oakland community. In 2020, the Police Department
-                  was the most funded department
-                  by far in comparison to Race and Equity ($760k, or about 0.05% of the
-                  budget) or the Department of
-                  Violence Prevention ($1.2 million, about 0.07% of the budget). Think
-                  through how YOU would allocate
-                  funds using our Balance Budget tool!
-                </p>
-                <v-row align-content="center"> <v-btn
+              <p class="summary-text">
+                Learn more about Oakland’s city budget.
+              </p>
+              <v-row align-content="center">
+                <v-btn
                   class="city-filter__button"
                   to="/balance-budget"
                   color="#2a6465"
