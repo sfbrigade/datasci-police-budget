@@ -1,5 +1,15 @@
 <template>
   <div class="header">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXVM1ZQC32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XXVM1ZQC32');
+</script>
     <v-container class="nav-bar" fluid>
       <v-row class="nav-row" v-if="fullView">
         <v-col v-for="button in leftRoutes" :key="button.key" cols="2">
@@ -189,12 +199,3 @@ export default {
 }
 </style>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXVM1ZQC32"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XXVM1ZQC32');
-</script>
