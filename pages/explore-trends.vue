@@ -394,10 +394,11 @@
                 justify="center"
               >
                 <v-btn-toggle
-                  v-model="text"
+                  v-model="use_of_force"
                   rounded
                   align-content="center"
                   color="white"
+                  mandatory
                 >
                   <v-btn
                     value="Level 1"
@@ -434,6 +435,7 @@
               </v-row>
               <br />
               <v-row
+                v-if="use_of_force === 'Level 1'"
                 align="center"
                 justify="center"
               >
@@ -457,6 +459,27 @@
                       approved by a Watch Commander</li>
                   </ul>
                 </v-col>
+              </v-row>
+              <v-row
+                align="center"
+                justify="center"
+                v-if="use_of_force === 'Level 2'"
+              >
+                LEVEL 2 DATA HERE
+              </v-row>
+              <v-row
+                align="center"
+                justify="center"
+                v-if="use_of_force === 'Level 3'"
+              >
+                LEVEL 3 DATA HERE
+              </v-row>
+              <v-row
+                align="center"
+                justify="center"
+                v-if="use_of_force === 'Level 4'"
+              >
+                LEVEL 4 DATA HERE
               </v-row>
               <br /><br />
               <v-row align="center"
@@ -975,6 +998,7 @@ export default Vue.extend({
         },
         paper_bgcolor: 'rgba(0, 0, 0, 0)',
       },
+      use_of_force: 'Level 1',
     };
   },
 });
