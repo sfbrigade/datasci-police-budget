@@ -302,7 +302,6 @@
                 </v-col>
                 <v-col cols=6>
                   <br /><br />
-                  <Plotly :data="oaktreeMapData" :layout="layout" :display-mode-bar="false"/>
                 </v-col>
               </v-row>
               <v-spacer />
@@ -519,7 +518,7 @@
                   </div>
                 </v-col>
                 <v-col cols=6 >
-                  <v-img :src="require('../assets/images/oakland-disc-stops.png')" />
+                  <v-img :src="require('../assets/images/stops_by_race.png')" />
                 </v-col>
               </v-row>
             </v-col>
