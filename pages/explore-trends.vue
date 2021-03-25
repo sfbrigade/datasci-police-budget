@@ -387,7 +387,6 @@
 
               <p class="section-text">
                 Tab through the levels to view use of force definitions and trends.
-                Selected: {{use_of_force}}
               </p>
               <br /> <br />
               <v-row
