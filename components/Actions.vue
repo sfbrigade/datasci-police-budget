@@ -3,10 +3,12 @@
     <h3 class="Actions-Header">Data doesn’t have to be confusing.</h3>
     <v-container>
       <v-row>
-        <v-col cols=3>
+        <v-col cols=3 >
           <div class="action-item">
             <NuxtLink to="/explore-trends">
-              <div class="icon icon-1"></div>
+              <v-row align="center" justify="center">
+                <v-img :src="require('../assets/images/search.png')" max-width="80"/>
+              </v-row>
               <div class="Actions-Title">Visualize It</div>
             </NuxtLink>
             <div class="Actions-Text">We analyzed the data so you can examine it for yourself.</div>
@@ -16,7 +18,9 @@
         <v-col cols=3>
           <div class="action-item">
             <NuxtLink to="/balance-budget">
-              <div class="icon icon-2"></div>
+              <v-row align="center" justify="center">
+                <v-img :src="require('../assets/images/explore.png')" max-width="80"/>
+              </v-row>
               <div class="Actions-Title">Explore It</div>
             </NuxtLink>
             <div class="Actions-Text">
@@ -28,7 +32,9 @@
         <v-col cols=3>
           <div class="action-item">
             <NuxtLink to="/take-action">
-              <div class="icon icon-3"></div>
+              <v-row align="center" justify="center">
+                <v-img :src="require('../assets/images/phone.png')" max-width="80"/>
+              </v-row>
               <div class="Actions-Title">Do Something About It</div>
             </NuxtLink>
             <div class="Actions-Text">Not pleased? Take action.</div>
