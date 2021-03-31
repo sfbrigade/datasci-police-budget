@@ -516,7 +516,7 @@
                   </div>
                 </v-col>
                 <v-col cols=6 >
-                  <v-img :src="require('../assets/images/uof-by-race.png')" />
+                  <v-img :src="require('../assets/images/stops_by_race.png')" />
                 </v-col>
               </v-row>
             </v-col>
