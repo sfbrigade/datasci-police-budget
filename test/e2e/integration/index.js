@@ -10,10 +10,10 @@ describe('Sample tests', () => {
       cy.get('a.v-btn.nav-item').its('length').should('eq', 5);
     });
 
-    it('Goes to See Budget page', () => {
-      cy.get('a.v-btn.nav-item').eq(0).contains('Explore Budget').click();
-      cy.location('pathname').should('eq', '/explore-budget');
-      cy.contains('h2', 'Explore Budget');
+    it('Goes to Explore Trends page', () => {
+      cy.get('a.v-btn.nav-item').eq(0).contains('Explore Trends').click();
+      cy.location('pathname').should('eq', '/explore-trends');
+      cy.contains('h2', 'Explore Trends');
     });
 
     it('Goes to Balance Budget page', () => {
@@ -48,21 +48,21 @@ describe('Sample tests', () => {
     });
 
     it('Visits index page', () => {
-      cy.contains('.header', 'City Budget Tracker');
+      cy.contains('.header', 'Police Trends');
       cy.get('a.nav-item').its('length').should('eq', 5);
     });
 
     it('Goes to index page', () => {
-      cy.get('a.nav-item').eq(0).contains('City Budget Tracker').click();
+      cy.get('a.nav-item').eq(0).contains('Police Trends').click();
       cy.location('pathname').should('eq', '/');
       cy.contains('h3', 'Explaining your city’s public budget information, to empower citizens like you.');
     });
 
-    it('Goes to See Budget page', () => {
+    it('Goes to Explore Trends page', () => {
       cy.get('.nav-icon').click();
-      cy.get('a.nav-item').eq(1).contains('See Budget').click();
-      cy.location('pathname').should('eq', '/see-budget');
-      cy.contains('h2', 'Explore Budget');
+      cy.get('a.nav-item').eq(1).contains('Explore Trends').click();
+      cy.location('pathname').should('eq', '/explore-trends');
+      cy.contains('h2', 'Explore Trends');
     });
 
     it('Goes to Balance Budget page', () => {
