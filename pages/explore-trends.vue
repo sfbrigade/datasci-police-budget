@@ -521,6 +521,31 @@
               </v-row>
             </v-col>
           </v-row>
+
+          <v-row class="content-row body-row white">
+            <v-col cols=8>
+              <p class="section-text">
+While use of force rates in general have decreased, there are still a large number of them and incidents still disproportionately affect African Americans. This indicates that although there have been improvements in the Oakland police force, there are still significant developments to be made.
+              </p>
+              <p class="section-text">
+The priorities of the 2019-2021 adopted budget are focusing on homelessness, affordable housing, and transportation improvements, among other initiatives. There is an additional $64 million dollars going to affordable housing and there is also a first-ever Commission on Homelessness being established. In the 20-21 adopted budget, there is around $302 million dollars being allocated to the police department, which is an increase from the year before at $290 million. Some of these funds will be allocated to enhance training programs and to also include a community engagement process. A one-time $700,000 dollar investment into the OUSD Restorative Justice program has been made, and a complaint investigator to the Community Police Review Agency was added to improve responses to police misconduct. Additionally, under California’s new transparency law, there has been a paralegal added to the Office of the City Attorney to disclose police records.  Finally, there has been another $1.6 million investment into the Department of Violence Prevention.
+              </p>
+              <p class="section-text">
+                What do you think of this proposal? How do you feel about Oakland's history
+                of police budget spending? Get involved and make your voice heard!
+              </p>
+              <v-row align-content="center"> <v-btn
+                class="city-filter__button"
+                to="/take-action"
+                color="#2a6465"
+                nuxt
+              >
+                TAKE ACTION
+              </v-btn> </v-row>
+            </v-col>
+          </v-row>
+
+
         </v-row>
       </v-container>
     </v-main>
