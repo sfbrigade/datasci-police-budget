@@ -22,17 +22,17 @@
               <h2 class="summary-title">Summary</h2>
               <p class="summary-text">
                 From 1999-2017, the total city budget spending for San Francisco averaged
-                at around 1.1 billion dollars annually, while the annual police budget in
-                San Francisco averaged at around 420 million dollars.
+                at around 8.7 billion dollars annually, while the annual police budget in
+                San Francisco averaged at around 400 million dollars.
               </p>
               <v-row>
                 <v-col cols=6>
                   <p class="summary-highlight-text">average annual total budget</p>
-                  <p class="summary-highlight-number">$1.1B</p>
+                  <p class="summary-highlight-number">$8.7B</p>
                 </v-col>
                 <v-col cols=6>
                   <p class="summary-highlight-text">average annual police budget</p>
-                  <p class="summary-highlight-number">$420M</p>
+                  <p class="summary-highlight-number">$400M</p>
                 </v-col>
               </v-row>
               <p class="summary-text">
