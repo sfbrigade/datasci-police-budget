@@ -248,56 +248,68 @@
 
           <v-row class="content-row body-row">
             <v-col cols=8>
-              <h2 class="section-title">1. Budget Overview</h2>
-              <p class="section-text">
-                There are five categories of organizations within Oakland
-                -- General Administration & Finance,
-                Human Welfare and Neighborhood Development, Culture & Recreation,
-                Public Works, Transportation,
-                and Commerce, and Public Protection. Oakland’s police department
-                lies under the Public Protection
-                organization. In FY 2020-2021, the police department spending made
-                up about 20% of the total city
-                budget, or about $330 million.
-              </p>
               <v-row>
                 <v-col cols=6>
-                  <br /><br />
+                  <h2 class="section-title">1. Budget Overview</h2>
+                  <p class="section-text">
+                    There are five categories of organizations within Oakland
+                    -- General Administration & Finance,
+                    Human Welfare and Neighborhood Development, Culture & Recreation,
+                    Public Works, Transportation,
+                    and Commerce, and Public Protection. Oakland’s police department
+                    lies under the Public Protection
+                    organization. In FY 2020-2021, the police department spending made
+                    up about 20% of the total city
+                    budget, or about $330 million.
+                  </p>
                   <p class="highlight-text">
                     It makes up this much of the Public Protection budget:
                   </p>
                   <p class="highlight-number">64%</p>
-                  <br />
                   <p class="highlight-text">
                     and this much of the city's overall budget:
                   </p>
                   <p class="highlight-number">20%</p>
                 </v-col>
                 <v-col cols=6>
+                  <br /><br />
                   <Plotly :data="oaktreeMapData" :layout="layout" :display-mode-bar="false"/>
                 </v-col>
               </v-row>
+              <v-row>
+                <v-col cols=6>
+                  <p class="section-text">
+                    The other departments under the Public Protection organization are the 
+                    Fire Department, Police Commission, the Department of Violence Prevention 
+                    and the Race and Equity Division. The Violence Prevention Department was 
+                    established in 2019 to reduce violent crimes, improve emergency response 
+                    times, and invest in violence prevention strategies in the community.
+                  </p>
+                  <p class="highlight-text">
+                    Department of Violence Prevention:
+                  </p>
+                  <p class="highlight-number">$1.2 M</p>
+                  <p class="section-text">
+                    The Race and Equity department was established in 2015 to eliminate 
+                    systemic causes of racial disparities and promote inclusion in city 
+                    government and Oakland community.
+                  </p>
+                  <br />
+                  <p class="highlight-text">
+                    Department of Race and Equity budget:
+                  </p>
+                  <p class="highlight-number">$760 K</p>
+                </v-col>
+                <v-col cols=6>
+                  <br /><br />
+                </v-col>
+              </v-row>
               <v-spacer />
-                <p class="summary-text">
-                  The other departments under the Public Protection organization
-                  are the Police Commission, the
-                  Department of Violence Prevention and the Race and Equity Division.
-                  The violence prevention
-                  department was established in 2019 to reduce violent crimes,
-                  improve emergency response times, and
-                  invest in violence prevention strategies in the community.
-                  The Race and Equity department was
-                  established in 2015 to eliminate systemic causes of racial disparities
-                  and promote inclusion in
-                  city government and Oakland community. In 2020, the Police Department
-                  was the most funded department
-                  by far in comparison to Race and Equity ($760k, or about 0.05% of the
-                  budget) or the Department of
-                  Violence Prevention ($1.2 million, about 0.07% of the budget). Think
-                  through how YOU would allocate
-                  funds using our Balance Budget tool!
-                </p>
-                <v-row align-content="center"> <v-btn
+              <p class="summary-text">
+                Learn more about Oakland’s city budget.
+              </p>
+              <v-row align-content="center">
+                <v-btn
                   class="city-filter__button"
                   to="/balance-budget"
                   color="#2a6465"
@@ -325,10 +337,8 @@
               </p>
             </v-col>
             <v-col cols=4>
-              <p class="graph-title">Oakland Police Department Budget (20XX-20XX)</p>
-              <v-img :src="require('../assets/images/oakland-police-budget-over-time.png')" />
-              <p class="graph-title">Oakland Police All Sworn Staff (20XX-20XX)</p>
-              <v-img :src="require('../assets/images/oakland-staff-over-time.png')" />
+              <Plotly :data="oak_police_budget" :layout="police_budget_layout" :display-mode-bar="false"/>
+              <Plotly :data="oak_police_ftes" :layout="oak_fte_layout" :display-mode-bar="false"/>
             </v-col>
             <v-spacer />
           </v-row>
@@ -381,10 +391,11 @@
                 justify="center"
               >
                 <v-btn-toggle
-                  v-model="text"
+                  v-model="use_of_force"
                   rounded
                   align-content="center"
                   color="white"
+                  mandatory
                 >
                   <v-btn
                     value="Level 1"
@@ -421,11 +432,12 @@
               </v-row>
               <br />
               <v-row
+                v-if="use_of_force === 'Level 1'"
                 align="center"
                 justify="center"
               >
                 <v-col cols=6>
-                  <v-img :src="require('../assets/images/oakland-uof-over-time.png')" />
+                  <Plotly :data="oak_uof_l1" :layout="oak_uof_layout" :display-mode-bar="false"/>
                 </v-col>
                 <v-col cols=6
                 >
@@ -444,6 +456,27 @@
                       approved by a Watch Commander</li>
                   </ul>
                 </v-col>
+              </v-row>
+              <v-row
+                align="center"
+                justify="center"
+                v-if="use_of_force === 'Level 2'"
+              >
+                LEVEL 2 DATA HERE
+              </v-row>
+              <v-row
+                align="center"
+                justify="center"
+                v-if="use_of_force === 'Level 3'"
+              >
+                LEVEL 3 DATA HERE
+              </v-row>
+              <v-row
+                align="center"
+                justify="center"
+                v-if="use_of_force === 'Level 4'"
+              >
+                LEVEL 4 DATA HERE
               </v-row>
               <br /><br />
               <v-row align="center"
@@ -483,7 +516,7 @@
                   </div>
                 </v-col>
                 <v-col cols=6 >
-                  <v-img :src="require('../assets/images/oakland-disc-stops.png')" />
+                  <v-img :src="require('../assets/images/stops_by_race.png')" />
                 </v-col>
               </v-row>
             </v-col>
@@ -518,6 +551,8 @@ import OAK_UOF_1 from '../oaklanddataset/plot_data/oakland_l1.json';
 import OAK_UOF_2 from '../oaklanddataset/plot_data/oakland_l2.json';
 import OAK_UOF_3 from '../oaklanddataset/plot_data/oakland_l3.json';
 import OAK_UOF_4 from '../oaklanddataset/plot_data/oakland_l4.json';
+import OAK_POP from '../oaklanddataset/plot_data/oakland_pop.json';
+import OAK_STAFF from '../oaklanddataset/plot_data/oakland_staff.json';
 
 const labels = [];
 const parents = [];
@@ -594,8 +629,8 @@ const oakBudgetTotal = [];
 const oakBudgetGf = [];
 
 OAK_POLICE_BUDGET_DATA.forEach((item) => {
-  oakBudgetYear.push(item.Year);
-  oakBudgetTotal.push(item.Total);
+  oakBudgetYear.push(item.year);
+  oakBudgetTotal.push(item.total);
   oakBudgetGf.push(item.general_fund);
 });
 
@@ -639,6 +674,19 @@ OAK_STAFFING_DATA.forEach((item) => {
   oakStaffingDate.push(item.Date);
   oakStaffBudgeted.push(item['Authorized Sworn FTE']);
   oakStaffActual.push(item['Actual Sworn FTE']);
+});
+
+const oakRace = [];
+const oakPopRace = [];
+const oakStaffRace = [];
+
+OAK_POP.forEach((item) => {
+  oakRace.push(item['Race/Ethnicity']);
+  oakPopRace.push(item['Population of Oakland']);
+});
+
+OAK_STAFF.forEach((item) => {
+  oakStaffRace.push(item['Number of Sworn Staff']);
 });
 
 export default Vue.extend({
@@ -704,7 +752,7 @@ export default Vue.extend({
         },
         {
           type: 'scatter',
-          x: oakBudgetTotal,
+          x: oakBudgetYear,
           y: oakBudgetGf,
           name: 'General Fund',
         },
@@ -713,6 +761,7 @@ export default Vue.extend({
         type: 'scatter',
         x: uofL1Year,
         y: uofL1Force,
+        name: 'Level 1',
       }],
       oak_uof_l2: [{
         type: 'scatter',
@@ -866,6 +915,28 @@ export default Vue.extend({
         paper_bgcolor: 'rgba(0,0,0,0)',
         colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
       },
+      oak_uof_layout : {
+        title: {
+          text: 'Oakland Use of Force Level 1',
+          font: {
+            size: 18,
+            family: 'Nunito',
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        showlegend: true,
+        legend: {
+          orientation: 'h',
+        },
+        plot_bgcolor: '#F1F8F8',
+        paper_bgcolor: 'F1F8F8',
+      },
       force_type_layout: {
         title: {
           text: 'SF Use of Force by Type (2016-2019)',
@@ -910,6 +981,26 @@ export default Vue.extend({
         plot_bgcolor: '#F1F8F8',
         paper_bgcolor: 'F1F8F8',
       },
+      oak_fte_layout: {
+        title: {
+          text: 'Oakland Sworn Officers 2010-2019',
+          font: {
+            size: 18,
+            family: 'Nunito',
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        margin: {
+          t: 40,
+          pad: 5,
+        },
+      },
       police_budget_detail_layout: {
         title: {
           text: 'SF City Police Sub-Departments (1999-2017)',
@@ -933,7 +1024,7 @@ export default Vue.extend({
       },
       police_budget_layout: {
         title: {
-          text: 'SF City Police Department Budget (1999-2017)',
+          text: this.$store.state.city === 'oakland' ? "Oakland City Police Department Budget 2013-2016" : 'SF City Police Department Budget (1999-2017)',
           font: {
             size: 18,
             family: 'Nunito',
@@ -962,6 +1053,7 @@ export default Vue.extend({
         },
         paper_bgcolor: 'rgba(0, 0, 0, 0)',
       },
+      use_of_force: 'Level 1',
     };
   },
 });
