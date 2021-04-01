@@ -337,10 +337,8 @@
               </p>
             </v-col>
             <v-col cols=4>
-              <p class="graph-title">Oakland Police Department Budget (20XX-20XX)</p>
-              <v-img :src="require('../assets/images/oakland-police-budget-over-time.png')" />
-              <p class="graph-title">Oakland Police All Sworn Staff (20XX-20XX)</p>
-              <v-img :src="require('../assets/images/oakland-staff-over-time.png')" />
+              <Plotly :data="oak_police_budget" :layout="police_budget_layout" :display-mode-bar="false"/>
+              <Plotly :data="oak_police_ftes" :layout="oak_fte_layout" :display-mode-bar="false"/>
             </v-col>
             <v-spacer />
           </v-row>
@@ -439,7 +437,7 @@
                 justify="center"
               >
                 <v-col cols=6>
-                  <v-img :src="require('../assets/images/oakland-uof-over-time.png')" />
+                  <Plotly :data="oak_uof_l1" :layout="oak_uof_layout" :display-mode-bar="false"/>
                 </v-col>
                 <v-col cols=6
                 >
@@ -553,6 +551,8 @@ import OAK_UOF_1 from '../oaklanddataset/plot_data/oakland_l1.json';
 import OAK_UOF_2 from '../oaklanddataset/plot_data/oakland_l2.json';
 import OAK_UOF_3 from '../oaklanddataset/plot_data/oakland_l3.json';
 import OAK_UOF_4 from '../oaklanddataset/plot_data/oakland_l4.json';
+import OAK_POP from '../oaklanddataset/plot_data/oakland_pop.json';
+import OAK_STAFF from '../oaklanddataset/plot_data/oakland_staff.json';
 
 const labels = [];
 const parents = [];
@@ -629,8 +629,8 @@ const oakBudgetTotal = [];
 const oakBudgetGf = [];
 
 OAK_POLICE_BUDGET_DATA.forEach((item) => {
-  oakBudgetYear.push(item.Year);
-  oakBudgetTotal.push(item.Total);
+  oakBudgetYear.push(item.year);
+  oakBudgetTotal.push(item.total);
   oakBudgetGf.push(item.general_fund);
 });
 
@@ -674,6 +674,19 @@ OAK_STAFFING_DATA.forEach((item) => {
   oakStaffingDate.push(item.Date);
   oakStaffBudgeted.push(item['Authorized Sworn FTE']);
   oakStaffActual.push(item['Actual Sworn FTE']);
+});
+
+const oakRace = [];
+const oakPopRace = [];
+const oakStaffRace = [];
+
+OAK_POP.forEach((item) => {
+  oakRace.push(item['Race/Ethnicity']);
+  oakPopRace.push(item['Population of Oakland']);
+});
+
+OAK_STAFF.forEach((item) => {
+  oakStaffRace.push(item['Number of Sworn Staff']);
 });
 
 export default Vue.extend({
@@ -739,7 +752,7 @@ export default Vue.extend({
         },
         {
           type: 'scatter',
-          x: oakBudgetTotal,
+          x: oakBudgetYear,
           y: oakBudgetGf,
           name: 'General Fund',
         },
@@ -748,6 +761,7 @@ export default Vue.extend({
         type: 'scatter',
         x: uofL1Year,
         y: uofL1Force,
+        name: 'Level 1',
       }],
       oak_uof_l2: [{
         type: 'scatter',
@@ -901,6 +915,28 @@ export default Vue.extend({
         paper_bgcolor: 'rgba(0,0,0,0)',
         colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
       },
+      oak_uof_layout : {
+        title: {
+          text: 'Oakland Use of Force Level 1',
+          font: {
+            size: 18,
+            family: 'Nunito',
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        showlegend: true,
+        legend: {
+          orientation: 'h',
+        },
+        plot_bgcolor: '#F1F8F8',
+        paper_bgcolor: 'F1F8F8',
+      },
       force_type_layout: {
         title: {
           text: 'SF Use of Force by Type (2016-2019)',
@@ -945,6 +981,26 @@ export default Vue.extend({
         plot_bgcolor: '#F1F8F8',
         paper_bgcolor: 'F1F8F8',
       },
+      oak_fte_layout: {
+        title: {
+          text: 'Oakland Sworn Officers 2010-2019',
+          font: {
+            size: 18,
+            family: 'Nunito',
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        margin: {
+          t: 40,
+          pad: 5,
+        },
+      },
       police_budget_detail_layout: {
         title: {
           text: 'SF City Police Sub-Departments (1999-2017)',
@@ -968,7 +1024,7 @@ export default Vue.extend({
       },
       police_budget_layout: {
         title: {
-          text: 'SF City Police Department Budget (1999-2017)',
+          text: this.$store.state.city === 'oakland' ? "Oakland City Police Department Budget 2013-2016" : 'SF City Police Department Budget (1999-2017)',
           font: {
             size: 18,
             family: 'Nunito',
