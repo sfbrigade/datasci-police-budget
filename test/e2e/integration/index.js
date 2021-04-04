@@ -22,12 +22,6 @@ describe('Sample tests', () => {
       cy.contains('h2', "Balance My City's Budget");
     });
 
-    it('Goes to index page', () => {
-      cy.get('a.v-btn.nav-item').eq(2).contains('City Budget Tracker').click();
-      cy.location('pathname').should('eq', '/');
-      cy.contains('h3', 'Explaining your city’s public budget information, to empower citizens like you.');
-    });
-
     it('Goes to About Us page', () => {
       cy.get('a.v-btn.nav-item').eq(3).contains('About Us').click();
       cy.location('pathname').should('eq', '/about');
@@ -50,12 +44,6 @@ describe('Sample tests', () => {
     it('Visits index page', () => {
       cy.contains('.header', 'City Budget Tracker');
       cy.get('a.nav-item').its('length').should('eq', 5);
-    });
-
-    it('Goes to index page', () => {
-      cy.get('a.nav-item').eq(0).contains('City Budget Tracker').click();
-      cy.location('pathname').should('eq', '/');
-      cy.contains('h3', 'Explaining your city’s public budget information, to empower citizens like you.');
     });
 
     it('Goes to See Budget page', () => {
