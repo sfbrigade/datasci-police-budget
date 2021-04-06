@@ -462,21 +462,21 @@
                 justify="center"
                 v-if="use_of_force === 'Level 2'"
               >
-                LEVEL 2 DATA HERE
+                <Plotly :data="oak_uof_l2" :layout="oak_uof_layout" :display-mode-bar="false"/>
               </v-row>
               <v-row
                 align="center"
                 justify="center"
                 v-if="use_of_force === 'Level 3'"
               >
-                LEVEL 3 DATA HERE
+               <Plotly :data="oak_uof_l3" :layout="oak_uof_layout" :display-mode-bar="false"/>
               </v-row>
               <v-row
                 align="center"
                 justify="center"
                 v-if="use_of_force === 'Level 4'"
               >
-                LEVEL 4 DATA HERE
+                L<Plotly :data="oak_uof_l4" :layout="oak_uof_layout" :display-mode-bar="false"/>
               </v-row>
               <br /><br />
               <v-row align="center"
@@ -792,16 +792,19 @@ export default Vue.extend({
         type: 'scatter',
         x: uofL2Year,
         y: uofL2Force,
+        name: 'Level 2',
       }],
       oak_uof_l3: [{
         type: 'scatter',
         x: uofL3Year,
         y: uofL3Force,
+        name: 'Level 3',
       }],
       oak_uof_l4: [{
         type: 'scatter',
         x: uofL4Year,
         y: uofL4Force,
+        name: 'Level 4',
       }],
       oak_police_ftes: [
         {
@@ -942,7 +945,7 @@ export default Vue.extend({
       },
       oak_uof_layout : {
         title: {
-          text: 'Oakland Use of Force Level 1',
+          text: `Use of Force`,
           font: {
             size: 18,
             family: 'Nunito',
