@@ -355,11 +355,11 @@
             <v-spacer />
             <v-col cols=4>
               <p class="graph-title"> Race and Ethnicity: All Oakland Sworn Staff (2018)</p>
-              <v-img :src="require('../assets/images/oakland-all-sworn-staff.png')" />
+              <Plotly :data="oak_staff_pie" :layout="pieLayout" :display-mode-bar="false"/>
             </v-col>
             <v-col cols=4>
               <p class="graph-title"> Race and Ethnicity: Oakland Population (2010)</p>
-              <v-img :src="require('../assets/images/oakland-population.png')" />
+              <Plotly :data="oak_pop_pie" :layout="pieLayout" :display-mode-bar="false"/>
             </v-col>
             <v-spacer />
           </v-row>
@@ -922,6 +922,16 @@ export default Vue.extend({
           name: 'Asian or Pacific Islander',
         },
       ],
+      oak_staff_pie: [{
+        values: oakStaffRace,
+        labels: oakRace,
+        type: 'pie',
+      }],
+      oak_pop_pie: [{
+        values: oakPopRace,
+        labels: oakRace,
+        type: 'pie',
+      }],
       layout: {
         title: {
           text: `${this.$store.state.city === 'oakland' ? 'Oakland' : 'SF'} Total City Spend by Department (2017)`,
@@ -1081,6 +1091,10 @@ export default Vue.extend({
         },
         paper_bgcolor: 'rgba(0, 0, 0, 0)',
       },
+      pieLayout: {
+        height: 400,
+        width: 500
+        },
       use_of_force: 'Level 1',
     };
   },
