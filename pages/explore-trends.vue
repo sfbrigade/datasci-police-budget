@@ -464,21 +464,74 @@
                 justify="center"
                 v-if="use_of_force === 'Level 2'"
               >
-                <Plotly :data="oak_uof_l2" :layout="oak_uof_layout" :display-mode-bar="false"/>
+                <v-col cols=6>
+                  <Plotly :data="oak_uof_l2" :layout="oak_uof_layout" :display-mode-bar="false"/>
+                </v-col>
+                <v-col cols=6
+                >
+                  <p class="highlight-text">
+                    Level 2 Uses of Force include the following:
+                  </p>
+                  <ul>
+                    <li>Any strike to the head (except for an intentional strike with an impact weapon)</li>
+                    <li>Application of a carotid restraint without the loss of consciousness</li>
+                    <li>Any use of an impact weapon or any other object with contact, regardless of injury</li>
+                    <li>Any unintentional firearm discharge without injury</li>
+                    <li>Any bite by a police canine</li>
+                    <li>Any use of force resulting in injury requiring emergency medical treatment (beyond first aid) or hospital admittance</li>
+                  </ul>
+                </v-col>
               </v-row>
               <v-row
                 align="center"
                 justify="center"
                 v-if="use_of_force === 'Level 3'"
               >
-               <Plotly :data="oak_uof_l3" :layout="oak_uof_layout" :display-mode-bar="false"/>
+                <v-col cols=6>
+                  <Plotly :data="oak_uof_l3" :layout="oak_uof_layout" :display-mode-bar="false"/>
+                </v-col>
+                <v-col cols=6
+                >
+                  <p class="highlight-text">
+                    Level 3 Uses of Force include the following:
+                  </p>
+                  <ul>
+    <li>Oleoresin capsicum (pepper) spray or other chemical agent applied to a person</li>
+    <li>Any use of an electronic control device when:</li>
+        <ul>
+        <li>One or more probes impact or penetrate the subject’s clothing or skin</li>
+        <li>When the push stun arc touches the subject’s clothing or skin</li>
+        <li>When an electronic control device is fired at a subject and misses</li>
+        </ul>
+    <li>Any use of an impact weapon or other instrument when no contact is made</li>
+    <li>Any non-striking use of a baton, such as prying limbs apart, moving, or controlling a person</li>
+    <li>Any of the following weaponless defense techniques: hand, palm, or elbow strikes; kicks; leg sweeps; takedowns</li>
+    <li>Any on-duty firearm discharge at an animal other than to dispatch an injured animal</li>
+                  </ul>
+                </v-col>
               </v-row>
               <v-row
                 align="center"
                 justify="center"
                 v-if="use_of_force === 'Level 4'"
               >
-                L<Plotly :data="oak_uof_l4" :layout="oak_uof_layout" :display-mode-bar="false"/>
+                <v-col cols=6>
+                  <Plotly :data="oak_uof_l4" :layout="oak_uof_layout" :display-mode-bar="false"/>
+                </v-col>
+                <v-col cols=6
+                >
+                  <p class="highlight-text">
+                    Level 4 Uses of Force include the following:
+                  </p>
+                  <ul>
+    <li>Any intentional pointing of a firearm at a person</li>
+    <li>Any weaponless defense technique applied to a vulnerable area, excluding strikes, including hair grab, pressure to mastoid or jaw line, and shoulder muscle grab</li>
+    <li>Any of the following weaponless defense techniques: Control hold, escort (elbow), twist lock, arm-bar, bent-wrist</li>
+    <li>Any on-duty firearm discharge to dispatch an injured animal</li>
+    <li>Any Level 3 Use of Force reduced to a Level 4 Use of Force</li>
+    <li>Any police canine deployment without contact</li>
+                  </ul>
+                </v-col>
               </v-row>
               <br /><br />
               <v-row align="center"
