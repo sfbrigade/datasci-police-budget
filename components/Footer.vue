@@ -5,11 +5,23 @@
         <v-col>
           <p class="footer-p">
             Bay Area City Budget Tracker is an open-source by Code for San Francisco
-            to help citizens better understand the City of San Francisco’s spending
-            and budget process.
+            to help citizens better understand the resources San Francisco and Oakland dedicate to policing.
           </p>
           <p class="footer-p">
             Data sources:
+            San Francisco Budget Data obtained from<a href='https://data.sfgov.org/City-Management-and-Ethics/Budget/xdgd-c79v'> DataSF</a>.
+            <br>
+            San Francisco Use of Force Data obtained via a 
+            <a href='https://www.muckrock.com/foi/san-francisco-141/police-use-of-force-data-san-francisco-police-department-93028/#comms'>request
+            </a> under the California Record's act.
+            <br>
+            San Francisco population data obtained from California Department of <a href='https://www.dof.ca.gov/Forecasting/Demographics/'>Finance</a>.
+            <br>
+            Oakland financial and population information obtained from Oakland Open Data <a href='https://data.oaklandca.gov/'>Portal</a>.
+            <br>
+            Oakland Use of Force and staffing data obtained from <a href='https://www.oaklandca.gov/topics/use-of-force-uof-levels'>City of Oakland</a>.
+
+
           </p>
         </v-col>
         <v-col>
