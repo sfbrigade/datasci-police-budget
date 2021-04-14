@@ -151,7 +151,7 @@
           <v-row class="content-row body-row">
             <v-spacer />
             <v-col cols=4>
-               <Plotly :data="sf_force_type" :layout="force_type_layout" :display-mode-bar="false"/>
+              <Plotly :data="sf_force_type" :layout="force_type_layout" :display-mode-bar="false"/>
               <Plotly :data="sf_force_by_race"
               :layout="force_race_layout" :display-mode-bar="false"/>
             </v-col>
@@ -273,16 +273,16 @@
                 </v-col>
                 <v-col cols=6>
                   <br /><br />
-                  <Plotly :data="oaktreeMapData" :layout="layout" :display-mode-bar="false"/>
+                  <Plotly :data="oaktreeMapData" :layout="oak_layout" :display-mode-bar="false"/>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols=6>
                   <p class="section-text">
-                    The other departments under the Public Protection organization are the 
-                    Fire Department, Police Commission, the Department of Violence Prevention 
-                    and the Race and Equity Division. The Violence Prevention Department was 
-                    established in 2019 to reduce violent crimes, improve emergency response 
+                    The other departments under the Public Protection organization are the
+                    Fire Department, Police Commission, the Department of Violence Prevention
+                    and the Race and Equity Division. The Violence Prevention Department was
+                    established in 2019 to reduce violent crimes, improve emergency response
                     times, and invest in violence prevention strategies in the community.
                   </p>
                   <p class="highlight-text">
@@ -290,8 +290,8 @@
                   </p>
                   <p class="highlight-number">$1.2 M</p>
                   <p class="section-text">
-                    The Race and Equity department was established in 2015 to eliminate 
-                    systemic causes of racial disparities and promote inclusion in city 
+                    The Race and Equity department was established in 2015 to eliminate
+                    systemic causes of racial disparities and promote inclusion in city
                     government and Oakland community.
                   </p>
                   <br />
@@ -337,8 +337,10 @@
               </p>
             </v-col>
             <v-col cols=4>
-              <Plotly :data="oak_police_budget" :layout="police_budget_layout" :display-mode-bar="false"/>
-              <Plotly :data="oak_police_ftes" :layout="oak_fte_layout" :display-mode-bar="false"/>
+              <Plotly :data="oak_police_budget" :layout="oak_police_budget_layout"
+              :display-mode-bar="false"/>
+              <Plotly :data="oak_police_ftes" :layout="oak_fte_layout"
+              :display-mode-bar="false"/>
             </v-col>
             <v-spacer />
           </v-row>
@@ -525,10 +527,26 @@
           <v-row class="content-row body-row white">
             <v-col cols=8>
               <p class="section-text">
-While use of force rates in general have decreased, there are still a large number of them and incidents still disproportionately affect African Americans. This indicates that although there have been improvements in the Oakland police force, there are still significant developments to be made.
+                While use of force rates in general have decreased, there are still a large
+                number of them and incidents still disproportionately affect African Americans.
+                This indicates that although there have been improvements in the Oakland
+                police force, there are still significant developments to be made.
               </p>
               <p class="section-text">
-The priorities of the 2019-2021 adopted budget are focusing on homelessness, affordable housing, and transportation improvements, among other initiatives. There is an additional $64 million dollars going to affordable housing and there is also a first-ever Commission on Homelessness being established. In the 20-21 adopted budget, there is around $302 million dollars being allocated to the police department, which is an increase from the year before at $290 million. Some of these funds will be allocated to enhance training programs and to also include a community engagement process. A one-time $700,000 dollar investment into the OUSD Restorative Justice program has been made, and a complaint investigator to the Community Police Review Agency was added to improve responses to police misconduct. Additionally, under California’s new transparency law, there has been a paralegal added to the Office of the City Attorney to disclose police records.  Finally, there has been another $1.6 million investment into the Department of Violence Prevention.
+                The priorities of the 2019-2021 adopted budget are focusing on homelessness,
+                affordable housing, and transportation improvements, among other initiatives.
+                There is an additional $64 million dollars going to affordable housing and there
+                is also a first-ever Commission on Homelessness being established. In the 20-21
+                adopted budget, there is around $302 million dollars being allocated to the police
+                department, which is an increase from the year before at $290 million. Some of
+                these funds will be allocated to enhance training programs and to also include a
+                community engagement process. A one-time $700,000 dollar investment into the OUSD
+                Restorative Justice program has been made, and a complaint investigator to the
+                Community Police Review Agency was added to improve responses to police misconduct.
+                Additionally, under California’s new transparency law, there has been
+                a paralegal added to the Office of the City Attorney to disclose police records.
+                Finally, there has been another $1.6 million investment into the Department
+                of Violence Prevention.
               </p>
               <p class="section-text">
                 What do you think of this proposal? How do you feel about Oakland's history
@@ -544,7 +562,6 @@ The priorities of the 2019-2021 adopted budget are focusing on homelessness, aff
               </v-btn> </v-row>
             </v-col>
           </v-row>
-
 
         </v-row>
       </v-container>
@@ -597,8 +614,6 @@ OAKLAND_BUDGET_TREE_MAP_FORMAT.forEach((item) => {
   oakparents.push(item.Parent);
   oakvalues.push(item['2020']);
 });
-
-
 
 const policeSpendingX = [];
 const policeSpendingY = [];
@@ -983,7 +998,7 @@ export default Vue.extend({
       ],
       layout: {
         title: {
-          text: `${this.$store.state.city === 'oakland' ? 'Oakland' : 'SF'} Total City Spend by Department (2017)`,
+          text: 'SF Total City Spend by Department (2017)',
           font: {
             family: 'Nunito',
             size: 18,
@@ -996,8 +1011,29 @@ export default Vue.extend({
         margin: {
           l: 10,
           r: 10,
-          t: this.$store.state.city === 'oakland' ? 30 : 100,
-          b: this.$store.state.city === 'oakland' ? 20 : 10,
+          t: 100,
+          b: 10,
+        },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
+      },
+      oak_layout: {
+        title: {
+          text: 'Oakland Total City Spend by Department (2017)',
+          font: {
+            family: 'Nunito',
+            size: 18,
+            color: '#000000',
+          },
+        },
+        font: {
+          family: 'Nunito',
+        },
+        margin: {
+          l: 10,
+          r: 10,
+          t: 30,
+          b: 20,
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
         colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
@@ -1025,8 +1061,9 @@ export default Vue.extend({
         paper_bgcolor: 'F1F8F8',
       },
       oak_uof_layout : {
+
         title: {
-          text: `Use of Force`,
+          text: 'Use of Force',
           font: {
             size: 18,
             family: 'Nunito',
@@ -1065,7 +1102,7 @@ export default Vue.extend({
         legend: {
           orientation: 'h',
         },
-        plot_bgcolor: '#F1F8F8',
+        plot_bgcolor: 'F1F8F8',
         paper_bgcolor: 'F1F8F8',
       },
       force_race_layout: {
@@ -1133,7 +1170,38 @@ export default Vue.extend({
       },
       police_budget_layout: {
         title: {
-          text: this.$store.state.city === 'oakland' ? "Oakland City Police Department Budget 2013-2016" : 'SF City Police Department Budget (1999-2017)',
+          text: 'SF City Police Department Budget (1999-2017)',
+          font: {
+            size: 18,
+            family: 'Nunito',
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        xaxis: {
+          autorange: true,
+          range: [1995, 2020],
+          type: 'linear',
+        },
+        yaxis: {
+          autorange: false,
+          range: [0, 600000000],
+          type: 'linear',
+        },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        margin: {
+          t: 110,
+          pad: 5,
+        },
+        paper_bgcolor: 'rgba(0, 0, 0, 0)',
+      },
+      oak_police_budget_layout: {
+        title: {
+          text: 'Oakland City Police Department Budget 2013-2016',
           font: {
             size: 18,
             family: 'Nunito',
@@ -1164,8 +1232,8 @@ export default Vue.extend({
       },
       pieLayout: {
         height: 400,
-        width: 500
-        },
+        width: 500,
+      },
       use_of_force: 'Level 1',
     };
   },
