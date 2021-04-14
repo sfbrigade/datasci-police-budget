@@ -516,7 +516,7 @@
                   </div>
                 </v-col>
                 <v-col cols=6 >
-                  <v-img :src="require('../assets/images/stops_by_race.png')" />
+                  <Plotly :data="oak_stops_data" :layout="oak_stops_layout" :display-mode-bar="false"/>
                 </v-col>
               </v-row>
             </v-col>
@@ -578,6 +578,7 @@ import OAK_UOF_3 from '../oaklanddataset/plot_data/oakland_l3.json';
 import OAK_UOF_4 from '../oaklanddataset/plot_data/oakland_l4.json';
 import OAK_POP from '../oaklanddataset/plot_data/oakland_pop.json';
 import OAK_STAFF from '../oaklanddataset/plot_data/oakland_staff.json';
+import OAK_STOPS from '../oaklanddataset/plot_data/oakland_stops_ethnicity.json';
 
 const labels = [];
 const parents = [];
@@ -712,6 +713,22 @@ OAK_POP.forEach((item) => {
 
 OAK_STAFF.forEach((item) => {
   oakStaffRace.push(item['Number of Sworn Staff']);
+});
+
+const stopsYear = [];
+const stopsAsian = [];
+const stopsBlack = [];
+const stopsHispanic = [];
+const stopsOther = [];
+const stopsWhite = [];
+
+OAK_STOPS.forEach((item) => {
+  stopsYear.push(item['year']);
+  stopsAsian.push(item['asian']);
+  stopsBlack.push(item['black']);
+  stopsHispanic.push(item['hispanic']);
+  stopsOther.push(item['other']);
+  stopsWhite.push(item['white']);
 });
 
 export default Vue.extend({
@@ -932,6 +949,38 @@ export default Vue.extend({
         labels: oakRace,
         type: 'pie',
       }],
+      oak_stops_data : [
+        {
+          type: 'scatter',
+          x: stopsYear,
+          y: stopsAsian,
+          name: 'Asian',
+        },
+        {
+          type: 'scatter',
+          x: stopsYear,
+          y: stopsBlack,
+          name: 'Black',
+        },
+        {
+          type: 'scatter',
+          x: stopsYear,
+          y: stopsHispanic,
+          name: 'Hispanic',
+        },
+        {
+          type: 'scatter',
+          x: stopsYear,
+          y: stopsOther,
+          name: 'Other',
+        },
+        {
+          type: 'scatter',
+          x: stopsYear,
+          y: stopsWhite,
+          name: 'White',
+        },
+      ],
       layout: {
         title: {
           text: `${this.$store.state.city === 'oakland' ? 'Oakland' : 'SF'} Total City Spend by Department (2017)`,
@@ -952,6 +1001,28 @@ export default Vue.extend({
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
         colorway: ['#CF722A', '#F5BD41', '#2A6465', '#4296AD', '#4DA54A', '#CAAA97', '#EF896E'],
+      },
+      oak_stops_layout : {
+        title: {
+          text: `Stops in Oakland by Race/Ethnicity 2014-2018`,
+          font: {
+            size: 18,
+            family: 'Nunito',
+          },
+          yref: 'paper',
+          y: 2,
+          yanchor: 'bottom',
+        },
+        font: {
+          size: 10,
+          family: 'Nunito',
+        },
+        showlegend: true,
+        legend: {
+          orientation: 'h',
+        },
+        plot_bgcolor: '#F1F8F8',
+        paper_bgcolor: 'F1F8F8',
       },
       oak_uof_layout : {
         title: {
