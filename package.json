@@ -21,7 +21,7 @@
     "@nuxtjs/pwa": "^3.3.4",
     "@vue/cli-service": "^4.5.10",
     "chart.js": ">=2.9.4",
-    "cypress": "^6.2.1",
+    "cypress": "^8.7.0",
     "dayjs": "^1.10.3",
     "debounce": "^1.2.0",
     "nuxt": "^2.14.12",
