@@ -19,7 +19,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.0",
     "@nuxtjs/pwa": "^3.3.4",
-    "@vue/cli-service": "^4.5.10",
+    "@vue/cli-service": "^5.0.8",
     "chart.js": ">=2.9.4",
     "cypress": "^6.2.1",
     "dayjs": "^1.10.3",
